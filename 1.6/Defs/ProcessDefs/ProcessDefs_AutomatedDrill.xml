@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForSteel</defName>
+		<label>Dig to harvest a portion of steel</label>
+		<description>Dig 45 steel.</description>		
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>45</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,-2)</li>
+		</autoInputSlots>
+		<autoExtract>true</autoExtract>
+	</PipeSystem.ProcessDef>
+	
+</Defs>
