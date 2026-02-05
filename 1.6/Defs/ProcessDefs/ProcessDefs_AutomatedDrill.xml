@@ -15,11 +15,12 @@
 			</li>
 		</results>
 		<isFactoryProcess>true</isFactoryProcess>
-		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>		
 		<autoInputSlots>
 			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<autoExtract>true</autoExtract>
+		<onlyOutputToFactoryHoppers>true</onlyOutputToFactoryHoppers>
 	</PipeSystem.ProcessDef>
 	
 </Defs>

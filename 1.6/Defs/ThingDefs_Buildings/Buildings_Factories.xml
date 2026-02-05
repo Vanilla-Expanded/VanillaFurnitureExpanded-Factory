@@ -6,7 +6,7 @@
 		<description>todo</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
-			<texPath>Things/Factories/AutomatedDrillPlatform/AutomatedDrillPlatform</texPath>
+			<texPath>Things/Building/Factories/AutomatedDrillPlatform/AutomatedDrillPlatform</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(4,4)</drawSize>
 			
