@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-	
+	<VFEFactory_FactoryNotWorking>This factory is not working at the moment.</VFEFactory_FactoryNotWorking>
+	<VFEFactory_Overclock>Overclock: {0}</VFEFactory_Overclock>
+	<VFEFactory_OverclockWindowLabel>Configure factory overclock</VFEFactory_OverclockWindowLabel>
+	<VFEFactory_OverclockDesc>Overclock this factory to make it produce faster at the expense of more energy. Current overclocking at: {0}</VFEFactory_OverclockDesc>
 </LanguageData>

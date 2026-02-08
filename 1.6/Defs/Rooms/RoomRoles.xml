@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RoomRoleDef>
+    <defName>VFEFactory_FactoryRoom</defName>
+    <label>factory</label>
+    <workerClass>VanillaFurnitureExpandedFactory.RoomRoleWorker_Factory</workerClass>
+    
+  </RoomRoleDef>
+
+</Defs>

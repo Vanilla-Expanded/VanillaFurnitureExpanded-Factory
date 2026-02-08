@@ -15,5 +15,6 @@ namespace VanillaFurnitureExpandedFactory
 			DefOfHelper.EnsureInitializedInCtor(typeof(InternalDefOf));
 		}
 		
-	}
+		public static RoomRoleDef VFEFactory_FactoryRoom;
+    }
 }

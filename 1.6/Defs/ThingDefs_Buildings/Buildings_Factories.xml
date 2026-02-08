@@ -9,7 +9,6 @@
 			<texPath>Things/Building/Factories/AutomatedDrillPlatform/AutomatedDrillPlatform</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(4,4)</drawSize>
-			
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
 				<cornerTR>Damage/Corner</cornerTR>
@@ -18,12 +17,13 @@
 			</damageData>
 		</graphicData>
 		<thingCategories>
-			<li>BuildingsProduction</li>
+			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>50</Steel>
-			<ComponentIndustrial>1</ComponentIndustrial>
+			<Steel>200</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
 		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
@@ -31,16 +31,17 @@
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
-			<Mass>10</Mass>
-			<WorkToBuild>800</WorkToBuild>
-			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>35</Mass>
+			<Beauty>-6</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
 		<designationCategory>Production</designationCategory>
 		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
+		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
@@ -48,11 +49,11 @@
 			<li>Electricity</li>
 		</researchPrerequisites>
 		<building>
-			
-			
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
+			<!--<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>-->
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -61,22 +62,38 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>false</shortCircuitInRain>
-				<basePowerConsumption>100</basePowerConsumption>
+				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
-				<notWorkingKey>VCE_SoupPotNotWorking</notWorkingKey>
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<processes>
+					<li>VFEFactory_DigForSandstoneChunk</li>
+					<li>VFEFactory_DigForGraniteChunk</li>
+					<li>VFEFactory_DigForLimestoneChunk</li>
+					<li>VFEFactory_DigForSlateChunk</li>
+					<li>VFEFactory_DigForMarbleChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForRoseQuartzChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForCragstoneChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForOnyxglassChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForMudstoneChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForSlimeStoneChunk</li>
 					<li>VFEFactory_DigForSteel</li>
-					
+					<li>VFEFactory_DigForSilver</li>
+					<li>VFEFactory_DigForPlasteel</li>
+					<li>VFEFactory_DigForJade</li>
+					<li>VFEFactory_DigForGold</li>
+					<li>VFEFactory_DigForUranium</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
-				
-				
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	
 </Defs>
