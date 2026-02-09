@@ -36,6 +36,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1.0</Flammability>
+			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -52,8 +53,8 @@
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
-			<!--<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
-			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>-->
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -63,6 +64,14 @@
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>false</shortCircuitInRain>
 				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
