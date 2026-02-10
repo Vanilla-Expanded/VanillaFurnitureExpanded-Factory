@@ -5,7 +5,7 @@
 		<defName>VFEFactory_FactoryHopper</defName>
 		<label>Factory hopper</label>
 		<description>Holds resources for use by factory machines.</description>
-		<thingClass>Building_Storage</thingClass>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_FactoryHopper</thingClass>
 		<graphicData>
 			<texPath>Things/Building/FactoryHopper/FactoryHopper_Unset</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -22,7 +22,7 @@
 		<fillPercent>0.5</fillPercent>
 		<pathCost>42</pathCost>
 		<canOverlapZones>false</canOverlapZones>
-	
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<building>
 			<defaultStorageSettings>
 				<priority>Important</priority>
@@ -47,7 +47,7 @@
 		<costList>
 			<Steel>20</Steel>
 		</costList>
-		<tickerType>Never</tickerType>
+		<tickerType>Long</tickerType>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<designationCategory>Production</designationCategory>
