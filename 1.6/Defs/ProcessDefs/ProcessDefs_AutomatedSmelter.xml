@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltMetalFromSlag</defName>
+		<label>Smelt 15 steel from slag chunk</label>
+		<description>Use heat and strong electromagnets to extract useful metal from slag chunks.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1600</ticks>
+		<ingredients>
+			<li>
+				<thing>ChunkSlagSteel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>15</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+</Defs>
