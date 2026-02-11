@@ -29,4 +29,105 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltWeapon</defName>
+		<label>Smelt weapons</label>
+		<labelOverride>Smelt weapons</labelOverride>
+		<description>Use heat and strong electromagnets to break down weapons into useful resources. This operation will output 25% of the materials used to craft the weapon, excluding any components or advanced components.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>6400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Weapons</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlySmeltable>true</onlySmeltable>
+				<ingredientIconOverride>Things/Item/Equipment/WeaponRanged/Revolver</ingredientIconOverride>
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>10</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Smelt</workerClass>
+				<outputStringOverride>VFEFactory_VariableOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltApparel</defName>
+		<label>Smelt apparel</label>
+		<labelOverride>Smelt apparel</labelOverride>
+		<description>Use heat and strong electromagnets to break down apparel into useful resources. This operation will output 25% of the materials used to craft the apparel, excluding any components or advanced components.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>6400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Apparel</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlySmeltable>true</onlySmeltable>
+				<ingredientIconOverride>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</ingredientIconOverride>
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Leather_Patch</thing>
+				<count>10</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Smelt</workerClass>
+				<outputStringOverride>VFEFactory_VariableOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltMetalFromChunk</defName>
+		<label>Extract 3 steel from stone chunk</label>
+		<description>Use heat and strong electromagnets to extract useful metal from stone chunks.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+				<ingredientIconOverride>Things/Item/Chunk/ChunkStone/RockLowA</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>3</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>false</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
 </Defs>

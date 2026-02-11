@@ -193,7 +193,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForSteel</defName>
 		<label>Dig to harvest 45 steel</label>
-		<description>Dig 45 steel.</description>
+		<description>Dig to harvest a portion of steel.</description>
 		<priorityInBillList>10</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>23900</ticks>
@@ -210,7 +210,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForSilver</defName>
 		<label>Dig to harvest 40 silver</label>
-		<description>Dig 40 silver.</description>
+		<description>Dig to harvest a portion of silver.</description>
 		<priorityInBillList>11</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>31700</ticks>
@@ -227,7 +227,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForPlasteel</defName>
 		<label>Dig to harvest 10 plasteel</label>
-		<description>Dig 10 plasteel.</description>
+		<description>Dig to harvest a portion of plasteel.</description>
 		<priorityInBillList>12</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>50400</ticks>
@@ -244,7 +244,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForJade</defName>
 		<label>Dig to harvest 10 jade</label>
-		<description>Dig 10 jade.</description>
+		<description>Dig to harvest a portion of jade.</description>
 		<priorityInBillList>13</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>39600</ticks>
@@ -261,7 +261,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForGold</defName>
 		<label>Dig to harvest 10 gold</label>
-		<description>Dig 10 gold.</description>
+		<description>Dig to harvest a portion of gold.</description>
 		<priorityInBillList>14</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>79200</ticks>
@@ -278,7 +278,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForUranium</defName>
 		<label>Dig to harvest 10 uranium</label>
-		<description>Dig 10 uranium.</description>
+		<description>Dig to harvest a portion of uranium.</description>
 		<priorityInBillList>15</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>33600</ticks>

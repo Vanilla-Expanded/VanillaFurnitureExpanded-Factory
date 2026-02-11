@@ -12,29 +12,25 @@ namespace VanillaFurnitureExpandedFactory
 {
     public class Building_FactoryHopper : Building_Storage
     {
-        public Graphic cachedGraphic;
+        private Graphic currentGraphic;
 
-        public Graphic graphic
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            get
-            {
-                if (cachedGraphic == null)
-                {
-                    cachedGraphic = CheckForFactories();
-                }
-                return cachedGraphic;
-
-            }
-
+            base.SpawnSetup(map, respawningAfterLoad);
+            currentGraphic = CheckForFactories();
         }
 
         public override void TickLong()
         {
             base.TickLong();
 
-            cachedGraphic = CheckForFactories();
-            this.Map.mapDrawer.MapMeshDirty(this.Position, MapMeshFlagDefOf.Things | MapMeshFlagDefOf.Buildings);
-          
+            var newGraphic = CheckForFactories();
+
+            if (newGraphic != currentGraphic)
+            {
+                currentGraphic = newGraphic;
+                Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
+            }
         }
 
         public Graphic CheckForFactories()
@@ -93,7 +89,6 @@ namespace VanillaFurnitureExpandedFactory
             return GraphicsCache.hopperNormal;
         }
 
-        public override Graphic Graphic => graphic;
-
+        public override Graphic Graphic => currentGraphic ?? base.Graphic;
     }
 }

@@ -24,6 +24,9 @@
 		<canOverlapZones>false</canOverlapZones>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<building>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<maxItemsInCell>3</maxItemsInCell>
 			<defaultStorageSettings>
 				<priority>Important</priority>
 				<filter>
