@@ -130,4 +130,38 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltMechanoid</defName>
+		<label>Smelt steel from mechanoid</label>
+		<labelOverride>Smelt steel from mechanoid</labelOverride>
+		<description>Use extreme heat to extract steel from mechanoid corpses. 10 steel will be extracted per 1 body size of the mechanoid.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesMechanoid</thingCategory>
+				<countNeeded>1</countNeeded>
+				<ingredientIconOverride>Things/Pawn/Mechanoid/Scyther_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>10</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_SmeltMechanoid</workerClass>
+				<outputStringOverride>VFEFactory_SteelPerBodySize</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
 </Defs>

@@ -194,6 +194,100 @@
 					<li>VFEFactory_SmeltWeapon</li>
 					<li>VFEFactory_SmeltApparel</li>
 					<li>VFEFactory_SmeltMetalFromChunk</li>
+					<li>VFEFactory_SmeltMechanoid</li>
+				</processes>
+				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
+				<hideSettings>true</hideSettings>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedBiofuelRefinery</defName>
+		<label>automated biofuel refinery</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedBiofuelRefinery/AutomatedBiofuelRefinery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,4)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<basePowerConsumption>220</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeChemfuelFromWood</li>
+					<li>VFEFactory_MakeChemfuelFromOrganics</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>

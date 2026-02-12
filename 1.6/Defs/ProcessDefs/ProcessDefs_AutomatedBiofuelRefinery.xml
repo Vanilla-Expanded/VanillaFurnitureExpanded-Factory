@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeChemfuelFromWood</defName>
+		<label>Make 1 chemfuel from 2 wood logs</label>
+		<labelOverride>Make 1 chemfuel from 2 wood logs</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing wood gas from logs.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>200</ticks>
+		<ingredients>
+			<li>
+				<thing>WoodLog</thing>
+				<countNeeded>2</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeChemfuelFromOrganics</defName>
+		<label>Make 1 chemfuel from 0.1 nutrition</label>
+		<labelOverride>Make 1 chemfuel from 0.1 nutrition</labelOverride>
+		<description>Make a batch of chemfuel by extracting biofuel from organic feedstocks.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>280</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Foods</thingCategory>
+				<countNeeded>0.1</countNeeded>
+				<nutritionGetter>true</nutritionGetter>
+				
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	
+</Defs>

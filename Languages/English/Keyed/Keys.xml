@@ -5,4 +5,5 @@
 	<VFEFactory_OverclockWindowLabel>Configure factory overclock</VFEFactory_OverclockWindowLabel>
 	<VFEFactory_OverclockDesc>Overclock this factory to make it produce faster at the expense of more energy. Current overclocking at: {0}</VFEFactory_OverclockDesc>
 	<VFEFactory_VariableOutput>Variable output</VFEFactory_VariableOutput>
+	<VFEFactory_SteelPerBodySize>10 steel per body size</VFEFactory_SteelPerBodySize>
 </LanguageData>
