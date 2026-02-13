@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="MealBase">
+		<defName>VFEFactory_MassProducedMeal</defName>
+		<label>mass-produced meal</label>
+		<description>A mass-produced meal assembled by machine from processed ingredients.</description>
+		<tradeability>Sellable</tradeability>
+		<graphicData>
+			<texPath>Things/Item/Resource/Food/MassProducedMeal</texPath>
+			<graphicClass>Graphic_MealVariants</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>15</MarketValue>
+			<Nutrition>0.9</Nutrition>
+			<DeteriorationRate>1</DeteriorationRate>
+		</statBases>
+		<ingestible>
+			<preferability>MealSimple</preferability>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>Meal_Eat</ingestSound>
+			<optimalityOffsetFeedingAnimals>-25</optimalityOffsetFeedingAnimals>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Ingredients">
+				<splitTransferableFoodKind>true</splitTransferableFoodKind>
+			</li>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>4</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

@@ -10,7 +10,7 @@ using static PipeSystem.ProcessDef;
 
 namespace VanillaFurnitureExpandedFactory
 {
-    public class ResultWorker_TotalNutrition_SurvivalMeal : ResultWorker
+    public class ResultWorker_TotalNutrition_MassProducedMeal : ResultWorker
     {
 
 
@@ -29,8 +29,8 @@ namespace VanillaFurnitureExpandedFactory
 
             if (resultingTotalNutrition != 0)
             {
-              
-                return Math.Max((int)(Math.Round(resultingTotalNutrition * 4 / 2.4f)), 1);
+
+                return Math.Max((int)(Math.Round(resultingTotalNutrition * 2)), 1);
 
             }
             return result.count;

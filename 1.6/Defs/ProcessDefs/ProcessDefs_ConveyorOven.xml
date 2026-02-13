@@ -122,4 +122,79 @@
 			<li>PackagedSurvivalMeal</li>
 		</researchPrerequisites>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeMassProducedMeal</defName>
+		<label>Make mass-produced meals</label>
+		<labelOverride>Make mass-produced meals</labelOverride>
+		<description>Cook straightforward, mass-produced meals from a combination of meat and plant ingredients. A total of 2 nutrition will make 4 mass-produced meals.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>4800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>20</countNeeded>			
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>20</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>VFEFactory_MassProducedMeal</thing>
+				<count>4</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_MassProducedMeal</workerClass>
+				<outputStringOverride>VFEFactory_MassProducedMealOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
+		<defName>VFEFactory_MakeBabyFood</defName>
+		<label>Make baby food</label>
+		<labelOverride>Make baby food</labelOverride>
+		<description>Make baby food, a nutritionally balanced vegetarian mash for babies. While easy to make in large quantities, only babies appreciate its bland taste and mushy texture.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>5</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>BabyFood</thing>
+				<count>10</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_BabyFood</workerClass>
+				<outputStringOverride>VFEFactory_BabyFoodOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
 </Defs>

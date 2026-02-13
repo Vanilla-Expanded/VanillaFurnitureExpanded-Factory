@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_FactoryHopper</defName>
 		<label>Factory hopper</label>
@@ -11,7 +10,6 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.05,1.05)</drawSize>
 			<damageData>
-
 				<rect>(0.05,0.1,0.9,0.9)</rect>
 				<cornerTL>Damage/Corner</cornerTL>
 				<cornerTR>Damage/Corner</cornerTR>
@@ -24,13 +22,16 @@
 		<canOverlapZones>false</canOverlapZones>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<building>
+			<isHopper>true</isHopper>
+			<blueprintClass>Blueprint_Storage</blueprintClass>
 			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<maxItemsInCell>3</maxItemsInCell>
+			 <storageGroupTag>VFEFactory_FactoryHopper</storageGroupTag>
 			<defaultStorageSettings>
 				<priority>Important</priority>
 				<filter>
-
+					
 				</filter>
 			</defaultStorageSettings>
 			<buildingTags>
@@ -42,7 +43,6 @@
 		</inspectorTabs>
 		<castEdgeShadows>true</castEdgeShadows>
 		<statBases>
-		
 			<WorkToBuild>400</WorkToBuild>
 			<MaxHitPoints>150</MaxHitPoints>
 			<Flammability>0.5</Flammability>
@@ -55,21 +55,15 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<designationCategory>Production</designationCategory>
 		<surfaceType>Item</surfaceType>
-		
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>
 			<li>Electricity</li>
 		</researchPrerequisites>
-
 		<uiIconScale>0.85</uiIconScale>
-   		<modExtensions>
+		<modExtensions>
 			<li Class="PipeSystem.FactoryHopperExtension">
 				<isfactoryHopper>true</isfactoryHopper>
 			</li>
 		</modExtensions>
 	</ThingDef>
-
-
-	
-
 </Defs>

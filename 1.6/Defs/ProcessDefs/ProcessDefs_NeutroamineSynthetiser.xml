@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizeNeutroamine</defName>
+		<label>Synthesize neutroamine</label>
+		<labelOverride>Synthesize neutroamine</labelOverride>
+		<description>Synthesize neutroamine from chemfuel and rendered animal fat.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>1600</ticks>
+		<ingredients>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>2</countNeeded>
+			</li>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>10</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Neutroamine</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
+	
+</Defs>

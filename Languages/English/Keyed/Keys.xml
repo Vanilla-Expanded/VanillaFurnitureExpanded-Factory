@@ -13,4 +13,6 @@
 	<VFEFactory_KibbleOutput>24 kibble per 1 nutrition</VFEFactory_KibbleOutput>
 	<VFEFactory_PemmicanOutput>32 pemmican per 1 nutrition</VFEFactory_PemmicanOutput>
 	<VFEFactory_SurvivalMealOutput>4 meals per 2.4 nutrition</VFEFactory_SurvivalMealOutput>
+	<VFEFactory_MassProducedMealOutput>4 meals per 2 nutrition</VFEFactory_MassProducedMealOutput>
+	<VFEFactory_BabyFoodOutput>10 baby food per 0.25 nutrition</VFEFactory_BabyFoodOutput>
 </LanguageData>

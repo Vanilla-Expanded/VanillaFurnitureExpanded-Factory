@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_AssembleComponent</defName>
+		<label>Make a component</label>
+		<labelOverride>Make a component</labelOverride>
+		<description>Assemble a component.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(3,0,0)</li>
+			<li>(-3,0,0)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
+		</autoInputSlots>
+		<ticks>20000</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>12</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>ComponentIndustrial</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Fabrication</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_AssembleAdvancedComponent</defName>
+		<label>Make an advanced component</label>
+		<labelOverride>Make an advanced component</labelOverride>
+		<description>Assemble an advanced component.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(3,0,0)</li>
+			<li>(-3,0,0)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
+		</autoInputSlots>
+		<ticks>40000</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+			<li>
+				<thing>ComponentIndustrial</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thing>Plasteel</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			<li>
+				<thing>Gold</thing>
+				<countNeeded>3</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>ComponentSpacer</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>AdvancedFabrication</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+</Defs>
