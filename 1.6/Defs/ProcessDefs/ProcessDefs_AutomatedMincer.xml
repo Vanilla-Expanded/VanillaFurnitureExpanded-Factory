@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MinceCorpses</defName>
+		<label>Mince corpses</label>
+		<labelOverride>Mince corpses</labelOverride>
+		<description>Chop corpses into raw, edible minced meat suitable for cooking or further processing.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesAnimal</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>UI/CategoryIcons/Category_Corpses</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFEFactory_ProcessedMince</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_Butchery</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MinceHumanCorpses</defName>
+		<label>Mince human corpses</label>
+		<labelOverride>Mince human corpses</labelOverride>
+		<description>Chop human corpses into raw human meat. This may anger colonists, depending on their ideological beliefs. Equipment will all be discarded.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<historyEventWhenFinished>ButcheredHuman</historyEventWhenFinished>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesHumanlike</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>UI/CategoryIcons/Category_CorpsesHumanoid</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Meat_Human</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_ButcheryHuman</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+</Defs>

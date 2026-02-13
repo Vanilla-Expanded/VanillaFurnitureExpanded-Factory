@@ -50,6 +50,9 @@
 			<li>Electricity</li>
 		</researchPrerequisites>
 		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
@@ -106,7 +109,6 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedSmelter</defName>
 		<label>automated smelter</label>
@@ -157,6 +159,9 @@
 			<li>Electricity</li>
 		</researchPrerequisites>
 		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
@@ -202,7 +207,6 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedBiofuelRefinery</defName>
 		<label>automated biofuel refinery</label>
@@ -253,6 +257,9 @@
 			<li>Electricity</li>
 		</researchPrerequisites>
 		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
@@ -288,6 +295,196 @@
 				<processes>
 					<li>VFEFactory_MakeChemfuelFromWood</li>
 					<li>VFEFactory_MakeChemfuelFromOrganics</li>
+				</processes>
+				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
+				<hideSettings>true</hideSettings>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedMasonrySaw</defName>
+		<label>automated masonry saw</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedMasonrySaw/AutomatedMasonrySaw</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>180</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>40</Mass>
+			<Beauty>-8</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeStoneBlocks</li>
+					
+				</processes>
+				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
+				<hideSettings>true</hideSettings>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedMincer</defName>
+		<label>automated mincer</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedMincer/AutomatedMincer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>40</Mass>
+			<Beauty>-14</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MinceCorpses</li>
+					<li>VFEFactory_MinceHumanCorpses</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>

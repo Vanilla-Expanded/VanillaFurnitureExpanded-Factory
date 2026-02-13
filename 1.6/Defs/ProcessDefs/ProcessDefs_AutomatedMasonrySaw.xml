@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeStoneBlocks</defName>
+		<label>Cut 20 blocks from a stone chunk</label>
+		<labelOverride>Cut 20 blocks from a stone chunk</labelOverride>
+		<description>Cut rock chunks into usable stone blocks.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>6400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>BlocksSandstone</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_MasonryBlocks</workerClass>
+				<outputStringOverride>VFEFactory_MasonryBlocks</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	
+	
+</Defs>

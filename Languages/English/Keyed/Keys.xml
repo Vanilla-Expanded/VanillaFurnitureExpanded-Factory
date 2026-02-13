@@ -7,4 +7,7 @@
 	<VFEFactory_VariableOutput>Variable output</VFEFactory_VariableOutput>
 	<VFEFactory_SteelPerBodySize>10 steel per body size</VFEFactory_SteelPerBodySize>
 	<VFEFactory_ChemfuelPerNutrition>1 chemfuel per 0.1 nutrition</VFEFactory_ChemfuelPerNutrition>
+	<VFEFactory_MasonryBlocks>20 blocks of the same stone as the chunk used</VFEFactory_MasonryBlocks>
+	<VFEFactory_Butchery>Meat of the corpse in the form of processed mince</VFEFactory_Butchery>
+	<VFEFactory_ButcheryHuman>Meat of the corpse in the form of human meat</VFEFactory_ButcheryHuman>
 </LanguageData>
