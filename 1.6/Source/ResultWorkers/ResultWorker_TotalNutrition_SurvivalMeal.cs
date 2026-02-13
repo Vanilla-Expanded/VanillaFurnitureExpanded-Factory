@@ -29,9 +29,12 @@ namespace VanillaFurnitureExpandedFactory
 
             if (resultingTotalNutrition != 0)
             {
-                Log.Message(nutritionItems.ToStringSafeEnumerable());
+                /*List<ThingDef> defs = nutritionItems.Select(x => x.thingDef).ToList();
+                List<int> counts = nutritionItems.Select(x => x.count).ToList();
+                Log.Message(defs.ToStringSafeEnumerable());
+                Log.Message(counts.ToStringSafeEnumerable());
                 Log.Message(resultingTotalNutrition);
-                Log.Message(Math.Max((int)(Math.Round(resultingTotalNutrition * 4 / 2.4f)), 1));
+                Log.Message(Math.Max((int)(Math.Round(resultingTotalNutrition * 4 / 2.4f)), 1));*/
                 return Math.Max((int)(Math.Round(resultingTotalNutrition * 4 / 2.4f)), 1);
 
             }
