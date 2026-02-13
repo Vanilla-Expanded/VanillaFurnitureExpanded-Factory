@@ -30,6 +30,9 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Stonecutting</li>
+		</researchPrerequisites>
 	</PipeSystem.ProcessDef>
 	
 	

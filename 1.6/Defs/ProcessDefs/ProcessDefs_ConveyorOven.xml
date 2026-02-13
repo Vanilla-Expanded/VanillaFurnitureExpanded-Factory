@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeKibble</defName>
+		<label>Make kibble</label>
+		<labelOverride>Make kibble</labelOverride>
+		<description>Make animal kibble by combining raw meat and plants. 24 kibble will be produced per every nutrition consumed, so 15 vegetable and 15 meat will output 36 kibble.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1350</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>15</countNeeded>			
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>15</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Kibble</thing>
+				<count>36</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Kibble</workerClass>
+				<outputStringOverride>VFEFactory_KibbleOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakePemmican</defName>
+		<label>Make pemmican</label>
+		<labelOverride>Make pemmican</labelOverride>
+		<description>Make pemmican, a preserved combination of meat and plant food. It doesn't taste amazing, but lasts a long time without refrigeration. 32 pemmican will be produced per every nutrition consumed, so 5 vegetable and 5 meat will output 16 pemmican.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>2800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>5</countNeeded>			
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>5</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Pemmican</thing>
+				<count>16</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Pemmican</workerClass>
+				<outputStringOverride>VFEFactory_PemmicanOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Pemmican</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeSurvivalMeal</defName>
+		<label>Make survival meal</label>
+		<labelOverride>Make survival meal</labelOverride>
+		<description>Prepare packaged survival meals from a combination of meat and plant ingredients. Much of the ingredients are wasted in the preservation process. A total of 2.4 nutrition will make 4 survival meals.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>7200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>24</countNeeded>			
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>24</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>MealSurvivalPack</thing>
+				<count>4</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_SurvivalMeal</workerClass>
+				<outputStringOverride>VFEFactory_SurvivalMealOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>PackagedSurvivalMeal</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+</Defs>

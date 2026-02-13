@@ -15,6 +15,7 @@ namespace VanillaFurnitureExpandedFactory
 
         public override int GetCount(Process process)
         {
+           
             ThingDef corpse = process?.GetLastStoredIngredient();
             if (corpse != null)
             {

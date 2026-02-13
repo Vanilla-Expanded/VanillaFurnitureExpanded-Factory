@@ -10,4 +10,7 @@
 	<VFEFactory_MasonryBlocks>20 blocks of the same stone as the chunk used</VFEFactory_MasonryBlocks>
 	<VFEFactory_Butchery>Meat of the corpse in the form of processed mince</VFEFactory_Butchery>
 	<VFEFactory_ButcheryHuman>Meat of the corpse in the form of human meat</VFEFactory_ButcheryHuman>
+	<VFEFactory_KibbleOutput>24 kibble per 1 nutrition</VFEFactory_KibbleOutput>
+	<VFEFactory_PemmicanOutput>32 pemmican per 1 nutrition</VFEFactory_PemmicanOutput>
+	<VFEFactory_SurvivalMealOutput>4 meals per 2.4 nutrition</VFEFactory_SurvivalMealOutput>
 </LanguageData>
