@@ -33,9 +33,9 @@
 	
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeChemfuelFromOrganics</defName>
-		<label>Make 1 chemfuel from 0.1 nutrition</label>
-		<labelOverride>Make 1 chemfuel from 0.1 nutrition</labelOverride>
-		<description>Make a batch of chemfuel by extracting biofuel from organic feedstocks.</description>
+		<label>Make 1 chemfuel for every 0.1 nutrition</label>
+		<labelOverride>Make 1 chemfuel for every 0.1 nutrition</labelOverride>
+		<description>Make a batch of chemfuel by extracting biofuel from organic feedstocks. Process will consume 2 food items and output 1 chemfuel per each 0.1 nutrition consumed. For example, 2 potatoes will produce 1 chemfuel, while 2 simple meals (0.9 nutrition) will produce 18 chemfuel.</description>
 		<priorityInBillList>1</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
@@ -48,8 +48,7 @@
 		<ingredients>
 			<li>
 				<thingCategory>Foods</thingCategory>
-				<countNeeded>0.1</countNeeded>
-				<nutritionGetter>true</nutritionGetter>
+				<countNeeded>2</countNeeded>
 				
 			</li>
 		</ingredients>
@@ -58,6 +57,8 @@
 			<li>
 				<thing>Chemfuel</thing>
 				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_ScaleOutputByNutrition</workerClass>
+				<outputStringOverride>VFEFactory_ChemfuelPerNutrition</outputStringOverride>
 			</li>
 		</results>
 		<isFactoryProcess>true</isFactoryProcess>
