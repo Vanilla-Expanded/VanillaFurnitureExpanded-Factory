@@ -14,12 +14,25 @@ namespace VanillaFurnitureExpandedFactory
     {
         public override int GetCount(Process process)
         {
-            ThingDef lastFoodItem = process?.GetLastStoredIngredient();
-            if (lastFoodItem != null && lastFoodItem.IsIngestible)
+            
+            List<CachedIngredient> nutritionItems = process.advancedProcessor.cachedIngredients;
+
+            float resultingTotalNutrition = 0f;
+
+            foreach (CachedIngredient ingredient in nutritionItems)
             {
-             
-                return Math.Max((int)(Math.Round(lastFoodItem.GetStatValueAbstract(StatDefOf.Nutrition) / 0.05f)), 1); 
+                resultingTotalNutrition +=
+                    ingredient.thingDef.GetStatValueAbstract(StatDefOf.Nutrition)
+                    * ingredient.count;
             }
+
+            if (resultingTotalNutrition != 0)
+            {
+                return Math.Max((int)(resultingTotalNutrition * 10), 1);
+
+            }
+
+
             return result.count;
         }
     }
