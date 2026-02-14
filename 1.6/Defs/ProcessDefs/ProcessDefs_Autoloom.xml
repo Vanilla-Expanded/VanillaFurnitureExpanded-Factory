@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakePatchleather</defName>
+		<label>Make patchleather</label>
+	
+		<description>Make patchleather out of leather inserted.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Leathers</thingCategory>
+				<countNeeded>50</countNeeded>
+				<disallowedThingDefs><li>Leather_Patch</li></disallowedThingDefs>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Leather_Patch</thing>
+				<count>50</count>				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
+	
+</Defs>

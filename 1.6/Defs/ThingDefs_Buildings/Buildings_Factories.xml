@@ -926,7 +926,7 @@
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>Electricity</li>
@@ -968,7 +968,7 @@
 				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
-					
+					<li>VFEFactory_MakePatchleather</li>
 					
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
