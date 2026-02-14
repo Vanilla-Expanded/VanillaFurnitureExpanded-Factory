@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeHighExplosiveShells</defName>
+		<label>Make high-explosive shells</label>
+		
+		<description>Combine steel and chemfuel to create high-explosive shells.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>15</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_HighExplosive</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Mortars</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeIncendiaryShells</defName>
+		<label>Make incendiary shells</label>
+		
+		<description>Combine steel and chemfuel to create incendiary shells.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>20</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_Incendiary</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Mortars</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeEMPShells</defName>
+		<label>Make EMP shells</label>
+		
+		<description>Combine steel and components to create EMP shells.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>ComponentIndustrial</thing>
+				<countNeeded>2</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_EMP</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>MicroelectronicsBasics</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeFirefoamShells</defName>
+		<label>Make firefoam shells</label>
+		
+		<description>Use steel to create firefoam shells.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_Firefoam</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>Firefoam</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeSmokeShells</defName>
+		<label>Make smoke shells</label>
+		
+		<description>Use steel to create smoke shells.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_Smoke</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>Mortars</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
+		<defName>VFEFactory_MakeToxShells</defName>
+		<label>Make tox shells</label>
+		
+		<description>Combine steel and chemfuel to create tox shells.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>10</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_Toxic</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>ToxGas</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_MakeTarShells</defName>
+		<label>Make tar shells</label>
+		
+		<description>Combine steel and asphalt to create tar shells.</description>
+		<priorityInBillList>6</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+			<li>
+				<thing>AB_AsphaltBucket</thing>
+				<countNeeded>5</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AB_Shell_Tar</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>Mortars</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
+		<defName>VFEFactory_MakeShrapnelShells</defName>
+		<label>Make shrapnel shells</label>
+		
+		<description>Use steel to create shrapnel shells.</description>
+		<priorityInBillList>7</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>30</countNeeded>
+			</li>
+		
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFED_Shell_Shrapnel</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>VFED_ImperialWarSolutions</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
+		<defName>VFEFactory_MakeArmorPiercingShells</defName>
+		<label>Make armor-piercing shells</label>
+		
+		<description>Combine steel and chemfuel to create armor-piercing shells.</description>
+		<priorityInBillList>8</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>10</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFED_Shell_ArmorPiercing</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>VFED_ImperialWarSolutions</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
+		<defName>VFEFactory_MakeClusterShells</defName>
+		<label>Make cluster shells</label>
+		
+		<description>Combine steel and chemfuel to create cluster shells.</description>
+		<priorityInBillList>9</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>45</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>45</countNeeded>		
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFED_Shell_Cluster</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>VFED_ImperialWarSolutions</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VFEFactory_MakeDeadlifeShells</defName>
+		<label>Make deadlife shells</label>
+		
+		<description>Use bioferrite to create deadlife shells.</description>
+		<priorityInBillList>10</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>3200</ticks>
+		<ingredients>
+			<li>
+				<thing>Bioferrite</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>Shell_Deadlife</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			
+			<li>DeadlifeDust</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+</Defs>
