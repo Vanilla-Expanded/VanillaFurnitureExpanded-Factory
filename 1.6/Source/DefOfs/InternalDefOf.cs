@@ -17,5 +17,6 @@ namespace VanillaFurnitureExpandedFactory
 		
 		public static RoomRoleDef VFEFactory_FactoryRoom;
 		public static ThingDef HandTailoringBench;
+        public static ThingDef VFEFactory_Autoloom;
     }
 }

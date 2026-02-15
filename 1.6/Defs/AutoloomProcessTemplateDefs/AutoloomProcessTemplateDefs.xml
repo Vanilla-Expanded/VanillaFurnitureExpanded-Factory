@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<VanillaFurnitureExpandedFactory.AutoloomProcessTemplateDef>
+		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
 		<defName>VFEFactory_Autoloom_</defName>
 		<label>Make {0}</label>
 		<description>Make {0} out of the materials inserted.</description>
@@ -12,23 +13,25 @@
 			<li>(2,0,2)</li>
 		</autoInputSlots>
 		<!--<ticks>WorkToMake*4</ticks>-->
-		<ingredients>
+		<!--<ingredients>
 			<li>
-				<!--<thingCategory>Leathery or Fabric</thingCategory>-->
-				<!--<countNeeded>costList</countNeeded>-->
+				<thingCategory>Leathery or Fabric</thingCategory>
+				<countNeeded>costList</countNeeded>
 				
 			</li>
-		</ingredients>
-		<results>
+		</ingredients>-->
+		<!--<results>
 			<li>
-				<!--<thing>Specific apparel</thing>-->
-				<count>1</count>				
+				<thing>Specific apparel</thing>
+				<count>1</count>		
 			</li>
-		</results>
+		</results>-->
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<useFirstIngredientAsOutputStuff>true</useFirstIngredientAsOutputStuff>
+		<disallowMixing>true</disallowMixing>
 	</VanillaFurnitureExpandedFactory.AutoloomProcessTemplateDef>
+	
 	
 </Defs>

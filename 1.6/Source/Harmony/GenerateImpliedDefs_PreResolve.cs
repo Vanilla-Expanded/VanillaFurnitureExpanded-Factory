@@ -6,18 +6,20 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Verse.AI;
+using PipeSystem;
+using System.Security.Cryptography;
 
 namespace VanillaFurnitureExpandedFactory
 {
 
-  /*  [HarmonyPatch(typeof(DefGenerator))]
+  [HarmonyPatch(typeof(DefGenerator))]
     [HarmonyPatch("GenerateImpliedDefs_PreResolve")]
     public static class VanillaFurnitureExpandedFactory_DefGenerator_GenerateImpliedDefs_PreResolve_Patch
     {
         [HarmonyPrefix]
         public static void GenerateAutoloomProcesses(bool hotReload = false)
         {
-            foreach (ThingDef item in ImpliedAutoloomProcesses(hotReload))
+            foreach (PipeSystem.ProcessDef item in ImpliedAutoloomProcesses(hotReload))
             {
                 DefGenerator.AddImpliedDef(item, hotReload);
             }
@@ -26,7 +28,9 @@ namespace VanillaFurnitureExpandedFactory
 
         public static IEnumerable<PipeSystem.ProcessDef> ImpliedAutoloomProcesses(bool hotReload = false)
         {
-            List<ThingDef> tailoringBenchRecipes = InternalDefOf.HandTailoringBench.AllRecipes.Select(x => x.ProducedThingDef).ToList();
+            List<ThingDef> tailoringBenchRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.costStuffCount!=0 
+            && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.HandTailoringBench)==true).ToList();
+           
             foreach (ThingDef def in tailoringBenchRecipes)
             {
 
@@ -34,91 +38,70 @@ namespace VanillaFurnitureExpandedFactory
                 foreach (AutoloomProcessTemplateDef templateDef in DefDatabase<AutoloomProcessTemplateDef>.AllDefs)
                 {
                     yield return ProcessFromTailoringRecipe(templateDef, def, index, hotReload);
+                    
                     index++;
                 }
             }
         }
 
-        public static PipeSystem.ProcessDef ProcessFromTailoringRecipe(AutoloomProcessTemplateDef tp, ThingDef def, int index, bool hotReload = false)
+        public static ProcessDef ProcessFromTailoringRecipe(AutoloomProcessTemplateDef tp, ThingDef def, int index, bool hotReload = false)
         {
+            
             string defName = tp.defName + def.defName;
-            PipeSystem.ProcessDef thingDef = (hotReload ? (DefDatabase<PipeSystem.ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new PipeSystem.ProcessDef()) : new PipeSystem.ProcessDef());
-            thingDef.defName = defName;
-            thingDef.label = tp.label.Formatted(def.label);
-            thingDef.description = tp.description.Formatted(def.label);
-            thingDef.priorityInBillList = index;
-            thingDef.spawnOnInteractionCell = tp.spawnOnInteractionCell;
-            thingDef.autoGrabFromHoppers= tp.autoGrabFromHoppers;
-            thingDef.autoInputSlots= tp.autoInputSlots;
-            thingDef.ticks = (int)(def.GetStatValueAbstract(StatDefOf.WorkToMake) * 4);
-            thingDef.ingredients = new List<ProcessDef.Ingre>
+            ProcessDef processDef = (hotReload ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef()) : new ProcessDef());
+            processDef.defName = defName;
+            processDef.label = tp.label.Formatted(def.label);
+            processDef.description = tp.description.Formatted(def.label);
+            processDef.priorityInBillList = index;
+            processDef.spawnOnInteractionCell = tp.spawnOnInteractionCell;
+            processDef.autoGrabFromHoppers= tp.autoGrabFromHoppers;
+            processDef.autoInputSlots= tp.autoInputSlots;
+            processDef.disallowMixing = tp.disallowMixing;
 
-            thingDef.costList = new List<ThingDefCountClass> {
-               new ThingDefCountClass
-               {
-                   thingDef=def,
-                   count=1
-
-               }
-
-};
-            ThingDef blocksToGrab = def.butcherProducts?.First()?.thingDef;
-
-            thingDef.statBases = new List<StatModifier> {
-
-                new StatModifier
-               {
-                   stat=StatDefOf.MaxHitPoints,
-                   value= (blocksToGrab?.stuffProps!=null) ? 300 * blocksToGrab.stuffProps.statFactors.Where(x => x.stat == StatDefOf.MaxHitPoints).Select(x => x.value).First() : 300
+            float calculatedTicks = def.GetStatValueAbstract(StatDefOf.WorkToMake);
+            if (calculatedTicks <= 0)
+            {
+                calculatedTicks = 3200;
+            }
+            processDef.ticks = (int)(calculatedTicks * 4);
 
 
-               },
-                 new StatModifier
-               {
-                   stat=StatDefOf.WorkToBuild,
-                   value= (blocksToGrab?.stuffProps!=null) ? 135 * blocksToGrab.stuffProps.statFactors.Where(x => x.stat == StatDefOf.WorkToBuild).Select(x => x.value).First() : 135
+            ThingCategoryDef category;
+            if (def.stuffCategories?.Contains(StuffCategoryDefOf.Fabric)==true)
+            {
+                category = ThingCategoryDefOf.Textiles;
+            }
+           
+            else
+            {
+                category = ThingCategoryDefOf.Leathers;
+            }
 
-               }
-                 ,
-                 new StatModifier
-               {
-                   stat=StatDefOf.Flammability,
-                   value= 0
+            processDef.ingredients = new List<ProcessDef.Ingredient>
+            {
 
-               } ,
-                 new StatModifier
-               {
-                   stat=StatDefOf.MeditationFocusStrength,
-                   value= 0.22f
-
-               },
-                 new StatModifier
-               {
-                   stat=StatDefOf.Beauty,
-                   value= -2
-
-               },
-                 new StatModifier
-               {
-                   stat=StatDefOf.SellPriceFactor,
-                   value= 0.7f
-
-               }
-
+                new ProcessDef.Ingredient
+                {
+                    thingCategory=category,
+                    countNeeded=def.costStuffCount
+                }
 
             };
 
-
-
-
-
-
-
-
-
-
-
-            return thingDef;
+            processDef.results = new List<ProcessDef.Result>
+            {
+                new ProcessDef.Result
+                {
+                    thing = def,
+                    count=1
+                }
+            };
+            processDef.isFactoryProcess = tp.isFactoryProcess;
+            processDef.autoExtract= tp.autoExtract;
+            processDef.onlyGrabAndOutputToFactoryHoppers = tp.onlyGrabAndOutputToFactoryHoppers;
+            processDef.useFirstIngredientAsOutputStuff = tp.useFirstIngredientAsOutputStuff;
+            InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
+            return processDef;
         }
 
     }
@@ -128,6 +111,6 @@ namespace VanillaFurnitureExpandedFactory
 
 
 
-    */
+    
 
 }

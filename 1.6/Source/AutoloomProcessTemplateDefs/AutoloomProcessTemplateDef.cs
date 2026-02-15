@@ -16,7 +16,7 @@ namespace VanillaFurnitureExpandedFactory
 		public bool autoExtract;
 		public bool onlyGrabAndOutputToFactoryHoppers;
 		public bool useFirstIngredientAsOutputStuff;
-
+		public bool disallowMixing;
 
 
     }
