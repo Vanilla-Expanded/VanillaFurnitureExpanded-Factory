@@ -53,7 +53,7 @@
 		<tickerType>Long</tickerType>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>

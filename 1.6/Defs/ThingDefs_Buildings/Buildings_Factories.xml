@@ -40,7 +40,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -149,7 +149,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -247,7 +247,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -342,7 +342,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -436,7 +436,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -531,7 +531,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -629,7 +629,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -725,7 +725,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -818,7 +818,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -922,7 +922,7 @@
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>VFEFactory_Factories</designationCategory>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
