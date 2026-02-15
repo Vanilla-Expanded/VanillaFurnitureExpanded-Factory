@@ -292,4 +292,21 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
+		<defName>VFEFactory_DigForSkySteel</defName>
+		<label>Dig to harvest 30 sky steel</label>
+		<description>Dig to harvest a portion of sky steel.</description>
+		<priorityInBillList>16</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>54000</ticks>
+		<results>
+			<li>
+				<thing>AA_SkySteel</thing>
+				<count>30</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+	</PipeSystem.ProcessDef>
 </Defs>

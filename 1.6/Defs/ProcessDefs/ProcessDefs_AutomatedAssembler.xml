@@ -80,4 +80,101 @@
 			<li>AdvancedFabrication</li>
 		</researchPrerequisites>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
+		<defName>VFEFactory_RefineUraniumCrystals</defName>
+		<label>Refine uranium crystals</label>
+		<description>Extract useful materials from unrefined uranium crystals.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(3,0,0)</li>
+			<li>(-3,0,0)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
+		</autoInputSlots>
+		<ticks>8000</ticks>
+		<ingredients>
+			<li>
+				<thing>AA_UraniumCrystals</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Uranium</thing>
+				<count>15</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
+		<defName>VFEFactory_BlueGel_To_Hexagel</defName>
+		<label>Compress blue gel into hexagel</label>
+		<description>Make a crystallized cube of hexagel by compressing blue gel under high pressure.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(3,0,0)</li>
+			<li>(-3,0,0)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
+		</autoInputSlots>
+		<ticks>8000</ticks>
+		<ingredients>
+			<li>
+				<thing>AA_BlueGel</thing>
+				<countNeeded>100</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AA_Hexagel</thing>
+				<count>20</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
+		<defName>VFEFactory_Make_HexagelCore</defName>
+		<label>Make hexagel cores</label>
+		<description>Craft hexagel cores using hexagel and uranium as a stabilizer.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(3,0,0)</li>
+			<li>(-3,0,0)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
+		</autoInputSlots>
+		<ticks>4000</ticks>
+		<ingredients>
+			<li>
+				<thing>AA_Hexagel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>Uranium</thing>
+				<countNeeded>3</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AA_HexagelCore</thing>
+				<count>5</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+	</PipeSystem.ProcessDef>
 </Defs>

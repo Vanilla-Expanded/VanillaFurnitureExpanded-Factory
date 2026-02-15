@@ -102,6 +102,7 @@
 					<li>VFEFactory_DigForJade</li>
 					<li>VFEFactory_DigForGold</li>
 					<li>VFEFactory_DigForUranium</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_DigForSkySteel</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
@@ -295,6 +296,8 @@
 				<processes>
 					<li>VFEFactory_MakeChemfuelFromWood</li>
 					<li>VFEFactory_MakeChemfuelFromOrganics</li>
+					<li MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">VFEFactory_MakeChemfuelFromRedWood</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_MakeChemfuelFromMushroomWood</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
@@ -677,6 +680,9 @@
 				<processes>
 					<li>VFEFactory_AssembleComponent</li>
 					<li>VFEFactory_AssembleAdvancedComponent</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_RefineUraniumCrystals</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_BlueGel_To_Hexagel</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_Make_HexagelCore</li>
 				</processes>
 				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>

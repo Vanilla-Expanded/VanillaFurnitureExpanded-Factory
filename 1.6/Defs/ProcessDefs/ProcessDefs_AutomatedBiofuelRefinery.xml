@@ -72,4 +72,71 @@
 		</researchPrerequisites>
 	</PipeSystem.ProcessDef>
 	
+	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
+		<defName>VFEFactory_MakeChemfuelFromRedWood</defName>
+		<label>Make 25 chemfuel from 50 red wood logs</label>
+		<labelOverride>Make 25 chemfuel from 50 red wood logs</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing wood gas from red wood logs.</description>
+		<priorityInBillList>0.1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>5000</ticks>
+		<ingredients>
+			<li>
+				<thing>GU_RedWood</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
+		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
+		<label>Make 25 chemfuel from 50 mushroom stalks</label>
+		<labelOverride>Make 25 chemfuel from 50 mushroom stalks</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing gas from mushroom stalks.</description>
+		<priorityInBillList>0.2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>5000</ticks>
+		<ingredients>
+			<li>
+				<thing>AB_MushroomWoodLog</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+		</researchPrerequisites>
+	</PipeSystem.ProcessDef>
+	
 </Defs>
