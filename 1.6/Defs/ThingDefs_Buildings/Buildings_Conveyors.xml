@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_Conveyor</defName>
+		<label>conveyor</label>
+		<description>A simple conveyor belt capable of moving an item from one place to the other. Due to safety reasons, items on the conveyor belt cannot be interacted with.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Conveyor</thingClass>
+		<tickerType>Normal</tickerType>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<drawerType>RealtimeOnly</drawerType>
+		<inspectorTabs>
+			<li>VanillaFurnitureExpandedFactory.ITab_SplitterFilter</li>
+		</inspectorTabs>
+		<graphicData>
+			<texPath>Things/Building/ConveyorBelts/Conveyor</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<drawStyleCategory>Walls</drawStyleCategory>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>650</WorkToBuild>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>10</Steel>
+		</costList>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<researchPrerequisites>
+			<li>VFE_FactoryBasics</li>
+		</researchPrerequisites>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<baseTexPath>Things/Building/ConveyorBelts</baseTexPath>
+				<ticksPerCell>40</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+			</li>
+		</modExtensions>
+	</ThingDef>
+</Defs>

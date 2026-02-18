@@ -13,7 +13,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/1.5/Source/VanillaFurnitureExpandedFactory.csproj"
+                "${workspaceFolder}/1.6/Source/VanillaFurnitureExpandedFactory.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": {
