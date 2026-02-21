@@ -27,6 +27,8 @@ namespace VanillaFurnitureExpandedFactory
         [TweakValue("0VFEFactory", 0.5f, 2.0f)]
         public static float curveSpeedMultiplier = 0.8f;
 
+        private static readonly Rot4[] CanonicalOrder = { Rot4.East, Rot4.West, Rot4.North, Rot4.South };
+
         public List<Thing> carriedThings = new List<Thing>();
         public float itemProgress;
         private float lastItemProgress;
@@ -39,6 +41,7 @@ namespace VanillaFurnitureExpandedFactory
         private int splitterOutputIndex;
         private StorageSettings storageSettings;
         private Graphic cachedGraphic;
+        private bool cachedIsSingleDirectional;
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
         private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
@@ -155,6 +158,7 @@ namespace VanillaFurnitureExpandedFactory
             cachedInputCount = null;
             cachedOutputCount = null;
             cachedGraphic = null;
+            cachedIsSingleDirectional = false;
             if (Spawned)
                 AutoDetectRotation();
         }
@@ -188,7 +192,10 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 neighborPos = Position + dir.FacingCell;
                 if (!neighborPos.InBounds(Map)) continue;
                 if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor neighborConv &&
-                    neighborConv.CanAcceptFrom(Position))
+                    neighborConv.CanAcceptFrom(Position) &&
+                    neighborConv.ForwardCell != Position &&
+                    neighborConv.Rotation != inputDir.Opposite &&
+                    neighborConv.Rotation != inputDir)
                 {
                     if (Rotation != dir)
                     {
@@ -906,41 +913,67 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
+        private string DetermineDirectionalGraphic(string baseName, List<Rot4> dirs)
+        {
+            if (dirs.Count != 2)
+                return baseName;
+
+            string prefix = dirs[0].ToStringWord() + dirs[1].ToStringWord();
+            string suffix = Rotation.ToStringWord().ToLower();
+            return $"{baseName}_{prefix}_{suffix}";
+        }
+
         private Graphic DetermineGraphic()
         {
             if (string.IsNullOrEmpty(Props.baseTexPath))
-            {
                 return base.Graphic;
-            }
 
-            string path = Props.baseTexPath + "/";
+            string name;
+            bool isSingle = false;
 
             if (IsSplitter)
             {
-                if (HasFilterRestrictions())
-                {
-                    path += "ConveyorFilter";
-                }
-                else
-                {
-                    path += "ConveyorSplitter";
-                }
+                string baseName = HasFilterRestrictions() ? "ConveyorFilter" : "ConveyorSplitter";
+                var outputs = CanonicalOrder.Where(IsValidOutput).ToList();
+                name = DetermineDirectionalGraphic(baseName, outputs);
+                isSingle = outputs.Count == 2;
             }
             else if (IsMerger)
             {
-                path += "ConveyorMerger";
+                var inputs = CanonicalOrder
+                    .Where(dir => {
+                        IntVec3 pos = Position + dir.FacingCell;
+                        if (!pos.InBounds(Map)) return false;
+                        var n = pos.GetFirstBuilding(Map) as Building_Conveyor;
+                        return n?.ForwardCell == Position;
+                    }).ToList();
+                name = DetermineDirectionalGraphic("ConveyorMerger", inputs);
+                isSingle = inputs.Count == 2;
             }
             else if (IsTurn)
             {
-                path += DetermineTurnGraphic();
+                name = DetermineTurnGraphic();
             }
             else
             {
-                path += "Conveyor";
+                name = "Conveyor";
             }
 
+            string fullPath = Props.baseTexPath + "/" + name;
+
+            if (isSingle)
+            {
+                cachedIsSingleDirectional = true;
+                return GraphicDatabase.Get<Graphic_Single>(
+                    fullPath,
+                    ShaderDatabase.Cutout,
+                    def.graphicData.drawSize,
+                    Color.white
+                );
+            }
+            cachedIsSingleDirectional = false;
             return GraphicDatabase.Get<Graphic_Multi>(
-                path,
+                fullPath,
                 ShaderDatabase.Cutout,
                 def.graphicData.drawSize,
                 Color.white
@@ -1063,7 +1096,10 @@ namespace VanillaFurnitureExpandedFactory
             {
                 drawLoc.y += 2f;
             }
-            base.DrawAt(drawLoc, flip);
+            if (cachedIsSingleDirectional)
+                Graphic.Draw(drawLoc, Rot4.North, this, 0f);
+            else
+                base.DrawAt(drawLoc, flip);
             if (ShowItems && carriedThings.Any())
             {
                 Vector3 itemPos = CalculateItemPosition(CalculateVisualProgress());
