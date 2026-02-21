@@ -41,6 +41,7 @@ namespace VanillaFurnitureExpandedFactory
         private Graphic cachedGraphic;
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
+        private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
         private ConveyorExtension Props
         {
             get
@@ -81,11 +82,19 @@ namespace VanillaFurnitureExpandedFactory
 
         private void LogConveyor(string message)
         {
-            //if (carriedThings.Any(x => x.def == ThingDefOf.ComponentIndustrial))
+            if (carriedThings.Any(x => x.def.defName.Contains("Lance")))
             {
-                //Log.Message($"{message} | State: {state} | Progress: {itemProgress} | Carried: {carriedThings.ToStringSafeEnumerable()}");
+                Log.Message($"{message}");
             }
-            //Find.TickManager.CurTimeSpeed = TimeSpeed.Paused;
+        }
+
+        private void SetState(ConveyorState newState, string reason)
+        {
+            if (state != newState)
+            {
+                LogConveyor($"[STATE] tick={Find.TickManager.TicksGame} pos={Position} {state}→{newState} reason={reason}");
+            }
+            state = newState;
         }
 
         public IntVec3 ForwardCell
@@ -203,11 +212,6 @@ namespace VanillaFurnitureExpandedFactory
 
         private float CalculateVisualProgress()
         {
-            if (state == ConveyorState.Moving)
-            {
-                float tickFraction = Find.TickManager.TickRateMultiplier * Time.deltaTime * 60f;
-                return Mathf.Lerp(lastItemProgress, itemProgress, tickFraction);
-            }
             return itemProgress;
         }
 
@@ -279,30 +283,23 @@ namespace VanillaFurnitureExpandedFactory
 
             if (carriedThings.Any() && state == ConveyorState.Moving)
             {
-                if (CanMoveDownstream() != DownstreamBlockReason.None)
+                var reason = CanMoveDownstream();
+                if (reason != lastDownstreamReason)
                 {
-                    state = ConveyorState.Waiting;
+                    lastDownstreamReason = reason;
+                }
+
+                if (reason != DownstreamBlockReason.None)
+                {
+                    SetState(ConveyorState.Waiting, $"CanMoveDownstream:{reason}");
                 }
                 else
                 {
-                    float currentPathLen = CalculatePathLength();
-                    if (currentPathLen < 0.1f) currentPathLen = 0.1f;
-                    float speedMod = 1f / currentPathLen;
-                    if (IsTurn) speedMod *= curveSpeedMultiplier;
+                    itemProgress += (1f / Props.ticksPerCell);
 
-                    itemProgress += (1f / Props.ticksPerCell) * speedMod;
-
-                    if (itemProgress >= 1.0f)
+                    if (itemProgress >= 0.999f)
                         CompleteTransfer();
                 }
-                lastItemProgress = itemProgress;
-            }
-            else if (carriedThings.Any() && state == ConveyorState.Waiting && IsTurn && itemProgress < 0.5f)
-            {
-                float currentPathLen = CalculatePathLength();
-                if (currentPathLen < 0.1f) currentPathLen = 0.1f;
-                float speedMod = 1f / currentPathLen * curveSpeedMultiplier;
-                itemProgress = Mathf.Min(itemProgress + (1f / Props.ticksPerCell) * speedMod, 0.5f);
                 lastItemProgress = itemProgress;
             }
             else
@@ -324,7 +321,13 @@ namespace VanillaFurnitureExpandedFactory
                 if (!CanTransferToTarget(targetConveyor))
                 {
                     if (targetConveyor.state == ConveyorState.Moving)
+                    {
+                        LogConveyor($"[TARGET_MOVING] tick={Find.TickManager.TicksGame} pos={Position} " +
+                            $"target={targetPos} target.progress={targetConveyor.itemProgress:F2} " +
+                            $"my.progress={itemProgress:F2} " +
+                            $"target.items={string.Join(",", targetConveyor.carriedThings.Select(t => t.def.defName))}");
                         return DownstreamBlockReason.TargetMoving;
+                    }
                     return DownstreamBlockReason.TargetFull;
                 }
 
@@ -455,20 +458,23 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 targetPos = ForwardCell;
                 if (!targetPos.InBounds(Map))
                 {
-                    state = ConveyorState.Waiting;
+                    SetState(ConveyorState.Waiting, "TargetOutOfBounds");
                     return;
                 }
 
                 Building targetBuilding = targetPos.GetFirstBuilding(Map);
-                if (targetBuilding is Building_Conveyor)
+                if (targetBuilding is Building_Conveyor targetConveyor)
                 {
-                    if (CanMoveDownstream() == DownstreamBlockReason.None)
+                    var downstreamReason = CanMoveDownstream();
+                    if (downstreamReason == DownstreamBlockReason.None)
                     {
                         InitiateTransfer();
+                        itemProgress += (1f / Props.ticksPerCell);
+                        lastItemProgress = itemProgress;
                     }
                     else
                     {
-                        state = ConveyorState.Waiting;
+                        SetState(ConveyorState.Waiting, $"CanMoveDownstream:{downstreamReason}");
                     }
                 }
                 else
@@ -539,13 +545,28 @@ namespace VanillaFurnitureExpandedFactory
 
         private bool CanTransferToTarget(Building_Conveyor target)
         {
-            if (target.state == ConveyorState.Moving)
-                return false;
-
             if (target.HasSpace())
                 return true;
 
-            return CanStackWithAny(carriedThings, target.carriedThings);
+            if (CanStackWithAny(carriedThings, target.carriedThings))
+                return true;
+
+            if (target.state == ConveyorState.Moving)
+            {
+                if (itemProgress <= target.itemProgress + 0.90f)
+                {
+                    return true;
+                }
+            }
+            else if (target.state == ConveyorState.Waiting)
+            {
+                if (itemProgress < target.itemProgress)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void InitiateTransfer()
@@ -554,8 +575,9 @@ namespace VanillaFurnitureExpandedFactory
             {
                 SelectNextOutput();
             }
-            state = ConveyorState.Moving;
-            LogConveyor("InitiateTransfer");
+            SetState(ConveyorState.Moving, "InitiateTransfer");
+            Vector3 visualPos = CalculateItemPosition(0f);
+            LogConveyor($"InitiateTransfer at {Position} tick={Find.TickManager.TicksGame} - Visual Position: {visualPos}");
         }
 
         private void CompleteTransfer()
@@ -564,6 +586,8 @@ namespace VanillaFurnitureExpandedFactory
 
             IntVec3 targetPos = ForwardCell;
             Building targetBuilding = targetPos.GetFirstBuilding(Map);
+            Vector3 visualPos = CalculateItemPosition(1f);
+            LogConveyor($"CompleteTransfer from {Position} to {targetPos} tick={Find.TickManager.TicksGame} - Visual Position: {visualPos}");
 
             if (targetBuilding is Building_Conveyor targetConveyor)
             {
@@ -607,18 +631,19 @@ namespace VanillaFurnitureExpandedFactory
 
                 if (carriedThings.Count == 0)
                 {
-                    state = ConveyorState.Empty;
+                    SetState(ConveyorState.Empty, "TransferComplete_Empty");
                     itemProgress = 0f;
                     lastItemProgress = 0f;
                     cachedSelectedOutput = Rot4.Invalid;
                 }
                 else
                 {
-                    state = ConveyorState.Waiting;
+                    SetState(ConveyorState.Waiting, "TransferComplete_HasItems");
+                    itemProgress = 0.99f;
                 }
                 if (targetConveyor.state == ConveyorState.Empty && targetConveyor.carriedThings.Any())
                 {
-                    targetConveyor.state = ConveyorState.Waiting;
+                    targetConveyor.SetState(ConveyorState.Waiting, "TargetReceivedItems");
                 }
             }
             else
@@ -649,8 +674,8 @@ namespace VanillaFurnitureExpandedFactory
                 }
                 else
                 {
-                    state = ConveyorState.Waiting;
-                    itemProgress = 0f;
+                    SetState(ConveyorState.Waiting, "DumpComplete_HasItems");
+                    itemProgress = 0.99f;
                     cachedSelectedOutput = Rot4.Invalid;
                 }
             }
@@ -660,7 +685,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             if (CanDumpToCell(targetPos))
             {
-                if (itemProgress >= 1.0f && carriedThings.Count > 0)
+                if (itemProgress >= 0.999f && carriedThings.Count > 0)
                 {
                     CompleteTransfer();
                 }
@@ -671,7 +696,7 @@ namespace VanillaFurnitureExpandedFactory
             }
             else
             {
-                state = ConveyorState.Waiting;
+                SetState(ConveyorState.Waiting, "CannotDumpToCell");
             }
         }
 
