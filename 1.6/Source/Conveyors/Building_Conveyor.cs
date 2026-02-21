@@ -45,7 +45,6 @@ namespace VanillaFurnitureExpandedFactory
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
         private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
-        private bool needsRotationCheck = false;
         protected ConveyorExtension Props
         {
             get
@@ -159,52 +158,6 @@ namespace VanillaFurnitureExpandedFactory
             cachedOutputCount = null;
             cachedGraphic = null;
             cachedIsSingleDirectional = false;
-            if (Spawned)
-                AutoDetectRotation();
-        }
-
-        private void AutoDetectRotation()
-        {
-            IntVec3 forwardCell = Position + Rotation.FacingCell;
-            if (forwardCell.InBounds(Map) &&
-                forwardCell.GetFirstBuilding(Map) is Building_Conveyor fwd &&
-                fwd.CanAcceptFrom(Position))
-                return;
-
-            Rot4 inputDir = Rot4.Invalid;
-            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
-            {
-                IntVec3 neighborPos = Position + dir.FacingCell;
-                if (!neighborPos.InBounds(Map)) continue;
-                if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor neighborConv &&
-                    neighborConv.ForwardCell == Position)
-                {
-                    inputDir = dir;
-                    break;
-                }
-            }
-
-            if (!inputDir.IsValid) return;
-
-            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
-            {
-                if (dir == inputDir || dir == inputDir.Opposite) continue;
-                IntVec3 neighborPos = Position + dir.FacingCell;
-                if (!neighborPos.InBounds(Map)) continue;
-                if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor neighborConv &&
-                    neighborConv.CanAcceptFrom(Position) &&
-                    neighborConv.ForwardCell != Position &&
-                    neighborConv.Rotation != inputDir.Opposite &&
-                    neighborConv.Rotation != inputDir)
-                {
-                    if (Rotation != dir)
-                    {
-                        Rotation = dir;
-                        Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
-                    }
-                    return;
-                }
-            }
         }
 
         private void InvalidateNeighborCaches()
@@ -298,8 +251,6 @@ namespace VanillaFurnitureExpandedFactory
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            if (respawningAfterLoad)
-                needsRotationCheck = true;
             InvalidateCache();
             InvalidateNeighborCaches();
             map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
@@ -329,13 +280,6 @@ namespace VanillaFurnitureExpandedFactory
         protected override void Tick()
         {
             base.Tick();
-
-            if (needsRotationCheck)
-            {
-                needsRotationCheck = false;
-                AutoDetectRotation();
-                InvalidateCache();
-            }
 
             if (this.IsHashIntervalTick(10))
             {
@@ -1257,24 +1201,58 @@ namespace VanillaFurnitureExpandedFactory
         public override string GetInspectString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"State: {state}, ItemProgress: {itemProgress} (last: {lastItemProgress})");
+            sb.AppendLine($"State: {state}, Progress: {itemProgress:F2} (last: {lastItemProgress:F2})");
             foreach (var thing in carriedThings)
-            {
                 sb.AppendLine($"  - x{thing.stackCount} {thing.def.defName}");
-            }
-            sb.AppendLine($"IsTurn: {IsTurn}, InputCount: {InputCount}, OutputCount: {OutputCount}");
-            var downstreamReason = CanMoveDownstream();
-            sb.AppendLine($"CanMoveDownstream: {downstreamReason == DownstreamBlockReason.None} ({downstreamReason}), CanDumpToForwardCell: {CanDumpToCell(ForwardCell)}");
-            IntVec3 fwd = ForwardCell;
-            if (fwd.InBounds(Map) && fwd.GetFirstBuilding(Map) is Building_Conveyor fwdConv)
+
+            sb.AppendLine($"Rotation: {Rotation.ToStringHuman()}, ForwardCell: {ForwardCell}");
+            sb.AppendLine($"IsTurn: {IsTurn}, IsMerger: {IsMerger}, IsSplitter: {IsSplitter}");
+            sb.AppendLine($"InputCount: {InputCount}, OutputCount: {OutputCount}");
+
+            sb.AppendLine("--- Neighbors ---");
+            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
             {
-                sb.AppendLine($"CanStackWithNext: {CanStackWithAny(carriedThings, fwdConv.carriedThings)}");
-                sb.AppendLine($"CanTransferToNext: {CanTransferToTarget(fwdConv)}");
-                foreach (Thing mine in carriedThings)
-                    foreach (Thing theirs in fwdConv.carriedThings)
-                        sb.AppendLine($"  CanStackWith({mine.def.defName} hp={mine.HitPoints} vs hp={theirs.HitPoints}): {mine.CanStackWith(theirs)}");
+                IntVec3 neighborPos = Position + dir.FacingCell;
+                if (!neighborPos.InBounds(Map)) continue;
+                Building n = neighborPos.GetFirstBuilding(Map);
+                if (n is Building_Conveyor nc)
+                {
+                    bool feedsIntoUs = nc.ForwardCell == Position;
+                    bool weCanFeedIt = nc.CanAcceptFrom(Position);
+                    bool weFeedIt = ForwardCell == neighborPos;
+                    sb.AppendLine($"  {dir}: rot={nc.Rotation.ToStringHuman()} feedsUs={feedsIntoUs} acceptsUs={weCanFeedIt} weFeedIt={weFeedIt}");
+                }
+                else if (n != null)
+                {
+                    sb.AppendLine($"  {dir}: {n.def.defName} (non-conveyor)");
+                }
             }
+
+            sb.AppendLine("--- AutoDetect Trace ---");
+            int inputCount = 0;
+            Rot4 foundInput = Rot4.Invalid;
+            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
+            {
+                IntVec3 neighborPos = Position + dir.FacingCell;
+                if (!neighborPos.InBounds(Map)) continue;
+                if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor nc && nc.ForwardCell == Position)
+                {
+                    inputCount++;
+                    foundInput = dir;
+                }
+            }
+            sb.AppendLine($"  RawInputCount: {inputCount}, RawInputDir: {foundInput.ToStringHuman()}");
+
+            IntVec3 fwdCell = Position + Rotation.FacingCell;
+            bool fwdEstablished = fwdCell.InBounds(Map) &&
+                fwdCell.GetFirstBuilding(Map) is Building_Conveyor fwdC && fwdC.CanAcceptFrom(Position);
+            sb.AppendLine($"  ForwardEstablished: {fwdEstablished}");
+            sb.AppendLine($"  StraightFromInput: {Rotation == foundInput.Opposite}");
+
+            var downstreamReason = CanMoveDownstream();
+            sb.AppendLine($"CanMoveDownstream: {downstreamReason == DownstreamBlockReason.None} ({downstreamReason})");
             sb.AppendLine($"HasSpace: {HasSpace()}");
+
             return sb.ToString().TrimEndNewlines();
         }
     }
