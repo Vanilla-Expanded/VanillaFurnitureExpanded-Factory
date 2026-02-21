@@ -42,6 +42,7 @@ namespace VanillaFurnitureExpandedFactory
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
         private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
+        private bool needsRotationCheck = false;
         protected ConveyorExtension Props
         {
             get
@@ -154,6 +155,49 @@ namespace VanillaFurnitureExpandedFactory
             cachedInputCount = null;
             cachedOutputCount = null;
             cachedGraphic = null;
+            if (Spawned)
+                AutoDetectRotation();
+        }
+
+        private void AutoDetectRotation()
+        {
+            IntVec3 forwardCell = Position + Rotation.FacingCell;
+            if (forwardCell.InBounds(Map) &&
+                forwardCell.GetFirstBuilding(Map) is Building_Conveyor fwd &&
+                fwd.CanAcceptFrom(Position))
+                return;
+
+            Rot4 inputDir = Rot4.Invalid;
+            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
+            {
+                IntVec3 neighborPos = Position + dir.FacingCell;
+                if (!neighborPos.InBounds(Map)) continue;
+                if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor neighborConv &&
+                    neighborConv.ForwardCell == Position)
+                {
+                    inputDir = dir;
+                    break;
+                }
+            }
+
+            if (!inputDir.IsValid) return;
+
+            foreach (Rot4 dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
+            {
+                if (dir == inputDir || dir == inputDir.Opposite) continue;
+                IntVec3 neighborPos = Position + dir.FacingCell;
+                if (!neighborPos.InBounds(Map)) continue;
+                if (neighborPos.GetFirstBuilding(Map) is Building_Conveyor neighborConv &&
+                    neighborConv.CanAcceptFrom(Position))
+                {
+                    if (Rotation != dir)
+                    {
+                        Rotation = dir;
+                        Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
+                    }
+                    return;
+                }
+            }
         }
 
         private void InvalidateNeighborCaches()
@@ -247,6 +291,8 @@ namespace VanillaFurnitureExpandedFactory
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
+            if (respawningAfterLoad)
+                needsRotationCheck = true;
             InvalidateCache();
             InvalidateNeighborCaches();
             map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
@@ -276,6 +322,14 @@ namespace VanillaFurnitureExpandedFactory
         protected override void Tick()
         {
             base.Tick();
+
+            if (needsRotationCheck)
+            {
+                needsRotationCheck = false;
+                AutoDetectRotation();
+                InvalidateCache();
+            }
+
             if (this.IsHashIntervalTick(10))
             {
                 CheckForItemsOnCell();
@@ -930,9 +984,17 @@ namespace VanillaFurnitureExpandedFactory
             if (!neighborPos.InBounds(Map)) return false;
 
             Building neighbor = neighborPos.GetFirstBuilding(Map);
-            if (neighbor is Building_Conveyor neighborConveyor && neighborConveyor.CanAcceptFrom(Position) && neighborConveyor.IsTurn is false)
+            if (neighbor is Building_Conveyor neighborConveyor &&
+                neighborConveyor.CanAcceptFrom(Position) &&
+                neighborConveyor.IsTurn is false)
             {
-                if (neighbor.Position == Position + Rotation.FacingCell && neighbor.Rotation == Rotation || (neighborConveyor.Rotation != Rotation && neighborConveyor.Rotation != Rotation.Opposite))
+                if (neighborConveyor.ForwardCell == Position)
+                    return false;
+
+                if (neighbor.Position == Position + Rotation.FacingCell &&
+                    neighbor.Rotation == Rotation ||
+                    (neighborConveyor.Rotation != Rotation &&
+                     neighborConveyor.Rotation != Rotation.Opposite))
                 {
                     return true;
                 }
