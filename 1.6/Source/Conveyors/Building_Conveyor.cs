@@ -42,7 +42,7 @@ namespace VanillaFurnitureExpandedFactory
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
         private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
-        private ConveyorExtension Props
+        protected ConveyorExtension Props
         {
             get
             {
@@ -794,7 +794,7 @@ namespace VanillaFurnitureExpandedFactory
             return count;
         }
 
-        public IEnumerable<Rot4> PossibleInputDirections()
+        public virtual IEnumerable<Rot4> PossibleInputDirections()
         {
             yield return Rotation.Opposite;
             yield return Rotation.Rotated(RotationDirection.Clockwise);
@@ -854,6 +854,11 @@ namespace VanillaFurnitureExpandedFactory
 
         private Graphic DetermineGraphic()
         {
+            if (string.IsNullOrEmpty(Props.baseTexPath))
+            {
+                return base.Graphic;
+            }
+
             string path = Props.baseTexPath + "/";
 
             if (IsSplitter)
@@ -988,15 +993,16 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
+        public virtual bool ShowItems => true;
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             var baseItemY = drawLoc.y + 1;
-            if (IsMerger || IsSplitter)
+            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit)
             {
                 drawLoc.y += 2f;
             }
             base.DrawAt(drawLoc, flip);
-            if (carriedThings.Any())
+            if (ShowItems && carriedThings.Any())
             {
                 Vector3 itemPos = CalculateItemPosition(CalculateVisualProgress());
                 itemPos.y = baseItemY;
@@ -1072,7 +1078,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             base.DrawGUIOverlay();
 
-            if (carriedThings.Any() && Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+            if (ShowItems && carriedThings.Any() && Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
             {
                 Vector3 itemPos = CalculateItemPosition(CalculateVisualProgress());
                 itemPos.y = AltitudeLayer.ItemImportant.AltitudeFor();

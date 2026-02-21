@@ -22,4 +22,15 @@
 	<VFEFactory_DirectionSouth>South</VFEFactory_DirectionSouth>
 	<VFEFactory_DirectionWest>West</VFEFactory_DirectionWest>
 	<VFEFactory_TabSplitterFilter>Filter</VFEFactory_TabSplitterFilter>
+	<VFEFactory_CommandCreateLink>Create link</VFEFactory_CommandCreateLink>
+	<VFEFactory_CommandCreateLinkDesc>Link an underground conveyor entrance and exit together to allow items to pass.</VFEFactory_CommandCreateLinkDesc>
+	<VFEFactory_CommandBreakLink>Break link</VFEFactory_CommandBreakLink>
+	<VFEFactory_CommandBreakLinkDesc>Unlink an underground conveyor entrance and exit, allowing for new links to be established.</VFEFactory_CommandBreakLinkDesc>
+	<VFEFactory_CommandSelectLinked>Select linked</VFEFactory_CommandSelectLinked>
+	<VFEFactory_CommandSelectLinkedDesc>Show and select the linked structure.</VFEFactory_CommandSelectLinkedDesc>
+	<VFEFactory_ConnectionMissing>Doesn't work due to missing link to an underground conveyor exit.</VFEFactory_ConnectionMissing>
+	<VFEFactory_AlreadyLinked>Can't link: Already linked.</VFEFactory_AlreadyLinked>
+	<VFEFactory_CantLinkSelf>Can't link: Cannot link to self.</VFEFactory_CantLinkSelf>
+	<VFEFactory_CantLinkDifferentRotation>Can't link: Entrance and exit must have the same rotation.</VFEFactory_CantLinkDifferentRotation>
+	<VFEFactory_ItemsUnderground>Items underground: {0}</VFEFactory_ItemsUnderground>
 </LanguageData>
