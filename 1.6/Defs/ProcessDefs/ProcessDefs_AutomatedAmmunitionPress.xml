@@ -9,8 +9,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -45,8 +45,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -81,8 +81,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -118,8 +118,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -152,8 +152,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -186,8 +186,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -223,8 +223,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -260,8 +260,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -294,8 +294,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -331,8 +331,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
@@ -368,8 +368,8 @@
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>			
-			<li>(-1,0,2)</li>
-			<li>(1,0,2)</li>
+			<li>(-1,0,3)</li>
+			<li>(1,0,3)</li>
 		</autoInputSlots>
 		<ticks>3200</ticks>
 		<ingredients>
