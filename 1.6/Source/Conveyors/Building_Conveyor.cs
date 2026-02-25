@@ -185,6 +185,19 @@ namespace VanillaFurnitureExpandedFactory
         public bool IsSplitter => OutputCount > 1;
         public bool IsMerger => InputCount > 1 && !IsTurn;
 
+        private bool HasRefuelableTarget(out CompRefuelable refuelComp)
+        {
+            IntVec3 targetPos = ForwardCell;
+            if (!targetPos.InBounds(Map))
+            {
+                refuelComp = null;
+                return false;
+            }
+            var target = targetPos.GetFirstBuilding(Map);
+            refuelComp = target?.GetComp<CompRefuelable>();
+            return refuelComp != null;
+        }
+
         private void InvalidateCache()
         {
             cachedIsTurn = null;
@@ -318,6 +331,7 @@ namespace VanillaFurnitureExpandedFactory
             if (this.IsHashIntervalTick(10))
             {
                 CheckForItemsOnCell();
+                CheckRefuelableTarget();
             }
 
             if (carriedThings.Any() && state == ConveyorState.Moving)
@@ -421,6 +435,14 @@ namespace VanillaFurnitureExpandedFactory
 
                 return DownstreamBlockReason.None;
             }
+            else if (targetBuilding != null && targetBuilding.GetComp<CompRefuelable>() != null)
+            {
+                var refuelComp = targetBuilding.GetComp<CompRefuelable>();
+                if (refuelComp.IsFull)
+                    return DownstreamBlockReason.TargetFull;
+
+                return DownstreamBlockReason.None;
+            }
             else
             {
                 if (!targetPos.Walkable(Map))
@@ -486,6 +508,15 @@ namespace VanillaFurnitureExpandedFactory
             if (edifice is Building_FactoryHopper hopper)
             {
                 return CanTransferToHopper(hopper);
+            }
+
+            if (edifice != null)
+            {
+                var refuelComp = edifice.GetComp<CompRefuelable>();
+                if (refuelComp != null)
+                {
+                    return !refuelComp.IsFull;
+                }
             }
 
             if (!cell.Walkable(Map))
@@ -636,6 +667,21 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
+        private void CheckRefuelableTarget()
+        {
+            if (cachedGraphic != null && HasRefuelableTarget(out var refuelComp))
+            {
+                if (refuelComp.parent.DestroyedOrNull())
+                {
+                    InvalidateCache();
+                    if (Map?.mapDrawer != null)
+                    {
+                        Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
+                    }
+                }
+            }
+        }
+
         private bool CanTransferToTarget(Building_Conveyor target)
         {
             if (target.HasSpace())
@@ -681,6 +727,62 @@ namespace VanillaFurnitureExpandedFactory
             var targetBuilding = targetPos.GetFirstBuilding(Map);
             var visualPos = CalculateItemPosition(1f);
             LogConveyor($"CompleteTransfer from {Position} to {targetPos} tick={Find.TickManager.TicksGame} - Visual Position: {visualPos}");
+
+            if (HasRefuelableTarget(out var refuelComp))
+            {
+                if (refuelComp.IsFull) return;
+                int fuelNeeded = refuelComp.GetFuelCountToFullyRefuel();
+
+                var transferred = new List<Thing>();
+                bool refueledAny = false;
+
+                foreach (var thing in carriedThings.ToList())
+                {
+                    if (refuelComp.Props.fuelFilter.Allows(thing))
+                    {
+                        int amountAvailable = thing.stackCount;
+                        int amountToRefuel = Mathf.Min(fuelNeeded, amountAvailable);
+
+                        var fuelToUse = thing.SplitOff(amountToRefuel);
+                        refuelComp.Refuel(amountToRefuel);
+                        refueledAny = true;
+                        fuelNeeded -= amountToRefuel;
+
+                        if (thing.stackCount <= 0)
+                        {
+                            transferred.Add(thing);
+                        }
+
+                        if (fuelNeeded <= 0)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                foreach (var t in transferred)
+                {
+                    innerContainer.Remove(t);
+                }
+
+                if (carriedThings.Count == 0)
+                {
+                    ResetConveyorState();
+                }
+                else if (refueledAny)
+                {
+                    SetState(ConveyorState.Waiting, "RefuelComplete_HasItems");
+                    itemProgress = 0.99f;
+                    cachedSelectedOutput = Rot4.Invalid;
+                }
+                else
+                {
+                    SetState(ConveyorState.Waiting, "RefuelableFull");
+                    itemProgress = 0.99f;
+                    cachedSelectedOutput = Rot4.Invalid;
+                }
+                return;
+            }
 
             if (targetBuilding is Building_Conveyor targetConveyor)
             {
@@ -1126,7 +1228,7 @@ namespace VanillaFurnitureExpandedFactory
             }
             else
             {
-                name = "Conveyor";
+                name = HasRefuelableTarget(out var _) ? "ConveyorRefuelingPort" : "Conveyor";
             }
 
             string fullPath = Props.baseTexPath + "/" + name;
@@ -1276,11 +1378,11 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        public virtual bool ShowItems => true;
+        public virtual bool ShowItems => HasRefuelableTarget(out _) is false;
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             var baseItemY = drawLoc.y + 1;
-            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit)
+            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || HasRefuelableTarget(out _))
             {
                 drawLoc.y += 2f;
             }
