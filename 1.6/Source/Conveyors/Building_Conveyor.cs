@@ -420,6 +420,13 @@ namespace VanillaFurnitureExpandedFactory
                 }
                 return DownstreamBlockReason.None;
             }
+            else if (targetBuilding is Building_FactoryHopper hopper)
+            {
+                if (!CanTransferToHopper(hopper))
+                    return DownstreamBlockReason.TargetFull;
+
+                return DownstreamBlockReason.None;
+            }
             else
             {
                 if (!targetPos.Walkable(Map))
@@ -432,11 +439,59 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
+        private bool CanTransferToHopper(Building_FactoryHopper hopper)
+        {
+            foreach (var thing in carriedThings)
+            {
+                if (!hopper.slotGroup.Settings.AllowedToAccept(thing))
+                {
+                    return false;
+                }
+            }
+
+            bool canStack = false;
+            bool hasRoom = false;
+            foreach (var existing in hopper.slotGroup.HeldThings)
+            {
+                foreach (Thing carried in carriedThings)
+                {
+                    if (carried.CanStackWith(existing))
+                    {
+                        canStack = true;
+                        if (existing.def.stackLimit > existing.stackCount)
+                        {
+                            hasRoom = true;
+                            break;
+                        }
+                    }
+                }
+                if (hasRoom) break;
+            }
+
+            if (canStack && hasRoom)
+            {
+                return true;
+            }
+
+            if (!canStack)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private bool CanDumpToCell(IntVec3 cell)
         {
             if (!cell.InBounds(Map))
             {
                 return false;
+            }
+
+            var edifice = cell.GetEdifice(Map);
+            if (edifice is Building_FactoryHopper hopper)
+            {
+                return CanTransferToHopper(hopper);
             }
 
             if (!cell.Walkable(Map))
@@ -477,7 +532,6 @@ namespace VanillaFurnitureExpandedFactory
                 return false;
             }
 
-            var edifice = cell.GetEdifice(Map);
             if (edifice is IHaulDestination dest)
             {
                 foreach (var thing in carriedThings)
@@ -689,6 +743,62 @@ namespace VanillaFurnitureExpandedFactory
                 if (targetConveyor.state == ConveyorState.Empty && targetConveyor.carriedThings.Any())
                 {
                     targetConveyor.SetState(ConveyorState.Waiting, "TargetReceivedItems");
+                }
+            }
+            else if (targetBuilding is Building_FactoryHopper hopper)
+            {
+                var transferred = new List<Thing>();
+
+                foreach (var thing in carriedThings.ToList())
+                {
+                    bool fullyTransferred = false;
+                    foreach (Thing targetThing in hopper.slotGroup.HeldThings.ToList())
+                    {
+                        if (thing.CanStackWith(targetThing))
+                        {
+                            int spaceLeft = targetThing.def.stackLimit - targetThing.stackCount;
+                            if (spaceLeft > 0)
+                            {
+                                int toTransfer = Mathf.Min(thing.stackCount, spaceLeft);
+                                targetThing.stackCount += toTransfer;
+                                thing.stackCount -= toTransfer;
+
+                                if (thing.stackCount <= 0)
+                                {
+                                    transferred.Add(thing);
+                                    fullyTransferred = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!fullyTransferred)
+                    {
+                        if (hopper.slotGroup.Settings.AllowedToAccept(thing))
+                        {
+                            if (GenPlace.TryPlaceThing(thing, hopper.Position, Map, ThingPlaceMode.Direct))
+                            {
+                                transferred.Add(thing);
+                            }
+                        }
+                    }
+                }
+
+                foreach (var t in transferred)
+                {
+                    innerContainer.Remove(t);
+                }
+
+                if (carriedThings.Count == 0)
+                {
+                    ResetConveyorState();
+                }
+                else
+                {
+                    SetState(ConveyorState.Waiting, "HopperTransfer_HasItems");
+                    itemProgress = 0.99f;
+                    cachedSelectedOutput = Rot4.Invalid;
                 }
             }
             else
