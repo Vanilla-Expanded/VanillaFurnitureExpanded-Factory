@@ -29,10 +29,14 @@ namespace VanillaFurnitureExpandedFactory
 
                 }
                 ProcessDef firstProcess = factory.GetCompProperties<CompProperties_AdvancedResourceProcessor>()?.processes.First();
-                foreach(IntVec3 inputTile in firstProcess.autoInputSlots)
+                if (!firstProcess.autoInputSlots.NullOrEmpty())
                 {
-                    DrawSlot(intVec, inputTile, ___placingRot, PipeSystem.GraphicsCache.InputCellMaterial);
+                    foreach (IntVec3 inputTile in firstProcess.autoInputSlots)
+                    {
+                        DrawSlot(intVec, inputTile, ___placingRot, PipeSystem.GraphicsCache.InputCellMaterial);
+                    }
                 }
+                
 
             }
         }
