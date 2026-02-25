@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace VanillaFurnitureExpandedFactory
 {

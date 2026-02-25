@@ -315,12 +315,6 @@ namespace VanillaFurnitureExpandedFactory
         protected override void Tick()
         {
             base.Tick();
-
-            if (this.IsHashIntervalTick(250))
-            {
-                ApplyEnvironmentalEffects();
-            }
-
             if (this.IsHashIntervalTick(10))
             {
                 CheckForItemsOnCell();
@@ -694,6 +688,8 @@ namespace VanillaFurnitureExpandedFactory
 
                 foreach (var thing in carriedThings.ToList())
                 {
+                    Selector_Deselect_Patch.transferringItems.Add(thing);
+
                     bool fullyTransferred = false;
                     foreach (Thing targetThing in targetConveyor.carriedThings.ToList())
                     {
@@ -726,6 +722,7 @@ namespace VanillaFurnitureExpandedFactory
                 foreach (var t in transferred)
                 {
                     innerContainer.Remove(t);
+                    Selector_Deselect_Patch.transferringItems.Remove(t);
                 }
 
                 if (carriedThings.Count == 0)
@@ -751,6 +748,8 @@ namespace VanillaFurnitureExpandedFactory
 
                 foreach (var thing in carriedThings.ToList())
                 {
+                    Selector_Deselect_Patch.transferringItems.Add(thing);
+
                     bool fullyTransferred = false;
                     foreach (Thing targetThing in hopper.slotGroup.HeldThings.ToList())
                     {
@@ -788,6 +787,7 @@ namespace VanillaFurnitureExpandedFactory
                 foreach (var t in transferred)
                 {
                     innerContainer.Remove(t);
+                    Selector_Deselect_Patch.transferringItems.Remove(t);
                 }
 
                 if (carriedThings.Count == 0)
@@ -808,6 +808,8 @@ namespace VanillaFurnitureExpandedFactory
 
                 foreach (var item in carriedThings.ToList())
                 {
+                    Selector_Deselect_Patch.transferringItems.Add(item);
+
                     if (GenPlace.TryPlaceThing(item, targetPos, Map, ThingPlaceMode.Direct))
                     {
                         dumped.Add(item);
@@ -821,6 +823,7 @@ namespace VanillaFurnitureExpandedFactory
                 foreach (var t in dumped)
                 {
                     innerContainer.Remove(t);
+                    Selector_Deselect_Patch.transferringItems.Remove(t);
                 }
 
                 if (carriedThings.Count == 0)
@@ -1008,7 +1011,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void ApplyEnvironmentalEffects()
+        public void ApplyEnvironmentalEffects()
         {
             if (innerContainer.Count == 0 || !Spawned) return;
 
@@ -1296,7 +1299,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private Vector3 CalculateItemPosition(float progress)
+        public Vector3 CalculateItemPosition(float progress)
         {
             Vector3 p0 = DrawPos;
             var p1 = ForwardCell.ToVector3Shifted();
@@ -1402,6 +1405,15 @@ namespace VanillaFurnitureExpandedFactory
             foreach (var g in base.GetGizmos())
             {
                 yield return g;
+            }
+
+            foreach (Thing carriedThing in carriedThings)
+            {
+                Gizmo gizmo = ContainingSelectionUtility.SelectCarriedThingGizmo(this, carriedThing);
+                if (gizmo != null)
+                {
+                    yield return gizmo;
+                }
             }
 
             if (Faction == Faction.OfPlayer)

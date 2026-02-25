@@ -12,6 +12,7 @@
 		<pathCost>42</pathCost>
 		<fillPercent>0.5</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
+		<containedItemsSelectable>true</containedItemsSelectable>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Flammability>0.5</Flammability>
