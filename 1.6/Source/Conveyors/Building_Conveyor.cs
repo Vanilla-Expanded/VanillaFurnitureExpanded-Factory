@@ -213,7 +213,18 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        public bool IsSplitter => cachedIsSplitter;
+        public bool IsSplitter
+        {
+            get
+            {
+                if (cachedOutputCount == null)
+                {
+                    if (isRecaching) return false;
+                    cachedOutputCount = CountOutputs();
+                }
+                return cachedIsSplitter;
+            }
+        }
         public bool IsMerger => InputCount > 1 && !IsTurn;
 
         private Building GetCachedForwardBuilding()
@@ -323,7 +334,16 @@ namespace VanillaFurnitureExpandedFactory
             IntVec3 targetPos = ForwardCell;
             if (targetPos.InBounds(map))
             {
-                if (targetPos.GetFirstBuilding(map) != cachedForwardBuilding) changed = true;
+                Building currentForward = targetPos.GetFirstBuilding(map);
+                if (cachedForwardBuildingPos == targetPos)
+                {
+                    if (currentForward != cachedForwardBuilding) changed = true;
+                }
+                else
+                {
+                    cachedForwardBuildingPos = targetPos;
+                    cachedForwardBuilding = currentForward;
+                }
             }
 
             bool foundHopper = false;
@@ -338,13 +358,23 @@ namespace VanillaFurnitureExpandedFactory
 
                 if (!changed)
                 {
-                    Building cachedNeighbor = null;
-                    if (cachedNeighborPositions != null && cachedNeighborPositions[i] == neighborPos)
-                        cachedNeighbor = cachedNeighborBuildings[i];
-
-                    if (currentNeighbor != cachedNeighbor)
+                    if (cachedNeighborPositions == null)
                     {
-                        changed = true;
+                        cachedNeighborBuildings = new Building[4];
+                        cachedNeighborPositions = new IntVec3[] { IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid };
+                    }
+
+                    if (cachedNeighborPositions[i] == neighborPos)
+                    {
+                        if (currentNeighbor != cachedNeighborBuildings[i])
+                        {
+                            changed = true;
+                        }
+                    }
+                    else
+                    {
+                        cachedNeighborPositions[i] = neighborPos;
+                        cachedNeighborBuildings[i] = currentNeighbor;
                     }
                 }
             }
@@ -531,10 +561,9 @@ namespace VanillaFurnitureExpandedFactory
 
                 bool canStack = targetConveyor.innerContainer.Count > 0 && CanStackWithAny(innerContainer, targetConveyor.innerContainer);
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < CanonicalOrder.Length; i++)
                 {
-                    Rot4 dir = new Rot4(i);
-                    Building adjBuilding = targetConveyor.GetCachedNeighborBuilding(dir);
+                    Building adjBuilding = targetConveyor.GetCachedNeighborBuilding(CanonicalOrder[i]);
 
                     if (adjBuilding is Building_Conveyor adjConveyor
                         && adjConveyor != this
@@ -1457,7 +1486,7 @@ namespace VanillaFurnitureExpandedFactory
             {
                 string baseName = HasFilterRestrictions() ? "ConveyorFilter" : "ConveyorSplitter";
                 var outputs = CanonicalOrder.Where(IsValidOutput).ToList();
-                
+
                 if (outputs.Count == 2)
                 {
                     string outputsPrefix = outputs[0].ToStringWord() + outputs[1].ToStringWord();
@@ -1479,7 +1508,7 @@ namespace VanillaFurnitureExpandedFactory
                         var n = GetCachedNeighborBuilding(dir) as Building_Conveyor;
                         return n?.ForwardCell == Position;
                     }).ToList();
-                
+
                 if (inputs.Count == 2)
                 {
                     string inputsPrefix = inputs[0].ToStringWord() + inputs[1].ToStringWord();
@@ -1772,34 +1801,32 @@ namespace VanillaFurnitureExpandedFactory
 
         public override void DrawGUIOverlay()
         {
-            base.DrawGUIOverlay();
+            if (Find.CameraDriver.CurrentZoom != CameraZoomRange.Closest) return;
+            if (!ShowItems || innerContainer.Count == 0) return;
 
-            if (ShowItems && innerContainer.Count > 0 && Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest)
+            if (itemProgress != lastCachedProgress)
             {
-                if (itemProgress != lastCachedProgress)
-                {
-                    cachedItemDrawPos = CalculateItemPosition(itemProgress);
-                    lastCachedProgress = itemProgress;
-                }
-                var itemPos = cachedItemDrawPos;
-                itemPos.y = AltitudeLayer.ItemImportant.AltitudeFor();
+                cachedItemDrawPos = CalculateItemPosition(itemProgress);
+                lastCachedProgress = itemProgress;
+            }
+            var itemPos = cachedItemDrawPos;
+            itemPos.y = AltitudeLayer.ItemImportant.AltitudeFor();
 
-                foreach (var thing in innerContainer)
+            foreach (var thing in innerContainer)
+            {
+                if (thing.def.stackLimit > 1 && thing.stackCount > 1)
                 {
-                    if (thing.def.stackLimit > 1 && thing.stackCount > 1)
-                    {
-                        GenMapUI.DrawThingLabel(GetLabelScreenPos(itemPos), thing.stackCount.ToStringCached(), GenMapUI.DefaultThingLabelColor);
-                    }
-                    else
-                    {
-                        QualityCategory qc;
-                        if (thing.def.drawGUIOverlayQuality && thing.TryGetQuality(out qc))
-                        {
-                            GenMapUI.DrawThingLabel(GetLabelScreenPos(itemPos), qc.GetLabelShort(), GenMapUI.DefaultThingLabelColor);
-                        }
-                    }
-                    itemPos.y += 0.01f;
+                    GenMapUI.DrawThingLabel(GetLabelScreenPos(itemPos), thing.stackCount.ToStringCached(), GenMapUI.DefaultThingLabelColor);
                 }
+                else
+                {
+                    QualityCategory qc;
+                    if (thing.def.drawGUIOverlayQuality && thing.TryGetQuality(out qc))
+                    {
+                        GenMapUI.DrawThingLabel(GetLabelScreenPos(itemPos), qc.GetLabelShort(), GenMapUI.DefaultThingLabelColor);
+                    }
+                }
+                itemPos.y += 0.01f;
             }
         }
 
