@@ -5,6 +5,7 @@ namespace VanillaFurnitureExpandedFactory
 {
     public class Building_UndergroundConveyorExit : Building_UndergroundConveyorBase
     {
+        private static readonly Rot4[] EmptyDirections = new Rot4[0];
         protected override void ProcessArrivedItem(UndergroundItem item, int index)
         {
             if (item.thing == null)
@@ -54,9 +55,9 @@ namespace VanillaFurnitureExpandedFactory
             return false;
         }
 
-        public override IEnumerable<Rot4> PossibleInputDirections()
+        public override Rot4[] PossibleInputDirections()
         {
-            yield break;
+            return EmptyDirections;
         }
     }
 }
