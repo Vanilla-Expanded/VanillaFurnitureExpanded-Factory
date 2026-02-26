@@ -100,20 +100,8 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void LogConveyor(string message)
+        private void SetState(ConveyorState newState)
         {
-            if (carriedThings.Count > 0 && carriedThings.Any(x => x.def.defName.Contains("Lance")))
-            {
-                Log.Message($"{message}");
-            }
-        }
-
-        private void SetState(ConveyorState newState, string reason)
-        {
-            if (state != newState)
-            {
-                LogConveyor($"[STATE] tick={Find.TickManager.TicksGame} pos={Position} {state}→{newState} reason={reason}");
-            }
             state = newState;
         }
 
@@ -294,7 +282,6 @@ namespace VanillaFurnitureExpandedFactory
             state = ConveyorState.Empty;
             itemProgress = 0f;
             cachedSelectedOutput = Rot4.Invalid;
-            LogConveyor("ResetConveyorState: fullReset: " + fullReset);
             if (fullReset)
             {
                 lastItemProgress = 0f;
@@ -351,7 +338,7 @@ namespace VanillaFurnitureExpandedFactory
 
                 if (reason != DownstreamBlockReason.None)
                 {
-                    SetState(ConveyorState.Waiting, $"CanMoveDownstream:{reason}");
+                    SetState(ConveyorState.Waiting);
                 }
                 else
                 {
@@ -382,10 +369,6 @@ namespace VanillaFurnitureExpandedFactory
                 {
                     if (targetConveyor.state == ConveyorState.Moving)
                     {
-                        LogConveyor($"[TARGET_MOVING] tick={Find.TickManager.TicksGame} pos={position} " +
-                            $"target={targetPos} target.progress={targetConveyor.itemProgress:F2} " +
-                            $"my.progress={itemProgress:F2} " +
-                            $"target.items={string.Join(",", targetConveyor.carriedThings.Select(t => t.def.defName))}");
                         return DownstreamBlockReason.TargetMoving;
                     }
                     return DownstreamBlockReason.TargetFull;
@@ -583,7 +566,7 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 targetPos = ForwardCell;
                 if (!targetPos.InBounds(map))
                 {
-                    SetState(ConveyorState.Waiting, "TargetOutOfBounds");
+                    SetState(ConveyorState.Waiting);
                     return;
                 }
 
@@ -605,7 +588,7 @@ namespace VanillaFurnitureExpandedFactory
                         {
                             CompleteTransfer(map, position);
                         }
-                        SetState(ConveyorState.Waiting, $"CanMoveDownstream:{downstreamReason}");
+                        SetState(ConveyorState.Waiting);
                     }
                 }
                 else
@@ -742,9 +725,7 @@ namespace VanillaFurnitureExpandedFactory
             {
                 SelectNextOutput();
             }
-            SetState(ConveyorState.Moving, "InitiateTransfer");
-            var visualPos = CalculateItemPosition(0f);
-            LogConveyor($"InitiateTransfer at {Position} tick={Find.TickManager.TicksGame} - Visual Position: {visualPos}");
+            SetState(ConveyorState.Moving);
         }
 
         private void CompleteTransfer(Map map, IntVec3 position)
@@ -753,8 +734,6 @@ namespace VanillaFurnitureExpandedFactory
 
             IntVec3 targetPos = ForwardCell;
             var targetBuilding = targetPos.GetFirstBuilding(map);
-            var visualPos = CalculateItemPosition(1f);
-            LogConveyor($"CompleteTransfer from {position} to {targetPos} tick={Find.TickManager.TicksGame} - Visual Position: {visualPos}");
 
             if (HasRefuelableTarget(map, position, out var refuelComp))
             {
@@ -762,7 +741,6 @@ namespace VanillaFurnitureExpandedFactory
                 int fuelNeeded = refuelComp.GetFuelCountToFullyRefuel();
 
                 var transferred = new List<Thing>();
-                bool refueledAny = false;
 
                 for (int i = carriedThings.Count - 1; i >= 0; i--)
                 {
@@ -774,7 +752,6 @@ namespace VanillaFurnitureExpandedFactory
 
                         var fuelToUse = thing.SplitOff(amountToRefuel);
                         refuelComp.Refuel(amountToRefuel);
-                        refueledAny = true;
                         fuelNeeded -= amountToRefuel;
 
                         if (thing.stackCount <= 0)
@@ -798,14 +775,9 @@ namespace VanillaFurnitureExpandedFactory
                 {
                     ResetConveyorState();
                 }
-                else if (refueledAny)
-                {
-                    SetState(ConveyorState.Waiting, "RefuelComplete_HasItems");
-                    cachedSelectedOutput = Rot4.Invalid;
-                }
                 else
                 {
-                    SetState(ConveyorState.Waiting, "RefuelableFull");
+                    SetState(ConveyorState.Waiting);
                     cachedSelectedOutput = Rot4.Invalid;
                 }
                 return;
@@ -858,18 +830,18 @@ namespace VanillaFurnitureExpandedFactory
 
                 if (carriedThings.Count == 0)
                 {
-                    SetState(ConveyorState.Empty, "TransferComplete_Empty");
+                    SetState(ConveyorState.Empty);
                     itemProgress = 0f;
                     lastItemProgress = 0f;
                     cachedSelectedOutput = Rot4.Invalid;
                 }
                 else
                 {
-                    SetState(ConveyorState.Waiting, "TransferComplete_HasItems");
+                    SetState(ConveyorState.Waiting);
                 }
                 if (targetConveyor.state == ConveyorState.Empty && targetConveyor.carriedThings.Count > 0)
                 {
-                    targetConveyor.SetState(ConveyorState.Waiting, "TargetReceivedItems");
+                    targetConveyor.SetState(ConveyorState.Waiting);
                 }
             }
             else if (targetBuilding is Building_FactoryHopper hopper)
@@ -929,15 +901,13 @@ namespace VanillaFurnitureExpandedFactory
                 }
                 else
                 {
-                    SetState(ConveyorState.Waiting, "HopperTransfer_HasItems");
+                    SetState(ConveyorState.Waiting);
                     cachedSelectedOutput = Rot4.Invalid;
                 }
             }
             else
             {
                 var dumped = new List<Thing>();
-                LogConveyor($"Attempting to dump {carriedThings.Count} stacks to ground");
-
                 for (int i = carriedThings.Count - 1; i >= 0; i--)
                 {
                     Thing item = carriedThings[i];
@@ -993,7 +963,7 @@ namespace VanillaFurnitureExpandedFactory
                 }
                 else
                 {
-                    SetState(ConveyorState.Waiting, "DumpComplete_HasItems");
+                    SetState(ConveyorState.Waiting);
                     cachedSelectedOutput = Rot4.Invalid;
                 }
             }
@@ -1018,7 +988,7 @@ namespace VanillaFurnitureExpandedFactory
             }
             else
             {
-                SetState(ConveyorState.Waiting, "CannotDumpToCell");
+                SetState(ConveyorState.Waiting);
             }
         }
 
