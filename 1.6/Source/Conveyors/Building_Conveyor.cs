@@ -23,9 +23,6 @@ namespace VanillaFurnitureExpandedFactory
     [HotSwappable]
     public class Building_Conveyor : Building, IStoreSettingsParent, IThingHolder
     {
-        [TweakValue("0VFEFactory", 0.5f, 2.0f)]
-        public static float curveSpeedMultiplier = 0.8f;
-
         private static readonly Rot4[] CanonicalOrder = { Rot4.East, Rot4.West, Rot4.North, Rot4.South };
 
         protected ThingOwner<Thing> innerContainer;
@@ -62,6 +59,12 @@ namespace VanillaFurnitureExpandedFactory
         private ConveyorExtension cachedProps;
         private bool isRecaching = false;
         private DownstreamBlockReason lastDownstreamReason = DownstreamBlockReason.None;
+
+        private Building cachedForwardBuilding;
+        private Building[] cachedNeighborBuildings;
+        private IntVec3[] cachedNeighborPositions;
+        private IntVec3 cachedForwardBuildingPos = IntVec3.Invalid;
+
         protected ConveyorExtension Props
         {
             get
@@ -109,7 +112,6 @@ namespace VanillaFurnitureExpandedFactory
         {
             get
             {
-
                 if (isRecaching) return Position + Rotation.FacingCell;
 
                 if (IsSplitter && cachedSelectedOutput.HasValue && cachedSelectedOutput.Value.IsValid)
@@ -173,15 +175,63 @@ namespace VanillaFurnitureExpandedFactory
         public bool IsSplitter => OutputCount > 1;
         public bool IsMerger => InputCount > 1 && !IsTurn;
 
-        private bool HasRefuelableTarget(Map map, IntVec3 position, out CompRefuelable refuelComp)
+        private Building GetCachedForwardBuilding()
         {
             IntVec3 targetPos = ForwardCell;
-            if (!targetPos.InBounds(map))
+
+            if (cachedForwardBuildingPos == targetPos)
             {
-                refuelComp = null;
-                return false;
+                return cachedForwardBuilding;
             }
-            var target = targetPos.GetFirstBuilding(map);
+
+            if (!targetPos.InBounds(Map))
+            {
+                cachedForwardBuilding = null;
+                cachedForwardBuildingPos = targetPos;
+                return null;
+            }
+
+            cachedForwardBuilding = targetPos.GetFirstBuilding(Map);
+            cachedForwardBuildingPos = targetPos;
+            return cachedForwardBuilding;
+        }
+
+        private Building GetCachedNeighborBuilding(Rot4 direction)
+        {
+            if (cachedNeighborBuildings == null)
+            {
+                cachedNeighborBuildings = new Building[4];
+                cachedNeighborPositions = new IntVec3[4] { IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid };
+            }
+
+            int idx = direction.AsInt;
+            IntVec3 neighborPos = Position + direction.FacingCell;
+
+            if (cachedNeighborPositions[idx] == neighborPos)
+            {
+                Building cached = cachedNeighborBuildings[idx];
+                if (cached == null || (!cached.DestroyedOrNull() && cached.Position == neighborPos))
+                {
+                    return cached;
+                }
+            }
+
+            if (!neighborPos.InBounds(Map))
+            {
+                cachedNeighborBuildings[idx] = null;
+                cachedNeighborPositions[idx] = neighborPos;
+                return null;
+            }
+
+            Building neighbor = neighborPos.GetFirstBuilding(Map);
+            cachedNeighborBuildings[idx] = neighbor;
+            cachedNeighborPositions[idx] = neighborPos;
+            return neighbor;
+        }
+
+        private bool HasRefuelableTarget(out CompRefuelable refuelComp)
+        {
+            var target = GetCachedForwardBuilding();
             refuelComp = target?.GetComp<CompRefuelable>();
             return refuelComp != null;
         }
@@ -194,6 +244,58 @@ namespace VanillaFurnitureExpandedFactory
             cachedSingleOutput = null;
             cachedGraphic = null;
             cachedIsSingleDirectional = false;
+
+            cachedForwardBuilding = null;
+            cachedForwardBuildingPos = IntVec3.Invalid;
+
+            if (cachedNeighborPositions != null)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    cachedNeighborPositions[i] = IntVec3.Invalid;
+                    cachedNeighborBuildings[i] = null;
+                }
+            }
+        }
+
+        private void PeriodicCacheCheck()
+        {
+            bool changed = false;
+            Map map = Map;
+
+            IntVec3 targetPos = ForwardCell;
+            if (targetPos.InBounds(map))
+            {
+                if (targetPos.GetFirstBuilding(map) != cachedForwardBuilding) changed = true;
+            }
+
+            if (!changed)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Rot4 dir = new Rot4(i);
+                    IntVec3 neighborPos = Position + dir.FacingCell;
+                    if (neighborPos.InBounds(map))
+                    {
+                        var currentNeighbor = neighborPos.GetFirstBuilding(map);
+                        Building cachedNeighbor = null;
+                        if (cachedNeighborPositions != null && cachedNeighborPositions[i] == neighborPos)
+                            cachedNeighbor = cachedNeighborBuildings[i];
+
+                        if (currentNeighbor != cachedNeighbor)
+                        {
+                            changed = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (changed)
+            {
+                InvalidateCache();
+                if (map?.mapDrawer != null) map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
+            }
         }
 
         private void InvalidateNeighborCaches()
@@ -236,19 +338,13 @@ namespace VanillaFurnitureExpandedFactory
 
         private bool TryFindInputConveyor(out Rot4 inputDir)
         {
-            Map map = Map;
-            IntVec3 position = Position;
             foreach (var dir in PossibleInputDirections())
             {
-                IntVec3 neighborPos = position + dir.FacingCell;
-                if (neighborPos.InBounds(map))
+                Building neighbor = GetCachedNeighborBuilding(dir);
+                if (neighbor is Building_Conveyor neighborComp && neighborComp.ForwardCell == Position)
                 {
-                    Building neighbor = neighborPos.GetFirstBuilding(map);
-                    if (neighbor is Building_Conveyor neighborComp && neighborComp.ForwardCell == position)
-                    {
-                        inputDir = dir;
-                        return true;
-                    }
+                    inputDir = dir;
+                    return true;
                 }
             }
             inputDir = Rot4.Invalid;
@@ -322,6 +418,10 @@ namespace VanillaFurnitureExpandedFactory
             base.Tick();
             Map localMap = this.Map;
             IntVec3 localPos = this.Position;
+            if (this.IsHashIntervalTick(60))
+            {
+                PeriodicCacheCheck();
+            }
             if (this.IsHashIntervalTick(10))
             {
                 CheckForItemsOnCell(localMap, localPos);
@@ -345,13 +445,13 @@ namespace VanillaFurnitureExpandedFactory
                     itemProgress += (1f / Props.ticksPerCell);
 
                     if (itemProgress >= 0.999f)
-                        CompleteTransfer(localMap, localPos);
+                        CompleteTransfer(localMap);
                 }
                 lastItemProgress = itemProgress;
             }
             else
             {
-                ProcessMovement(localMap, localPos);
+                ProcessMovement(localMap);
             }
         }
 
@@ -361,7 +461,7 @@ namespace VanillaFurnitureExpandedFactory
             if (!targetPos.InBounds(map))
                 return DownstreamBlockReason.TargetOutOfBounds;
 
-            var targetBuilding = targetPos.GetFirstBuilding(map);
+            var targetBuilding = GetCachedForwardBuilding();
 
             if (targetBuilding is Building_Conveyor targetConveyor)
             {
@@ -375,18 +475,32 @@ namespace VanillaFurnitureExpandedFactory
                 }
 
                 float aheadProgress = float.MinValue;
+                bool tyingCompetitor = false;
 
-                foreach (var adj in GenAdj.CellsAdjacent8Way(targetConveyor))
+                for (int i = 0; i < 4; i++)
                 {
-                    if (!adj.InBounds(map)) continue;
-                    Building adjBuilding = adj.GetFirstBuilding(map);
+                    Rot4 dir = new Rot4(i);
+                    Building adjBuilding = targetConveyor.GetCachedNeighborBuilding(dir);
+
                     if (adjBuilding is Building_Conveyor adjConveyor
                         && adjConveyor != this
                         && adjConveyor.ForwardCell == targetPos
-                        && adjConveyor.carriedThings.Count > 0
-                        && adjConveyor.itemProgress > aheadProgress)
+                        && adjConveyor.carriedThings.Count > 0)
                     {
-                        aheadProgress = adjConveyor.itemProgress;
+                        if (adjConveyor.itemProgress > aheadProgress)
+                        {
+                            aheadProgress = adjConveyor.itemProgress;
+                        }
+
+                        if (!CanStackWithAny(carriedThings, targetConveyor.carriedThings))
+                        {
+                            if (adjConveyor.itemProgress > itemProgress ||
+                                (adjConveyor.itemProgress == itemProgress &&
+                                 adjConveyor.Position.GetHashCode() > position.GetHashCode()))
+                            {
+                                tyingCompetitor = true;
+                            }
+                        }
                     }
                 }
 
@@ -396,26 +510,11 @@ namespace VanillaFurnitureExpandedFactory
                         return DownstreamBlockReason.CompetitorAhead;
                 }
 
-                foreach (var adj in GenAdj.CellsAdjacentCardinal(targetConveyor))
+                if (tyingCompetitor)
                 {
-                    if (!adj.InBounds(map)) continue;
-                    Building adjBuilding = adj.GetFirstBuilding(map);
-                    if (adjBuilding is Building_Conveyor adjConveyor
-                        && adjConveyor != this
-                        && adjConveyor.ForwardCell == targetPos
-                        && adjConveyor.carriedThings.Count > 0)
-                    {
-                        if (!CanStackWithAny(carriedThings, targetConveyor.carriedThings))
-                        {
-                            if (adjConveyor.itemProgress > itemProgress ||
-                                (adjConveyor.itemProgress == itemProgress &&
-                                 adjConveyor.Position.GetHashCode() > position.GetHashCode()))
-                            {
-                                return DownstreamBlockReason.CompetitorTying;
-                            }
-                        }
-                    }
+                    return DownstreamBlockReason.CompetitorTying;
                 }
+
                 return DownstreamBlockReason.None;
             }
             else if (targetBuilding is Building_FactoryHopper hopper)
@@ -554,11 +653,11 @@ namespace VanillaFurnitureExpandedFactory
             return true;
         }
 
-        private void ProcessMovement(Map map, IntVec3 position)
+        private void ProcessMovement(Map map)
         {
             if (HasSpace() && state != ConveyorState.Waiting)
             {
-                TryPullItem(map, position);
+                TryPullItem(map);
             }
 
             if (carriedThings.Count > 0 && state != ConveyorState.Moving)
@@ -570,10 +669,10 @@ namespace VanillaFurnitureExpandedFactory
                     return;
                 }
 
-                var targetBuilding = targetPos.GetFirstBuilding(map);
+                var targetBuilding = GetCachedForwardBuilding();
                 if (targetBuilding is Building_Conveyor targetConveyor)
                 {
-                    var downstreamReason = CanMoveDownstream(map, position);
+                    var downstreamReason = CanMoveDownstream(map, Position);
                     if (downstreamReason == DownstreamBlockReason.None)
                     {
                         InitiateTransfer();
@@ -586,7 +685,7 @@ namespace VanillaFurnitureExpandedFactory
                             targetConveyor.itemProgress <= 0.05f &&
                             CanStackWithAny(carriedThings, targetConveyor.carriedThings))
                         {
-                            CompleteTransfer(map, position);
+                            CompleteTransfer(map);
                         }
                         SetState(ConveyorState.Waiting);
                     }
@@ -598,39 +697,31 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void TryPullItem(Map map, IntVec3 position)
+        private void TryPullItem(Map map)
         {
             if (state == ConveyorState.Waiting) return;
 
-            Rot4 rotation = Rotation;
-
-            if (TryPullFromCell(map, position + rotation.Opposite.FacingCell)) return;
-            if (TryPullFromCell(map, position + rotation.Rotated(RotationDirection.Clockwise).FacingCell)) return;
-            TryPullFromCell(map, position + rotation.Rotated(RotationDirection.Counterclockwise).FacingCell);
+            if (TryPullFromDir(Rotation.Opposite)) return;
+            if (TryPullFromDir(Rotation.Rotated(RotationDirection.Clockwise))) return;
+            TryPullFromDir(Rotation.Rotated(RotationDirection.Counterclockwise));
         }
 
-        private bool TryPullFromCell(Map map, IntVec3 inputPos)
+        private bool TryPullFromDir(Rot4 dir)
         {
-            if (!inputPos.InBounds(map)) return false;
-
-            if (inputPos.GetFirstBuilding(map) is Building_FactoryHopper hopper)
+            if (GetCachedNeighborBuilding(dir) is Building_FactoryHopper hopper)
             {
                 var heldThings = hopper.slotGroup.HeldThings.ToList();
                 if (heldThings.Count > 0)
                 {
                     Thing item = heldThings[0];
                     Thing taken = item.SplitOff(item.stackCount);
-                    if (taken.Spawned)
-                    {
-                        taken.DeSpawn(DestroyMode.Vanish);
-                    }
+                    if (taken.Spawned) taken.DeSpawn(DestroyMode.Vanish);
                     innerContainer.TryAdd(taken);
                     state = ConveyorState.Moving;
                     itemProgress = -1f;
                     lastItemProgress = -1f;
                     return true;
                 }
-                return false;
             }
             return false;
         }
@@ -671,7 +762,7 @@ namespace VanillaFurnitureExpandedFactory
 
         private void CheckRefuelableTarget(Map map, IntVec3 position)
         {
-            if (cachedGraphic != null && HasRefuelableTarget(map, position, out var refuelComp))
+            if (cachedGraphic != null && HasRefuelableTarget(out var refuelComp))
             {
                 if (refuelComp.parent.DestroyedOrNull())
                 {
@@ -728,14 +819,14 @@ namespace VanillaFurnitureExpandedFactory
             SetState(ConveyorState.Moving);
         }
 
-        private void CompleteTransfer(Map map, IntVec3 position)
+        private void CompleteTransfer(Map map)
         {
             if (carriedThings.Count == 0) return;
 
             IntVec3 targetPos = ForwardCell;
-            var targetBuilding = targetPos.GetFirstBuilding(map);
+            var targetBuilding = GetCachedForwardBuilding();
 
-            if (HasRefuelableTarget(map, position, out var refuelComp))
+            if (HasRefuelableTarget(out var refuelComp))
             {
                 if (refuelComp.IsFull) return;
                 int fuelNeeded = refuelComp.GetFuelCountToFullyRefuel();
@@ -792,32 +883,8 @@ namespace VanillaFurnitureExpandedFactory
                     Thing thing = carriedThings[i];
                     Selector_Deselect_Patch.transferringItems.Add(thing);
 
-                    bool fullyTransferred = false;
-                    for (int j = targetConveyor.carriedThings.Count - 1; j >= 0; j--)
+                    if (TransferItemTo(targetConveyor, thing))
                     {
-                        Thing targetThing = targetConveyor.carriedThings[j];
-                        if (thing.CanStackWith(targetThing))
-                        {
-                            int spaceLeft = targetThing.def.stackLimit - targetThing.stackCount;
-                            if (spaceLeft > 0)
-                            {
-                                int toTransfer = Mathf.Min(thing.stackCount, spaceLeft);
-                                targetThing.stackCount += toTransfer;
-                                thing.stackCount -= toTransfer;
-
-                                if (thing.stackCount <= 0)
-                                {
-                                    transferred.Add(thing);
-                                    fullyTransferred = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (!fullyTransferred && targetConveyor.HasSpace())
-                    {
-                        targetConveyor.innerContainer.TryAddOrTransfer(thing);
                         transferred.Add(thing);
                     }
                 }
@@ -975,11 +1042,11 @@ namespace VanillaFurnitureExpandedFactory
             {
                 if (itemProgress >= 0.999f && carriedThings.Count > 0)
                 {
-                    CompleteTransfer(map, Position);
+                    CompleteTransfer(map);
                 }
                 else if (!CanFullyDump(targetPos, map))
                 {
-                    CompleteTransfer(map, Position);
+                    CompleteTransfer(map);
                 }
                 else
                 {
@@ -1116,20 +1183,54 @@ namespace VanillaFurnitureExpandedFactory
             return false;
         }
 
+        private bool TransferItemTo(Building_Conveyor targetConveyor, Thing thing)
+        {
+            for (int i = 0; i < targetConveyor.innerContainer.Count; i++)
+            {
+                Thing targetThing = targetConveyor.innerContainer[i];
+                if (targetThing.CanStackWith(thing))
+                {
+                    int spaceLeft = targetThing.def.stackLimit - targetThing.stackCount;
+                    if (spaceLeft > 0)
+                    {
+                        int amountToTransfer = Mathf.Min(thing.stackCount, spaceLeft);
+
+                        targetThing.stackCount += amountToTransfer;
+                        thing.stackCount -= amountToTransfer;
+
+                        if (thing.stackCount <= 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            if (thing.stackCount > 0 && targetConveyor.HasSpace())
+            {
+                this.innerContainer.TryTransferToContainer(thing, targetConveyor.innerContainer, true);
+                return true;
+            }
+
+            return false;
+        }
+
         private bool DetectTurn()
         {
-
             if (OutputCount > 1) return false;
 
             if (OutputCount == 1 && cachedSingleOutput.HasValue && cachedSingleOutput.Value.IsValid && cachedSingleOutput.Value != Rotation)
             {
                 return true;
             }
-
+            
             if (TryFindInputConveyor(out var inputDir))
             {
-                if (inputDir != Rotation.Opposite)
+                Rot4 outputDir = Rot4.FromIntVec3(ForwardCell - Position);
+                if (inputDir != outputDir && inputDir != outputDir.Opposite)
+                {
                     return true;
+                }
             }
 
             return false;
@@ -1138,16 +1239,11 @@ namespace VanillaFurnitureExpandedFactory
         private int CountInputs()
         {
             isRecaching = true;
-            Map map = Map;
-            IntVec3 position = Position;
             int count = 0;
             foreach (var dir in PossibleInputDirections())
             {
-                IntVec3 neighborPos = position + dir.FacingCell;
-                if (!neighborPos.InBounds(map)) continue;
-
-                Building neighbor = neighborPos.GetFirstBuilding(map);
-                if (neighbor is Building_Conveyor neighborComp && neighborComp.ForwardCell == position)
+                Building neighbor = GetCachedNeighborBuilding(dir);
+                if (neighbor is Building_Conveyor neighborComp && neighborComp.ForwardCell == Position)
                     count++;
             }
             isRecaching = false;
@@ -1254,7 +1350,7 @@ namespace VanillaFurnitureExpandedFactory
                 if (t.def.category == ThingCategory.Item)
                 {
                     CompRottable comp = t.TryGetComp<CompRottable>();
-                    if (comp != null && (int)comp.Stage < 2 && Rand.Value < 0.0065f)
+                    if (comp != null && (int)comp.Stage < 2)
                     {
                         comp.RotProgress += 3000f;
                     }
@@ -1306,9 +1402,7 @@ namespace VanillaFurnitureExpandedFactory
                 var inputs = CanonicalOrder
                     .Where(dir =>
                     {
-                        IntVec3 pos = position + dir.FacingCell;
-                        if (!pos.InBounds(map)) return false;
-                        var n = pos.GetFirstBuilding(map) as Building_Conveyor;
+                        var n = GetCachedNeighborBuilding(dir) as Building_Conveyor;
                         return n?.ForwardCell == position;
                     }).ToList();
                 name = DetermineDirectionalGraphic("ConveyorMerger", inputs);
@@ -1321,7 +1415,7 @@ namespace VanillaFurnitureExpandedFactory
             }
             else
             {
-                name = HasRefuelableTarget(Map, Position, out var _) ? "ConveyorRefuelingPort" : "Conveyor";
+                name = HasRefuelableTarget(out var _) ? "ConveyorRefuelingPort" : "Conveyor";
             }
 
             string fullPath = Props.baseTexPath + "/" + name;
@@ -1384,12 +1478,10 @@ namespace VanillaFurnitureExpandedFactory
 
         private bool IsValidOutput(Rot4 dir)
         {
-            Map map = Map;
             IntVec3 position = Position;
-            IntVec3 neighborPos = position + dir.FacingCell;
-            if (!neighborPos.InBounds(map)) return false;
+            Building neighbor = GetCachedNeighborBuilding(dir);
+            if (neighbor == null) return false;
 
-            var neighbor = neighborPos.GetFirstBuilding(map);
             if (neighbor is Building_Conveyor neighborConveyor)
             {
                 if (!neighborConveyor.CanAcceptFrom(position))
@@ -1488,11 +1580,11 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        public virtual bool ShowItems => HasRefuelableTarget(Map, Position, out _) is false;
+        public virtual bool ShowItems => HasRefuelableTarget(out _) is false;
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             var baseItemY = drawLoc.y + 1;
-            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || HasRefuelableTarget(Map, Position, out _))
+            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || HasRefuelableTarget(out _))
             {
                 drawLoc.y += 2f;
             }
@@ -1513,67 +1605,62 @@ namespace VanillaFurnitureExpandedFactory
 
         public Vector3 CalculateItemPosition(float progress)
         {
-            Map map = Map;
-            IntVec3 position = Position;
+            Map localMap = Map;
+            IntVec3 localPos = Position;
 
             if (progress < 0f)
             {
-                Rot4 rotation = Rotation;
+                Rot4 localRotation = Rotation;
                 Rot4 inputDir = Rot4.Invalid;
 
                 foreach (var dir in PossibleInputDirections())
                 {
-                    IntVec3 neighborPos = position + dir.FacingCell;
-                    if (neighborPos.InBounds(map))
+                    var neighbor = GetCachedNeighborBuilding(dir);
+                    if (neighbor is Building_FactoryHopper)
                     {
-                        if (neighborPos.GetFirstBuilding(map) is Building_FactoryHopper)
-                        {
-                            inputDir = dir;
-                            break;
-                        }
+                        inputDir = dir;
+                        break;
                     }
                 }
 
-                if (inputDir.IsValid)
-                {
-                    Vector3 hopperPos = position.ToVector3Shifted() + inputDir.FacingCell.ToVector3();
-                    Vector3 beltStart = DrawPos;
-                    return Vector3.Lerp(hopperPos, beltStart, progress + 1f);
-                }
-                return DrawPos;
+                if (!inputDir.IsValid) return DrawPos;
+
+                Vector3 hopperPos = localPos.ToVector3Shifted() + inputDir.FacingCell.ToVector3();
+                Vector3 beltStart = DrawPos;
+                return Vector3.Lerp(hopperPos, beltStart, progress + 1f);
             }
 
-            Vector3 p0 = DrawPos;
-            var p1 = ForwardCell.ToVector3Shifted();
+            Vector3 startPos = DrawPos;
+            Vector3 endPos = ForwardCell.ToVector3Shifted();
 
             IntVec3 targetPos = ForwardCell;
-            if (targetPos.InBounds(map))
+            if (targetPos.InBounds(localMap))
             {
-                var target = targetPos.GetFirstBuilding(map);
-                if (target is Building_Conveyor nextConveyor && nextConveyor.IsTurn)
+                var targetBuilding = targetPos.GetFirstBuilding(localMap);
+                if (targetBuilding is Building_Conveyor nextConveyor && nextConveyor.IsTurn)
                 {
-                    p1 = DrawPos + ((ForwardCell - position).ToVector3() * 0.5f);
+                    endPos = DrawPos + ((ForwardCell - localPos).ToVector3() * 0.5f);
                 }
             }
 
             if (IsTurn)
             {
-                Rot4 inputDir;
-                if (!TryFindInputConveyor(out inputDir))
+                if (!TryFindInputConveyor(out var inputDir))
                 {
                     inputDir = Rotation.Opposite;
                 }
 
-                p0 = DrawPos + (inputDir.FacingCell.ToVector3() * 0.5f);
+                startPos = DrawPos + (inputDir.FacingCell.ToVector3() * 0.5f);
 
                 Vector3 controlPoint = DrawPos;
 
                 float t = progress;
                 float u = 1 - t;
 
-                return (u * u * p0) + (2 * u * t * controlPoint) + (t * t * p1);
+                return (u * u * startPos) + (2 * u * t * controlPoint) + (t * t * endPos);
             }
-            return Vector3.Lerp(p0, p1, progress);
+
+            return Vector3.Lerp(startPos, endPos, progress);
         }
 
         public override void DrawGUIOverlay()
@@ -1653,7 +1740,8 @@ namespace VanillaFurnitureExpandedFactory
                         sb.AppendLine(GetInspectString());
                         sb.AppendLine();
                         IntVec3 fwd = ForwardCell;
-                        if (fwd.InBounds(Map) && fwd.GetFirstBuilding(Map) is Building_Conveyor fwdConv)
+                        var fwdBuilding = GetCachedForwardBuilding();
+                        if (fwdBuilding is Building_Conveyor fwdConv)
                         {
                             sb.AppendLine();
                             sb.AppendLine("=== FORWARD CONVEYOR ===");
@@ -1684,14 +1772,12 @@ namespace VanillaFurnitureExpandedFactory
             IntVec3 position = Position;
             foreach (var dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
             {
-                IntVec3 neighborPos = position + dir.FacingCell;
-                if (!neighborPos.InBounds(map)) continue;
-                Building n = neighborPos.GetFirstBuilding(map);
+                Building n = GetCachedNeighborBuilding(dir);
                 if (n is Building_Conveyor nc)
                 {
                     bool feedsIntoUs = nc.ForwardCell == position;
                     bool weCanFeedIt = nc.CanAcceptFrom(position);
-                    bool weFeedIt = ForwardCell == neighborPos;
+                    bool weFeedIt = ForwardCell == nc.Position;
                     sb.AppendLine($"  {dir}: rot={nc.Rotation.ToStringHuman()} feedsUs={feedsIntoUs} acceptsUs={weCanFeedIt} weFeedIt={weFeedIt}");
                 }
                 else if (n != null)
@@ -1705,9 +1791,7 @@ namespace VanillaFurnitureExpandedFactory
             Rot4 foundInput = Rot4.Invalid;
             foreach (var dir in new[] { Rot4.North, Rot4.East, Rot4.South, Rot4.West })
             {
-                IntVec3 neighborPos = position + dir.FacingCell;
-                if (!neighborPos.InBounds(map)) continue;
-                if (neighborPos.GetFirstBuilding(map) is Building_Conveyor nc && nc.ForwardCell == position)
+                if (GetCachedNeighborBuilding(dir) is Building_Conveyor nc && nc.ForwardCell == position)
                 {
                     inputCount++;
                     foundInput = dir;
@@ -1715,9 +1799,9 @@ namespace VanillaFurnitureExpandedFactory
             }
             sb.AppendLine($"  RawInputCount: {inputCount}, RawInputDir: {foundInput.ToStringHuman()}");
 
-            IntVec3 fwdCell = position + Rotation.FacingCell;
-            bool fwdEstablished = fwdCell.InBounds(map) &&
-                fwdCell.GetFirstBuilding(map) is Building_Conveyor fwdC && fwdC.CanAcceptFrom(position);
+            var fwdBuilding = GetCachedForwardBuilding();
+            bool fwdEstablished = fwdBuilding != null &&
+                fwdBuilding is Building_Conveyor fwdC && fwdC.CanAcceptFrom(position);
             sb.AppendLine($"  ForwardEstablished: {fwdEstablished}");
             sb.AppendLine($"  StraightFromInput: {Rotation == foundInput.Opposite}");
 
