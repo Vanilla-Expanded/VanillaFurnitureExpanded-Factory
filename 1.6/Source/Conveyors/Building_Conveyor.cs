@@ -669,6 +669,33 @@ namespace VanillaFurnitureExpandedFactory
                     return;
                 }
 
+                if (IsSplitter)
+                {
+                    var downstreamReason = CanMoveDownstream(map, Position);
+                    
+                    if (downstreamReason != DownstreamBlockReason.None)
+                    {
+                        foreach (var dir in PossibleOutputDirections())
+                        {
+                            if (Position + dir.FacingCell == targetPos) continue;
+                            if (!IsValidOutput(dir)) continue;
+
+                            Rot4? oldOutput = cachedSelectedOutput;
+                            cachedSelectedOutput = dir;
+                            
+                            if (CanMoveDownstream(map, Position) == DownstreamBlockReason.None)
+                            {
+                                SetState(ConveyorState.Moving);
+                                itemProgress += (1f / Props.ticksPerCell);
+                                lastItemProgress = itemProgress;
+                                return;
+                            }
+                            
+                            cachedSelectedOutput = oldOutput;
+                        }
+                    }
+                }
+
                 var targetBuilding = GetCachedForwardBuilding();
                 if (targetBuilding is Building_Conveyor targetConveyor)
                 {
