@@ -1743,10 +1743,14 @@ namespace VanillaFurnitureExpandedFactory
             float baseItemY = drawLoc.y + 1f;
             drawLoc.y += cachedYOffset;
 
-            if (cachedIsSingleDirectional)
-                Graphic.Draw(drawLoc, Rot4.North, this, 0f);
-            else
-                base.DrawAt(drawLoc, flip);
+            if (IsSplitter || IsMerger)
+            {
+                if (cachedIsSingleDirectional)
+                    Graphic.Draw(drawLoc, Rot4.North, this, 0f);
+                else
+                    this.Graphic.Draw(drawLoc, flip ? this.Rotation.Opposite : this.Rotation, this);
+            }
+
 
             if (ShowItems && innerContainer.Count > 0)
             {
@@ -1763,6 +1767,13 @@ namespace VanillaFurnitureExpandedFactory
                     items[i].Graphic.Draw(cachedItemDrawPos, Rot4.North, items[i], 0f);
                 }
             }
+        }
+
+        public override void Print(SectionLayer layer)
+        {
+            if (IsSplitter || IsMerger)
+                return;
+            Graphic.Print(layer, this, 0f);
         }
 
         public Vector3 CalculateItemPosition()

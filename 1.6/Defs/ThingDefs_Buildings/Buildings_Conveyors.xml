@@ -3,7 +3,7 @@
 	<ThingDef Name="VFEFactory_ConveyorBase" Abstract="True" ParentName="BuildingBase">
 		<tickerType>Normal</tickerType>
 		<drawGUIOverlay>true</drawGUIOverlay>
-		<drawerType>RealtimeOnly</drawerType>
+		<drawerType>MapMeshAndRealTime</drawerType>
 		<size>(1,1)</size>
 		<drawStyleCategory>Walls</drawStyleCategory>
 		<rotatable>true</rotatable>
