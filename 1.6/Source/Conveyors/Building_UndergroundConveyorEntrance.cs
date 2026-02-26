@@ -12,7 +12,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             base.Tick();
 
-            if (Spawned && carriedThings.Count > 0)
+            if (Spawned && innerContainer.Count > 0)
             {
                 if (itemProgress >= 0.9f) 
                 {
@@ -29,7 +29,7 @@ namespace VanillaFurnitureExpandedFactory
                 int distance = (int)Position.DistanceTo(linkedExit.Position);
                 int travelTime = distance * TicksPerCell;
 
-                foreach (Thing t in carriedThings.ToList())
+                foreach (Thing t in innerContainer.ToList())
                 {
                     if (t.Spawned) t.DeSpawn();
 
@@ -40,7 +40,7 @@ namespace VanillaFurnitureExpandedFactory
                         returning = false
                     });
 
-                    carriedThings.Remove(t);
+                    innerContainer.Remove(t);
                 }
 
                 itemProgress = 0f;

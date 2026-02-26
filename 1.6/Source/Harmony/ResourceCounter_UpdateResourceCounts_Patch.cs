@@ -14,7 +14,7 @@ namespace VanillaFurnitureExpandedFactory
             {
                 if (thing is Building_Conveyor conveyor)
                 {
-                    foreach (var carriedThing in conveyor.carriedThings)
+                    foreach (var carriedThing in conveyor.innerContainer)
                     {
                         Thing innerIfMinified = carriedThing.GetInnerIfMinified();
                         if (innerIfMinified.def.CountAsResource && ShouldCount(innerIfMinified))

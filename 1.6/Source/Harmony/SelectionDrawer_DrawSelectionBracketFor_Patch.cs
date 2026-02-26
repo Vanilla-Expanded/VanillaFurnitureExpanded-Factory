@@ -14,8 +14,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             if (obj is Thing thing && thing.ParentHolder is Building_Conveyor conveyor)
             {
-                var itemProgress = conveyor.itemProgress;
-                var visualPos = conveyor.CalculateItemPosition(itemProgress);
+                var visualPos = conveyor.CalculateItemPosition();
                 visualPos.y = AltitudeLayer.ItemImportant.AltitudeFor();
 
                 var bracketLocs = AccessTools.StaticFieldRefAccess<Vector3[]>(typeof(SelectionDrawer), "bracketLocs");
