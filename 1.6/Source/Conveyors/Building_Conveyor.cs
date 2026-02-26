@@ -98,6 +98,8 @@ namespace VanillaFurnitureExpandedFactory
         private IntVec3 cachedForwardCell = IntVec3.Invalid;
         private bool cachedIsSplitter;
         private bool hasAdjacentHopper;
+        private float cachedYOffset;
+        private Rot4 cachedInputDir;
 
         protected ConveyorExtension Props
         {
@@ -312,6 +314,7 @@ namespace VanillaFurnitureExpandedFactory
             cachedIsSplitter = false;
             cachedForwardCell = IntVec3.Invalid;
             lastCachedProgress = float.MinValue;
+            RefreshDrawCache();
 
             cachedForwardBuilding = null;
             cachedForwardBuildingPos = IntVec3.Invalid;
@@ -409,18 +412,18 @@ namespace VanillaFurnitureExpandedFactory
 
         private bool CanStackWithAny(IList<Thing> carried, IList<Thing> target)
         {
-            foreach (var thing in carried)
+            int carriedCount = carried.Count;
+            int targetCount = target.Count;
+            if (targetCount == 0) return false;
+
+            for (int i = 0; i < carriedCount; i++)
             {
-                foreach (Thing targetThing in target)
+                Thing cThing = carried[i];
+                for (int j = 0; j < targetCount; j++)
                 {
-                    if (thing.CanStackWith(targetThing))
-                    {
-                        int spaceLeft = targetThing.def.stackLimit - targetThing.stackCount;
-                        if (spaceLeft > 0)
-                        {
-                            return true;
-                        }
-                    }
+                    Thing tThing = target[j];
+                    if (tThing.stackCount < tThing.def.stackLimit && cThing.CanStackWith(tThing))
+                        return true;
                 }
             }
             return false;
@@ -1713,18 +1716,29 @@ namespace VanillaFurnitureExpandedFactory
         }
 
         public virtual bool ShowItems => cachedShowItems;
+
+        private void RefreshDrawCache()
+        {
+            bool hasRefuel = HasRefuelableTarget(out _);
+            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || hasRefuel)
+                cachedYOffset = 2f;
+            else
+                cachedYOffset = 0f;
+
+            if (!TryFindInputConveyor(out cachedInputDir))
+                cachedInputDir = Rotation.Opposite;
+        }
+
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
-            var baseItemY = drawLoc.y + 1;
-            bool hasRefuel = cachedHasRefuelableTarget;
-            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || hasRefuel)
-            {
-                drawLoc.y += 2f;
-            }
+            float baseItemY = drawLoc.y + 1f;
+            drawLoc.y += cachedYOffset;
+
             if (cachedIsSingleDirectional)
                 Graphic.Draw(drawLoc, Rot4.North, this, 0f);
             else
                 base.DrawAt(drawLoc, flip);
+
             if (ShowItems && innerContainer.Count > 0)
             {
                 if (itemProgress != lastCachedProgress)
@@ -1732,11 +1746,12 @@ namespace VanillaFurnitureExpandedFactory
                     cachedItemDrawPos = CalculateItemPosition(itemProgress);
                     lastCachedProgress = itemProgress;
                 }
-                var itemPos = cachedItemDrawPos;
-                itemPos.y = baseItemY;
-                foreach (var thing in innerContainer)
+                cachedItemDrawPos.y = baseItemY;
+
+                var items = innerContainer.InnerListForReading;
+                for (int i = 0; i < items.Count; i++)
                 {
-                    thing.Graphic.Draw(itemPos, Rot4.North, thing, 0f);
+                    items[i].Graphic.Draw(cachedItemDrawPos, Rot4.North, items[i], 0f);
                 }
             }
         }
@@ -1781,12 +1796,7 @@ namespace VanillaFurnitureExpandedFactory
 
             if (IsTurn)
             {
-                if (!TryFindInputConveyor(out var inputDir))
-                {
-                    inputDir = Rotation.Opposite;
-                }
-
-                startPos = DrawPos + (inputDir.FacingCell.ToVector3() * 0.5f);
+                startPos = DrawPos + (cachedInputDir.FacingCell.ToVector3() * 0.5f);
 
                 Vector3 controlPoint = DrawPos;
 
