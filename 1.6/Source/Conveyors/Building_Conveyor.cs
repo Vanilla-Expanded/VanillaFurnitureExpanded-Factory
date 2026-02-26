@@ -540,7 +540,6 @@ namespace VanillaFurnitureExpandedFactory
                 }
 
                 itemProgress += (1f / Props.ticksPerCell);
-                cachedItemDrawPos = CalculateItemPosition();
 
                 if (itemProgress >= 0.999f)
                     CompleteTransfer(localMap);
@@ -1826,11 +1825,6 @@ namespace VanillaFurnitureExpandedFactory
             if (Find.CameraDriver.CurrentZoom != CameraZoomRange.Closest) return;
             if (!ShowItems || innerContainer.Count == 0) return;
 
-            if (itemProgress != lastCachedProgress)
-            {
-                cachedItemDrawPos = CalculateItemPosition();
-                lastCachedProgress = itemProgress;
-            }
             var itemPos = cachedItemDrawPos;
             itemPos.y = AltitudeLayer.ItemImportant.AltitudeFor();
 
