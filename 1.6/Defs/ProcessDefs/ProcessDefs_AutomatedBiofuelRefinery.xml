@@ -33,7 +33,7 @@
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
@@ -73,7 +73,7 @@
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
@@ -109,7 +109,7 @@
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
 		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
@@ -144,7 +144,7 @@
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	
 </Defs>

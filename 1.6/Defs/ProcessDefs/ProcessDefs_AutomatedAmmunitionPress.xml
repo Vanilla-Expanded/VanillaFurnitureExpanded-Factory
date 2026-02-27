@@ -35,7 +35,7 @@
 			<li>Mortars</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeIncendiaryShells</defName>
@@ -72,7 +72,7 @@
 			<li>Mortars</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeEMPShells</defName>
@@ -109,7 +109,7 @@
 			<li>MicroelectronicsBasics</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeFirefoamShells</defName>
@@ -142,7 +142,7 @@
 			<li>Firefoam</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeSmokeShells</defName>
@@ -175,7 +175,7 @@
 			<li>Mortars</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
 		<defName>VFEFactory_MakeToxShells</defName>
@@ -212,7 +212,7 @@
 			<li>ToxGas</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_MakeTarShells</defName>
@@ -249,7 +249,7 @@
 			<li>Mortars</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeShrapnelShells</defName>
@@ -282,7 +282,7 @@
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeArmorPiercingShells</defName>
@@ -319,7 +319,7 @@
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeClusterShells</defName>
@@ -356,7 +356,7 @@
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
 		<defName>VFEFactory_MakeDeadlifeShells</defName>
@@ -389,6 +389,6 @@
 			<li>DeadlifeDust</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
+		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 </Defs>
