@@ -2,6 +2,7 @@
 <Defs>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMetalFromSlag</defName>
+		<labelOverride>Smelt 15 steel from slag chunk</labelOverride>
 		<label>Smelt 15 steel from slag chunk</label>
 		<description>Use heat and strong electromagnets to extract useful metal from slag chunks.</description>
 		<priorityInBillList>0</priorityInBillList>
@@ -28,6 +29,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
@@ -64,6 +67,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltApparel</defName>
@@ -99,10 +104,13 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMetalFromChunk</defName>
 		<label>Extract 3 steel from stone chunk</label>
+		<labelOverride>Extract 3 steel from stone chunk</labelOverride>
 		<description>Use heat and strong electromagnets to extract useful metal from stone chunks.</description>
 		<priorityInBillList>3</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
@@ -129,6 +137,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMechanoid</defName>
@@ -163,5 +173,7 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 </Defs>

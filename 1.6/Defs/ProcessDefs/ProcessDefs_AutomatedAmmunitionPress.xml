@@ -3,12 +3,11 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeHighExplosiveShells</defName>
 		<label>Make high-explosive shells</label>
-		
 		<description>Combine steel and chemfuel to create high-explosive shells.</description>
 		<priorityInBillList>0</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -20,7 +19,7 @@
 			</li>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>15</countNeeded>		
+				<countNeeded>15</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -35,16 +34,17 @@
 		<researchPrerequisites>
 			<li>Mortars</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeIncendiaryShells</defName>
 		<label>Make incendiary shells</label>
-		
 		<description>Combine steel and chemfuel to create incendiary shells.</description>
 		<priorityInBillList>1</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -56,7 +56,7 @@
 			</li>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>20</countNeeded>		
+				<countNeeded>20</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -71,16 +71,17 @@
 		<researchPrerequisites>
 			<li>Mortars</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeEMPShells</defName>
 		<label>Make EMP shells</label>
-		
 		<description>Combine steel and components to create EMP shells.</description>
 		<priorityInBillList>2</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -92,7 +93,7 @@
 			</li>
 			<li>
 				<thing>ComponentIndustrial</thing>
-				<countNeeded>2</countNeeded>		
+				<countNeeded>2</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -105,19 +106,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>MicroelectronicsBasics</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeFirefoamShells</defName>
 		<label>Make firefoam shells</label>
-		
 		<description>Use steel to create firefoam shells.</description>
 		<priorityInBillList>3</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -127,7 +128,6 @@
 				<thing>Steel</thing>
 				<countNeeded>20</countNeeded>
 			</li>
-			
 		</ingredients>
 		<results>
 			<li>
@@ -139,19 +139,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>Firefoam</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeSmokeShells</defName>
 		<label>Make smoke shells</label>
-		
 		<description>Use steel to create smoke shells.</description>
 		<priorityInBillList>4</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -161,7 +161,6 @@
 				<thing>Steel</thing>
 				<countNeeded>25</countNeeded>
 			</li>
-			
 		</ingredients>
 		<results>
 			<li>
@@ -173,19 +172,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>Mortars</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
 		<defName>VFEFactory_MakeToxShells</defName>
 		<label>Make tox shells</label>
-		
 		<description>Combine steel and chemfuel to create tox shells.</description>
 		<priorityInBillList>5</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -197,7 +196,7 @@
 			</li>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>10</countNeeded>		
+				<countNeeded>10</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -210,19 +209,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>ToxGas</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_MakeTarShells</defName>
 		<label>Make tar shells</label>
-		
 		<description>Combine steel and asphalt to create tar shells.</description>
 		<priorityInBillList>6</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -234,7 +233,7 @@
 			</li>
 			<li>
 				<thing>AB_AsphaltBucket</thing>
-				<countNeeded>5</countNeeded>		
+				<countNeeded>5</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -247,19 +246,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>Mortars</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeShrapnelShells</defName>
 		<label>Make shrapnel shells</label>
-		
 		<description>Use steel to create shrapnel shells.</description>
 		<priorityInBillList>7</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -269,7 +268,6 @@
 				<thing>Steel</thing>
 				<countNeeded>30</countNeeded>
 			</li>
-		
 		</ingredients>
 		<results>
 			<li>
@@ -281,19 +279,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeArmorPiercingShells</defName>
 		<label>Make armor-piercing shells</label>
-		
 		<description>Combine steel and chemfuel to create armor-piercing shells.</description>
 		<priorityInBillList>8</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -305,7 +303,7 @@
 			</li>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>10</countNeeded>		
+				<countNeeded>10</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -318,19 +316,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeClusterShells</defName>
 		<label>Make cluster shells</label>
-		
 		<description>Combine steel and chemfuel to create cluster shells.</description>
 		<priorityInBillList>9</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -342,7 +340,7 @@
 			</li>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>45</countNeeded>		
+				<countNeeded>45</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -355,19 +353,19 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>VFED_ImperialWarSolutions</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
 		<defName>VFEFactory_MakeDeadlifeShells</defName>
 		<label>Make deadlife shells</label>
-		
 		<description>Use bioferrite to create deadlife shells.</description>
 		<priorityInBillList>10</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		<autoInputSlots>			
+		<autoInputSlots>
 			<li>(-1,0,3)</li>
 			<li>(1,0,3)</li>
 		</autoInputSlots>
@@ -377,7 +375,6 @@
 				<thing>Bioferrite</thing>
 				<countNeeded>25</countNeeded>
 			</li>
-			
 		</ingredients>
 		<results>
 			<li>
@@ -389,8 +386,9 @@
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
-			
 			<li>DeadlifeDust</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedWeldingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 </Defs>

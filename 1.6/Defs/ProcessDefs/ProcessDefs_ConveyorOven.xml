@@ -39,6 +39,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakePemmican</defName>
@@ -80,6 +82,8 @@
 		<researchPrerequisites>
 			<li>Pemmican</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeSurvivalMeal</defName>
@@ -121,6 +125,8 @@
 		<researchPrerequisites>
 			<li>PackagedSurvivalMeal</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeMassProducedMeal</defName>
@@ -159,7 +165,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
 		<defName>VFEFactory_MakeBabyFood</defName>
@@ -195,6 +202,43 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewECandT">
+		<defName>VFEFactory_MakePumpkinCoffee</defName>
+		<label>Make pumpkin spice coffee</label>
+		<labelOverride>Make pumpkin spice coffee</labelOverride>
+		<description>Make pumpkin spice coffee, a cheap, mass produced generic coffee seeped in an array of spices, oddly excluding any actual pumpkin..</description>
+		<priorityInBillList>100</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>4000</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>VBE_RawCoffee</thing>
+				<countNeeded>25</countNeeded>			
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>VBE_PumpkinCoffee</thing>
+				<count>5</count>
+				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 </Defs>

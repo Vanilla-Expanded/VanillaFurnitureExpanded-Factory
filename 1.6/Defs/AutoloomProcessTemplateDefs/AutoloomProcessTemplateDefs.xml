@@ -31,6 +31,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<useFirstIngredientAsOutputStuff>true</useFirstIngredientAsOutputStuff>
 		<disallowMixing>true</disallowMixing>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedLoomSustainer</sustainerDef>
 	</VanillaFurnitureExpandedFactory.AutoloomProcessTemplateDef>
 	
 	

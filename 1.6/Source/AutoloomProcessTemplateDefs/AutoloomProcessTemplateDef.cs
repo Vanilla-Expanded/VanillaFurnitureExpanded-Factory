@@ -17,7 +17,7 @@ namespace VanillaFurnitureExpandedFactory
 		public bool onlyGrabAndOutputToFactoryHoppers;
 		public bool useFirstIngredientAsOutputStuff;
 		public bool disallowMixing;
-
-
+		public bool sustainerWhenWorking;
+		public SoundDef sustainerDef;
     }
 }

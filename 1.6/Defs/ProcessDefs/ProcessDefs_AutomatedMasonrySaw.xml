@@ -33,6 +33,8 @@
 		<researchPrerequisites>
 			<li>Stonecutting</li>
 		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedStoneCuttingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	
 	

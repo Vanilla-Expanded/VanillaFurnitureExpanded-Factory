@@ -100,6 +100,8 @@ namespace VanillaFurnitureExpandedFactory
             processDef.autoExtract= tp.autoExtract;
             processDef.onlyGrabAndOutputToFactoryHoppers = tp.onlyGrabAndOutputToFactoryHoppers;
             processDef.useFirstIngredientAsOutputStuff = tp.useFirstIngredientAsOutputStuff;
+            processDef.sustainerWhenWorking = tp.sustainerWhenWorking;
+            processDef.sustainerDef = tp.sustainerDef;
             InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;
         }

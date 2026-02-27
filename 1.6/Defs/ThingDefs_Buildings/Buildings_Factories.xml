@@ -65,7 +65,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li>
@@ -104,7 +104,6 @@
 					<li>VFEFactory_DigForUranium</li>
 					<li MayRequire="sarg.alphaanimals">VFEFactory_DigForSkySteel</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -175,7 +174,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>300</basePowerConsumption>
 			</li>
 			<li>
@@ -202,7 +201,6 @@
 					<li>VFEFactory_SmeltMetalFromChunk</li>
 					<li>VFEFactory_SmeltMechanoid</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -273,7 +271,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>220</basePowerConsumption>
 			</li>
 			<li>
@@ -299,7 +297,6 @@
 					<li MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">VFEFactory_MakeChemfuelFromRedWood</li>
 					<li MayRequire="sarg.alphabiomes">VFEFactory_MakeChemfuelFromMushroomWood</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -370,7 +367,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>150</basePowerConsumption>
 			</li>
 			<li>
@@ -393,7 +390,6 @@
 				<processes>
 					<li>VFEFactory_MakeStoneBlocks</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -464,7 +460,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>200</basePowerConsumption>
 			</li>
 			<li>
@@ -488,7 +484,6 @@
 					<li>VFEFactory_MinceCorpses</li>
 					<li>VFEFactory_MinceHumanCorpses</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -559,7 +554,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>460</basePowerConsumption>
 			</li>
 			<li>
@@ -586,7 +581,6 @@
 					<li>VFEFactory_MakeMassProducedMeal</li>
 					<li MayRequire="Ludeon.RimWorld.Biotech">VFEFactory_MakeBabyFood</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -657,7 +651,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>450</basePowerConsumption>
 			</li>
 			<li>
@@ -684,7 +678,6 @@
 					<li MayRequire="sarg.alphaanimals">VFEFactory_BlueGel_To_Hexagel</li>
 					<li MayRequire="sarg.alphaanimals">VFEFactory_Make_HexagelCore</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -756,7 +749,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>600</basePowerConsumption>
 			</li>
 			<li>
@@ -779,7 +772,6 @@
 				<processes>
 					<li>VFEFactory_SynthesizeNeutroamine</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
@@ -849,7 +841,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>400</basePowerConsumption>
 			</li>
 			<li>
@@ -882,13 +874,11 @@
 					<li MayRequire="OskarPotocki.VFE.Deserters">VFEFactory_MakeClusterShells</li>
 					<li MayRequire="Ludeon.RimWorld.Anomaly">VFEFactory_MakeDeadlifeShells</li>
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_Autoloom</defName>
 		<label>autoloom</label>
@@ -953,7 +943,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li>
@@ -975,9 +965,7 @@
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 					<li>VFEFactory_MakePatchleather</li>
-					
 				</processes>
-				<progressBarOffset>(0,0,-0.75)</progressBarOffset>
 				<hideSettings>true</hideSettings>
 			</li>
 		</comps>
