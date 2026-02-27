@@ -3,7 +3,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeStoneBlocks</defName>
 		<label>Cut 20 blocks from a stone chunk</label>
-		<labelOverride>Cut 20 blocks from a stone chunk</labelOverride>
+		<labelOverride>Make any stone blocks</labelOverride>
 		<description>Cut rock chunks into usable stone blocks.</description>
 		<priorityInBillList>0</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
