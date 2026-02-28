@@ -49,6 +49,7 @@ namespace VanillaFurnitureExpandedFactory
         }
 
         public ThingOwner<Thing> innerContainer;
+        private bool dirtied;
 
         private readonly List<Thing> transferred = new List<Thing>(4);
         private readonly Rot4[] validOutputs = new Rot4[3];
@@ -396,7 +397,6 @@ namespace VanillaFurnitureExpandedFactory
             if (changed)
             {
                 InvalidateCache();
-                if (map?.mapDrawer != null) map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
             }
         }
 
@@ -466,7 +466,6 @@ namespace VanillaFurnitureExpandedFactory
         {
             Rotation = newRotation;
             InvalidateCache();
-            Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
             InvalidateNeighborCaches();
         }
 
@@ -488,7 +487,6 @@ namespace VanillaFurnitureExpandedFactory
             cachedItemsPerCell = Props.itemsPerCell;
             InvalidateCache();
             InvalidateNeighborCaches();
-            map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
@@ -515,6 +513,11 @@ namespace VanillaFurnitureExpandedFactory
         protected override void Tick()
         {
             base.Tick();
+            if (!dirtied)
+            {
+                InvalidateCache();
+                dirtied = true;
+            }
             Map localMap = this.Map;
             IntVec3 localPos = this.Position;
             if (this.IsHashIntervalTick(60))
@@ -524,7 +527,7 @@ namespace VanillaFurnitureExpandedFactory
             if (this.IsHashIntervalTick(10))
             {
                 CheckForItemsOnCell(localMap, localPos);
-                CheckRefuelableTarget(localMap, localPos);
+                CheckRefuelableTarget();
             }
 
             if (innerContainer.Count > 0 && state == ConveyorState.Moving)
@@ -753,7 +756,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             if (HasSpace() && state != ConveyorState.Waiting)
             {
-                TryPullItem(map);
+                TryPullItem();
             }
 
             if (innerContainer.Count > 0 && state != ConveyorState.Moving)
@@ -801,7 +804,7 @@ namespace VanillaFurnitureExpandedFactory
                     if (downstreamReason == DownstreamBlockReason.None)
                     {
                         InitiateTransfer();
-                        itemProgress += (1f / Props.ticksPerCell);
+                        itemProgress += 1f / Props.ticksPerCell;
                         lastItemProgress = itemProgress;
                     }
                     else
@@ -822,7 +825,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void TryPullItem(Map map)
+        private void TryPullItem()
         {
             if (state == ConveyorState.Waiting) return;
             if (!hasAdjacentHopper) return;
@@ -885,17 +888,13 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void CheckRefuelableTarget(Map map, IntVec3 position)
+        private void CheckRefuelableTarget()
         {
             if (cachedGraphic != null && HasRefuelableTarget(out var refuelComp))
             {
                 if (refuelComp.parent.DestroyedOrNull())
                 {
                     InvalidateCache();
-                    if (map?.mapDrawer != null)
-                    {
-                        map.mapDrawer.MapMeshDirty(position, MapMeshFlagDefOf.Things);
-                    }
                 }
             }
         }
@@ -1736,6 +1735,8 @@ namespace VanillaFurnitureExpandedFactory
 
             if (!TryFindInputConveyor(out cachedInputDir))
                 cachedInputDir = Rotation.Opposite;
+
+            if (Map?.mapDrawer != null) Map.mapDrawer.MapMeshDirty(Position, MapMeshFlagDefOf.Things);
         }
 
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -1743,14 +1744,13 @@ namespace VanillaFurnitureExpandedFactory
             float baseItemY = drawLoc.y + 1f;
             drawLoc.y += cachedYOffset;
 
-            if (IsSplitter || IsMerger)
+            if (IsDrawnDynamically)
             {
                 if (cachedIsSingleDirectional)
                     Graphic.Draw(drawLoc, Rot4.North, this, 0f);
                 else
                     this.Graphic.Draw(drawLoc, flip ? this.Rotation.Opposite : this.Rotation, this);
             }
-
 
             if (ShowItems && innerContainer.Count > 0)
             {
@@ -1769,11 +1769,22 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
+        private bool IsDrawnDynamically => IsSplitter || IsMerger || HasRefuelableTarget(out _);
         public override void Print(SectionLayer layer)
         {
-            if (IsSplitter || IsMerger)
+            if (IsDrawnDynamically)
                 return;
-            Graphic.Print(layer, this, 0f);
+
+            var graphic = Graphic;
+            
+            if (cachedIsSingleDirectional)
+            {
+                Printer_Plane.PrintPlane(layer, DrawPos + new Vector3(0f, cachedYOffset, 0f), def.graphicData.drawSize, graphic.MatSingle);
+            }
+            else
+            {
+                graphic.Print(layer, this, 0f);
+            }
         }
 
         public Vector3 CalculateItemPosition()
@@ -1929,7 +1940,7 @@ namespace VanillaFurnitureExpandedFactory
                 sb.AppendLine($"  - x{thing.stackCount} {thing.def.defName}");
 
             sb.AppendLine($"Rotation: {Rotation.ToStringHuman()}, ForwardCell: {ForwardCell}");
-            sb.AppendLine($"IsTurn: {IsTurn}, IsMerger: {IsMerger}, IsSplitter: {IsSplitter}");
+            sb.AppendLine($"IsTurn: {IsTurn}, IsMerger: {IsMerger}, IsSplitter: {IsSplitter}, IsRefuelingPort: {HasRefuelableTarget(out _)}");
             sb.AppendLine($"InputCount: {InputCount}, OutputCount: {OutputCount}");
             sb.AppendLine($"cachedYOffset: {cachedYOffset}");
 
