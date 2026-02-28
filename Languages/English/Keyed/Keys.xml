@@ -33,4 +33,17 @@
 	<VFEFactory_CantLinkSelf>Can't link: Cannot link to self.</VFEFactory_CantLinkSelf>
 	<VFEFactory_CantLinkDifferentRotation>Can't link: Entrance and exit must have the same rotation.</VFEFactory_CantLinkDifferentRotation>
 	<VFEFactory_ItemsUnderground>Items underground: {0}</VFEFactory_ItemsUnderground>
+	<VFEFactory_IncreaseZone>Increase zone</VFEFactory_IncreaseZone>
+	<VFEFactory_IncreaseZoneDesc>Extend the zone in which autofarmer will harvest and sow crops.</VFEFactory_IncreaseZoneDesc>
+	<VFEFactory_DecreaseZone>Decrease zone</VFEFactory_DecreaseZone>
+	<VFEFactory_DecreaseZoneDesc>Contract the zone in which autofarmer will harvest and sow crops.</VFEFactory_DecreaseZoneDesc>
+	<VFEFactory_StartAutofarmer>Start</VFEFactory_StartAutofarmer>
+	<VFEFactory_StartAutofarmerDesc>Initiate the autofarmer now. It will move through the designated zone, harvesting and sowing crops. It will return back to the autofarmer platform when done.</VFEFactory_StartAutofarmerDesc>
+	<VFEFactory_CancelAutofarmer>Cancel</VFEFactory_CancelAutofarmer>
+	<VFEFactory_CancelAutofarmerDesc>Cancel the process and have the autofarmer return to the platform.</VFEFactory_CancelAutofarmerDesc>
+	<VFEFactory_Autoharvesting>Autoharvesting</VFEFactory_Autoharvesting>
+	<VFEFactory_AutoharvestingDesc>Enable or disable automatic harvesting and plant cutting in the designated zone.</VFEFactory_AutoharvestingDesc>
+	<VFEFactory_Autosowing>Autosowing</VFEFactory_Autosowing>
+	<VFEFactory_AutosowingDesc>Enable or disable automatic sowing of the selected crop.</VFEFactory_AutosowingDesc>
+	<VFEFactory_AutofarmerObstructed>Autofarmer cannot initiate due to a large object obstructing its path.</VFEFactory_AutofarmerObstructed>
 </LanguageData>

@@ -35,7 +35,7 @@
 			<Beauty>-6</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -76,7 +76,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -144,7 +144,7 @@
 			<Beauty>-10</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>450</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -185,7 +185,7 @@
 				<heatPerSecond>14</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -241,7 +241,7 @@
 			<Beauty>-10</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>450</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -282,7 +282,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -337,7 +337,7 @@
 			<Beauty>-8</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -378,7 +378,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -430,7 +430,7 @@
 			<Beauty>-14</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -471,7 +471,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -524,7 +524,7 @@
 			<Beauty>-10</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -565,7 +565,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -622,7 +622,7 @@
 			<Beauty>-16</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -662,7 +662,7 @@
 				<heatPerSecond>10</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -720,7 +720,7 @@
 			<Beauty>-10</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -760,7 +760,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -812,7 +812,7 @@
 			<Beauty>-14</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>400</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -852,7 +852,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -914,7 +914,7 @@
 			<Beauty>-10</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>500</MaxHitPoints>
-			<Flammability>1.0</Flammability>
+			<Flammability>1</Flammability>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -954,7 +954,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -968,6 +968,74 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_Autofarmer</defName>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
+		<label>autofarmer</label>
+		<description>todo</description>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<texPath>Things/Building/Factories/Autofarmer/Autofarmer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(7, 3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(7, 3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>Impassable</passability>
+		<pathCost>50</pathCost>
+		<surfaceType>Item</surfaceType>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>VFE_FactoryBasics</li>
+		</researchPrerequisites>
+		<building>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
