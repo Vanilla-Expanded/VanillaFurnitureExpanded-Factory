@@ -3,7 +3,6 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
-using Verse.Sound;
 
 namespace VanillaFurnitureExpandedFactory
 {
@@ -35,7 +34,8 @@ namespace VanillaFurnitureExpandedFactory
 		private int lastProcessedRow = 0;
 
 		private CompPowerTrader powerComp;
-		private Sustainer sustainer;
+		private List<Effecter> harvestEffecters = new List<Effecter>();
+		private List<Effecter> sowEffecters = new List<Effecter>();
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
 		{
@@ -59,21 +59,25 @@ namespace VanillaFurnitureExpandedFactory
 		{
 			base.Tick();
 			UpdatePowerConsumption();
-			if (!powerComp.PowerOn && state != AutofarmerState.Idle && state != AutofarmerState.MovingBackward)
+			if (!powerComp.PowerOn)
 			{
-				state = AutofarmerState.MovingBackward;
+				foreach (var e in harvestEffecters) e?.Cleanup();
+				harvestEffecters.Clear();
+				foreach (var e in sowEffecters) e?.Cleanup();
+				sowEffecters.Clear();
+				return;
 			}
 
 			if (state == AutofarmerState.Idle)
 			{
-				if (sustainer != null && !sustainer.Ended)
-				{
-					sustainer.End();
-				}
+				foreach (var e in harvestEffecters) e?.Cleanup();
+				harvestEffecters.Clear();
+				foreach (var e in sowEffecters) e?.Cleanup();
+				sowEffecters.Clear();
 				return;
 			}
 
-			MaintainSustainer();
+			MaintainEffecters();
 
 			float speedTicks = 60f;
 			if (state == AutofarmerState.MovingForward)
@@ -116,16 +120,20 @@ namespace VanillaFurnitureExpandedFactory
 					currentOffset = 0f;
 					state = AutofarmerState.Idle;
 					lastProcessedRow = 0;
+					foreach (var e in harvestEffecters) e?.Cleanup();
+					harvestEffecters.Clear();
+					foreach (var e in sowEffecters) e?.Cleanup();
+					sowEffecters.Clear();
 				}
 			}
 		}
 
 		private void ProcessRow(int rowOffset)
 		{
-			foreach (IntVec3 c in GetRowCells(rowOffset))
-			{
-				if (!c.InBounds(Map)) continue;
+			var cells = GetRowCells(rowOffset).ToList();
 
+			foreach (IntVec3 c in cells)
+			{
 				Plant plant = c.GetPlant(Map);
 				if (autoHarvest && plant != null)
 				{
@@ -146,19 +154,20 @@ namespace VanillaFurnitureExpandedFactory
 					}
 
 					if (plant.def.plant.HarvestDestroys)
-					{
 						plant.Destroy();
-					}
 					else
 					{
 						plant.Growth = plant.def.plant.harvestAfterGrowth;
 						Map.mapDrawer.MapMeshDirty(plant.Position, MapMeshFlagDefOf.Things);
 					}
 				}
+			}
 
+			foreach (IntVec3 c in cells)
+			{
 				if (autoSow && plantDefToGrow != null && c.GetPlant(Map) == null)
 				{
-					if (plantDefToGrow.CanNowPlantAt(c, Map) && PlantUtility.AdjacentSowBlocker(plantDefToGrow, c, Map) == null)
+					if (!this.OccupiedRect().Contains(c) && plantDefToGrow.CanNowPlantAt(c, Map))
 					{
 						Effecter effecter = EffecterDefOf.Sow.Spawn(c, Map);
 						effecter.Trigger(new TargetInfo(c, Map), new TargetInfo(c, Map));
@@ -201,7 +210,11 @@ namespace VanillaFurnitureExpandedFactory
 			}
 
 			for (int i = -halfWidth; i <= halfWidth; i++)
-				yield return frontEdge + right * i;
+			{
+				IntVec3 cell = frontEdge + right * i;
+				if (!cell.InBounds(Map)) continue;
+				yield return cell;
+			}
 		}
 
 		private void UpdatePowerConsumption()
@@ -216,15 +229,69 @@ namespace VanillaFurnitureExpandedFactory
 			}
 		}
 
-		private void MaintainSustainer()
+		private void MaintainEffecters()
 		{
-			Vector3 sustainerPos = DrawPos + Rotation.FacingCell.ToVector3() * currentOffset;
-			if (sustainer == null || sustainer.Ended)
+			if (state != AutofarmerState.MovingForward)
 			{
-				SoundInfo info = SoundInfo.InMap(new TargetInfo(sustainerPos.ToIntVec3(), Map));
-				sustainer = InternalDefOf.VFEFactory_DefaultFactorySustainer.TrySpawnSustainer(info);
+				foreach (var e in harvestEffecters) e?.Cleanup();
+				harvestEffecters.Clear();
+				foreach (var e in sowEffecters) e?.Cleanup();
+				sowEffecters.Clear();
+				return;
 			}
-			sustainer.Maintain();
+
+			int visualRow = Mathf.Max(1, Mathf.RoundToInt(currentOffset));
+			var cells = GetRowCells(visualRow).ToList();
+
+			while (harvestEffecters.Count < cells.Count) harvestEffecters.Add(null);
+			while (sowEffecters.Count < cells.Count) sowEffecters.Add(null);
+
+			for (int i = 0; i < cells.Count; i++)
+			{
+				IntVec3 c = cells[i];
+				TargetInfo target = new TargetInfo(c, Map);
+				Plant plant = c.GetPlant(Map);
+
+				bool wantHarvest = autoHarvest && plant != null
+				                   && (!plant.sown || plant.HarvestableNow);
+				bool wantSow = !wantHarvest && autoSow && plantDefToGrow != null
+				               && plant == null && plantDefToGrow.CanNowPlantAt(c, Map);
+
+				if (wantHarvest)
+				{
+					EffecterDef effecterDef = plant.def.plant.IsTree
+						? EffecterDefOf.Harvest_Tree
+						: EffecterDefOf.Harvest_Plant;
+
+					if (harvestEffecters[i] != null && harvestEffecters[i].def != effecterDef)
+					{
+						harvestEffecters[i].Cleanup();
+						harvestEffecters[i] = null;
+					}
+
+					if (harvestEffecters[i] == null)
+						harvestEffecters[i] = effecterDef.Spawn(c, Map);
+
+					harvestEffecters[i].EffectTick(target, target);
+				}
+				else
+				{
+					harvestEffecters[i]?.Cleanup();
+					harvestEffecters[i] = null;
+				}
+
+				if (wantSow)
+				{
+					if (sowEffecters[i] == null)
+						sowEffecters[i] = EffecterDefOf.Sow.Spawn(c, Map);
+					sowEffecters[i].EffectTick(target, target);
+				}
+				else
+				{
+					sowEffecters[i]?.Cleanup();
+					sowEffecters[i] = null;
+				}
+			}
 		}
 
 		public override IEnumerable<Gizmo> GetGizmos()
@@ -249,7 +316,7 @@ namespace VanillaFurnitureExpandedFactory
 
 			if (state == AutofarmerState.Idle)
 			{
-				yield return new Command_Action
+				Command_Action command_Action2 = new Command_Action
 				{
 					defaultLabel = "VFEFactory_StartAutofarmer".Translate(),
 					defaultDesc = "VFEFactory_StartAutofarmerDesc".Translate(),
@@ -265,6 +332,11 @@ namespace VanillaFurnitureExpandedFactory
 						lastProcessedRow = 0;
 					}
 				};
+				if (!powerComp.PowerOn)
+				{
+					command_Action2.Disable("NoPower".Translate().CapitalizeFirst());
+				}
+				yield return command_Action2;
 			}
 			else
 			{
@@ -277,7 +349,12 @@ namespace VanillaFurnitureExpandedFactory
 				};
 			}
 
-			yield return SetPlantToGrowCommand(this);
+			yield return new Command_SetPlantToGrowAutofarmer
+			{
+				defaultDesc = "CommandSelectPlantToGrowDesc".Translate(),
+				hotKey = KeyBindingDefOf.Misc12,
+				settable = this
+			};
 
 			yield return new Command_Toggle
 			{
@@ -295,16 +372,6 @@ namespace VanillaFurnitureExpandedFactory
 				icon = AutoSowIcon,
 				isActive = () => autoSow,
 				toggleAction = () => autoSow = !autoSow
-			};
-		}
-
-		public static Command_SetPlantToGrowAutofarmer SetPlantToGrowCommand(IPlantToGrowSettable settable)
-		{
-			return new Command_SetPlantToGrowAutofarmer
-			{
-				defaultDesc = "CommandSelectPlantToGrowDesc".Translate(),
-				hotKey = KeyBindingDefOf.Misc12,
-				settable = settable
 			};
 		}
 
@@ -342,7 +409,6 @@ namespace VanillaFurnitureExpandedFactory
 			{
 				foreach (IntVec3 c in GetRowCells(i))
 				{
-					if (!c.InBounds(Map)) continue;
 					Building b = c.GetEdifice(Map);
 					if (b != null && b.def.passability == Traversability.Impassable) return true;
 				}
