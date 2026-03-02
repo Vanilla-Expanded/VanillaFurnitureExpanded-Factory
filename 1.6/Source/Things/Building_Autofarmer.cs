@@ -3,6 +3,7 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace VanillaFurnitureExpandedFactory
 {
@@ -36,6 +37,8 @@ namespace VanillaFurnitureExpandedFactory
 		private CompPowerTrader powerComp;
 		private List<Effecter> harvestEffecters = new List<Effecter>();
 		private List<Effecter> sowEffecters = new List<Effecter>();
+		private Sustainer workingSustainer;
+		private IntVec3 lastMachineCell;
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
 		{
@@ -65,6 +68,8 @@ namespace VanillaFurnitureExpandedFactory
 				harvestEffecters.Clear();
 				foreach (var e in sowEffecters) e?.Cleanup();
 				sowEffecters.Clear();
+				workingSustainer?.End();
+				workingSustainer = null;
 				return;
 			}
 
@@ -74,10 +79,31 @@ namespace VanillaFurnitureExpandedFactory
 				harvestEffecters.Clear();
 				foreach (var e in sowEffecters) e?.Cleanup();
 				sowEffecters.Clear();
+				workingSustainer?.End();
+				workingSustainer = null;
 				return;
 			}
 
 			MaintainEffecters();
+
+			if (state == AutofarmerState.MovingForward)
+			{
+				Vector3 machinePos = DrawPos + Rotation.FacingCell.ToVector3() * currentOffset;
+				IntVec3 machineCell = machinePos.ToIntVec3();
+				if (machineCell != lastMachineCell || workingSustainer is null)
+				{
+					workingSustainer?.End();
+					workingSustainer = InternalDefOf.VFEFactory_DefaultFactorySustainer.TrySpawnSustainer(SoundInfo.InMap(new TargetInfo(machineCell, Map), MaintenanceType.PerTick));
+					lastMachineCell = machineCell;
+				}
+				workingSustainer.Maintain();
+			}
+			else
+			{
+				workingSustainer?.End();
+				workingSustainer = null;
+				lastMachineCell = IntVec3.Invalid;
+			}
 
 			float speedTicks = 60f;
 			if (state == AutofarmerState.MovingForward)
@@ -125,6 +151,8 @@ namespace VanillaFurnitureExpandedFactory
 					foreach (var e in sowEffecters) e?.Cleanup();
 					sowEffecters.Clear();
 				}
+				workingSustainer?.End();
+				workingSustainer = null;
 			}
 		}
 

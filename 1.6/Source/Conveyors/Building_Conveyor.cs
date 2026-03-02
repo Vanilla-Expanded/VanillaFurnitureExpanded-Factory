@@ -1369,6 +1369,8 @@ namespace VanillaFurnitureExpandedFactory
 
         private bool DetectTurn()
         {
+            if (InputCount > 1) return false;
+
             if (OutputCount > 1) return false;
 
             if (OutputCount == 1 && cachedSingleOutput.IsValid && cachedSingleOutput != Rotation)
@@ -1526,26 +1528,33 @@ namespace VanillaFurnitureExpandedFactory
 
             if (IsSplitter)
             {
-                string baseName = HasFilterRestrictions() ? "ConveyorFilter" : "ConveyorSplitter";
-                var outputs = new List<Rot4>(4);
-
-                for (int i = 0; i < CanonicalOrder.Length; i++)
+                if (HasFilterRestrictions())
                 {
-                    if (IsValidOutput(CanonicalOrder[i]))
-                        outputs.Add(CanonicalOrder[i]);
-                }
-
-                if (outputs.Count == 2)
-                {
-                    string outputsPrefix = outputs[0].ToStringWord() + outputs[1].ToStringWord();
-                    string rotationSuffix = Rotation.ToStringWord().ToLower();
-                    texturePath = $"{Props.baseTexPath}/{baseName}_{outputsPrefix}_{rotationSuffix}";
-                    useSingleGraphic = true;
+                    texturePath = $"{Props.baseTexPath}/ConveyorFilter";
+                    useSingleGraphic = false;
                 }
                 else
                 {
-                    texturePath = $"{Props.baseTexPath}/{baseName}";
-                    useSingleGraphic = false;
+                    var outputs = new List<Rot4>(4);
+
+                    for (int i = 0; i < CanonicalOrder.Length; i++)
+                    {
+                        if (IsValidOutput(CanonicalOrder[i]))
+                            outputs.Add(CanonicalOrder[i]);
+                    }
+
+                    if (outputs.Count == 2)
+                    {
+                        string outputsPrefix = outputs[0].ToStringWord() + outputs[1].ToStringWord();
+                        string rotationSuffix = Rotation.ToStringWord().ToLower();
+                        texturePath = $"{Props.baseTexPath}/ConveyorSplitter_{outputsPrefix}_{rotationSuffix}";
+                        useSingleGraphic = true;
+                    }
+                    else
+                    {
+                        texturePath = $"{Props.baseTexPath}/ConveyorSplitter";
+                        useSingleGraphic = false;
+                    }
                 }
             }
             else if (IsMerger)
