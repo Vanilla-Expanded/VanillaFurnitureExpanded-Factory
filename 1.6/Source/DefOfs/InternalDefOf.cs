@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +14,11 @@ namespace VanillaFurnitureExpandedFactory
 		{
 			DefOfHelper.EnsureInitializedInCtor(typeof(InternalDefOf));
 		}
-		
+
 		public static RoomRoleDef VFEFactory_FactoryRoom;
 		public static ThingDef HandTailoringBench;
-		      public static ThingDef VFEFactory_Autoloom;
-		      public static SoundDef VFEFactory_DefaultFactorySustainer;
-		  }
+		public static ThingDef VFEFactory_Autoloom;
+		public static SoundDef VFEFactory_DefaultFactorySustainer;
+		public static JobDef VFEFactory_HaulFromConveyor;
+	}
 }

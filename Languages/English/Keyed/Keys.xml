@@ -48,4 +48,6 @@
 	<VFEFactory_AutocycleWhenGrown>Autocycle when grown</VFEFactory_AutocycleWhenGrown>
 	<VFEFactory_AutocycleWhenGrownDesc>Enable or disable an automatic harvesting/sowing cycle when crops in the zone reach 100% maturity.</VFEFactory_AutocycleWhenGrownDesc>
 	<VFEFactory_AutofarmerObstructed>Autofarmer cannot initiate due to a large object obstructing its path.</VFEFactory_AutofarmerObstructed>
-</LanguageData>
+	<VFEFactory_HaulFromConveyor>Haul from conveyor</VFEFactory_HaulFromConveyor>
+	<VFEFactory_CannotHaulFromConveyor>Cannot haul from conveyor</VFEFactory_CannotHaulFromConveyor>
+	</LanguageData>
