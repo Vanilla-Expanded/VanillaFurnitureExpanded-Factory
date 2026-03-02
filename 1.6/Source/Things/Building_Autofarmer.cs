@@ -11,13 +11,14 @@ namespace VanillaFurnitureExpandedFactory
 	[HotSwappable]
 	public class Building_Autofarmer : Building, IPlantToGrowSettable
 	{
-		public enum AutofarmerState { Idle, MovingForward, MovingBackward }
+		public enum AutofarmerState { Idle, MovingForward, MovingBackward, Offloading }
 		private static readonly Texture2D IncreaseZoneIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/ZoneLarger_Gizmo");
 		private static readonly Texture2D DecreaseZoneIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/ZoneSmaller_Gizmo");
 		private static readonly Texture2D StartIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Start_Gizmo");
 		private static readonly Texture2D CancelIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Cancel_Gizmo");
 		private static readonly Texture2D AutoHarvestIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autoharvesting_Gizmo");
 		private static readonly Texture2D AutoSowIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autosowing_Gizmo");
+		private static readonly Texture2D AutocycleIcon = ContentFinder<Texture2D>.Get("UI/Gizmo/Autocycle_Gizmo");
 		public static readonly Graphic AutofarmerBaseGraphic = GraphicDatabase.Get<Graphic_Multi>(
 			"Things/Building/Factories/Autofarmer/AutofarmerBase",
 			ShaderDatabase.Cutout, new Vector2(7, 3), Color.white);
@@ -28,6 +29,7 @@ namespace VanillaFurnitureExpandedFactory
 		private int zoneLength = 3;
 		private bool autoHarvest = true;
 		private bool autoSow = true;
+		private bool autocycle = false;
 		private ThingDef plantDefToGrow = ThingDefOf.Plant_Potato;
 
 		private AutofarmerState state = AutofarmerState.Idle;
@@ -39,6 +41,10 @@ namespace VanillaFurnitureExpandedFactory
 		private List<Effecter> sowEffecters = new List<Effecter>();
 		private Sustainer workingSustainer;
 		private IntVec3 lastMachineCell;
+		private List<Thing> harvestStorageThings = new List<Thing>();
+		private List<int> harvestStorageLanes = new List<int>();
+		private int offloadTickTimer = 0;
+		private int autocycleCheckTimer = 0;
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
 		{
@@ -52,10 +58,19 @@ namespace VanillaFurnitureExpandedFactory
 			Scribe_Values.Look(ref zoneLength, "zoneLength", 3);
 			Scribe_Values.Look(ref autoHarvest, "autoHarvest", true);
 			Scribe_Values.Look(ref autoSow, "autoSow", true);
+			Scribe_Values.Look(ref autocycle, "autocycle", false);
 			Scribe_Defs.Look(ref plantDefToGrow, "plantDefToGrow");
 			Scribe_Values.Look(ref state, "state", AutofarmerState.Idle);
 			Scribe_Values.Look(ref currentOffset, "currentOffset", 0f);
 			Scribe_Values.Look(ref lastProcessedRow, "lastProcessedRow", 0);
+			Scribe_Collections.Look(ref harvestStorageThings, "harvestStorageThings", LookMode.Deep);
+			Scribe_Collections.Look(ref harvestStorageLanes, "harvestStorageLanes", LookMode.Value);
+
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
+			{
+				harvestStorageThings ??= new List<Thing>();
+				harvestStorageLanes ??= new List<int>();
+			}
 		}
 
 		protected override void Tick()
@@ -81,6 +96,20 @@ namespace VanillaFurnitureExpandedFactory
 				sowEffecters.Clear();
 				workingSustainer?.End();
 				workingSustainer = null;
+
+				if (autocycle && powerComp.PowerOn)
+				{
+					autocycleCheckTimer++;
+					if (autocycleCheckTimer >= 600)
+					{
+						autocycleCheckTimer = 0;
+						if (!IsZoneObstructed() && GetCropMaturityPercent() >= 0.9f)
+						{
+							state = AutofarmerState.MovingForward;
+							lastProcessedRow = 0;
+						}
+					}
+				}
 				return;
 			}
 
@@ -144,21 +173,33 @@ namespace VanillaFurnitureExpandedFactory
 				if (currentOffset <= 0f)
 				{
 					currentOffset = 0f;
-					state = AutofarmerState.Idle;
 					lastProcessedRow = 0;
 					foreach (var e in harvestEffecters) e?.Cleanup();
 					harvestEffecters.Clear();
 					foreach (var e in sowEffecters) e?.Cleanup();
 					sowEffecters.Clear();
+					workingSustainer?.End();
+					workingSustainer = null;
+
+					state = harvestStorageThings.Count > 0 ? AutofarmerState.Offloading : AutofarmerState.Idle;
+					offloadTickTimer = 0;
 				}
-				workingSustainer?.End();
-				workingSustainer = null;
+			}
+			else if (state == AutofarmerState.Offloading)
+			{
+				offloadTickTimer++;
+				if (offloadTickTimer >= 60)
+				{
+					offloadTickTimer = 0;
+					TryOffloadToHoppers();
+				}
 			}
 		}
 
 		private void ProcessRow(int rowOffset)
 		{
 			var cells = GetRowCells(rowOffset).ToList();
+			List<Building_FactoryHopper> backHoppers = GetBackHoppers();
 
 			foreach (IntVec3 c in cells)
 			{
@@ -177,12 +218,47 @@ namespace VanillaFurnitureExpandedFactory
 						{
 							Thing t = ThingMaker.MakeThing(plant.def.plant.harvestedThingDef);
 							t.stackCount = yield;
-							GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Near);
+
+							bool hasValidHopper = false;
+							for (int h = 0; h < backHoppers.Count; h++)
+							{
+								if (backHoppers[h] != null && backHoppers[h].slotGroup != null && backHoppers[h].slotGroup.Settings.AllowedToAccept(t))
+								{
+									hasValidHopper = true;
+									break;
+								}
+							}
+
+							if (hasValidHopper)
+							{
+								int lane = GetLaneIndex(c);
+								bool merged = false;
+								for (int idx = 0; idx < harvestStorageThings.Count; idx++)
+								{
+									if (harvestStorageLanes[idx] == lane && harvestStorageThings[idx].CanStackWith(t))
+									{
+										harvestStorageThings[idx].stackCount += t.stackCount;
+										merged = true;
+										break;
+									}
+								}
+								if (!merged)
+								{
+									harvestStorageThings.Add(t);
+									harvestStorageLanes.Add(lane);
+								}
+							}
+							else
+							{
+								GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Direct);
+							}
 						}
 					}
 
 					if (plant.def.plant.HarvestDestroys)
+					{
 						plant.Destroy();
+					}
 					else
 					{
 						plant.Growth = plant.def.plant.harvestAfterGrowth;
@@ -247,14 +323,8 @@ namespace VanillaFurnitureExpandedFactory
 
 		private void UpdatePowerConsumption()
 		{
-			if (state == AutofarmerState.Idle)
-			{
-				powerComp.PowerOutput = -50f;
-			}
-			else
-			{
-				powerComp.PowerOutput = -1200f;
-			}
+			powerComp.PowerOutput = (state == AutofarmerState.Idle || state == AutofarmerState.Offloading)
+				? -50f : -1200f;
 		}
 
 		private void MaintainEffecters()
@@ -271,8 +341,14 @@ namespace VanillaFurnitureExpandedFactory
 			int visualRow = Mathf.Max(1, Mathf.RoundToInt(currentOffset));
 			var cells = GetRowCells(visualRow).ToList();
 
-			while (harvestEffecters.Count < cells.Count) harvestEffecters.Add(null);
-			while (sowEffecters.Count < cells.Count) sowEffecters.Add(null);
+			while (harvestEffecters.Count < cells.Count)
+			{
+				harvestEffecters.Add(null);
+			}
+			while (sowEffecters.Count < cells.Count)
+			{
+				sowEffecters.Add(null);
+			}
 
 			for (int i = 0; i < cells.Count; i++)
 			{
@@ -281,9 +357,9 @@ namespace VanillaFurnitureExpandedFactory
 				Plant plant = c.GetPlant(Map);
 
 				bool wantHarvest = autoHarvest && plant != null
-				                   && (!plant.sown || plant.HarvestableNow);
+								   && (!plant.sown || plant.HarvestableNow);
 				bool wantSow = !wantHarvest && autoSow && plantDefToGrow != null
-				               && plant == null && plantDefToGrow.CanNowPlantAt(c, Map);
+							   && plant == null && plantDefToGrow.CanNowPlantAt(c, Map);
 
 				if (wantHarvest)
 				{
@@ -298,7 +374,9 @@ namespace VanillaFurnitureExpandedFactory
 					}
 
 					if (harvestEffecters[i] == null)
+					{
 						harvestEffecters[i] = effecterDef.Spawn(c, Map);
+					}
 
 					harvestEffecters[i].EffectTick(target, target);
 				}
@@ -322,6 +400,149 @@ namespace VanillaFurnitureExpandedFactory
 			}
 		}
 
+		private int GetLaneIndex(IntVec3 cell)
+		{
+			CellRect rect = this.OccupiedRect();
+			return (Rotation == Rot4.North || Rotation == Rot4.South)
+				? cell.x - rect.minX
+				: cell.z - rect.minZ;
+		}
+
+		private List<Building_FactoryHopper> GetBackHoppers()
+		{
+			CellRect rect = this.OccupiedRect();
+			List<IntVec3> backCells = new List<IntVec3>();
+
+			if (Rotation == Rot4.North)
+			{
+				for (int x = rect.minX; x <= rect.maxX; x++)
+				{
+					backCells.Add(new IntVec3(x, 0, rect.minZ - 1));
+				}
+			}
+			else if (Rotation == Rot4.South)
+			{
+				for (int x = rect.minX; x <= rect.maxX; x++)
+				{
+					backCells.Add(new IntVec3(x, 0, rect.maxZ + 1));
+				}
+			}
+			else if (Rotation == Rot4.East)
+			{
+				for (int z = rect.minZ; z <= rect.maxZ; z++)
+				{
+					backCells.Add(new IntVec3(rect.minX - 1, 0, z));
+				}
+			}
+			else
+			{
+				for (int z = rect.minZ; z <= rect.maxZ; z++)
+				{
+					backCells.Add(new IntVec3(rect.maxX + 1, 0, z));
+				}
+			}
+
+			return backCells.Select(c => c.InBounds(Map) ? c.GetFirstBuilding(Map) as Building_FactoryHopper : null).ToList();
+		}
+
+		private void TryOffloadToHoppers()
+		{
+			List<Building_FactoryHopper> backHoppers = GetBackHoppers();
+
+			for (int i = harvestStorageThings.Count - 1; i >= 0; i--)
+			{
+				Thing t = harvestStorageThings[i];
+				int lane = harvestStorageLanes[i];
+
+				var orderedHoppers = backHoppers
+					.Select((h, idx) => (h, idx))
+					.Where(x => x.h != null && x.h.slotGroup.Settings.AllowedToAccept(t))
+					.OrderBy(x => x.idx == lane ? 0 : 1)
+					.Select(x => x.h)
+					.ToList();
+
+				if (orderedHoppers.Count == 0)
+				{
+					GenPlace.TryPlaceThing(t, Position, Map, ThingPlaceMode.Near);
+					harvestStorageThings.RemoveAt(i);
+					harvestStorageLanes.RemoveAt(i);
+					continue;
+				}
+
+				foreach (var hopper in orderedHoppers)
+				{
+					if (DepositInHopper(hopper, t))
+					{
+						harvestStorageThings.RemoveAt(i);
+						harvestStorageLanes.RemoveAt(i);
+						break;
+					}
+				}
+			}
+
+			if (harvestStorageThings.Count == 0)
+				state = AutofarmerState.Idle;
+		}
+
+		private bool DepositInHopper(Building_FactoryHopper hopper, Thing t)
+		{
+			foreach (Thing existing in hopper.slotGroup.HeldThings.ToList())
+			{
+				if (t.CanStackWith(existing) && existing.stackCount < existing.def.stackLimit)
+				{
+					int toMove = Mathf.Min(t.stackCount, existing.def.stackLimit - existing.stackCount);
+					existing.stackCount += toMove;
+					t.stackCount -= toMove;
+					if (t.stackCount <= 0)
+					{
+						return true;
+					}
+				}
+			}
+
+			if (t.stackCount > 0)
+			{
+				return GenPlace.TryPlaceThing(t, hopper.Position, Map, ThingPlaceMode.Direct);
+			}
+
+			return true;
+		}
+
+		private float GetCropMaturityPercent()
+		{
+			int total = 0, fullyGrown = 0;
+			for (int i = 1; i <= zoneLength; i++)
+			{
+				foreach (IntVec3 c in GetRowCells(i))
+				{
+					Plant plant = c.GetPlant(Map);
+					if (plant != null)
+					{
+						total++;
+						if (plant.Growth >= 1f)
+						{
+							fullyGrown++;
+						}
+					}
+				}
+			}
+			return total == 0 ? 0f : (float)fullyGrown / total;
+		}
+
+		public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+		{
+			if (Spawned && harvestStorageThings != null)
+			{
+				for (int i = harvestStorageThings.Count - 1; i >= 0; i--)
+				{
+					GenPlace.TryPlaceThing(harvestStorageThings[i], Position, Map, ThingPlaceMode.Near);
+				}
+			}
+			harvestStorageThings?.Clear();
+			harvestStorageLanes?.Clear();
+			base.DeSpawn(mode);
+		}
+
 		public override IEnumerable<Gizmo> GetGizmos()
 		{
 			foreach (var g in base.GetGizmos()) yield return g;
@@ -331,7 +552,13 @@ namespace VanillaFurnitureExpandedFactory
 				defaultLabel = "VFEFactory_IncreaseZone".Translate(),
 				defaultDesc = "VFEFactory_IncreaseZoneDesc".Translate(),
 				icon = IncreaseZoneIcon,
-				action = () => { if (zoneLength < 30) zoneLength++; }
+				action = () =>
+				{
+					if (zoneLength < 30)
+					{
+						zoneLength++;
+					}
+				}
 			};
 
 			yield return new Command_Action
@@ -339,7 +566,13 @@ namespace VanillaFurnitureExpandedFactory
 				defaultLabel = "VFEFactory_DecreaseZone".Translate(),
 				defaultDesc = "VFEFactory_DecreaseZoneDesc".Translate(),
 				icon = DecreaseZoneIcon,
-				action = () => { if (zoneLength > 3) zoneLength--; }
+				action = () =>
+				{
+					if (zoneLength > 3)
+					{
+						zoneLength--;
+					}
+				}
 			};
 
 			if (state == AutofarmerState.Idle)
@@ -373,7 +606,10 @@ namespace VanillaFurnitureExpandedFactory
 					defaultLabel = "VFEFactory_CancelAutofarmer".Translate(),
 					defaultDesc = "VFEFactory_CancelAutofarmerDesc".Translate(),
 					icon = CancelIcon,
-					action = () => { state = AutofarmerState.MovingBackward; }
+					action = () =>
+					{
+						state = AutofarmerState.MovingBackward;
+					}
 				};
 			}
 
@@ -400,6 +636,15 @@ namespace VanillaFurnitureExpandedFactory
 				icon = AutoSowIcon,
 				isActive = () => autoSow,
 				toggleAction = () => autoSow = !autoSow
+			};
+
+			yield return new Command_Toggle
+			{
+				defaultLabel = "VFEFactory_AutocycleWhenGrown".Translate(),
+				defaultDesc = "VFEFactory_AutocycleWhenGrownDesc".Translate(),
+				icon = AutocycleIcon,
+				isActive = () => autocycle,
+				toggleAction = () => autocycle = !autocycle
 			};
 		}
 
@@ -438,7 +683,10 @@ namespace VanillaFurnitureExpandedFactory
 				foreach (IntVec3 c in GetRowCells(i))
 				{
 					Building b = c.GetEdifice(Map);
-					if (b != null && b.def.passability == Traversability.Impassable) return true;
+					if (b != null && b.def.passability == Traversability.Impassable)
+					{
+						return true;
+					}
 				}
 			}
 			return false;

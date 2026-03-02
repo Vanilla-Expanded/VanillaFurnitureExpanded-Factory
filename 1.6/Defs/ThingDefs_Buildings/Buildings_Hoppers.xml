@@ -27,11 +27,11 @@
 			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<maxItemsInCell>3</maxItemsInCell>
-			 <storageGroupTag>VFEFactory_FactoryHopper</storageGroupTag>
+			<storageGroupTag>VFEFactory_FactoryHopper</storageGroupTag>
 			<defaultStorageSettings>
 				<priority>Important</priority>
 				<filter>
-					
+
 				</filter>
 			</defaultStorageSettings>
 			<buildingTags>
@@ -52,7 +52,6 @@
 		</costList>
 		<tickerType>Long</tickerType>
 		<rotatable>true</rotatable>
-		<neverMultiSelect>true</neverMultiSelect>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<constructEffect>ConstructMetal</constructEffect>
