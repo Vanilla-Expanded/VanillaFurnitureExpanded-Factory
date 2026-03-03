@@ -2,7 +2,7 @@
 <Defs>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeChemfuelFromWood</defName>
-		<label>Make 25 chemfuel from 50 wood logs</label>
+		<label>Make chemfuel from wood</label>
 		<labelOverride>Make chemfuel from wood</labelOverride>
 		<description>Make a batch of chemfuel by extracting and condensing wood gas from logs.</description>
 		<priorityInBillList>0</priorityInBillList>
@@ -38,7 +38,7 @@
 	
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeChemfuelFromOrganics</defName>
-		<label>Make 1 chemfuel for every 0.1 nutrition</label>
+		<label>Make chemfuel from organics</label>
 		<labelOverride>Make chemfuel from organics</labelOverride>
 		<description>Make a batch of chemfuel by extracting biofuel from organic feedstocks. Process will consume 30 food items and output 1 chemfuel per each 0.1 nutrition consumed. For example, 30 potatoes will produce 15 chemfuel, while 30 simple meals (0.9 nutrition) will produce 270 chemfuel.</description>
 		<priorityInBillList>1</priorityInBillList>

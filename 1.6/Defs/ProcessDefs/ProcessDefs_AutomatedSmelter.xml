@@ -3,7 +3,7 @@
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMetalFromSlag</defName>
 		<labelOverride>Smelt metal from slag</labelOverride>
-		<label>Smelt 15 steel from slag chunk</label>
+		<label>Smelt metal from slag</label>
 		<description>Use heat and strong electromagnets to extract useful metal from slag chunks.</description>
 		<priorityInBillList>0</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
@@ -109,7 +109,7 @@
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMetalFromChunk</defName>
-		<label>Extract 3 steel from stone chunk</label>
+		<label>Extract metal from stone chunk</label>
 		<labelOverride>Extract metal from stone chunk</labelOverride>
 		<description>Use heat and strong electromagnets to extract useful metal from stone chunks.</description>
 		<priorityInBillList>3</priorityInBillList>
