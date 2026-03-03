@@ -64,5 +64,8 @@
 				<isfactoryHopper>true</isfactoryHopper>
 			</li>
 		</modExtensions>
+		<comps>
+		 <li Class="CompProperties_Forbiddable"/>
+		 </comps>
 	</ThingDef>
 </Defs>

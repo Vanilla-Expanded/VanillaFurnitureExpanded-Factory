@@ -37,6 +37,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -76,7 +77,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -105,6 +106,11 @@
 					<li MayRequire="sarg.alphaanimals">VFEFactory_DigForSkySteel</li>
 				</processes>
 				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Overclocker</li>
+				</linkableFacilities>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -185,7 +191,7 @@
 				<heatPerSecond>14</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -282,7 +288,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -378,7 +384,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -471,7 +477,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -565,7 +571,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -662,7 +668,7 @@
 				<heatPerSecond>10</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -760,7 +766,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -852,7 +858,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -954,7 +960,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -1033,7 +1039,7 @@
 				<basePowerConsumption>50</basePowerConsumption>
 				<shortCircuitInRain>true</shortCircuitInRain>
 			</li>
-			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>

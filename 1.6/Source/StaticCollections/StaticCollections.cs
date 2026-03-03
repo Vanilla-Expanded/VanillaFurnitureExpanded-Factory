@@ -13,10 +13,14 @@ namespace VanillaFurnitureExpandedFactory
     public static class StaticCollections
     {
         public static List<ThingDef> factories = new List<ThingDef>();
-     
+        public static List<ThingDef> hoppers = new List<ThingDef>();
+
+
         static StaticCollections()
         {
-            factories = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.GetCompProperties<CompProperties_AdvancedResourceProcessor>()?.notWorkingKey == "VFEFactory_FactoryNotWorking").ToList();       
+            hoppers = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.GetModExtension<FactoryHopperExtension>()?.isfactoryHopper == true).ToList();
+            factories = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.GetCompProperties<CompProperties_AdvancedResourceProcessor>()?.notWorkingKey == "VFEFactory_FactoryNotWorking").ToList();
+
         }
 
     }
