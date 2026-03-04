@@ -63,6 +63,7 @@
 				<shortCircuitInRain>true</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Flickable"/>
+			<li Class="VanillaFurnitureExpandedFactory.CompProperties_ShowAutofarmerSpots"/>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
