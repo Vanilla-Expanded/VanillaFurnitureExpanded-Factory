@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_Autofarmer</defName>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
+		<label>autofarmer</label>
+		<description>todo</description>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<texPath>Things/Building/Factories/Autofarmer/Autofarmer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(7, 3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(7, 3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>Impassable</passability>
+		<pathCost>50</pathCost>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>VFE_FactoryBasics</li>
+		</researchPrerequisites>
+		<building>
+			<sowTag>Ground</sowTag>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedDrillPlatform</defName>
 		<label>automated drill platform</label>
@@ -1041,73 +1108,7 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	<ThingDef ParentName="BuildingBase">
-		<defName>VFEFactory_Autofarmer</defName>
-		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
-		<label>autofarmer</label>
-		<description>todo</description>
-		<drawerType>RealtimeOnly</drawerType>
-		<drawOffscreen>true</drawOffscreen>
-		<graphicData>
-			<texPath>Things/Building/Factories/Autofarmer/Autofarmer</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(7, 3)</drawSize>
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<thingCategories>
-			<li>VFEFactory_FactoryCategory</li>
-		</thingCategories>
-		<costList>
-			<Steel>200</Steel>
-			<ComponentIndustrial>8</ComponentIndustrial>
-			<ComponentSpacer>2</ComponentSpacer>
-		</costList>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<rotatable>true</rotatable>
-		<neverMultiSelect>true</neverMultiSelect>
-		<fillPercent>0</fillPercent>
-		<statBases>
-			<Mass>60</Mass>
-			<Beauty>-10</Beauty>
-			<WorkToBuild>5000</WorkToBuild>
-			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1</Flammability>
-		</statBases>
-		<tickerType>Normal</tickerType>
-		<size>(7, 3)</size>
-		<designationCategory>VFEFactory_Factories</designationCategory>
-		<passability>Impassable</passability>
-		<pathCost>50</pathCost>
-		<placeWorkers>
-			<li>PlaceWorker_NotUnderRoof</li>
-		</placeWorkers>
-		<researchPrerequisites>
-			<li>VFE_FactoryBasics</li>
-		</researchPrerequisites>
-		<building>
-			<sowTag>Ground</sowTag>
-			<buildingTags>
-				<li>Production</li>
-			</buildingTags>
-		</building>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>50</basePowerConsumption>
-				<shortCircuitInRain>true</shortCircuitInRain>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-		</comps>
-		<minifiedDef>MinifiedThing</minifiedDef>
-		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
-	</ThingDef>
+	
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedAlloyForge</defName>
 		<label>automated alloy forge</label>
