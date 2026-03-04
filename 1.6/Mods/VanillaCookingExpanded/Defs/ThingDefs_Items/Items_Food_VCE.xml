@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="MealBase">
+		<defName>VCE_CannedSoup</defName>
+		<label>canned soup</label>
+		<description>Soup sealed and secured in a steel can effectively extending shelf life indefinitely.</description>
+		<tradeability>Sellable</tradeability>
+		<graphicData>
+			<texPath>Things/Item/Resource/Food/CannedSoup</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>12</MarketValue>
+			<Nutrition>0.9</Nutrition>
+			<DeteriorationRate>0</DeteriorationRate>
+		</statBases>
+		<ingestible>
+			<preferability>MealSimple</preferability>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>Meal_Eat</ingestSound>
+			<optimalityOffsetFeedingAnimals>-25</optimalityOffsetFeedingAnimals>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Ingredients">
+				<splitTransferableFoodKind>true</splitTransferableFoodKind>
+			</li>
+			
+		</comps>
+	</ThingDef>
+</Defs>

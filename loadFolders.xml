@@ -1,0 +1,9 @@
+<loadFolders>
+	<v1.6>
+		<li>/</li>
+		<li>1.6</li>
+		<li IfModActive="VanillaExpanded.VCookE">1.6/Mods/VanillaCookingExpanded</li>
+	</v1.6>
+</loadFolders>
+
+

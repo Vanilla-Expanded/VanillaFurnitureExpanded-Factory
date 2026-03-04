@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_AlloyPlasteel</defName>
+		<label>Alloy plasteel from steel, chemfuel and gold</label>
+		<labelOverride>Alloy plasteel from steel, chemfuel and gold</labelOverride>
+		<description>Use high heat and pressure to alloy steel, chemfuel, and gold into pure plasteel.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>20000</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>7</countNeeded>
+			</li>
+			<li>
+				<thing>Gold</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Plasteel</thing>
+				<count>5</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Odyssey">
+		<defName>VFEFactory_AlloyGravlite</defName>
+		<label>Alloy gravlite from vacstone and plasteel</label>
+		<labelOverride>Alloy gravlite from vacstone and plasteel</labelOverride>
+		<description>Use intense heat to combine plasteel and vacstone, forging the ultra-light gravlite alloy.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>36000</ticks>
+		<ingredients>
+			<li>
+				<thing>Plasteel</thing>
+				<countNeeded>5</countNeeded>
+			</li>
+			<li>
+				<thing>BlocksVacstone</thing>
+				<countNeeded>25</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>GravlitePanel</thing>
+				<count>5</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>AdvancedGravtech</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Odyssey">
+		<defName>VFEFactory_CreateObsidian</defName>
+		<label>Create obsidian from stone chunks</label>
+		<labelOverride>Create obsidian from stone chunks</labelOverride>
+		<description>Use extreme heat and rapid cooling processes to transform unrefined stone chunks into obsidian.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>18200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+				
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Obsidian</thing>
+				<count>3</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Classical">
+		<defName>VFEFactory_AlloyBronze</defName>
+		<label>Alloy bronze from steel and stone chunks</label>
+		<labelOverride>Alloy bronze from steel and stone chunks</labelOverride>
+		<description>Use intense heat to smelt and combine steel with minerals from a stone chunk to forge bronze alloy.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>9600</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+				
+			</li>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFEC_Bronze</thing>
+				<count>20</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>VFEC_BronzeWorking</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
+		<defName>VFEFactory_AlloySkySteel</defName>
+		<label>Alloy sky steel</label>
+		<labelOverride>Alloy sky steel</labelOverride>
+		<description>Use intense heat to smelt and combine steel with blue gel to forge sky steel.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>24000</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>AA_BlueGel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AA_SkySteel</thing>
+				<count>30</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabooks">
+		<defName>VFEFactory_AlloyStainlessSteel</defName>
+		<label>Alloy stainless steel</label>
+		<labelOverride>Alloy stainless steel</labelOverride>
+		<description>Use intense heat to smelt and combine steel with uranium impurities to forge stainless steel.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,3)</li>
+			<li>(0,0,3)</li>
+			<li>(2,0,3)</li>
+			
+		</autoInputSlots>
+		<ticks>24000</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>Uranium</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>ABooks_StainlessSteel</thing>
+				<count>15</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	
+</Defs>

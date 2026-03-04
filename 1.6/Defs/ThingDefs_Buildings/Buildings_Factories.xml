@@ -109,7 +109,8 @@
 			</li>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
-					<li>VFEFactory_Overclocker</li>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
 		</comps>
@@ -152,6 +153,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -209,6 +211,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -249,6 +257,7 @@
 			<MaxHitPoints>450</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -305,6 +314,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -345,6 +360,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -398,6 +414,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -438,6 +460,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,3)</size>
@@ -492,6 +515,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -532,6 +561,7 @@
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -589,6 +619,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -629,6 +665,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>800</MaxHitPoints>
 			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,5)</size>
@@ -686,6 +723,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -727,6 +770,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>550</MaxHitPoints>
 			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(5,3)</size>
@@ -780,6 +824,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -819,6 +869,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>400</MaxHitPoints>
 			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,4)</size>
@@ -882,6 +933,12 @@
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -921,6 +978,7 @@
 			<WorkToBuild>5000</WorkToBuild>
 			<MaxHitPoints>500</MaxHitPoints>
 			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<size>(3,5)</size>
@@ -973,6 +1031,12 @@
 					<li>VFEFactory_MakePatchleather</li>
 				</processes>
 				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -1043,5 +1107,315 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedAlloyForge</defName>
+		<label>automated alloy forge</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedAlloyForge/AutomatedAlloyForge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>460</Steel>
+			<ComponentIndustrial>14</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>100</Mass>
+			<Beauty>-16</Beauty>
+			<WorkToBuild>8000</WorkToBuild>
+			<MaxHitPoints>900</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>21</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_AlloyPlasteel</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_AlloyGravlite</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_CreateObsidian</li>
+					<li MayRequire="OskarPotocki.VFE.Classical">VFEFactory_AlloyBronze</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_AlloySkySteel</li>
+					<li MayRequire="sarg.alphabooks">VFEFactory_AlloyStainlessSteel</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedDistillery</defName>
+		<label>automated distillery</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedDistillery/AutomatedDistillery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>160</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>45</Mass>
+			<Beauty>-14</Beauty>
+			<WorkToBuild>6500</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(1,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeBeerFromHops</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeWhiskeyFromCorn</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeTequilaFromAgave</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeVodkaFromPotatoes</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeGinFromBerries</li>
+					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeSakeFromRice</li>
+					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeChocoLiquor</li>
+					<li MayRequire="sarg.alphacrafts,VanillaExpanded.VBrewE">VFEFactory_MakeCoffeeLiquor</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_MedicineGranulator</defName>
+		<label>medicine granulator</label>
+		<description>todo</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/MedicineGranulator/MedicineGranulator</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>65</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>6500</WorkToBuild>
+			<MaxHitPoints>550</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>800</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeMedicine</li>
+					<li>VFEFactory_RollJoint</li>
+					<li>VFEFactory_SynthesizeFlake</li>
+					<li>VFEFactory_SynthesizeYayo</li>
+					<li>VFEFactory_BrewPsychiteTea</li>
+					<li>VFEFactory_SynthesizeGoJuice</li>
+					<li>VFEFactory_SynthesizePenoxycyline</li>
+					<li>VFEFactory_SynthesizeWakeUp</li>
+					<li MayRequire="vanillaracesexpanded.genie">VFEFactory_SynthesizeAntibiotics</li>
+					<li MayRequire="VanillaExpanded.VGeneticsEMoreLabStuff">VFEFactory_SynthesizeAgePills</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
 </Defs>

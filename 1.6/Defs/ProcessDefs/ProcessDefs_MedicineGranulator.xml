@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeMedicine</defName>
+		<label>Make batch of medicine</label>
+		<labelOverride>Make batch of medicine</labelOverride>
+		<description>Make a batch of medicine from cloth, herbal medicine and neutroamine.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>11200</ticks>
+		<ingredients>
+			<li>
+				<thing>Cloth</thing>
+				<countNeeded>12</countNeeded>
+			</li>
+			<li>
+				<thing>Neutroamine</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+			<li>
+				<thing>MedicineHerbal</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>MedicineIndustrial</thing>
+				<count>4</count>
+			</li>
+		</results>
+		
+		<researchPrerequisites>
+			<li>MedicineProduction</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_RollJoint</defName>
+		<label>Roll smokeleaf joints</label>
+		<labelOverride>Roll smokeleaf joints</labelOverride>
+		<description>Roll smokeleaf into a joint</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thing>SmokeleafLeaves</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>SmokeleafJoint</thing>
+				<count>1</count>
+			</li>
+		</results>		
+		
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizeFlake</defName>
+		<label>Synthesize a batch of flake</label>
+		<labelOverride>Synthesize a batch of flake</labelOverride>
+		<description>Synthesize a batch of flake from psychoid leaves.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>4000</ticks>
+		<ingredients>
+			<li>
+				<thing>PsychoidLeaves</thing>
+				<countNeeded>16</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>Flake</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>PsychiteRefining</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizeYayo</defName>
+		<label>Synthesize a batch of yayo</label>
+		<labelOverride>Synthesize a batch of yayo</labelOverride>
+		<description>Synthesize a batch of yayo from psychoid leaves.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>5600</ticks>
+		<ingredients>
+			<li>
+				<thing>PsychoidLeaves</thing>
+				<countNeeded>32</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>Yayo</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>PsychiteRefining</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_BrewPsychiteTea</defName>
+		<label>Brew a batch of psychite tea</label>
+		<labelOverride>Brew a batch of psychite tea</labelOverride>
+		<description>Brew a batch of psychite tea from psychoid leaves.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>6400</ticks>
+		<ingredients>
+			<li>
+				<thing>PsychoidLeaves</thing>
+				<countNeeded>16</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>PsychiteTea</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>PsychoidBrewing</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizeGoJuice</defName>
+		<label>Synthesize a batch of go-juice</label>
+		<labelOverride>Synthesize a batch of go-juice</labelOverride>
+		<description>Synthesize a batch of go-juice from neutroamine and yayo.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>9600</ticks>
+		<ingredients>
+			<li>
+				<thing>Yayo</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+			<li>
+				<thing>Neutroamine</thing>
+				<countNeeded>8</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>GoJuice</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>GoJuiceProduction</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizePenoxycyline</defName>
+		<label>Synthesize penoxycyline</label>
+		<labelOverride>Synthesize penoxycyline</labelOverride>
+		<description>Synthesize penoxycyline from neutroamine.</description>
+		<priorityInBillList>6</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>2400</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>Neutroamine</thing>
+				<countNeeded>2</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Penoxycyline</thing>
+				<count>1</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>PenoxycylineProduction</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SynthesizeWakeUp</defName>
+		<label>Synthesize a batch of wake-up</label>
+		<labelOverride>Synthesize a batch of wake-up</labelOverride>
+		<description>Synthesize a batch of wake-up from neutroamine.</description>
+		<priorityInBillList>7</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>14400</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>Neutroamine</thing>
+				<countNeeded>8</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>WakeUp</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>WakeUpProduction</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="vanillaracesexpanded.genie">
+		<defName>VFEFactory_SynthesizeAntibiotics</defName>
+		<label>Synthesize a batch of antibiotics</label>
+		<labelOverride>Synthesize a batch of antibiotics</labelOverride>
+		<description>Synthesize a batch of antibiotics from psychoid leaves and herbal medicine.</description>
+		<priorityInBillList>8</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>9600</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>PsychoidLeaves</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+			<li>
+				<thing>MedicineHerbal</thing>
+				<countNeeded>4</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VRE_Antibiotics</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>DrugProduction</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsEMoreLabStuff">
+		<defName>VFEFactory_SynthesizeAgePills</defName>
+		<label>Synthesize age pills</label>
+		<labelOverride>Synthesize age pills</labelOverride>
+		<description>Synthesize a batch of antibiotics from psychoid leaves and herbal medicine.</description>
+		<priorityInBillList>9</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>10000</ticks>
+		<ingredients>
+			
+			<li>
+				<thing>PsychoidLeaves</thing>
+				<countNeeded>24</countNeeded>
+			</li>
+			<li>
+				<thing>MedicineHerbal</thing>
+				<countNeeded>12</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>GR_AgePills</thing>
+				<count>4</count>
+			</li>
+		</results>		
+		<researchPrerequisites>
+			<li>GR_GeneticEngineering</li>
+		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+</Defs>

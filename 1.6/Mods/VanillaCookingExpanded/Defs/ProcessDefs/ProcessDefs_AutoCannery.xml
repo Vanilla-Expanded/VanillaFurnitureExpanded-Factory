@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeCannedMeat</defName>
+		<label>Make canned meat</label>
+		<labelOverride>Make canned meat</labelOverride>
+		<description>Safely store raw meat in a steel can. Canning extends its shelf life almost indefinitely. 20 cans will be produced per every nutrition consumed, so 20 meat plus one steel will output 20 cans.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>20</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedMeat</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Cans</workerClass>
+				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeCannedProduce</defName>
+		<label>Make canned produce</label>
+		<labelOverride>Make canned produce</labelOverride>
+		<description>Safely store vegetables in a steel can. Canning food extends its shelf life almost indefinitely. 20 cans will be produced per every nutrition consumed, so for example 20 corn plus one steel will output 20 cans.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>20</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedProduce</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Cans</workerClass>
+				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VPlantsE">
+		<defName>VFEFactory_MakeCannedFruit</defName>
+		<label>Make canned fruit</label>
+		<labelOverride>Make canned fruit</labelOverride>
+		<description>Safely store fruit in a steel can. Canning food extends its shelf life almost indefinitely. Preserved fruit can be used in the production of desserts. 20 cans will be produced per every nutrition consumed, so for example 20 apples plus one steel will output 20 cans.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thingCategory>VCE_Fruit</thingCategory>
+				<countNeeded>20</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedFruit</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Cans</workerClass>
+				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeCannedEggs</defName>
+		<label>Make canned eggs</label>
+		<labelOverride>Make canned eggs</labelOverride>
+		<description>Safely store boiled eggs in a steel can. Canning food extends its shelf life almost indefinitely. 20 cans will be produced per every nutrition consumed, so for example 4 chicken eggs and one steel will output 20 cans.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thingCategory>EggsUnfertilized</thingCategory>
+				<countNeeded>4</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedAP</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Cans</workerClass>
+				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeCannedSoup</defName>
+		<label>Make canned soup</label>
+		<labelOverride>Make canned soup</labelOverride>
+		<description>Safely store pre-cooked soup in steel cans. Canning food extends its shelf life almost indefinitely. Canned soup does not carry the benefits of being fine or lavish.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<transfersIngredientList>true</transfersIngredientList>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>15200</ticks>
+		<ingredients>
+			
+			<li>
+				<thingCategory>VCE_UncookedSoups</thingCategory>
+				<countNeeded>1</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedSoup</thing>
+				<count>10</count>
+				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+</Defs>
