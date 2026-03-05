@@ -898,6 +898,9 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -1007,9 +1010,8 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
-			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_RefillWithPipes">
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>VCHE_ChemfuelNet</pipeNet>
-				<thing>Chemfuel</thing>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -1216,6 +1218,9 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -1420,6 +1425,9 @@
 					<li>VFEFactory_Booster</li>
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
+			</li>
+			<li MayRequire="vanillaracesexpanded.android" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VREA_NeutroamineNet</pipeNet>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>

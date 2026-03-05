@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Races Expanded - Android</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_MakeMedicine"]</xpath>
+					<value>
+						<considerBuildingCompResource>true</considerBuildingCompResource>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_SynthesizeGoJuice"]</xpath>
+					<value>
+						<considerBuildingCompResource>true</considerBuildingCompResource>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_SynthesizePenoxycyline"]</xpath>
+					<value>
+						<considerBuildingCompResource>true</considerBuildingCompResource>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_SynthesizeWakeUp"]</xpath>
+					<value>
+						<considerBuildingCompResource>true</considerBuildingCompResource>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+</Patch>
+

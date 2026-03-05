@@ -38,6 +38,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeIncendiaryShells</defName>
