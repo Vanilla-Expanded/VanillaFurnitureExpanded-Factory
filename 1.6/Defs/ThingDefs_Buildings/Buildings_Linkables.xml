@@ -49,7 +49,7 @@
 		<comps>
 			<li Class="CompProperties_Facility">
 				<statOffsets>
-					<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+					<VEF_BuildingMaxOverclockFactor>0.5</VEF_BuildingMaxOverclockFactor>
 				</statOffsets>
 				<maxSimultaneous>3</maxSimultaneous>
 				<maxDistance>9.9</maxDistance>
