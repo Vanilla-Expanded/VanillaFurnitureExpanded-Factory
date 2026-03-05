@@ -14,12 +14,7 @@ namespace VanillaFurnitureExpandedFactory
         public static readonly Texture2D GizmoSelectLinked = ContentFinder<Texture2D>.Get("UI/Gizmo/UndergroundConveyor_SelectLinked");
         public static readonly Material OverlayNoLink = MaterialPool.MatFrom("UI/Gizmo/UndergroundConveyor_Overlay_NoLink", ShaderDatabase.MetaOverlay);
 
-        public static readonly Material AutoFarmerGreenMaterial = MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent, new Color(0.365f, 0.576f, 0.373f));
-        public static readonly Material AutoFarmerYellowMaterial = MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent, new Color(0.525f, 0.529f, 0.365f));
-        public static readonly Material AutoFarmerBrownMaterial = MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent, new Color(0.529f, 0.431f, 0.376f));
-        public static readonly Material AutoFarmerPurpleMaterial = MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent, new Color(0.514f, 0.365f, 0.529f));
-        public static readonly Material AutoFarmerBlueMaterial = MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent, new Color(0.365f, 0.51f, 0.529f));
-
+       
 
     }
 }

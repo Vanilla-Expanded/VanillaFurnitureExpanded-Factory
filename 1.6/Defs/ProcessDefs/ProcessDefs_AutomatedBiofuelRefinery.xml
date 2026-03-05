@@ -81,7 +81,7 @@
 		<label>Make 25 chemfuel from 50 red wood logs</label>
 		<labelOverride>Make chemfuel from red wood logs</labelOverride>
 		<description>Make a batch of chemfuel by extracting and condensing wood gas from red wood logs.</description>
-		<priorityInBillList>0.1</priorityInBillList>
+		<priorityInBillList>1</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
@@ -116,7 +116,7 @@
 		<label>Make 25 chemfuel from 50 mushroom stalks</label>
 		<labelOverride>Make chemfuel from mushroom stalks</labelOverride>
 		<description>Make a batch of chemfuel by extracting and condensing gas from mushroom stalks.</description>
-		<priorityInBillList>0.2</priorityInBillList>
+		<priorityInBillList>1</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
