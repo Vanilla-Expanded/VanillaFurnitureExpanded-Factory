@@ -43,6 +43,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_RollJoint</defName>
@@ -77,6 +79,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeFlake</defName>
@@ -113,6 +117,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeYayo</defName>
@@ -149,6 +155,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_BrewPsychiteTea</defName>
@@ -185,6 +193,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeGoJuice</defName>
@@ -224,6 +234,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizePenoxycyline</defName>
@@ -260,6 +272,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeWakeUp</defName>
@@ -296,6 +310,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="vanillaracesexpanded.genie">
 		<defName>VFEFactory_SynthesizeAntibiotics</defName>
@@ -336,6 +352,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsEMoreLabStuff">
 		<defName>VFEFactory_SynthesizeAgePills</defName>
@@ -376,5 +394,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 </Defs>

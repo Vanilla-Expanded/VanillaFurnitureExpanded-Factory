@@ -34,6 +34,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MinceHumanCorpses</defName>
@@ -70,5 +72,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
 	</PipeSystem.ProcessDef>
 </Defs>

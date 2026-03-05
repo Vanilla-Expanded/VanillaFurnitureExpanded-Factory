@@ -34,6 +34,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
@@ -74,6 +76,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
@@ -110,6 +114,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
 		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
@@ -145,6 +151,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
 	</PipeSystem.ProcessDef>
 	
 </Defs>

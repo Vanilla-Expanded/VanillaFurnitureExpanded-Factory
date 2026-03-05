@@ -35,6 +35,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_AssembleAdvancedComponent</defName>
@@ -83,6 +85,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_RefineUraniumCrystals</defName>
@@ -115,6 +119,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_BlueGel_To_Hexagel</defName>
@@ -147,6 +153,8 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_Make_HexagelCore</defName>
@@ -183,5 +191,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 </Defs>

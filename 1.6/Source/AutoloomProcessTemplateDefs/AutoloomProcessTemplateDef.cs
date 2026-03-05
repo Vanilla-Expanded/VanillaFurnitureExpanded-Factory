@@ -19,5 +19,7 @@ namespace VanillaFurnitureExpandedFactory
 		public bool disallowMixing;
 		public bool sustainerWhenWorking;
 		public SoundDef sustainerDef;
+		public bool effecterWhenWorking;
+		public EffecterDef effecterDef;
     }
 }

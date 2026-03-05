@@ -35,6 +35,8 @@
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedStoneCuttingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 	</PipeSystem.ProcessDef>
 	
 	

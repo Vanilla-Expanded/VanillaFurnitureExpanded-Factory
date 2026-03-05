@@ -102,6 +102,9 @@ namespace VanillaFurnitureExpandedFactory
             processDef.useFirstIngredientAsOutputStuff = tp.useFirstIngredientAsOutputStuff;
             processDef.sustainerWhenWorking = tp.sustainerWhenWorking;
             processDef.sustainerDef = tp.sustainerDef;
+            processDef.effecterWhenWorking = tp.effecterWhenWorking;
+            processDef.effecterDef = tp.effecterDef;
+
             InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;
         }

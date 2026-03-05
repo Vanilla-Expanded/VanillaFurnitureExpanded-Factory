@@ -38,7 +38,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -80,6 +81,8 @@
 		<researchPrerequisites>
 			<li>AdvancedGravtech</li>
 		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -114,7 +117,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -157,6 +161,8 @@
 		<researchPrerequisites>
 			<li>VFEC_BronzeWorking</li>
 		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -195,7 +201,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -234,7 +241,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>

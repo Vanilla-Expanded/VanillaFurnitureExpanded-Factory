@@ -38,6 +38,8 @@
 		
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeCannedProduce</defName>
@@ -74,7 +76,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -113,7 +116,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -152,7 +156,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
@@ -188,7 +193,8 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>

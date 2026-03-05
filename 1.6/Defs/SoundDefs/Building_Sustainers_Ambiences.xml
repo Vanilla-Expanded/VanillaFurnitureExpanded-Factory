@@ -74,7 +74,7 @@
 						<clipPath>Factory/Factory_DefaultAmbience_01</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>33~33</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
