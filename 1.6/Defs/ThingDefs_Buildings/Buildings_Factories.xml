@@ -48,7 +48,7 @@
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<researchPrerequisites>
-			<li>VFE_FactoryBasics</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<sowTag>Ground</sowTag>
@@ -116,7 +116,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -232,7 +232,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -336,7 +336,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -439,7 +439,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -539,7 +539,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -640,7 +640,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -744,7 +744,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -849,7 +849,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -948,7 +948,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -1057,7 +1057,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -1158,7 +1158,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -1261,7 +1261,7 @@
 		<interactionCellOffset>(1,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -1359,7 +1359,7 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>

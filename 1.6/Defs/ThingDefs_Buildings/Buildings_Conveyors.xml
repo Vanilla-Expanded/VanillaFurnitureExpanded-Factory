@@ -19,7 +19,7 @@
 		</statBases>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<researchPrerequisites>
-			<li>VFE_FactoryBasics</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 	</ThingDef>
 

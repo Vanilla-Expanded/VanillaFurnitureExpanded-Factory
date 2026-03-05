@@ -56,7 +56,7 @@
 		<surfaceType>Item</surfaceType>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<uiIconScale>0.85</uiIconScale>
 		<modExtensions>

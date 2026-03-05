@@ -38,7 +38,7 @@
 			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
 		</building>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -105,7 +105,7 @@
 			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
 		</building>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<designationCategory>VFEFactory_Factories</designationCategory>
 		<minifiedDef>MinifiedThing</minifiedDef>

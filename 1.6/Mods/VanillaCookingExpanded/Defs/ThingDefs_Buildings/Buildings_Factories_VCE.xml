@@ -49,7 +49,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>Electricity</li>
+			<li>VFE_ComplexFactories</li>
 			<li>VCE_Canning</li>
 		</researchPrerequisites>
 		<building>
