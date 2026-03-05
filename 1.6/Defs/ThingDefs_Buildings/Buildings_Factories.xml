@@ -1007,6 +1007,10 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_RefillWithPipes">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+				<thing>Chemfuel</thing>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
