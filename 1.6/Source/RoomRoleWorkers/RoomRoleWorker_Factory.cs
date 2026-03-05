@@ -11,14 +11,18 @@ namespace VanillaFurnitureExpandedFactory
         public override float GetScore(Room room)
         {
             int num = 0;
-            List<Thing> containedAndAdjacentThings = room.ContainedAndAdjacentThings;
-            for (int i = 0; i < containedAndAdjacentThings.Count; i++)
+            if (!room.UsesOutdoorTemperature)
             {
-                if (containedAndAdjacentThings[i].def.building?.workTableRoomRole == InternalDefOf.VFEFactory_FactoryRoom)
+                List<Thing> containedAndAdjacentThings = room.ContainedAndAdjacentThings;
+                for (int i = 0; i < containedAndAdjacentThings.Count; i++)
                 {
-                    num++;
+                    if (containedAndAdjacentThings[i].def.building?.workTableRoomRole == InternalDefOf.VFEFactory_FactoryRoom)
+                    {
+                        num++;
+                    }
                 }
             }
+           
             return 27f * (float)num;
         }
 
