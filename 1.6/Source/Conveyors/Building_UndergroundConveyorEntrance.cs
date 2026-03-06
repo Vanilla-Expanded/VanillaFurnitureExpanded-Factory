@@ -12,12 +12,9 @@ namespace VanillaFurnitureExpandedFactory
         {
             base.Tick();
 
-            if (Spawned && innerContainer.Count > 0)
+            if (Spawned && innerContainer.Count > 0 && IsLinked)
             {
-                if (itemProgress >= 0.9f) 
-                {
-                    AbsorbItems();
-                }
+                AbsorbItems();
             }
         }
 
@@ -86,9 +83,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        protected override bool IsValidTarget(Thing thing)
-        {
-            return thing is Building_UndergroundConveyorExit;
-        }
+        public override bool IsValidLinkTarget(ThingDef def) =>
+            def.thingClass == typeof(Building_UndergroundConveyorExit);
     }
 }

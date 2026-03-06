@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_Autofarmer</defName>
 		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
 		<label>autofarmer</label>
@@ -28,7 +28,7 @@
 		</costList>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<fillPercent>0</fillPercent>
@@ -55,6 +55,9 @@
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
 		</building>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -62,8 +65,8 @@
 				<basePowerConsumption>50</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="VanillaFurnitureExpandedFactory.CompProperties_ShowAutofarmerSpots"/>
+			<li Class="CompProperties_Flickable" />
+			<li Class="VanillaFurnitureExpandedFactory.CompProperties_ShowAutofarmerSpots" />
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
@@ -125,7 +128,7 @@
 			<buildingTags>
 				<li>Production</li>
 			</buildingTags>
-			
+
 		</building>
 		<inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
@@ -144,7 +147,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -165,7 +168,7 @@
 					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForMudstoneChunk</li>
 					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForSlimeStoneChunk</li>
 					<li>VFEFactory_DigForMetals</li>
-					
+
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -255,7 +258,7 @@
 				<heatPerSecond>14</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -360,7 +363,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -464,7 +467,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -564,7 +567,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -665,7 +668,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -769,7 +772,7 @@
 				<heatPerSecond>10</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -874,7 +877,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -976,7 +979,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -1088,7 +1091,7 @@
 				<heatPerSecond>6</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -1111,7 +1114,7 @@
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedAlloyForge</defName>
 		<label>automated alloy forge</label>
@@ -1189,7 +1192,7 @@
 				<heatPerSecond>21</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -1292,7 +1295,7 @@
 				<heatPerSecond>7</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
@@ -1393,7 +1396,7 @@
 				<heatPerSecond>9</heatPerSecond>
 				<heatPushMaxTemperature>66</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>
@@ -1505,7 +1508,7 @@
 				<heatPerSecond>10</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
-			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
 				<canOverclock>true</canOverclock>

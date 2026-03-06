@@ -12,9 +12,7 @@ namespace VanillaFurnitureExpandedFactory
         protected List<UndergroundItem> undergroundQueue = new List<UndergroundItem>();
         protected int TicksPerCell => Props.ticksPerCell;
         protected float MaxDistance => Props.maxDistance;
-
         public bool IsLinked => linkedBuilding != null;
-
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -26,16 +24,11 @@ namespace VanillaFurnitureExpandedFactory
 
         private void AttemptAutoLink()
         {
-            foreach (IntVec3 c in GenRadial.RadialCellsAround(Position, MaxDistance, true))
+            var target = FindLinkTarget(Position, Rotation, MaxDistance, Map, def);
+            if (target != null)
             {
-                if (!c.InBounds(Map)) continue;
-                var building = c.GetFirstBuilding(Map) as Building_UndergroundConveyorBase;
-                if (building != null && linkedBuilding != building && IsValidTarget(building) && building.Rotation == Rotation && !building.IsLinked)
-                {
-                    linkedBuilding = building;
-                    linkedBuilding.Notify_Linked(this);
-                    break;
-                }
+                linkedBuilding = target;
+                linkedBuilding.Notify_Linked(this);
             }
         }
 
@@ -53,7 +46,6 @@ namespace VanillaFurnitureExpandedFactory
         protected override void Tick()
         {
             base.Tick();
-
             if (undergroundQueue.Count > 0)
             {
                 TickUndergroundQueue();
@@ -219,7 +211,29 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        protected abstract bool IsValidTarget(Thing thing);
+        public static Building_UndergroundConveyorBase FindLinkTarget(IntVec3 position, Rot4 rotation, float maxDistance, Map map, ThingDef def)
+        {
+            IntVec3 dir = rotation.FacingCell;
+
+            for (int i = 1; i <= (int)maxDistance; i++)
+            {
+                IntVec3 c = position + dir * i;
+                if (!c.InBounds(map)) break;
+
+                var building = c.GetFirstBuilding(map) as Building_UndergroundConveyorBase;
+                if (building == null) continue;
+                if (building.Rotation != rotation) continue;
+                if (building.IsLinked) continue;
+                if (!building.IsValidLinkTarget(def)) continue;
+
+                return building;
+            }
+            return null;
+        }
+
+        public virtual bool IsValidLinkTarget(ThingDef def) => false;
+
+        protected virtual bool IsValidTarget(Thing thing) => IsValidLinkTarget(thing.def);
 
         public void Notify_Unlinked()
         {

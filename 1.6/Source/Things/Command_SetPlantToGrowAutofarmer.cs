@@ -39,10 +39,18 @@ namespace VanillaFurnitureExpandedFactory
 				defaultLabel = "CommandSelectPlantToGrowMulti".Translate();
 				return;
 			}
-			icon = thingDef.uiIcon;
-			iconAngle = thingDef.uiIconAngle;
-			iconOffset = thingDef.uiIconOffset;
-			defaultLabel = "CommandSelectPlantToGrow".Translate(thingDef.LabelCap);
+			if (thingDef == null)
+			{
+				icon = SetPlantToGrowTex;
+				defaultLabel = "CommandSelectPlantToGrow".Translate("None".Translate().CapitalizeFirst());
+			}
+			else
+			{
+				icon = thingDef.uiIcon;
+				iconAngle = thingDef.uiIconAngle;
+				iconOffset = thingDef.uiIconOffset;
+				defaultLabel = "CommandSelectPlantToGrow".Translate(thingDef.LabelCap);
+			}
 		}
 
 		public override void ProcessInput(Event ev)

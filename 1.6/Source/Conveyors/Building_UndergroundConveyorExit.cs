@@ -41,10 +41,8 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        protected override bool IsValidTarget(Thing thing)
-        {
-            return thing is Building_UndergroundConveyorEntrance;
-        }
+        public override bool IsValidLinkTarget(ThingDef def) =>
+            def.thingClass == typeof(Building_UndergroundConveyorEntrance);
 
         public bool TryAcceptIncoming(Thing t)
         {

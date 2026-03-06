@@ -250,7 +250,8 @@ namespace VanillaFurnitureExpandedFactory
             IntVec3 targetPos = ForwardCell;
             if (cachedForwardBuildingPos == targetPos)
             {
-                return cachedForwardBuilding;
+                if (cachedForwardBuilding == null || !cachedForwardBuilding.Destroyed)
+                    return cachedForwardBuilding;
             }
 
             if (!targetPos.InBounds(cachedMap))
@@ -499,23 +500,28 @@ namespace VanillaFurnitureExpandedFactory
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
-            if (Spawned)
+            InvalidateNeighborCaches();
+            EjectItems();
+            base.DeSpawn(mode);
+            cachedMap.mapDrawer.MapMeshDirty(cachedPos, MapMeshFlagDefOf.Things);
+            cachedMap = null;
+        }
+
+        public bool ejecting;
+        private void EjectItems()
+        {
+            if (cachedMap is null)
             {
-                InvalidateNeighborCaches();
-                var items = innerContainer.InnerListForReading;
-                for (int i = items.Count - 1; i >= 0; i--)
-                {
-                    GenSpawn.Spawn(items[i], cachedPos, cachedMap);
-                }
-                innerContainer.Clear();
-                base.DeSpawn(mode);
-                cachedMap.mapDrawer.MapMeshDirty(cachedPos, MapMeshFlagDefOf.Things);
-                cachedMap = null;
+                return;
             }
-            else
+            ejecting = true;
+            var items = innerContainer.InnerListForReading.ToList();
+            innerContainer.Clear();
+            foreach (Thing item in items)
             {
-                base.DeSpawn(mode);
+                GenPlace.TryPlaceThing(item, cachedPos, cachedMap, ThingPlaceMode.Direct);
             }
+            ejecting = false;
         }
 
         protected override void Tick()
@@ -531,7 +537,6 @@ namespace VanillaFurnitureExpandedFactory
                 return;
 
             int ticksGame = Find.TickManager.TicksGame;
-
             if ((ticksGame + thingIDNumber) % 60 == 0)
             {
                 PeriodicCacheCheck();
@@ -556,7 +561,6 @@ namespace VanillaFurnitureExpandedFactory
                 }
 
                 itemProgress += 1f / Props.ticksPerCell;
-
                 if (itemProgress >= 0.999f)
                     CompleteTransfer();
             }
@@ -747,6 +751,8 @@ namespace VanillaFurnitureExpandedFactory
                     for (int i = 0; i < items.Count; i++) total += items[i].stackCount;
                     return refuelComp.GetFuelCountToFullyRefuel() >= total ? DumpCapability.CanDump : DumpCapability.CanDumpPartial;
                 }
+
+                return DumpCapability.CannotDump;
             }
 
             if (!cell.Walkable(cachedMap))
@@ -1775,7 +1781,9 @@ namespace VanillaFurnitureExpandedFactory
 
         private void RefreshDrawCache()
         {
-            if (IsMerger || IsSplitter || this is Building_UndergroundConveyorEntrance or Building_UndergroundConveyorExit || HasRefuelableTarget(out _))
+            isDrawnDynamically = IsSplitter || IsMerger || HasRefuelableTarget(out _) || this is Building_UndergroundConveyorBase;
+
+            if (isDrawnDynamically)
                 cachedYOffset = 2f;
             else
                 cachedYOffset = 0f;
@@ -1785,8 +1793,6 @@ namespace VanillaFurnitureExpandedFactory
 
             var fwd = GetCachedForwardBuilding();
             cachedNextIsTurn = fwd is Building_Conveyor nc && nc.IsTurn;
-
-            isDrawnDynamically = IsSplitter || IsMerger || HasRefuelableTarget(out _);
 
             if (cachedMap?.mapDrawer != null) cachedMap.mapDrawer.MapMeshDirty(cachedPos, MapMeshFlagDefOf.Things);
         }
@@ -1816,7 +1822,7 @@ namespace VanillaFurnitureExpandedFactory
                 var items = innerContainer.InnerListForReading;
                 for (int i = 0; i < items.Count; i++)
                 {
-                    items[i].Graphic.Draw(cachedItemDrawPos, Rot4.North, items[i], 0f);
+                    items[i].DynamicDrawPhaseAt(DrawPhase.Draw, cachedItemDrawPos);
                 }
             }
         }

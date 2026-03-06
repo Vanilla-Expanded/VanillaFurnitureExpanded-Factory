@@ -250,7 +250,8 @@ namespace VanillaFurnitureExpandedFactory
 							}
 							else
 							{
-								GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Direct);
+								if (!GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Direct))
+									GenPlace.TryPlaceThing(t, c, Map, ThingPlaceMode.Near);
 							}
 						}
 					}
@@ -516,10 +517,10 @@ namespace VanillaFurnitureExpandedFactory
 				foreach (IntVec3 c in GetRowCells(i))
 				{
 					Plant plant = c.GetPlant(Map);
-					if (plant != null)
+					if (plant != null && plant.def == plantDefToGrow)
 					{
 						total++;
-						if (plant.Growth >= 1f)
+						if (plant.Growth >= 0.95f)
 						{
 							fullyGrown++;
 						}

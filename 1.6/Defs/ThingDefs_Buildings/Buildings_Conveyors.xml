@@ -75,6 +75,14 @@
 				<maxDistance>8</maxDistance>
 			</li>
 		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_UndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
 	</ThingDef>
 
 	<ThingDef ParentName="VFEFactory_ConveyorBase">
@@ -101,5 +109,13 @@
 				<maxDistance>8</maxDistance>
 			</li>
 		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_UndergroundConveyorEntrance</li>
+			</relatedBuildCommands>
+		</building>
 	</ThingDef>
 </Defs>
