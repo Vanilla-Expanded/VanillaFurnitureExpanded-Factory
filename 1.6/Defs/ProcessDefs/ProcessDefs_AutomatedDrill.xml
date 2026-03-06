@@ -251,38 +251,19 @@
 		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForSteel</defName>
-		<label>Dig to harvest 45 steel</label>
-		<description>Dig to harvest a portion of steel.</description>
+		<defName>VFEFactory_DigForMetals</defName>
+		<label>Dig for metals</label>
+		<labelOverride>Dig for metals</labelOverride>
+		<description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource, as well as the usual lump size. The amount depends on the usual yield of such a deposit.</description>
 		<priorityInBillList>10</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>23900</ticks>
-		<results>
-			<li>
-				<thing>Steel</thing>
-				<count>45</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-	
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForSilver</defName>
-		<label>Dig to harvest 40 silver</label>
-		<description>Dig to harvest a portion of silver.</description>
-		<priorityInBillList>11</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>31700</ticks>
 		<results>
 			<li>
-				<thing>Silver</thing>
-				<count>40</count>
+				<thing>Steel</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Metals</workerClass>
+				<outputStringOverride>VFEFactory_Metals</outputStringOverride>
 			</li>
 		</results>
 		<isFactoryProcess>true</isFactoryProcess>
@@ -292,110 +273,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForPlasteel</defName>
-		<label>Dig to harvest 10 plasteel</label>
-		<description>Dig to harvest a portion of plasteel.</description>
-		<priorityInBillList>12</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>50400</ticks>
-		<results>
-			<li>
-				<thing>Plasteel</thing>
-				<count>10</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForJade</defName>
-		<label>Dig to harvest 10 jade</label>
-		<description>Dig to harvest a portion of jade.</description>
-		<priorityInBillList>13</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>39600</ticks>
-		<results>
-			<li>
-				<thing>Jade</thing>
-				<count>10</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForGold</defName>
-		<label>Dig to harvest 10 gold</label>
-		<description>Dig to harvest a portion of gold.</description>
-		<priorityInBillList>14</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>79200</ticks>
-		<results>
-			<li>
-				<thing>Gold</thing>
-				<count>10</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef>
-		<defName>VFEFactory_DigForUranium</defName>
-		<label>Dig to harvest 10 uranium</label>
-		<description>Dig to harvest a portion of uranium.</description>
-		<priorityInBillList>15</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>33600</ticks>
-		<results>
-			<li>
-				<thing>Uranium</thing>
-				<count>10</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
-		<defName>VFEFactory_DigForSkySteel</defName>
-		<label>Dig to harvest 30 sky steel</label>
-		<description>Dig to harvest a portion of sky steel.</description>
-		<priorityInBillList>16</priorityInBillList>
-		<spawnOnInteractionCell>true</spawnOnInteractionCell>
-		<ticks>54000</ticks>
-		<results>
-			<li>
-				<thing>AA_SkySteel</thing>
-				<count>30</count>
-			</li>
-		</results>
-		<isFactoryProcess>true</isFactoryProcess>
-		<autoExtract>true</autoExtract>
-		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		<sustainerWhenWorking>true</sustainerWhenWorking>
-		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
-		<effecterWhenWorking>true</effecterWhenWorking>
-		<effecterDef>Drill</effecterDef>
-	</PipeSystem.ProcessDef>
+	
 </Defs>

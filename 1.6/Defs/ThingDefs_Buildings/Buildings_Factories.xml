@@ -164,13 +164,8 @@
 					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForOnyxglassChunk</li>
 					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForMudstoneChunk</li>
 					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForSlimeStoneChunk</li>
-					<li>VFEFactory_DigForSteel</li>
-					<li>VFEFactory_DigForSilver</li>
-					<li>VFEFactory_DigForPlasteel</li>
-					<li>VFEFactory_DigForJade</li>
-					<li>VFEFactory_DigForGold</li>
-					<li>VFEFactory_DigForUranium</li>
-					<li MayRequire="sarg.alphaanimals">VFEFactory_DigForSkySteel</li>
+					<li>VFEFactory_DigForMetals</li>
+					
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
