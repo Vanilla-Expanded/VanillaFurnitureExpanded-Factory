@@ -40,4 +40,43 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<maxOutputCount>300</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Odyssey">
+		<defName>VFEFactory_ShredDrone</defName>
+		<label>Shred drone</label>
+		<labelOverride>Shred drone</labelOverride>
+		<description>Use various built-in tools and grinders to shred a drone into steel. 10 steel will be extracted per 1 body size of the drone.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(-3,0,0)</li>
+			<li>(3,0,0)</li>
+		</autoInputSlots>
+		<ticks>1200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesDrone</thingCategory>
+				<countNeeded>1</countNeeded>
+				<ingredientIconOverride>Things/Pawn/Drone/Hunter/HunterDrone_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>10</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_SmeltMechanoid</workerClass>
+				<outputStringOverride>VFEFactory_SteelPerBodySize</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
+	</PipeSystem.ProcessDef>
 </Defs>

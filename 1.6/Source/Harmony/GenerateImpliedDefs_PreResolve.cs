@@ -214,7 +214,7 @@ namespace VanillaFurnitureExpandedFactory
                 processDef.considerBuildingCompResource = true;
 
             }
-            if (def.researchPrerequisites.Count > 0) {
+            if (def.researchPrerequisites?.Count > 0) {
                 processDef.researchPrerequisites.AddRange(def.researchPrerequisites);
             }
 

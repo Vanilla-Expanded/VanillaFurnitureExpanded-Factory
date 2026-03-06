@@ -1516,7 +1516,7 @@
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 					<li>VFEFactory_ShredMechanoid</li>
-					
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_ShredDrone</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
