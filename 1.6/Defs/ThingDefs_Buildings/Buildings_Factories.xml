@@ -744,7 +744,7 @@
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_BasicFactories</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
