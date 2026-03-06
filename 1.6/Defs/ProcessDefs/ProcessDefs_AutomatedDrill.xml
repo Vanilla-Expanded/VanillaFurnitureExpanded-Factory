@@ -22,6 +22,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForGraniteChunk</defName>
@@ -45,6 +47,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForLimestoneChunk</defName>
@@ -68,6 +72,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForSlateChunk</defName>
@@ -91,6 +97,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForMarbleChunk</defName>
@@ -114,6 +122,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_DigForRoseQuartzChunk</defName>
@@ -137,6 +147,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_DigForCragstoneChunk</defName>
@@ -160,6 +172,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_DigForOnyxglassChunk</defName>
@@ -183,6 +197,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_DigForMudstoneChunk</defName>
@@ -206,6 +222,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_DigForSlimeStoneChunk</defName>
@@ -229,6 +247,8 @@
 		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_DigForSteel</defName>
