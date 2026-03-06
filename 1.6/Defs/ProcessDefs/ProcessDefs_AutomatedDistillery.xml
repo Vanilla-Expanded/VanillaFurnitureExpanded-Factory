@@ -34,6 +34,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeWhiskeyFromCorn</defName>
@@ -69,6 +70,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeTequilaFromAgave</defName>
@@ -104,6 +106,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeVodkaFromPotatoes</defName>
@@ -139,6 +142,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeGinFromBerries</defName>
@@ -174,6 +178,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts">
 		<defName>VFEFactory_MakeSakeFromRice</defName>
@@ -209,6 +214,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts">
 		<defName>VFEFactory_MakeChocoLiquor</defName>
@@ -244,6 +250,7 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts,VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeCoffeeLiquor</defName>
@@ -279,5 +286,6 @@
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

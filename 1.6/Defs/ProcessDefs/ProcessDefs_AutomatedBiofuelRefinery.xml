@@ -36,6 +36,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
@@ -78,6 +79,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
@@ -116,6 +118,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
 		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
@@ -153,6 +156,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 </Defs>

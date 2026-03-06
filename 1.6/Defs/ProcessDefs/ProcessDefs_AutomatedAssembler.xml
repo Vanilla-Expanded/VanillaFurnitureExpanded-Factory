@@ -37,6 +37,7 @@
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>50</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_AssembleAdvancedComponent</defName>
@@ -87,6 +88,7 @@
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>50</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_RefineUraniumCrystals</defName>
@@ -121,6 +123,7 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_BlueGel_To_Hexagel</defName>
@@ -155,6 +158,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphaanimals">
 		<defName>VFEFactory_Make_HexagelCore</defName>
@@ -193,5 +197,6 @@
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

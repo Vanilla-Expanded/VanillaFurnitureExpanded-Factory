@@ -38,7 +38,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
-		
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeIncendiaryShells</defName>
@@ -78,6 +78,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeEMPShells</defName>
@@ -117,6 +118,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeFirefoamShells</defName>
@@ -152,6 +154,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeSmokeShells</defName>
@@ -187,6 +190,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
 		<defName>VFEFactory_MakeToxShells</defName>
@@ -226,6 +230,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_MakeTarShells</defName>
@@ -265,6 +270,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeShrapnelShells</defName>
@@ -300,6 +306,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeArmorPiercingShells</defName>
@@ -339,6 +346,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="OskarPotocki.VFE.Deserters">
 		<defName>VFEFactory_MakeClusterShells</defName>
@@ -378,6 +386,7 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
 		<defName>VFEFactory_MakeDeadlifeShells</defName>
@@ -413,5 +422,6 @@
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_DefaultFactorySustainer</sustainerDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

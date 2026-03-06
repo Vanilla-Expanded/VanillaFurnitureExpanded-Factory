@@ -30,7 +30,14 @@
 						<considerBuildingCompResource>true</considerBuildingCompResource>
 					</value>
 				</li>
-				
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="VREA_NeutroTap"]</xpath>
+					<value>
+						<li Class="PipeSystem.FactoryHopperExtension">
+							<isfactoryHopper>true</isfactoryHopper>
+						</li>
+					</value>
+				</li>
 			</operations>
 		</match>
 	</Operation>

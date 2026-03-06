@@ -43,6 +43,7 @@
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakePemmican</defName>
@@ -88,6 +89,7 @@
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeSurvivalMeal</defName>
@@ -133,6 +135,7 @@
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>20</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeMassProducedMeal</defName>
@@ -175,6 +178,7 @@
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>20</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Biotech">
 		<defName>VFEFactory_MakeBabyFood</defName>
@@ -214,6 +218,7 @@
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewECandT">
 		<defName>VFEFactory_MakePumpkinCoffee</defName>
@@ -252,5 +257,6 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>20</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

@@ -63,6 +63,14 @@
 						</value>
 					</match>
 				</li>
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="VCHE_ChemfuelTap"]</xpath>
+					<value>
+						<li Class="PipeSystem.FactoryHopperExtension">
+							<isfactoryHopper>true</isfactoryHopper>
+						</li>
+					</value>
+				</li>
 			</operations>
 		</match>
 	</Operation>

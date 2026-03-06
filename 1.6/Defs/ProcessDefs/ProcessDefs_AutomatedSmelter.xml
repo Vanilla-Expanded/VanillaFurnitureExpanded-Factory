@@ -33,6 +33,7 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
@@ -73,6 +74,7 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltApparel</defName>
@@ -112,6 +114,7 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMetalFromChunk</defName>
@@ -147,6 +150,7 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltMechanoid</defName>
@@ -185,5 +189,6 @@
 		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

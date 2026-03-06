@@ -45,6 +45,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_RollJoint</defName>
@@ -81,6 +82,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeFlake</defName>
@@ -119,6 +121,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeYayo</defName>
@@ -157,6 +160,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_BrewPsychiteTea</defName>
@@ -195,6 +199,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeGoJuice</defName>
@@ -236,6 +241,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizePenoxycyline</defName>
@@ -274,6 +280,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SynthesizeWakeUp</defName>
@@ -312,6 +319,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="vanillaracesexpanded.genie">
 		<defName>VFEFactory_SynthesizeAntibiotics</defName>
@@ -354,6 +362,7 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsEMoreLabStuff">
 		<defName>VFEFactory_SynthesizeAgePills</defName>
@@ -396,5 +405,6 @@
 		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 </Defs>

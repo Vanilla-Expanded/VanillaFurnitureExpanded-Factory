@@ -33,6 +33,7 @@
 		<sustainerDef>VFEFactory_AutomatedLoomSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Tailor</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 </Defs>

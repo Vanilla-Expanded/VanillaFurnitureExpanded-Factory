@@ -104,7 +104,7 @@ namespace VanillaFurnitureExpandedFactory
             processDef.sustainerDef = tp.sustainerDef;
             processDef.effecterWhenWorking = tp.effecterWhenWorking;
             processDef.effecterDef = tp.effecterDef;
-
+            processDef.maxOutputCount = tp.maxOutputCount;
             InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;
         }

@@ -93,6 +93,7 @@
 					<li>VFEFactory_MakeCannedProduce</li>
 					<li MayRequire="VanillaExpanded.VPlantsE">VFEFactory_MakeCannedFruit</li>
 					<li>VFEFactory_MakeCannedEggs</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_MakeCannedFish</li>
 					<li>VFEFactory_MakeCannedSoup</li>
 				</processes>
 				<hideSettings>true</hideSettings>

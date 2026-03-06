@@ -21,5 +21,6 @@ namespace VanillaFurnitureExpandedFactory
 		public SoundDef sustainerDef;
 		public bool effecterWhenWorking;
 		public EffecterDef effecterDef;
+		public float maxOutputCount;
     }
 }

@@ -37,6 +37,7 @@
 		<sustainerDef>VFEFactory_AutomatedStoneCuttingSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
 	
 	

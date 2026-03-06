@@ -35,7 +35,7 @@
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
-		
+		<maxOutputCount>75</maxOutputCount>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
@@ -79,6 +79,7 @@
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VPlantsE">
@@ -119,6 +120,7 @@
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
@@ -159,6 +161,7 @@
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
@@ -196,6 +199,48 @@
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<maxOutputCount>75</maxOutputCount>
+		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Odyssey">
+		<defName>VFEFactory_MakeCannedFish</defName>
+		<label>Make canned fish</label>
+		<labelOverride>Make canned fish</labelOverride>
+		<description>Safely store fish in a steel can. Canning food extends its shelf life almost indefinitely. 20 cans will be produced per every nutrition consumed, so for example 4 salmon and one steel will output 20 cans.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>3600</ticks>
+		<ingredients>
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			<li>
+				<thingCategory>Fish</thingCategory>
+				<countNeeded>4</countNeeded>			
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VCE_CannedFish</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Cans</workerClass>
+				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Default</effecterDef>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
 </Defs>
