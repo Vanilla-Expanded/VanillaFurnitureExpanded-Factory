@@ -12,7 +12,7 @@
         <scale>1~1.5</scale>
         <ticksBetweenMotes>10</ticksBetweenMotes>
         <positionLerpFactor>0.6</positionLerpFactor>
-        <positionRadius>2</positionRadius>
+        <positionRadius>1</positionRadius>
         <moteDef>Mote_StoneBit</moteDef>
       </li>
     </children>
@@ -26,7 +26,7 @@
         <scale>1~1.5</scale>
         <ticksBetweenMotes>5</ticksBetweenMotes>
         <positionLerpFactor>0.6</positionLerpFactor>
-        <positionRadius>2</positionRadius>
+        <positionRadius>1</positionRadius>
         <moteDef>Mote_StoneBit</moteDef>
       </li>
     </children>
@@ -40,7 +40,7 @@
          <scale>1~1.5</scale>
         <ticksBetweenMotes>5</ticksBetweenMotes>
         <positionLerpFactor>0.6</positionLerpFactor>
-        <positionRadius>2</positionRadius>
+        <positionRadius>1</positionRadius>
         <moteDef>Mote_CookBit</moteDef>
       </li>
     </children>
@@ -54,7 +54,7 @@
          <scale>1~1.5</scale>
         <ticksBetweenMotes>5</ticksBetweenMotes>
         <positionLerpFactor>0.6</positionLerpFactor>
-        <positionRadius>2</positionRadius>
+        <positionRadius>1</positionRadius>
         <moteDef>Mote_FoodBitMeat</moteDef>
       </li>
     </children>

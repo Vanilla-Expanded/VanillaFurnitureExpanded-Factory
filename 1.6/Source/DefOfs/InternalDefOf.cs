@@ -18,8 +18,10 @@ namespace VanillaFurnitureExpandedFactory
 		public static RoomRoleDef VFEFactory_FactoryRoom;
 
 		public static ThingDef HandTailoringBench;
-		public static ThingDef VFEFactory_Autoloom;
+        public static ThingDef TableMachining;
+        public static ThingDef VFEFactory_Autoloom;
         public static ThingDef VFEFactory_FactoryHopper;
+        public static ThingDef VFEFactory_AutomatedMachiningBay;
 
         public static SoundDef VFEFactory_DefaultFactorySustainer;
 
