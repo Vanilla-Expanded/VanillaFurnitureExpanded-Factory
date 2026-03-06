@@ -111,6 +111,17 @@ namespace VanillaFurnitureExpandedFactory
             processDef.effecterWhenWorking = tp.effecterWhenWorking;
             processDef.effecterDef = tp.effecterDef;
             processDef.maxOutputCount = tp.maxOutputCount;
+            if (def.recipeMaker?.researchPrerequisites != null)
+            {
+                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+                processDef.researchPrerequisites.AddRange(def.recipeMaker.researchPrerequisites);
+            }
+            else
+            if (def.recipeMaker?.researchPrerequisite != null)
+            {
+                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+                processDef.researchPrerequisites.Add(def.recipeMaker.researchPrerequisite);
+            }
             InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;
         }
@@ -214,8 +225,14 @@ namespace VanillaFurnitureExpandedFactory
                 processDef.considerBuildingCompResource = true;
 
             }
-            if (def.researchPrerequisites?.Count > 0) {
-                processDef.researchPrerequisites.AddRange(def.researchPrerequisites);
+            if (def.recipeMaker?.researchPrerequisites!=null)
+            {
+                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+                processDef.researchPrerequisites.AddRange(def.recipeMaker.researchPrerequisites);
+            }else
+            if (def.recipeMaker?.researchPrerequisite !=null) {
+                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+                processDef.researchPrerequisites.Add(def.recipeMaker.researchPrerequisite);
             }
 
             InternalDefOf.VFEFactory_AutomatedMachiningBay.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
