@@ -7,7 +7,7 @@ using Verse;
 
 namespace VanillaFurnitureExpandedFactory
 {
-    public class MachiningProcessTemplateDefs : Def
+    public class MachiningProcessTemplateDef : Def
     {
         public bool spawnOnInteractionCell;
         public bool autoGrabFromHoppers;

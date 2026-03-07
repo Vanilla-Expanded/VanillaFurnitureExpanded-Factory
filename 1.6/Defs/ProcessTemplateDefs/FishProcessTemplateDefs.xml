@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<VanillaFurnitureExpandedFactory.FishProcessTemplateDef>
+		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+		<defName>VFEFactory_FishingProcess_</defName>
+		<label>Breed {0}</label>
+		<description>Breed {0} in the fishfarm.</description>
+		<!--<priorityInBillList>+</priorityInBillList>-->
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		
+		<ticks>30000</ticks>
+		<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_RandomFishAmount</workerClass>
+		<outputStringOverride>VFEFactory_RandomFishAmount</outputStringOverride>
+		<!--<results>
+			<li>
+				<thing>Specific fish</thing>
+				<count>1</count>	
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_RandomFishAmount</workerClass>
+				<outputStringOverride>VFEFactory_RandomFishAmount</outputStringOverride>				
+			</li>
+		</results>-->
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<stopProcessUnderGillRot>true</stopProcessUnderGillRot>
+		<maxOutputCount>75</maxOutputCount>
+		<hideProcessIfNotNaturalFish>true</hideProcessIfNotNaturalFish>
+	</VanillaFurnitureExpandedFactory.FishProcessTemplateDef>
+	
+	
+</Defs>

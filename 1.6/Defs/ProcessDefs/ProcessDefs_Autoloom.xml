@@ -35,5 +35,45 @@
 		<effecterDef>VFEFactory_Tailor</effecterDef>
 		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeSynthread</defName>
+		<label>Make synthread</label>
+	
+		<description>Weave synthread from cloth and plasteel fibers.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-2,0,2)</li>
+			<li>(2,0,2)</li>
+		</autoInputSlots>
+		<ticks>20000</ticks>
+		<ingredients>
+			<li>
+				<thing>Cloth</thing>
+				<countNeeded>40</countNeeded>
+				
+			</li>
+			<li>
+				<thing>Plasteel</thing>
+				<countNeeded>10</countNeeded>
+				
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Synthread</thing>
+				<count>50</count>				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedLoomSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Tailor</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
 	
 </Defs>

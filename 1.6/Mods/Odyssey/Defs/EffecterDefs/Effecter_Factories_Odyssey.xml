@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+
+   <EffecterDef>
+    <defName>VFEFactory_Fish</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+		<chancePerTick>0.5</chancePerTick>
+        <fleckDef>FishShadow</fleckDef>
+      </li>
+    </children>
+  </EffecterDef>
+  
+</Defs>

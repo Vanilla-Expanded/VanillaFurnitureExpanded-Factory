@@ -22,6 +22,8 @@ namespace VanillaFurnitureExpandedFactory
         public static ThingDef VFEFactory_Autoloom;
         public static ThingDef VFEFactory_FactoryHopper;
         public static ThingDef VFEFactory_AutomatedMachiningBay;
+		[MayRequireOdyssey]
+		public static ThingDef VFEFactory_AutomatedFishfarm;
 
         public static SoundDef VFEFactory_DefaultFactorySustainer;
 

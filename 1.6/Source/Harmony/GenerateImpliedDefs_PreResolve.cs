@@ -29,6 +29,13 @@ namespace VanillaFurnitureExpandedFactory
             {
                 DefGenerator.AddImpliedDef(item, hotReload);
             }
+            if (ModLister.OdysseyInstalled) {
+                foreach (PipeSystem.ProcessDef item in ImpliedFishingProcesses(hotReload))
+                {
+                    DefGenerator.AddImpliedDef(item, hotReload);
+                }
+            }
+            
         }
 
 
@@ -135,7 +142,7 @@ namespace VanillaFurnitureExpandedFactory
             {
 
                 int index = 1;
-                foreach (MachiningProcessTemplateDefs templateDef in DefDatabase<MachiningProcessTemplateDefs>.AllDefs)
+                foreach (MachiningProcessTemplateDef templateDef in DefDatabase<MachiningProcessTemplateDef>.AllDefs)
                 {
                     yield return ProcessFromMachiningRecipe(templateDef, def, index, hotReload);
 
@@ -143,7 +150,7 @@ namespace VanillaFurnitureExpandedFactory
                 }
             }
         }
-        public static ProcessDef ProcessFromMachiningRecipe(MachiningProcessTemplateDefs tp, ThingDef def, int index, bool hotReload = false)
+        public static ProcessDef ProcessFromMachiningRecipe(MachiningProcessTemplateDef tp, ThingDef def, int index, bool hotReload = false)
         {
 
             string defName = tp.defName + def.defName;
@@ -236,6 +243,61 @@ namespace VanillaFurnitureExpandedFactory
             }
 
             InternalDefOf.VFEFactory_AutomatedMachiningBay.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
+            return processDef;
+        }
+
+
+        public static IEnumerable<PipeSystem.ProcessDef> ImpliedFishingProcesses(bool hotReload = false)
+        {
+            List<ThingDef> fishingRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.thingCategories?.Contains(ThingCategoryDefOf.Fish)==true).ToList();
+
+            foreach (ThingDef def in fishingRecipes)
+            {
+
+                int index = 1;
+                foreach (FishProcessTemplateDef templateDef in DefDatabase<FishProcessTemplateDef>.AllDefs)
+                {
+                    yield return ProcessFromFishingRecipe(templateDef, def, index, hotReload);
+
+                    index++;
+                }
+            }
+        }
+        public static ProcessDef ProcessFromFishingRecipe(FishProcessTemplateDef tp, ThingDef def, int index, bool hotReload = false)
+        {
+
+            string defName = tp.defName + def.defName;
+            ProcessDef processDef = (hotReload ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef()) : new ProcessDef());
+            processDef.defName = defName;
+            processDef.label = tp.label.Formatted(def.label);
+            processDef.description = tp.description.Formatted(def.label);
+            processDef.priorityInBillList = index;
+            processDef.spawnOnInteractionCell = tp.spawnOnInteractionCell;
+            processDef.ticks = tp.ticks;   
+
+            processDef.results = new List<ProcessDef.Result>
+            {
+                new ProcessDef.Result
+                {
+                    thing = def,
+                    count=1,
+                    workerClass=tp.workerClass,
+                    outputStringOverride=tp.outputStringOverride
+                }
+            };
+            processDef.isFactoryProcess = tp.isFactoryProcess;
+            processDef.autoExtract = tp.autoExtract;
+            processDef.onlyGrabAndOutputToFactoryHoppers = tp.onlyGrabAndOutputToFactoryHoppers;
+                 
+            processDef.maxOutputCount = tp.maxOutputCount;
+
+            processDef.hideProcessIfNotNaturalFish= tp.hideProcessIfNotNaturalFish;
+            processDef.stopProcessUnderGillRot= tp.stopProcessUnderGillRot;
+
+            processDef.researchPrerequisites = new List<ResearchProjectDef>();
+            processDef.researchPrerequisites.Add(ResearchProjectDefOf.Fishing);
+
+            InternalDefOf.VFEFactory_AutomatedFishfarm.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;
         }
     }

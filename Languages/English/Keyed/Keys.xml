@@ -16,6 +16,7 @@
 	<VFEFactory_SurvivalMealOutput>4 meals per 2.4 nutrition</VFEFactory_SurvivalMealOutput>
 	<VFEFactory_MassProducedMealOutput>4 meals per 2 nutrition</VFEFactory_MassProducedMealOutput>
 	<VFEFactory_BabyFoodOutput>10 baby food per 0.25 nutrition</VFEFactory_BabyFoodOutput>
+	<VFEFactory_RandomFishAmount>1 to 3 fish</VFEFactory_RandomFishAmount>
 	<VFEFactory_Metals>Random metals</VFEFactory_Metals>
 	<VFEFactory_ChangeDirection>Change direction</VFEFactory_ChangeDirection>
 	<VFEFactory_ChangeDirectionDesc>Change the direction of this conveyor belt.</VFEFactory_ChangeDirectionDesc>
@@ -52,4 +53,7 @@
 	<VFEFactory_AutofarmerObstructed>Autofarmer cannot initiate due to a large object obstructing its path.</VFEFactory_AutofarmerObstructed>
 	<VFEFactory_HaulFromConveyor>Haul from conveyor</VFEFactory_HaulFromConveyor>
 	<VFEFactory_CannotHaulFromConveyor>Cannot haul from conveyor</VFEFactory_CannotHaulFromConveyor>
-	</LanguageData>
+	<VFEFactory_NeedsWater>Needs to be built on water</VFEFactory_NeedsWater>
+	<VFEFactory_NeedsFish>Needs to be built on water that supports fish</VFEFactory_NeedsFish>
+	<VFEFactory_OutputOnLand>Fish farm output needs to be on land</VFEFactory_OutputOnLand>
+</LanguageData>

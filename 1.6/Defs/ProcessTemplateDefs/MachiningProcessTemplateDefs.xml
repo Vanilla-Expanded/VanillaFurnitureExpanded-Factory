@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<VanillaFurnitureExpandedFactory.MachiningProcessTemplateDefs>
+	<VanillaFurnitureExpandedFactory.MachiningProcessTemplateDef>
 		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
 		<defName>VFEFactory_MachiningBay_</defName>
 		<label>Make {0}</label>
@@ -37,7 +37,7 @@
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
 		<maxOutputCount>3</maxOutputCount>
-	</VanillaFurnitureExpandedFactory.MachiningProcessTemplateDefs>
+	</VanillaFurnitureExpandedFactory.MachiningProcessTemplateDef>
 	
 	
 </Defs>

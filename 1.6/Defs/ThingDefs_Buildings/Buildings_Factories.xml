@@ -1102,6 +1102,7 @@
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 					<li>VFEFactory_MakePatchleather</li>
+					<li>VFEFactory_MakeSynthread</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
