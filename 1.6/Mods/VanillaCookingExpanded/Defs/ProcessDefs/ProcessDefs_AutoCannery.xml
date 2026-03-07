@@ -180,7 +180,10 @@
 		</autoInputSlots>
 		<ticks>15200</ticks>
 		<ingredients>
-			
+			<li>
+				<thing>Steel</thing>
+				<countNeeded>1</countNeeded>
+			</li>
 			<li>
 				<thingCategory>VCE_UncookedSoups</thingCategory>
 				<countNeeded>1</countNeeded>			
