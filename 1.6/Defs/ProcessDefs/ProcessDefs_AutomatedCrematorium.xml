@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_CremateAnimal</defName>
+		<label>Cremate animal</label>
+		<labelOverride>Cremate animal</labelOverride>
+		<description>Cremate an animal corpse to completely destroy it.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesAnimal</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>false</onlyFreshCorpses>
+				<ingredientIconOverride>UI/CategoryIcons/Category_Corpses</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_CremateHumanlike</defName>
+		<label>Cremate human</label>
+		<labelOverride>Cremate human</labelOverride>
+		<description>Cremate a human corpse to completely destroy it.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesHumanlike</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>false</onlyFreshCorpses>
+				<ingredientIconOverride>UI/CategoryIcons/Category_CorpsesHumanoid</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VFEFactory_CremateEntities</defName>
+		<label>Cremate entity</label>
+		<labelOverride>Cremate entity</labelOverride>
+		<description>Cremate an entity's corpse to completely destroy it.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesEntity</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>false</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Revenant/Revenant_MenuIcon</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsE">
+		<defName>VFEFactory_CremateHybrids</defName>
+		<label>Cremate paragon or hybrid</label>
+		<labelOverride>Cremate paragon or hybrid</labelOverride>
+		<description>Cremate a paragon or hybrid's corpse to completely destroy it.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>GR_Corpses</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>false</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Animal/Avian/Chickenbear/Chickenbear_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsE">
+		<defName>VFEFactory_CremateHumanoidHybrids</defName>
+		<label>Cremate humanoid hybrid</label>
+		<labelOverride>Cremate humanoid hybrid</labelOverride>
+		<description>Cremate a humanoid hybrid's corpse to completely destroy it.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>GR_HumanoidCorpses</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>false</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Animal/Humanoid/Manalope/GR_Manalope_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_BurnApparel</defName>
+		<label>Burn apparel</label>
+		<labelOverride>Burn apparel</labelOverride>
+		<description>Burn unwanted apparel to completely destroy it.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Apparel</thingCategory>
+				<countNeeded>1</countNeeded>
+				<ingredientIconOverride>Things/Pawn/Humanlike/Apparel/Jacket/Jacket</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_BurnWeapon</defName>
+		<label>Burn weapon</label>
+		<labelOverride>Burn weapon</labelOverride>
+		<description>Burn unwanted weapon to completely destroy it.</description>
+		<priorityInBillList>6</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Weapons</thingCategory>
+				<countNeeded>1</countNeeded>
+				<ingredientIconOverride>Things/Item/Equipment/WeaponRanged/Revolver</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_BurnDrug</defName>
+		<label>Burn drugs</label>
+		<labelOverride>Burn drugs</labelOverride>
+		<description>Burn unwanted drugs to completely destroy them.</description>
+		<priorityInBillList>7</priorityInBillList>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+		</autoInputSlots>
+		<ticks>720</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Drugs</thingCategory>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<isFactoryProcess>true</isFactoryProcess>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+	</PipeSystem.ProcessDef>
+</Defs>

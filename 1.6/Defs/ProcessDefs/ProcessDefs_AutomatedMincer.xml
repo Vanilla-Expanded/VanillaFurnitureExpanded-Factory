@@ -38,12 +38,50 @@
 		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
 		<maxOutputCount>300</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsE">
+		<defName>VFEFactory_MinceHybridCorpses</defName>
+		<label>Mince hybrid corpses</label>
+		<labelOverride>Mince hybrid corpses</labelOverride>
+		<description>Chop hybrid corpses into raw, edible minced meat suitable for cooking or further processing.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>GR_Corpses</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Animal/Avian/Chickenbear/Chickenbear_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VFEFactory_ProcessedMince</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_Butchery</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
+	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MinceHumanCorpses</defName>
 		<label>Mince human corpses</label>
 		<labelOverride>Mince human corpses</labelOverride>
 		<description>Chop human corpses into raw human meat. This may anger colonists, depending on their ideological beliefs. Equipment will all be discarded.</description>
-		<priorityInBillList>1</priorityInBillList>
+		<priorityInBillList>2</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<historyEventWhenFinished>ButcheredHuman</historyEventWhenFinished>
@@ -58,6 +96,45 @@
 				<countNeeded>1</countNeeded>
 				<onlyFreshCorpses>true</onlyFreshCorpses>
 				<ingredientIconOverride>UI/CategoryIcons/Category_CorpsesHumanoid</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Meat_Human</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_ButcheryHuman</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VGeneticsE">
+		<defName>VFEFactory_MinceHumanoidHybridCorpses</defName>
+		<label>Mince humanoid hybrid corpses</label>
+		<labelOverride>Mince humanoid hybrid corpses</labelOverride>
+		<description>Chop humanoid hybrid corpses into raw human meat. This may anger colonists, depending on their ideological beliefs.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<historyEventWhenFinished>ButcheredHuman</historyEventWhenFinished>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>GR_HumanoidCorpses</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Animal/Humanoid/Manalope/GR_Manalope_east</ingredientIconOverride>
 			</li>
 		</ingredients>
 		<results>
