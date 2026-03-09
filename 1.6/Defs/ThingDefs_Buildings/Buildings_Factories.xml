@@ -1544,7 +1544,7 @@
 		<description>todo</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
-			<texPath>Things/Building/Factories/VFEM_TestFactory</texPath>
+			<texPath>Things/Building/Factories/ConveyorCrematorium/ConveyorCrematorium</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(4,4)</drawSize>
 			<damageData>
