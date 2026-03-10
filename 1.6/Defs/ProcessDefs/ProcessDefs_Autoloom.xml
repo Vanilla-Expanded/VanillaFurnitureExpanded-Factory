@@ -39,7 +39,7 @@
 		<defName>VFEFactory_MakeSynthread</defName>
 		<label>Make synthread</label>
 	
-		<description>Weave synthread from cloth and plasteel fibers.</description>
+		<description>Weave synthread from cloth and synthetic fibers.</description>
 		<priorityInBillList>0</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
@@ -51,19 +51,19 @@
 		<ingredients>
 			<li>
 				<thing>Cloth</thing>
-				<countNeeded>40</countNeeded>
+				<countNeeded>25</countNeeded>
 				
 			</li>
 			<li>
-				<thing>Plasteel</thing>
-				<countNeeded>10</countNeeded>
+				<thing>Chemfuel</thing>
+				<countNeeded>25</countNeeded>
 				
 			</li>
 		</ingredients>
 		<results>
 			<li>
 				<thing>Synthread</thing>
-				<count>50</count>				
+				<count>25</count>				
 			</li>
 		</results>
 		<isFactoryProcess>true</isFactoryProcess>
