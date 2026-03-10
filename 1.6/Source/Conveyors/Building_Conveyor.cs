@@ -363,8 +363,10 @@ namespace VanillaFurnitureExpandedFactory
             cachedShowItems = !cachedHasRefuelableTarget.Value;
         }
 
-        private void InvalidateCache()
+        protected void InvalidateCache()
         {
+            bool wasTurn = IsTurn;
+
             cachedIsTurn = null;
             cachedInputCount = null;
             cachedOutputCount = null;
@@ -392,6 +394,11 @@ namespace VanillaFurnitureExpandedFactory
             }
 
             RefreshDrawCache();
+
+            if (wasTurn != IsTurn)
+            {
+                InvalidateNeighborCaches();
+            }
         }
 
         private void PeriodicCacheCheck()
@@ -404,7 +411,14 @@ namespace VanillaFurnitureExpandedFactory
                 Building currentForward = GetConveyorOrStorageAt(targetPos, cachedMap);
                 if (cachedForwardBuildingPos == targetPos)
                 {
-                    if (currentForward != cachedForwardBuilding) changed = true;
+                    if (currentForward != cachedForwardBuilding)
+                    {
+                        changed = true;
+                    }
+                    else if (currentForward is Building_Conveyor fwdConv && fwdConv.IsTurn != cachedNextIsTurn)
+                    {
+                        changed = true;
+                    }
                 }
                 else
                 {
@@ -454,7 +468,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private void InvalidateNeighborCaches()
+        protected void InvalidateNeighborCaches()
         {
             for (int i = 0; i < 4; i++)
             {
@@ -515,16 +529,17 @@ namespace VanillaFurnitureExpandedFactory
             return labelScreenPos;
         }
 
-        private void SetDirection(Rot4 newRotation)
+        protected virtual bool TrySetDirection(Rot4 newRotation)
         {
             if (!IsConfigurationValid(Position, newRotation, Map))
             {
                 Messages.Message("VFEFactory_InvalidConveyorConfiguration".Translate(), MessageTypeDefOf.RejectInput);
-                return;
+                return false;
             }
             Rotation = newRotation;
             InvalidateCache();
             InvalidateNeighborCaches();
+            return true;
         }
 
         public static bool IsConfigurationValid(IntVec3 loc, Rot4 rot, Map map)
@@ -1585,7 +1600,7 @@ namespace VanillaFurnitureExpandedFactory
 
         public virtual Rot4[] PossibleInputDirections() => InputDirectionsByRot[Rotation.AsInt];
 
-        public Rot4[] PossibleOutputDirections() => OutputDirectionsByRot[Rotation.AsInt];
+        public virtual Rot4[] PossibleOutputDirections() => OutputDirectionsByRot[Rotation.AsInt];
 
         public bool CanAcceptFrom(IntVec3 fromPos)
         {
@@ -2227,10 +2242,10 @@ namespace VanillaFurnitureExpandedFactory
                     {
                         var options = new List<FloatMenuOption>
                         {
-                            new FloatMenuOption("VFEFactory_DirectionNorth".Translate(), () => SetDirection(Rot4.North)),
-                            new FloatMenuOption("VFEFactory_DirectionEast".Translate(), () => SetDirection(Rot4.East)),
-                            new FloatMenuOption("VFEFactory_DirectionSouth".Translate(), () => SetDirection(Rot4.South)),
-                            new FloatMenuOption("VFEFactory_DirectionWest".Translate(), () => SetDirection(Rot4.West))
+                            new FloatMenuOption("VFEFactory_DirectionNorth".Translate(), () => TrySetDirection(Rot4.North)),
+                            new FloatMenuOption("VFEFactory_DirectionEast".Translate(), () => TrySetDirection(Rot4.East)),
+                            new FloatMenuOption("VFEFactory_DirectionSouth".Translate(), () => TrySetDirection(Rot4.South)),
+                            new FloatMenuOption("VFEFactory_DirectionWest".Translate(), () => TrySetDirection(Rot4.West))
                         };
                         Find.WindowStack.Add(new FloatMenu(options));
                     }

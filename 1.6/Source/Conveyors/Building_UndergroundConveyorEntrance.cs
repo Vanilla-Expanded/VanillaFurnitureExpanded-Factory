@@ -7,6 +7,8 @@ namespace VanillaFurnitureExpandedFactory
     [HotSwappable]
     public class Building_UndergroundConveyorEntrance : Building_UndergroundConveyorBase
     {
+        private static readonly Rot4[] NoOutputDirections = new Rot4[0];
+
         public override bool ShowItems => false;
         protected override bool AllowGroundDump => false;
         protected override bool ShowFlowArrows => false;
@@ -90,5 +92,7 @@ namespace VanillaFurnitureExpandedFactory
 
         public override bool IsValidLinkTarget(ThingDef def) =>
             def.thingClass == typeof(Building_UndergroundConveyorExit);
+
+        public override Rot4[] PossibleOutputDirections() => NoOutputDirections;
     }
 }

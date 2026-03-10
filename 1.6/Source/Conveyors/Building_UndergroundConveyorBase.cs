@@ -266,5 +266,24 @@ namespace VanillaFurnitureExpandedFactory
         {
             undergroundQueue.AddRange(queue);
         }
+
+        protected override bool TrySetDirection(Rot4 newRotation)
+        {
+            if (base.TrySetDirection(newRotation))
+            {
+                if (linkedBuilding != null && linkedBuilding.Spawned && linkedBuilding.Map == Map && newRotation == linkedBuilding.Rotation.Opposite)
+                {
+                    IntVec3 thisPos = Position;
+                    IntVec3 linkedPos = linkedBuilding.Position;
+                    Position = linkedPos;
+                    linkedBuilding.Position = thisPos;
+                    linkedBuilding.Rotation = newRotation;
+                    linkedBuilding.InvalidateCache();
+                    linkedBuilding.InvalidateNeighborCaches();
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }
