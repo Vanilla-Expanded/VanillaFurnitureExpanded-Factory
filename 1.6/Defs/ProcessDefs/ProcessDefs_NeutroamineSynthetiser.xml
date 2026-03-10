@@ -16,11 +16,11 @@
 		<ingredients>
 			<li>
 				<thing>Chemfuel</thing>
-				<countNeeded>6</countNeeded>
+				<countNeeded>3</countNeeded>
 			</li>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>30</countNeeded>			
+				<countNeeded>20</countNeeded>			
 			</li>
 		</ingredients>
 		<results>

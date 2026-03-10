@@ -4,7 +4,7 @@
 		<defName>VFEFactory_Autofarmer</defName>
 		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
 		<label>autofarmer</label>
-		<description>todo</description>
+		<description>A large, automated machine that combines the functions of a sower and harvester, moving back and forth across a designated outdoor zone to harvest mature plants and sow new crops. It deposits harvested goods into attached factory hoppers or drops them on the ground if hoppers are not present, and its operation can be set to automatically cycle once the majority of plants in the zone are fully grown.</description>
 		<drawerType>RealtimeOnly</drawerType>
 		<drawOffscreen>true</drawOffscreen>
 		<graphicData>
@@ -74,7 +74,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedDrillPlatform</defName>
 		<label>automated drill platform</label>
-		<description>todo</description>
+		<description>An automated deep-crust drilling rig for extracting minerals from deep under the surface. Capable of extracting stone chunks, but also any metal it finds.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedDrillPlatform/AutomatedDrillPlatform</texPath>
@@ -184,7 +184,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedSmelter</defName>
 		<label>automated smelter</label>
-		<description>todo</description>
+		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedSmelter/AutomatedSmelter</texPath>
@@ -288,7 +288,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedBiofuelRefinery</defName>
 		<label>automated biofuel refinery</label>
-		<description>todo</description>
+		<description>Automatically refines biological matter like wood or plant matter into chemfuel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedBiofuelRefinery/AutomatedBiofuelRefinery</texPath>
@@ -392,7 +392,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedMasonrySaw</defName>
 		<label>automated masonry saw</label>
-		<description>todo</description>
+		<description>An industrial machine capable of cutting stone chunks into usable blocks.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedMasonrySaw/AutomatedMasonrySaw</texPath>
@@ -493,7 +493,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedMincer</defName>
 		<label>automated mincer</label>
-		<description>todo</description>
+		<description>A series of automated saws and mincers capable of processing corpses into processed mince.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedMincer/AutomatedMincer</texPath>
@@ -596,7 +596,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_ConveyorOven</defName>
 		<label>conveyor oven</label>
-		<description>todo</description>
+		<description>An industrial oven for the automated mass-production of simple, shelf-stable, and packaged meals.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/ConveyorOven/ConveyorOven</texPath>
@@ -700,7 +700,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedAssembler</defName>
 		<label>automated assembler</label>
-		<description>todo</description>
+		<description>An automated industrial machine for assembling complex items like components and advanced components.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedAssembler/AutomatedAssembler</texPath>
@@ -804,7 +804,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_NeutroamineSynthesizer</defName>
 		<label>neutroamine synthesizer</label>
-		<description>todo</description>
+		<description>An advanced chemical facility designed for the automated synthesis of neutroamine from organic feedstocks. It operates by converting rendered animal fat and chemfuel into neutroamine.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/NeutroamineSynthesizer/NeutroamineSynthesizer</texPath>
@@ -908,7 +908,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedAmmunitionPress</defName>
 		<label>automated ammunition press</label>
-		<description>todo</description>
+		<description>An industrial-grade press capable of automatically manufacturing various artillery shells from raw materials.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedAmmunitionPress/AutomatedAmmunitionPress</texPath>
@@ -1020,7 +1020,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_Autoloom</defName>
 		<label>autoloom</label>
-		<description>todo</description>
+		<description>An industrial-grade loom designed for the automatic production of textiles and apparel, it efficiently weaves materials like cloth and leather into various finished goods. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/Autoloom/Autoloom</texPath>
@@ -1121,7 +1121,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedAlloyForge</defName>
 		<label>automated alloy forge</label>
-		<description>todo</description>
+		<description>A colossal industrial furnace built to contain the immense heat and pressure needed to bond base materials into exotic alloys like plasteel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedAlloyForge/AutomatedAlloyForge</texPath>
@@ -1229,7 +1229,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedDistillery</defName>
 		<label>automated distillery</label>
-		<description>todo</description>
+		<description>An automated industrial distilling system for the mass production of beer and spirits from raw crops, requiring no manual labor.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedDistillery/AutomatedDistillery</texPath>
@@ -1325,7 +1325,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_MedicineGranulator</defName>
 		<label>medicine granulator</label>
-		<description>todo</description>
+		<description>An advanced pharmaceutical processor for the mass-production of basic medical supplies and drug batches from raw materials. It efficiently grinds, synthesizes, and packages items like medicine, psychite drugs, and smokeleaf joints.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/MedicineGranulator/MedicineGranulator</texPath>
@@ -1437,7 +1437,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedMachiningBay</defName>
 		<label>automated machining bay</label>
-		<description>todo</description>
+		<description>An automated industrial facility designed for the precision manufacturing of various weapons, armor, and complex equipment. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedMachiningBay/AutomatedMachiningBay</texPath>
@@ -1541,7 +1541,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedCrematorium</defName>
 		<label>automated crematorium</label>
-		<description>todo</description>
+		<description>An industrial-grade furnace designed for the automated destruction of unwanted items, especially corpses and tainted apparel, using extreme heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/ConveyorCrematorium/ConveyorCrematorium</texPath>
@@ -1558,9 +1558,8 @@
 			<li>VFEFactory_FactoryCategory</li>
 		</thingCategories>
 		<costList>
-			<Steel>440</Steel>
-			<ComponentIndustrial>18</ComponentIndustrial>
-			<ComponentSpacer>5</ComponentSpacer>
+			<Steel>260</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
 		</costList>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
@@ -1573,7 +1572,7 @@
 			<Mass>115</Mass>
 			<Beauty>-18</Beauty>
 			<WorkToBuild>5000</WorkToBuild>
-			<MaxHitPoints>800</MaxHitPoints>
+			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>1</Flammability>
 			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
 		</statBases>
@@ -1586,7 +1585,7 @@
 		
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>VFE_ComplexFactories</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
@@ -1605,14 +1604,14 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<shortCircuitInRain>true</shortCircuitInRain>
-				<basePowerConsumption>500</basePowerConsumption>
+				<basePowerConsumption>250</basePowerConsumption>
 			</li>
 			<li>
 				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
-				<heatPerSecond>10</heatPerSecond>
+				<heatPerSecond>12</heatPerSecond>
 				<heatPushMaxTemperature>120</heatPushMaxTemperature>
 			</li>
 			<li Class="CompProperties_Flickable" />

@@ -254,7 +254,7 @@
 		<defName>VFEFactory_DigForMetals</defName>
 		<label>Dig for metals</label>
 		<labelOverride>Dig for metals</labelOverride>
-		<description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource, as well as the usual lump size. The amount depends on the usual yield of such a deposit.</description>
+		<description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource. The amount depends on the usual yield of such a deposit.</description>
 		<priorityInBillList>10</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>31700</ticks>
