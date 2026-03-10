@@ -4,7 +4,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_AutomatedFishfarm</defName>
 		<label>automated fishfarm</label>
-		<description>todo</description>
+		<description>An industrial fish breeding and harvesting facility designed to automatically extract fish from bodies of water with fish populations.\n\nFactory buildings need factory hoppers for input and output. Needs to be constructed in shallow water.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/Factories/AutomatedFishfarm/AutomatedFishfarm</texPath>
