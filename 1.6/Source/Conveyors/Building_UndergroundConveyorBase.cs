@@ -110,7 +110,7 @@ namespace VanillaFurnitureExpandedFactory
                             canTargetBuildings = true,
                             validator = (TargetInfo x) =>
                             {
-                                if (!x.Cell.InBounds(Map) || x.Cell.DistanceTo(Position) > Props.maxDistance) return false;
+                                if (!x.HasThing || !x.Cell.InBounds(Map) || x.Cell.DistanceTo(Position) > Props.maxDistance) return false;
                                 return IsValidTarget(x.Thing);
                             }
                         }, (LocalTargetInfo target) =>
@@ -139,7 +139,15 @@ namespace VanillaFurnitureExpandedFactory
                             linked.Notify_Linked(this);
                         });
                     },
-                    onHover = () => GenDraw.DrawRadiusRing(Position, Props.maxDistance)
+                    onHover = () =>
+                    {
+                        IntVec3 facing = Rotation.FacingCell;
+                        for (int i = 1; i <= (int)Props.maxDistance; i++)
+                        {
+                            IntVec3 cell = Position + facing * i;
+                            if (cell.InBounds(Map)) GenDraw.DrawTargetHighlight(cell);
+                        }
+                    }
                 };
             }
             else

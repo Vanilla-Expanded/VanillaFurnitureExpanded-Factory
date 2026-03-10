@@ -56,4 +56,9 @@
 	<VFEFactory_NeedsWater>Needs to be built on water</VFEFactory_NeedsWater>
 	<VFEFactory_NeedsFish>Needs to be built on water that supports fish</VFEFactory_NeedsFish>
 	<VFEFactory_OutputOnLand>Fish farm output needs to be on land</VFEFactory_OutputOnLand>
+	<VFEFactory_AllowTaking>Allow taking</VFEFactory_AllowTaking>
+	<VFEFactory_AllowTakingDesc>Allow colonists to take items from this factory hopper.</VFEFactory_AllowTakingDesc>
+	<VFEFactory_AllowInserting>Allow inserting</VFEFactory_AllowInserting>
+	<VFEFactory_AllowInsertingDesc>Allow colonists to manually insert items into this factory hopper.</VFEFactory_AllowInsertingDesc>
+	<VFEFactory_ForceHaul>Force haul</VFEFactory_ForceHaul>
 </LanguageData>

@@ -714,4 +714,50 @@ namespace VanillaFurnitureExpandedFactory
 			GenDraw.DrawFieldEdges(zoneCells, Color.white);
 		}
 	}
+
+	public class PlaceWorker_Autofarmer : PlaceWorker
+	{
+		public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
+		{
+			int maxZoneLength = 30;
+			CellRect rect = GenAdj.OccupiedRect(center, rot, def.size);
+			IntVec3 right = rot.RighthandCell;
+
+			IntVec3 frontEdge;
+			int halfWidth;
+
+			if (rot == Rot4.North)
+			{
+				frontEdge = new IntVec3(rect.CenterCell.x, 0, rect.maxZ);
+				halfWidth = (rect.Width - 1) / 2;
+			}
+			else if (rot == Rot4.South)
+			{
+				frontEdge = new IntVec3(rect.CenterCell.x, 0, rect.minZ);
+				halfWidth = (rect.Width - 1) / 2;
+			}
+			else if (rot == Rot4.East)
+			{
+				frontEdge = new IntVec3(rect.maxX, 0, rect.CenterCell.z);
+				halfWidth = (rect.Height - 1) / 2;
+			}
+			else
+			{
+				frontEdge = new IntVec3(rect.minX, 0, rect.CenterCell.z);
+				halfWidth = (rect.Height - 1) / 2;
+			}
+
+			List<IntVec3> cells = new List<IntVec3>();
+			for (int rowOffset = 1; rowOffset <= maxZoneLength; rowOffset++)
+			{
+				for (int i = -halfWidth; i <= halfWidth; i++)
+				{
+					IntVec3 cell = frontEdge + rot.FacingCell * rowOffset + right * i;
+					cells.Add(cell);
+				}
+			}
+
+			GenDraw.DrawFieldEdges(cells, Color.white);
+		}
+	}
 }

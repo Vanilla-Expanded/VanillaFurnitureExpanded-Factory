@@ -46,6 +46,7 @@
 		<pathCost>50</pathCost>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Autofarmer</li>
 		</placeWorkers>
 		<researchPrerequisites>
 			<li>VFE_BasicFactories</li>
@@ -1582,7 +1583,7 @@
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
 		<hasInteractionCell>false</hasInteractionCell>
-		
+
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>VFE_BasicFactories</li>
@@ -1641,7 +1642,7 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
-			
+
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>

@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 using Verse;
 
 namespace VanillaFurnitureExpandedFactory
@@ -25,6 +26,10 @@ namespace VanillaFurnitureExpandedFactory
             {
                 int distance = (int)Position.DistanceTo(linkedExit.Position);
                 int travelTime = distance * TicksPerCell;
+                int maxCapacity = Mathf.Max(1, distance) * Props.itemsPerCell;
+
+                if (undergroundQueue.Count >= maxCapacity)
+                    return;
 
                 foreach (Thing t in innerContainer.ToList())
                 {
@@ -71,9 +76,7 @@ namespace VanillaFurnitureExpandedFactory
                 }
                 else
                 {
-                    item.returning = true;
-                    int distance = (int)Position.DistanceTo(linkedExit.Position);
-                    item.ticksRemaining = distance * TicksPerCell;
+                    item.ticksRemaining = 10;
                 }
             }
             else

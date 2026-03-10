@@ -4,15 +4,14 @@ using Verse;
 
 namespace VanillaFurnitureExpandedFactory
 {
-    [HarmonyPatch(typeof(SteadyEnvironmentEffects), "DoCellSteadyEffects")]
-    public static class SteadyEnvironmentEffects_DoCellSteadyEffects_Patch
+    [HarmonyPatch(typeof(SteadyEnvironmentEffects), "TryDoDeteriorate")]
+    public static class SteadyEnvironmentEffects_TryDoDeteriorate_Patch
     {
-        public static void Postfix(IntVec3 c, Map ___map)
+        public static void Postfix(Thing t, bool roofed, bool roomUsesOutdoorTemperature)
         {
-            Building edifice = c.GetEdifice(___map);
-            if (edifice is Building_Conveyor conveyor)
+            if (roofed is false && t is Building_Conveyor conveyor)
             {
-                conveyor.ApplyEnvironmentalEffects();
+                conveyor.ApplyEnvironmentalEffects(roomUsesOutdoorTemperature);
             }
         }
     }

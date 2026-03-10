@@ -21,6 +21,11 @@
 		<researchPrerequisites>
 			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
+		<modExtensions>
+			<li Class="PipeSystem.FactoryHopperExtension">
+				<isfactoryHopper>true</isfactoryHopper>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="VFEFactory_ConveyorBase">
