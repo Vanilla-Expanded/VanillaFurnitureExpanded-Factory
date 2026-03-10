@@ -34,7 +34,7 @@
 	<VFEFactory_ConnectionMissing>Doesn't work due to missing link to an underground conveyor exit.</VFEFactory_ConnectionMissing>
 	<VFEFactory_AlreadyLinked>Can't link: Already linked.</VFEFactory_AlreadyLinked>
 	<VFEFactory_CantLinkSelf>Can't link: Cannot link to self.</VFEFactory_CantLinkSelf>
-	<VFEFactory_CantLinkDifferentRotation>Can't link: Entrance and exit must have the same rotation.</VFEFactory_CantLinkDifferentRotation>
+	<VFEFactory_NotValidTarget>Can't link: {0} is not a valid link target.</VFEFactory_NotValidTarget>
 	<VFEFactory_ItemsUnderground>Items underground: {0}</VFEFactory_ItemsUnderground>
 	<VFEFactory_IncreaseZone>Increase zone</VFEFactory_IncreaseZone>
 	<VFEFactory_IncreaseZoneDesc>Extend the zone in which autofarmer will harvest and sow crops.</VFEFactory_IncreaseZoneDesc>
@@ -61,4 +61,8 @@
 	<VFEFactory_AllowInserting>Allow inserting</VFEFactory_AllowInserting>
 	<VFEFactory_AllowInsertingDesc>Allow colonists to manually insert items into this factory hopper.</VFEFactory_AllowInsertingDesc>
 	<VFEFactory_ForceHaul>Force haul</VFEFactory_ForceHaul>
+	<VFEFactory_InvalidConveyorConfiguration>Invalid conveyor configuration: A conveyor cannot have 2 or more inputs and 2 or more outputs.</VFEFactory_InvalidConveyorConfiguration>
+	<VFEFactory_FilterBelt>filter belt</VFEFactory_FilterBelt>
+	<VFEFactory_SplitterBelt>splitter belt</VFEFactory_SplitterBelt>
+	<VFEFactory_MergerBelt>merger belt</VFEFactory_MergerBelt>
 </LanguageData>

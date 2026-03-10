@@ -8,6 +8,8 @@ namespace VanillaFurnitureExpandedFactory
     public class Building_UndergroundConveyorEntrance : Building_UndergroundConveyorBase
     {
         public override bool ShowItems => false;
+        protected override bool AllowGroundDump => false;
+        protected override bool ShowFlowArrows => false;
 
         protected override void Tick()
         {

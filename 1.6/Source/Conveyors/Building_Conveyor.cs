@@ -29,10 +29,12 @@ namespace VanillaFurnitureExpandedFactory
         CanDump,
     }
 
+    [StaticConstructorOnStartup]
     [HotSwappable]
     public class Building_Conveyor : Building, IStoreSettingsParent, IThingHolder, IFactoryExposedThingHolder
     {
         private static readonly Rot4[] CanonicalOrder = { Rot4.East, Rot4.West, Rot4.North, Rot4.South };
+        private static readonly Material ArrowMat = MaterialPool.MatFrom("UI/ArrowIcon", ShaderDatabase.Transparent);
 
         private static readonly Rot4[][] InputDirectionsByRot;
         private static readonly Rot4[][] OutputDirectionsByRot;
@@ -145,6 +147,26 @@ namespace VanillaFurnitureExpandedFactory
         }
 
         public bool StorageTabVisible => IsSplitter;
+
+        public override string Label
+        {
+            get
+            {
+                if (IsFilter)
+                {
+                    return "VFEFactory_FilterBelt".Translate();
+                }
+                if (IsSplitter)
+                {
+                    return "VFEFactory_SplitterBelt".Translate();
+                }
+                if (IsMerger)
+                {
+                    return "VFEFactory_MergerBelt".Translate();
+                }
+                return base.Label;
+            }
+        }
 
         public void Notify_SettingsChanged()
         {
@@ -495,9 +517,87 @@ namespace VanillaFurnitureExpandedFactory
 
         private void SetDirection(Rot4 newRotation)
         {
+            if (!IsConfigurationValid(Position, newRotation, Map))
+            {
+                Messages.Message("VFEFactory_InvalidConveyorConfiguration".Translate(), MessageTypeDefOf.RejectInput);
+                return;
+            }
             Rotation = newRotation;
             InvalidateCache();
             InvalidateNeighborCaches();
+        }
+
+        public static bool IsConfigurationValid(IntVec3 loc, Rot4 rot, Map map)
+        {
+            if (GetPotentialIn(loc, rot, map, loc, rot) >= 2 && GetPotentialOut(loc, rot, map, loc, rot) >= 2)
+                return false;
+
+            for (int i = 0; i < 4; i++)
+            {
+                IntVec3 nPos = loc + GenAdj.CardinalDirections[i];
+                if (nPos.InBounds(map) && nPos.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n)
+                {
+                    if (GetPotentialIn(nPos, n.Rotation, map, loc, rot) >= 2 && GetPotentialOut(nPos, n.Rotation, map, loc, rot) >= 2)
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        private static int GetPotentialIn(IntVec3 pos, Rot4 rot, Map map, IntVec3 ghostPos, Rot4 ghostRot)
+        {
+            int count = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                Rot4 dir = new Rot4(i);
+                IntVec3 nPos = pos + dir.FacingCell;
+                if (!nPos.InBounds(map)) continue;
+
+                if (nPos == ghostPos)
+                {
+                    if (ghostPos + ghostRot.FacingCell == pos) count++;
+                }
+                else if (nPos.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n && n.ForwardCell == pos)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        private static int GetPotentialOut(IntVec3 pos, Rot4 rot, Map map, IntVec3 ghostPos, Rot4 ghostRot)
+        {
+            int count = 0;
+            Rot4[] potentialDirs = new Rot4[] { rot, rot.Rotated(RotationDirection.Clockwise), rot.Rotated(RotationDirection.Counterclockwise) };
+            foreach (var d in potentialDirs)
+            {
+                IntVec3 target = pos + d.FacingCell;
+                if (!target.InBounds(map)) continue;
+
+                if (target == ghostPos)
+                {
+                    Rot4[] ghostInputs = new Rot4[] { ghostRot.Opposite, ghostRot.Rotated(RotationDirection.Clockwise), ghostRot.Rotated(RotationDirection.Counterclockwise) };
+                    if (ghostInputs.Contains(d.Opposite)) count++;
+                }
+                else if (target.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n)
+                {
+                    if (!n.CanAcceptFrom(pos)) continue;
+                    if (n.ForwardCell == pos) continue;
+                    if (n.Rotation == rot || n.Rotation == rot.Opposite)
+                    {
+                        if (d == rot) count++;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+                else if (target.GetFirstBuilding(map) is Building b && (b is Building_Storage || b.GetComp<CompRefuelable>() != null))
+                {
+                    if (d == rot) count++;
+                }
+            }
+            return count;
         }
 
         private void ResetConveyorState(bool fullReset = true)
@@ -886,26 +986,30 @@ namespace VanillaFurnitureExpandedFactory
 
                     if (IsSplitter && downstreamReason != DownstreamBlockReason.None && itemProgress <= 0.2f)
                     {
-                        var dirs = PossibleOutputDirections();
-                        for (int i = 0; i < dirs.Length; i++)
+                        bool canRedirect = !IsFilter || !AreAllItemsFilterAllowed();
+                        if (canRedirect)
                         {
-                            if (cachedPos + dirs[i].FacingCell == targetPos) continue;
-                            if (!IsValidOutput(dirs[i])) continue;
-
-                            Rot4 oldOutput = cachedSelectedOutput;
-                            cachedSelectedOutput = dirs[i];
-                            cachedForwardCell = IntVec3.Invalid;
-
-                            if (CanMoveDownstream() == DownstreamBlockReason.None)
+                            var dirs = PossibleOutputDirections();
+                            for (int i = 0; i < dirs.Length; i++)
                             {
-                                SetState(ConveyorState.Moving);
-                                itemProgress += (1f / Props.ticksPerCell);
-                                lastItemProgress = itemProgress;
-                                return;
-                            }
+                                if (cachedPos + dirs[i].FacingCell == targetPos) continue;
+                                if (!IsValidOutput(dirs[i])) continue;
 
-                            cachedSelectedOutput = oldOutput;
-                            cachedForwardCell = IntVec3.Invalid;
+                                Rot4 oldOutput = cachedSelectedOutput;
+                                cachedSelectedOutput = dirs[i];
+                                cachedForwardCell = IntVec3.Invalid;
+
+                                if (CanMoveDownstream() == DownstreamBlockReason.None)
+                                {
+                                    SetState(ConveyorState.Moving);
+                                    itemProgress += (1f / Props.ticksPerCell);
+                                    lastItemProgress = itemProgress;
+                                    return;
+                                }
+
+                                cachedSelectedOutput = oldOutput;
+                                cachedForwardCell = IntVec3.Invalid;
+                            }
                         }
                     }
 
@@ -1310,6 +1414,11 @@ namespace VanillaFurnitureExpandedFactory
 
         private void TryDumpItem(IntVec3 targetPos)
         {
+            if (!AllowGroundDump)
+            {
+                SetState(ConveyorState.Waiting);
+                return;
+            }
             var capability = GetDumpCapability(targetPos);
             if (capability == DumpCapability.CannotDump)
             {
@@ -1588,7 +1697,7 @@ namespace VanillaFurnitureExpandedFactory
 
             if (IsSplitter)
             {
-                if (HasFilterRestrictions())
+                if (IsFilter)
                 {
                     texturePath = $"{Props.baseTexPath}/ConveyorFilter";
                     useSingleGraphic = false;
@@ -1675,10 +1784,24 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        private bool HasFilterRestrictions()
+        private bool IsFilter
         {
-            int baselineCount = StorageSettings.EverStorableFixedSettings().filter.AllowedDefCount;
-            return GetStoreSettings().filter.AllowedDefCount < baselineCount;
+            get
+            {
+                if (storageSettings == null) return false;
+                if (OutputCount <= 1) return false;
+                int baselineCount = StorageSettings.EverStorableFixedSettings().filter.AllowedDefCount;
+                return GetStoreSettings().filter.AllowedDefCount < baselineCount;
+            }
+        }
+
+        private bool AreAllItemsFilterAllowed()
+        {
+            var items = innerContainer.InnerListForReading;
+            var settings = GetStoreSettings();
+            for (int i = 0; i < items.Count; i++)
+                if (!settings.AllowedToAccept(items[i])) return false;
+            return true;
         }
 
         private string DetermineTurnGraphic()
@@ -1791,7 +1914,7 @@ namespace VanillaFurnitureExpandedFactory
                     }
                 }
 
-                if (!HasFilterRestrictions())
+                if (!IsFilter)
                 {
                     cachedSelectedOutput = validOutputs[splitterOutputIndex % validCount];
                     splitterOutputIndex++;
@@ -1845,6 +1968,8 @@ namespace VanillaFurnitureExpandedFactory
         }
 
         public virtual bool ShowItems => cachedShowItems;
+        protected virtual bool AllowGroundDump => true;
+        protected virtual bool ShowFlowArrows => true;
 
         private void RefreshDrawCache()
         {
@@ -1952,6 +2077,98 @@ namespace VanillaFurnitureExpandedFactory
 
             result = localDrawPos;
             return false;
+        }
+
+        public Vector3 CalculateItemPositionAt(float progress)
+        {
+            Vector3 endPos = cachedNextIsTurn
+                ? cachedDrawPos + ((ForwardCell - cachedPos).ToVector3() * 0.5f)
+                : cachedForwardVector;
+
+            if (IsTurn)
+            {
+                Vector3 startPos = cachedDrawPos + (cachedInputDir.FacingCell.ToVector3() * 0.5f);
+                float u = 1f - progress;
+                return (u * u * startPos) + (2f * u * progress * cachedDrawPos) + (progress * progress * endPos);
+            }
+
+            return Vector3.Lerp(cachedDrawPos, endPos, progress);
+        }
+
+        private Quaternion GetArrowRotationAt(float progress)
+        {
+            Vector3 dir;
+            if (IsTurn)
+            {
+                Vector3 endPos = cachedNextIsTurn
+                    ? cachedDrawPos + ((ForwardCell - cachedPos).ToVector3() * 0.5f)
+                    : cachedForwardVector;
+                Vector3 startPos = cachedDrawPos + (cachedInputDir.FacingCell.ToVector3() * 0.5f);
+                float t = Mathf.Clamp01(progress);
+                dir = 2f * (1f - t) * (cachedDrawPos - startPos) + 2f * t * (endPos - cachedDrawPos);
+            }
+            else
+            {
+                dir = (ForwardCell - cachedPos).ToVector3();
+            }
+
+            dir.y = 0f;
+            if (dir.sqrMagnitude < 0.001f)
+                dir = Rotation.FacingCell.ToVector3();
+
+            return Quaternion.Euler(0f, Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg, 0f);
+        }
+
+        private void DrawFlowArrow(float phase)
+        {
+            Vector3 pos = CalculateItemPositionAt(phase);
+            pos.y = AltitudeLayer.Item.AltitudeFor() - 0.005f;
+            Graphics.DrawMesh(
+                MeshPool.plane10,
+                Matrix4x4.TRS(pos, GetArrowRotationAt(phase), new Vector3(0.6f, 1f, 0.6f)),
+                ArrowMat, 0);
+        }
+
+        public override void DrawExtraSelectionOverlays()
+        {
+            base.DrawExtraSelectionOverlays();
+            if (!ShowFlowArrows) return;
+
+            float phase = (Find.TickManager.TicksGame % Props.ticksPerCell) / (float)Props.ticksPerCell;
+            var visited = new HashSet<Building_Conveyor>();
+            var queue = new Queue<Building_Conveyor>();
+            queue.Enqueue(this);
+            int limit = 200;
+
+            while (queue.Count > 0 && limit-- > 0)
+            {
+                var belt = queue.Dequeue();
+                if (!visited.Add(belt)) continue;
+                if (!belt.ShowFlowArrows) continue;
+
+                belt.DrawFlowArrow(phase);
+
+                if (belt.IsSplitter || belt.IsMerger || belt.IsFilter)
+                    continue;
+
+                IntVec3 fwdPos = belt.ForwardCell;
+                if (fwdPos.InBounds(belt.Map))
+                {
+                    var fwd = fwdPos.GetFirstThing<Building_Conveyor>(belt.Map);
+                    if (fwd != null && fwd.CanAcceptFrom(belt.Position))
+                        queue.Enqueue(fwd);
+                }
+
+                var inputDirs = belt.PossibleInputDirections();
+                for (int i = 0; i < inputDirs.Length; i++)
+                {
+                    IntVec3 inputPos = belt.Position + inputDirs[i].FacingCell;
+                    if (!inputPos.InBounds(belt.Map)) continue;
+                    var upstream = inputPos.GetFirstThing<Building_Conveyor>(belt.Map);
+                    if (upstream != null && upstream.ForwardCell == belt.Position)
+                        queue.Enqueue(upstream);
+                }
+            }
         }
 
         public override void DrawGUIOverlay()

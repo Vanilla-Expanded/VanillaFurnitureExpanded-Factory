@@ -3,9 +3,11 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using RimWorld;
+using System.Linq;
 
 namespace VanillaFurnitureExpandedFactory
 {
+    [HotSwappable]
     public abstract class Building_UndergroundConveyorBase : Building_Conveyor
     {
         protected Building_UndergroundConveyorBase linkedBuilding;
@@ -116,9 +118,9 @@ namespace VanillaFurnitureExpandedFactory
                         }, (LocalTargetInfo target) =>
                         {
                             var building = target.Thing;
-                            if (!IsValidTarget(building) || building.Rotation != Rotation)
+                            if (!IsValidTarget(building))
                             {
-                                Messages.Message("VFEFactory_CantLinkDifferentRotation".Translate(), MessageTypeDefOf.RejectInput);
+                                Messages.Message("VFEFactory_NotValidTarget".Translate(building.Label), MessageTypeDefOf.RejectInput);
                                 return;
                             }
 
@@ -135,6 +137,7 @@ namespace VanillaFurnitureExpandedFactory
                                 return;
                             }
 
+                            linked.Rotation = Rotation;
                             linkedBuilding = linked;
                             linked.Notify_Linked(this);
                         });
@@ -142,11 +145,17 @@ namespace VanillaFurnitureExpandedFactory
                     onHover = () =>
                     {
                         IntVec3 facing = Rotation.FacingCell;
+                        var cells = new List<IntVec3>();
                         for (int i = 1; i <= (int)Props.maxDistance; i++)
                         {
                             IntVec3 cell = Position + facing * i;
-                            if (cell.InBounds(Map)) GenDraw.DrawTargetHighlight(cell);
+                            if (cell.InBounds(Map))
+                            {
+                                cells.Add(cell);
+                            } 
                         }
+                        GenDraw.DrawFieldEdges(cells.Distinct().ToList());
+
                     }
                 };
             }

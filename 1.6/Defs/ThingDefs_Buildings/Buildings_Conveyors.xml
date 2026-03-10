@@ -54,6 +54,15 @@
 				<itemsPerCell>1</itemsPerCell>
 			</li>
 		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Conveyor</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_UndergroundConveyorEntrance</li>
+				<li>VFEFactory_UndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
 	</ThingDef>
 
 	<ThingDef ParentName="VFEFactory_ConveyorBase">
@@ -85,6 +94,7 @@
 		</placeWorkers>
 		<building>
 			<relatedBuildCommands>
+				<li>VFEFactory_Conveyor</li>
 				<li>VFEFactory_UndergroundConveyorExit</li>
 			</relatedBuildCommands>
 		</building>
@@ -119,6 +129,7 @@
 		</placeWorkers>
 		<building>
 			<relatedBuildCommands>
+				<li>VFEFactory_Conveyor</li>
 				<li>VFEFactory_UndergroundConveyorEntrance</li>
 			</relatedBuildCommands>
 		</building>
