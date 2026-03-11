@@ -1558,8 +1558,8 @@
 		<description>An industrial-grade furnace designed for the automated destruction of unwanted items, especially corpses and tainted apparel, using extreme heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
-			<texPath>Building/Factories/ConveyorCrematorium/</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Building/Factories/ConveyorCrematorium/ConveyorCrematorium</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(4,4)</drawSize>
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
