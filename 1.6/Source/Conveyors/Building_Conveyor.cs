@@ -519,6 +519,38 @@ namespace VanillaFurnitureExpandedFactory
             return false;
         }
 
+        public bool TryGetFreeOutputConveyor(out Building_Conveyor result)
+        {
+            result = null;
+            if (!IsSplitter) return false;
+
+            IntVec3 blockedTarget = ForwardCell;
+            var dirs = PossibleOutputDirections();
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                if (!IsValidOutput(dirs[i])) continue;
+                if (cachedPos + dirs[i].FacingCell == blockedTarget) continue;
+
+                if (GetCachedNeighborBuilding(dirs[i]) is Building_Conveyor neighborConv && neighborConv.HasSpace())
+                {
+                    result = neighborConv;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void ReceiveBypass(Thing thing)
+        {
+            if (thing.holdingOwner != null) thing.holdingOwner.Remove(thing);
+            innerContainer.TryAdd(thing);
+            itemProgress = -0.99f;
+            lastItemProgress = -0.99f;
+            lastCachedProgress = float.MinValue;
+            state = ConveyorState.Moving;
+            var _ = ForwardCell;
+        }
+
         private Vector2 GetLabelScreenPos(Vector3 worldPos)
         {
             Vector3 labelWorldPos = worldPos;
@@ -1051,6 +1083,22 @@ namespace VanillaFurnitureExpandedFactory
                 if (targetBuilding is Building_Conveyor targetConveyor)
                 {
                     var downstreamReason = CanMoveDownstream();
+
+                    if (downstreamReason != DownstreamBlockReason.None
+                        && itemProgress >= 0.999f
+                        && targetConveyor.IsSplitter
+                        && targetConveyor.TryGetFreeOutputConveyor(out var freeOutput))
+                    {
+                        var items = innerContainer.InnerListForReading;
+                        for (int i = items.Count - 1; i >= 0; i--)
+                            freeOutput.ReceiveBypass(items[i]);
+    
+                        if (innerContainer.Count == 0)
+                            ResetConveyorState();
+                        else
+                            SetState(ConveyorState.Waiting);
+                        return;
+                    }
 
                     if (IsSplitter && downstreamReason != DownstreamBlockReason.None && itemProgress <= 0.2f)
                     {
@@ -2136,7 +2184,7 @@ namespace VanillaFurnitureExpandedFactory
                 return (u * u * startPos) + (2 * u * t * cachedDrawPos) + (t * t * endPos);
             }
 
-            return Vector3.Lerp(cachedDrawPos, endPos, itemProgress);
+            return Vector3.LerpUnclamped(cachedDrawPos, endPos, itemProgress);
         }
 
         private bool TryGetHopperPullPosition(Vector3 localDrawPos, out Vector3 result)
