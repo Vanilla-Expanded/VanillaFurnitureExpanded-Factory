@@ -33,7 +33,7 @@ namespace VanillaFurnitureExpandedFactory
     public class Building_Conveyor : Building, IStoreSettingsParent, IThingHolder, IFactoryExposedThingHolder
     {
         private static readonly Rot4[] CanonicalOrder = { Rot4.East, Rot4.West, Rot4.North, Rot4.South };
-        private static readonly Material ArrowMat = MaterialPool.MatFrom("UI/ArrowIcon", ShaderDatabase.Transparent);
+        public static readonly Material ArrowMat = MaterialPool.MatFrom("UI/ArrowIcon", ShaderDatabase.Transparent);
 
         private static readonly Rot4[][] InputDirectionsByRot;
         private static readonly Rot4[][] OutputDirectionsByRot;
@@ -614,16 +614,13 @@ namespace VanillaFurnitureExpandedFactory
             return count;
         }
 
-        private void ResetConveyorState(bool fullReset = true)
+        private void ResetConveyorState()
         {
             state = ConveyorState.Empty;
             itemProgress = 0f;
             cachedSelectedOutput = Rot4.Invalid;
             cachedForwardCell = IntVec3.Invalid;
-            if (fullReset)
-            {
-                lastItemProgress = 0f;
-            }
+            lastItemProgress = 0f;
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -635,6 +632,52 @@ namespace VanillaFurnitureExpandedFactory
             cachedDrawPos = DrawPos;
             InvalidateCache();
             InvalidateNeighborCaches();
+
+            if (!respawningAfterLoad)
+            {
+                TryAutoRotate();
+                TryAutoRotateNeighbors();
+            }
+        }
+
+        public void TryAutoRotate()
+        {
+            if (InputCount <= 1) return;
+
+            Building faceNeighbor = GetCachedNeighborBuilding(Rotation);
+            if (faceNeighbor is not Building_Conveyor faceConv || faceConv.ForwardCell != cachedPos)
+                return;
+
+            for (int i = 0; i < 4; i++)
+            {
+                Rot4 candidate = new Rot4(i);
+                if (candidate == Rotation) continue;
+
+                Building candidateFace = GetCachedNeighborBuilding(candidate);
+                bool faceIsFedInto = candidateFace is Building_Conveyor cfc && cfc.ForwardCell == cachedPos;
+
+                if (!faceIsFedInto && IsConfigurationValid(cachedPos, candidate, cachedMap))
+                {
+                    Rotation = candidate;
+                    InvalidateCache();
+                    InvalidateNeighborCaches();
+                    return;
+                }
+            }
+        }
+
+        private void TryAutoRotateNeighbors()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                IntVec3 adj = cachedPos + GenAdj.CardinalDirections[i];
+                if (!adj.InBounds(cachedMap)) continue;
+                Building b = adj.GetFirstBuilding(cachedMap);
+                if (b is Building_Conveyor neighbor)
+                {
+                    neighbor.TryAutoRotate();
+                }
+            }
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
@@ -1008,6 +1051,9 @@ namespace VanillaFurnitureExpandedFactory
                             {
                                 if (cachedPos + dirs[i].FacingCell == targetPos) continue;
                                 if (!IsValidOutput(dirs[i])) continue;
+
+                                if (IsFilter && !AreAllItemsFilterAllowed() && dirs[i] == Rotation)
+                                    continue;
 
                                 Rot4 oldOutput = cachedSelectedOutput;
                                 cachedSelectedOutput = dirs[i];
@@ -1729,7 +1775,10 @@ namespace VanillaFurnitureExpandedFactory
                     if (outputs.Count == 2)
                     {
                         string outputsPrefix = outputs[0].ToStringWord() + outputs[1].ToStringWord();
-                        string rotationSuffix = Rotation.ToStringWord().ToLower();
+                        Rot4 outputDir = cachedSingleOutput.IsValid
+                            ? cachedSingleOutput
+                            : Rot4.FromIntVec3(ForwardCell - cachedPos);
+                        string rotationSuffix = outputDir.ToStringWord().ToLower();
                         texturePath = $"{Props.baseTexPath}/ConveyorSplitter_{outputsPrefix}_{rotationSuffix}";
                         useSingleGraphic = true;
                     }
@@ -1754,7 +1803,10 @@ namespace VanillaFurnitureExpandedFactory
                 if (inputs.Count == 2)
                 {
                     string inputsPrefix = inputs[0].ToStringWord() + inputs[1].ToStringWord();
-                    string rotationSuffix = Rotation.ToStringWord().ToLower();
+                    Rot4 outputDir = cachedSingleOutput.IsValid
+                        ? cachedSingleOutput
+                        : Rot4.FromIntVec3(ForwardCell - cachedPos);
+                    string rotationSuffix = outputDir.ToStringWord().ToLower();
                     texturePath = $"{Props.baseTexPath}/ConveyorMerger_{inputsPrefix}_{rotationSuffix}";
                     useSingleGraphic = true;
                 }
@@ -1955,7 +2007,7 @@ namespace VanillaFurnitureExpandedFactory
                     cachedForwardCell = IntVec3.Invalid;
                     return;
                 }
-                else if (!allAllowed && forwardIsValid && validCount > 1)
+                else if (!allAllowed)
                 {
                     int nonForwardCount = 0;
                     for (int i = 0; i < validCount; i++)
@@ -1970,9 +2022,13 @@ namespace VanillaFurnitureExpandedFactory
                     {
                         cachedSelectedOutput = validOutputs[splitterOutputIndex % nonForwardCount];
                         splitterOutputIndex++;
-                        cachedForwardCell = IntVec3.Invalid;
-                        return;
                     }
+                    else
+                    {
+                        cachedSelectedOutput = Rot4.Invalid;
+                    }
+                    cachedForwardCell = IntVec3.Invalid;
+                    return;
                 }
 
                 cachedSelectedOutput = validOutputs[splitterOutputIndex % validCount];
