@@ -20,6 +20,11 @@ namespace VanillaFurnitureExpandedFactory
         public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
         {
             base.DrawGhost(def, center, rot, ghostCol, thing);
+            DrawArrow(center, rot);
+        }
+
+        public static void DrawArrow(IntVec3 center, Rot4 rot)
+        {
             float speed = 1f;
             float time = Time.realtimeSinceStartup;
 

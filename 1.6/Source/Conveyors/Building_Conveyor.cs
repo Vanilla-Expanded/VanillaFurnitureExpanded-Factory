@@ -541,6 +541,12 @@ namespace VanillaFurnitureExpandedFactory
             return true;
         }
 
+        protected void RefreshCachedPos()
+        {
+            cachedPos = Position;
+            cachedDrawPos = DrawPos;
+        }
+
         public static bool IsConfigurationValid(IntVec3 loc, Rot4 rot, Map map)
         {
             if (GetPotentialIn(loc, rot, map, loc, rot) >= 2 && GetPotentialOut(loc, rot, map, loc, rot) >= 2)
@@ -626,10 +632,9 @@ namespace VanillaFurnitureExpandedFactory
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             cachedMap = map;
-            cachedPos = Position;
+            RefreshCachedPos();
             cachedItemsPerCell = Props.itemsPerCell;
             base.SpawnSetup(map, respawningAfterLoad);
-            cachedDrawPos = DrawPos;
             InvalidateCache();
             InvalidateNeighborCaches();
 
@@ -1029,6 +1034,12 @@ namespace VanillaFurnitureExpandedFactory
 
             if (innerContainer.Count > 0 && state != ConveyorState.Moving)
             {
+                if (PossibleOutputDirections().Length == 0)
+                {
+                    SetState(ConveyorState.Waiting);
+                    return;
+                }
+
                 IntVec3 targetPos = ForwardCell;
                 if (!targetPos.InBounds(cachedMap))
                 {
@@ -1636,6 +1647,7 @@ namespace VanillaFurnitureExpandedFactory
             for (int i = 0; i < dirs.Length; i++)
             {
                 Building neighbor = GetCachedNeighborBuilding(dirs[i]);
+                if (neighbor is Building_UndergroundConveyorBase) continue;
                 if (neighbor is Building_Conveyor neighborComp && neighborComp.ForwardCell == cachedPos)
                     count++;
             }
@@ -1905,6 +1917,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             Building neighbor = GetCachedNeighborBuilding(dir);
             if (neighbor == null) return false;
+            if (neighbor is Building_UndergroundConveyorBase) return false;
 
             if (neighbor is Building_Conveyor neighborConveyor)
             {
@@ -2295,12 +2308,15 @@ namespace VanillaFurnitureExpandedFactory
                     icon = ContentFinder<Texture2D>.Get("Things/Building/ConveyorBelts/CustomizeConveyorBelt"),
                     action = () =>
                     {
+                        var targets = Find.Selector.SelectedObjects
+                            .OfType<Building_Conveyor>()
+                            .ToList();
                         var options = new List<FloatMenuOption>
                         {
-                            new FloatMenuOption("VFEFactory_DirectionNorth".Translate(), () => TrySetDirection(Rot4.North)),
-                            new FloatMenuOption("VFEFactory_DirectionEast".Translate(), () => TrySetDirection(Rot4.East)),
-                            new FloatMenuOption("VFEFactory_DirectionSouth".Translate(), () => TrySetDirection(Rot4.South)),
-                            new FloatMenuOption("VFEFactory_DirectionWest".Translate(), () => TrySetDirection(Rot4.West))
+                            new FloatMenuOption("VFEFactory_DirectionNorth".Translate(), () => { foreach (var c in targets) c.TrySetDirection(Rot4.North); }),
+                            new FloatMenuOption("VFEFactory_DirectionEast".Translate(), () => { foreach (var c in targets) c.TrySetDirection(Rot4.East); }),
+                            new FloatMenuOption("VFEFactory_DirectionSouth".Translate(), () => { foreach (var c in targets) c.TrySetDirection(Rot4.South); }),
+                            new FloatMenuOption("VFEFactory_DirectionWest".Translate(), () => { foreach (var c in targets) c.TrySetDirection(Rot4.West); })
                         };
                         Find.WindowStack.Add(new FloatMenu(options));
                     }

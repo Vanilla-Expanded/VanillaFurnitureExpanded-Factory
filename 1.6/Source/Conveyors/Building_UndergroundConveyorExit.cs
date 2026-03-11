@@ -5,6 +5,18 @@ namespace VanillaFurnitureExpandedFactory
     public class Building_UndergroundConveyorExit : Building_UndergroundConveyorBase
     {
         private static readonly Rot4[] EmptyDirections = new Rot4[0];
+        
+        protected override Rot4 GetLinkSearchDirection() => Rotation.Opposite;
+        
+        protected override bool IsValidTarget(Thing thing)
+        {
+            if (thing is not Building_UndergroundConveyorBase b) return false;
+            if (!IsValidLinkTarget(b.def)) return false;
+            if (b.Rotation != Rotation) return false;
+            IntVec3 toTarget = b.Position - Position;
+            IntVec3 behindDir = Rotation.Opposite.FacingCell;
+            return toTarget.x * behindDir.x + toTarget.z * behindDir.z > 0;
+        }
         private static readonly Rot4[] ForwardOutput = new Rot4[1];
         protected override void ProcessArrivedItem(UndergroundItem item, int index)
         {

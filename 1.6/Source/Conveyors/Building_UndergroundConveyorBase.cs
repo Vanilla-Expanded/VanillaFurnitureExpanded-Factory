@@ -11,6 +11,7 @@ namespace VanillaFurnitureExpandedFactory
     public abstract class Building_UndergroundConveyorBase : Building_Conveyor
     {
         protected Building_UndergroundConveyorBase linkedBuilding;
+        protected virtual Rot4 GetLinkSearchDirection() => Rotation;
         protected List<UndergroundItem> undergroundQueue = new List<UndergroundItem>();
         protected int TicksPerCell => Props.ticksPerCell;
         protected float MaxDistance => Props.maxDistance;
@@ -26,7 +27,7 @@ namespace VanillaFurnitureExpandedFactory
 
         private void AttemptAutoLink()
         {
-            var target = FindLinkTarget(Position, Rotation, MaxDistance, Map, def);
+            var target = FindLinkTarget(Position, GetLinkSearchDirection(), Rotation, MaxDistance, Map, def);
             if (target != null)
             {
                 linkedBuilding = target;
@@ -144,7 +145,7 @@ namespace VanillaFurnitureExpandedFactory
                     },
                     onHover = () =>
                     {
-                        IntVec3 facing = Rotation.FacingCell;
+                        IntVec3 facing = GetLinkSearchDirection().FacingCell;
                         var cells = new List<IntVec3>();
                         for (int i = 1; i <= (int)Props.maxDistance; i++)
                         {
@@ -228,9 +229,9 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        public static Building_UndergroundConveyorBase FindLinkTarget(IntVec3 position, Rot4 rotation, float maxDistance, Map map, ThingDef def)
+        public static Building_UndergroundConveyorBase FindLinkTarget(IntVec3 position, Rot4 searchDir, Rot4 targetRotation, float maxDistance, Map map, ThingDef def)
         {
-            IntVec3 dir = rotation.FacingCell;
+            IntVec3 dir = searchDir.FacingCell;
 
             for (int i = 1; i <= (int)maxDistance; i++)
             {
@@ -239,7 +240,7 @@ namespace VanillaFurnitureExpandedFactory
 
                 var building = c.GetFirstBuilding(map) as Building_UndergroundConveyorBase;
                 if (building == null) continue;
-                if (building.Rotation != rotation) continue;
+                if (building.Rotation != targetRotation) continue;
                 if (building.IsLinked) continue;
                 if (!building.IsValidLinkTarget(def)) continue;
 
@@ -276,8 +277,10 @@ namespace VanillaFurnitureExpandedFactory
                     IntVec3 thisPos = Position;
                     IntVec3 linkedPos = linkedBuilding.Position;
                     Position = linkedPos;
+                    RefreshCachedPos();
                     linkedBuilding.Position = thisPos;
                     linkedBuilding.Rotation = newRotation;
+                    linkedBuilding.RefreshCachedPos();
                     linkedBuilding.InvalidateCache();
                     linkedBuilding.InvalidateNeighborCaches();
                 }
