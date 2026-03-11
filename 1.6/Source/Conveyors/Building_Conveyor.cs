@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LudeonTK;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -270,11 +269,11 @@ namespace VanillaFurnitureExpandedFactory
         }
         public bool IsMerger => InputCount > 1 && !IsTurn;
 
-        private static Building GetConveyorOrStorageAt(IntVec3 pos, Map map)
+        private Building GetConveyorOrStorageAt(IntVec3 pos)
         {
             Building storage = null;
             Building anyOther = null;
-            List<Thing> thingList = pos.GetThingList(map);
+            List<Thing> thingList = pos.GetThingList(cachedMap);
             for (int i = 0; i < thingList.Count; i++)
             {
                 Thing thing = thingList[i];
@@ -307,7 +306,7 @@ namespace VanillaFurnitureExpandedFactory
                 return null;
             }
 
-            cachedForwardBuilding = GetConveyorOrStorageAt(targetPos, cachedMap);
+            cachedForwardBuilding = GetConveyorOrStorageAt(targetPos);
             cachedForwardBuildingPos = targetPos;
             return cachedForwardBuilding;
         }
@@ -339,7 +338,7 @@ namespace VanillaFurnitureExpandedFactory
                 return null;
             }
 
-            Building neighbor = GetConveyorOrStorageAt(neighborPos, cachedMap);
+            Building neighbor = GetConveyorOrStorageAt(neighborPos);
             cachedNeighborBuildings[idx] = neighbor;
             cachedNeighborPositions[idx] = neighborPos;
             return neighbor;
@@ -408,7 +407,7 @@ namespace VanillaFurnitureExpandedFactory
             IntVec3 targetPos = ForwardCell;
             if (targetPos.InBounds(cachedMap))
             {
-                Building currentForward = GetConveyorOrStorageAt(targetPos, cachedMap);
+                Building currentForward = GetConveyorOrStorageAt(targetPos);
                 if (cachedForwardBuildingPos == targetPos)
                 {
                     if (currentForward != cachedForwardBuilding)
@@ -433,7 +432,7 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 neighborPos = cachedPos + GenAdj.CardinalDirections[i];
                 if (!neighborPos.InBounds(cachedMap)) continue;
 
-                var currentNeighbor = GetConveyorOrStorageAt(neighborPos, cachedMap);
+                var currentNeighbor = GetConveyorOrStorageAt(neighborPos);
                 if (currentNeighbor is Building_Storage storage && (storage is Building_FactoryHopper || storage.def.GetModExtension<PipeSystem.FactoryHopperExtension>()?.isfactoryHopper == true))
                     foundHopper = true;
 
@@ -629,11 +628,11 @@ namespace VanillaFurnitureExpandedFactory
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            base.SpawnSetup(map, respawningAfterLoad);
             cachedMap = map;
             cachedPos = Position;
-            cachedDrawPos = this.DrawPos;
             cachedItemsPerCell = Props.itemsPerCell;
+            base.SpawnSetup(map, respawningAfterLoad);
+            cachedDrawPos = DrawPos;
             InvalidateCache();
             InvalidateNeighborCaches();
         }
