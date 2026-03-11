@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef ParentName="FloorBase">
+    <defName>VFEF_FactoryFloor</defName>
+    <label>factory floor</label>
+    <renderPrecedence>240</renderPrecedence>
+    <description>Steel tiles, for that spaceship look. They are quick to clean and get a bonus to cleanliness for use in medical settings.</description>
+    <texturePath>Terrain/Surfaces/FactoryFloor</texturePath>
+    <color>(0.573, 0.537, 0.271)</color>
+    <statBases>
+      <WorkToBuild>500</WorkToBuild>
+      <Beauty>-2</Beauty>
+      <Cleanliness>-0.2</Cleanliness>
+      <CleaningTimeFactor>0.6</CleaningTimeFactor>
+    </statBases>
+    <affordances>
+      <li>FactoryFloor</li>
+    </affordances>
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+    <uiOrder>2045</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <isPaintable>true</isPaintable>
+    <researchPrerequisites>
+      <li>VFE_BasicFactories</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <pathCost>3</pathCost>
+  </TerrainDef>
+
+</Defs>

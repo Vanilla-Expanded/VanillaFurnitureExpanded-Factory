@@ -26,10 +26,10 @@
 			<blueprintClass>Blueprint_Storage</blueprintClass>
 			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
-			<maxItemsInCell>3</maxItemsInCell>
+			<maxItemsInCell>1</maxItemsInCell>
 			<storageGroupTag>VFEFactory_FactoryHopper</storageGroupTag>
 			<defaultStorageSettings>
-				<priority>Important</priority>
+				<priority>Low</priority>
 				<filter>
 
 				</filter>

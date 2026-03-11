@@ -14,7 +14,7 @@
 						<clipPath>Factory/Factory_BrewingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -34,7 +34,7 @@
 						<clipPath>Factory/Factory_ButcheringProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -54,7 +54,7 @@
 						<clipPath>Factory/Factory_CookingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -74,7 +74,7 @@
 						<clipPath>Factory/Factory_DefaultAmbience_01</clipPath>
 					</li>
 				</grains>
-				<volumeRange>33~33</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -94,7 +94,7 @@
 						<clipPath>Factory/Factory_DrillingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -114,7 +114,7 @@
 						<clipPath>Factory/Factory_DrugMakingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -134,7 +134,7 @@
 						<clipPath>Factory/Factory_MachiningProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -154,7 +154,7 @@
 						<clipPath>Factory/Factory_SmeltingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -174,7 +174,7 @@
 						<clipPath>Factory/Factory_StoneCuttingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -194,7 +194,7 @@
 						<clipPath>Factory/Factory_TailoringProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
@@ -214,7 +214,7 @@
 						<clipPath>Factory/Factory_WeldingProcess_Sustainer_01a</clipPath>
 					</li>
 				</grains>
-				<volumeRange>20~20</volumeRange>
+				<volumeRange>50~50</volumeRange>
 				<pitchRange>1~1.015</pitchRange>
 				<distRange>0~30</distRange>
 			</li>
