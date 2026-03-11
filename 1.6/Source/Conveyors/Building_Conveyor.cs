@@ -523,6 +523,7 @@ namespace VanillaFurnitureExpandedFactory
         {
             result = null;
             if (!IsSplitter) return false;
+            if (IsFilter) return false;
 
             IntVec3 blockedTarget = ForwardCell;
             var dirs = PossibleOutputDirections();
