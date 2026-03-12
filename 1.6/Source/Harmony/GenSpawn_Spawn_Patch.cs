@@ -8,7 +8,7 @@ namespace VanillaFurnitureExpandedFactory
     {
         public static void Postfix(Thing newThing, IntVec3 loc, Map map, Thing __result)
         {
-            if (__result == null || __result.def.category != ThingCategory.Item)
+            if (__result == null || __result.def.category != ThingCategory.Item || __result is Corpse corpse && corpse.InnerPawn is null)
             {
                 return;
             }

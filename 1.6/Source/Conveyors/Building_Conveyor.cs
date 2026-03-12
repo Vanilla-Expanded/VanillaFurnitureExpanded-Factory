@@ -1093,7 +1093,7 @@ namespace VanillaFurnitureExpandedFactory
                         var items = innerContainer.InnerListForReading;
                         for (int i = items.Count - 1; i >= 0; i--)
                             freeOutput.ReceiveBypass(items[i]);
-    
+
                         if (innerContainer.Count == 0)
                             ResetConveyorState();
                         else
@@ -2142,11 +2142,39 @@ namespace VanillaFurnitureExpandedFactory
                     lastCachedProgress = itemProgress;
                 }
                 cachedItemDrawPos.y = baseItemY;
-
                 var items = innerContainer.InnerListForReading;
-                for (int i = 0; i < items.Count; i++)
+                for (int i = items.Count - 1; i >= 0; i--)
                 {
-                    items[i].DynamicDrawPhaseAt(DrawPhase.Draw, cachedItemDrawPos);
+                    try
+                    {
+                        items[i].DynamicDrawPhaseAt(DrawPhase.Draw, cachedItemDrawPos);
+                    }
+                    catch
+                    {
+                        Thing erroredItem = items[i];
+                        innerContainer.Remove(erroredItem);
+                        bool placed = false;
+                        foreach (IntVec3 adjOffset in GenAdj.AdjacentCells)
+                        {
+                            IntVec3 adjCell = cachedPos + adjOffset;
+                            if (!adjCell.InBounds(cachedMap)) continue;
+                            if (adjCell.GetFirstThing<Building_Conveyor>(cachedMap) != null) continue;
+                            if (!adjCell.Walkable(cachedMap)) continue;
+                            if (GenPlace.TryPlaceThing(erroredItem, adjCell, cachedMap, ThingPlaceMode.Direct))
+                            {
+                                placed = true;
+                                break;
+                            }
+                        }
+                        if (!placed)
+                        {
+                            erroredItem.Destroy();
+                        }
+                        if (innerContainer.Count == 0)
+                        {
+                            ResetConveyorState();
+                        }
+                    }
                 }
             }
         }
