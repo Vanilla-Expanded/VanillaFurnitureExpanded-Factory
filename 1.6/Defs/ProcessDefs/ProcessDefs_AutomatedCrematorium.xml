@@ -8,7 +8,7 @@
 		<priorityInBillList>0</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -34,7 +34,7 @@
 		<priorityInBillList>1</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -60,7 +60,7 @@
 		<priorityInBillList>2</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -86,7 +86,7 @@
 		<priorityInBillList>3</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -112,7 +112,7 @@
 		<priorityInBillList>4</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -138,7 +138,7 @@
 		<priorityInBillList>5</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -163,7 +163,7 @@
 		<priorityInBillList>6</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>
@@ -188,7 +188,7 @@
 		<priorityInBillList>7</priorityInBillList>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
 		<autoInputSlots>
-			<li>(0,0,2)</li>
+			<li>(0,0,-2)</li>
 		</autoInputSlots>
 		<ticks>720</ticks>
 		<ingredients>

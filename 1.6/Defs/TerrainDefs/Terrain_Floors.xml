@@ -26,6 +26,7 @@
     <researchPrerequisites>
       <li>VFE_BasicFactories</li>
     </researchPrerequisites>
+		<designationCategory Inherit='False'>VFEFactory_Factories</designationCategory>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <pathCost>3</pathCost>
   </TerrainDef>
