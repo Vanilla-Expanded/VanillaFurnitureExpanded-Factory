@@ -32,7 +32,7 @@ namespace VanillaFurnitureExpandedFactory
     [HotSwappable]
     public class Building_Conveyor : Building, IStoreSettingsParent, IThingHolder, IFactoryExposedThingHolder
     {
-        private static readonly Rot4[] CanonicalOrder = { Rot4.East, Rot4.West, Rot4.North, Rot4.South };
+        private static readonly Rot4[] CanonicalOrder = [Rot4.East, Rot4.West, Rot4.North, Rot4.South];
         public static readonly Material ArrowMat = MaterialPool.MatFrom("UI/ArrowIcon", ShaderDatabase.Transparent);
 
         private static readonly Rot4[][] InputDirectionsByRot;
@@ -45,16 +45,16 @@ namespace VanillaFurnitureExpandedFactory
             for (int i = 0; i < 4; i++)
             {
                 Rot4 rot = new Rot4(i);
-                InputDirectionsByRot[i] = new Rot4[] {
+                InputDirectionsByRot[i] = [
                     rot.Opposite,
                     rot.Rotated(RotationDirection.Clockwise),
                     rot.Rotated(RotationDirection.Counterclockwise)
-                };
-                OutputDirectionsByRot[i] = new Rot4[] {
+                ];
+                OutputDirectionsByRot[i] = [
                     rot,
                     rot.Rotated(RotationDirection.Clockwise),
                     rot.Rotated(RotationDirection.Counterclockwise)
-                };
+                ];
             }
         }
 
@@ -320,7 +320,7 @@ namespace VanillaFurnitureExpandedFactory
             if (cachedNeighborBuildings == null)
             {
                 cachedNeighborBuildings = new Building[4];
-                cachedNeighborPositions = new IntVec3[4] { IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid };
+                cachedNeighborPositions = [IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid];
             }
 
             int idx = direction.AsInt;
@@ -445,7 +445,7 @@ namespace VanillaFurnitureExpandedFactory
                     if (cachedNeighborPositions == null)
                     {
                         cachedNeighborBuildings = new Building[4];
-                        cachedNeighborPositions = new IntVec3[] { IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid };
+                        cachedNeighborPositions = [IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid, IntVec3.Invalid];
                     }
 
                     if (cachedNeighborPositions[i] == neighborPos)
@@ -561,7 +561,7 @@ namespace VanillaFurnitureExpandedFactory
             Vector3 labelWorldPos = worldPos;
             labelWorldPos.z += -0.4f;
             Vector2 labelScreenPos = Find.Camera.WorldToScreenPoint(labelWorldPos) / Prefs.UIScale;
-            labelScreenPos.y = (float)UI.screenHeight - labelScreenPos.y;
+            labelScreenPos.y = UI.screenHeight - labelScreenPos.y;
             return labelScreenPos;
         }
 
@@ -586,7 +586,7 @@ namespace VanillaFurnitureExpandedFactory
 
         public static bool IsConfigurationValid(IntVec3 loc, Rot4 rot, Map map)
         {
-            if (GetPotentialIn(loc, rot, map, loc, rot) >= 2 && GetPotentialOut(loc, rot, map, loc, rot) >= 2)
+            if (GetPotentialIn(loc, map, loc, rot) >= 2 && GetPotentialOut(loc, rot, map, loc, rot) >= 2)
                 return false;
 
             for (int i = 0; i < 4; i++)
@@ -594,14 +594,14 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 nPos = loc + GenAdj.CardinalDirections[i];
                 if (nPos.InBounds(map) && nPos.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n)
                 {
-                    if (GetPotentialIn(nPos, n.Rotation, map, loc, rot) >= 2 && GetPotentialOut(nPos, n.Rotation, map, loc, rot) >= 2)
+                    if (GetPotentialIn(nPos, map, loc, rot) >= 2 && GetPotentialOut(nPos, n.Rotation, map, loc, rot) >= 2)
                         return false;
                 }
             }
             return true;
         }
 
-        private static int GetPotentialIn(IntVec3 pos, Rot4 rot, Map map, IntVec3 ghostPos, Rot4 ghostRot)
+        private static int GetPotentialIn(IntVec3 pos, Map map, IntVec3 ghostPos, Rot4 ghostRot)
         {
             int count = 0;
             for (int i = 0; i < 4; i++)
@@ -625,7 +625,7 @@ namespace VanillaFurnitureExpandedFactory
         private static int GetPotentialOut(IntVec3 pos, Rot4 rot, Map map, IntVec3 ghostPos, Rot4 ghostRot)
         {
             int count = 0;
-            Rot4[] potentialDirs = new Rot4[] { rot, rot.Rotated(RotationDirection.Clockwise), rot.Rotated(RotationDirection.Counterclockwise) };
+            Rot4[] potentialDirs = [rot, rot.Rotated(RotationDirection.Clockwise), rot.Rotated(RotationDirection.Counterclockwise)];
             foreach (var d in potentialDirs)
             {
                 IntVec3 target = pos + d.FacingCell;
@@ -633,7 +633,7 @@ namespace VanillaFurnitureExpandedFactory
 
                 if (target == ghostPos)
                 {
-                    Rot4[] ghostInputs = new Rot4[] { ghostRot.Opposite, ghostRot.Rotated(RotationDirection.Clockwise), ghostRot.Rotated(RotationDirection.Counterclockwise) };
+                    Rot4[] ghostInputs = [ghostRot.Opposite, ghostRot.Rotated(RotationDirection.Clockwise), ghostRot.Rotated(RotationDirection.Counterclockwise)];
                     if (ghostInputs.Contains(d.Opposite)) count++;
                 }
                 else if (target.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n)
@@ -885,7 +885,7 @@ namespace VanillaFurnitureExpandedFactory
         private bool CanTransferToStorage(Building_Storage storage)
         {
             var items = innerContainer.InnerListForReading;
-            ISlotGroupParent slotGroupParent = storage as ISlotGroupParent;
+            ISlotGroupParent slotGroupParent = storage;
             if (slotGroupParent == null) return false;
 
             for (int i = 0; i < items.Count; i++)
@@ -1172,10 +1172,10 @@ namespace VanillaFurnitureExpandedFactory
         {
             if (GetCachedNeighborBuilding(dir) is Building_Storage storage)
             {
-                ISlotGroupParent slotGroupParent = storage as ISlotGroupParent;
+                ISlotGroupParent slotGroupParent = storage;
                 if (slotGroupParent == null) return false;
 
-                bool isHopper = storage is Building_FactoryHopper || storage.def.GetModExtension<PipeSystem.FactoryHopperExtension>()?.isfactoryHopper == true;
+                bool isHopper = storage is Building_FactoryHopper || storage.def.GetModExtension<FactoryHopperExtension>()?.isfactoryHopper == true;
                 if (isHopper)
                 {
                     Thing item = null;
@@ -1399,7 +1399,7 @@ namespace VanillaFurnitureExpandedFactory
             {
                 transferred.Clear();
                 var items = innerContainer.InnerListForReading;
-                ISlotGroupParent slotGroupParent = storage as ISlotGroupParent;
+                ISlotGroupParent slotGroupParent = storage;
 
                 for (int i = items.Count - 1; i >= 0; i--)
                 {
