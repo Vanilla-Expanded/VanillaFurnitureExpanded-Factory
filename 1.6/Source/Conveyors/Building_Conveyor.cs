@@ -163,6 +163,10 @@ namespace VanillaFurnitureExpandedFactory
                 {
                     return "VFEFactory_MergerBelt".Translate();
                 }
+                if (HasRefuelableTarget(out _))
+                {
+                    return "VFEFactory_RefuelingPort".Translate();
+                }
                 return base.Label;
             }
         }
@@ -2409,7 +2413,7 @@ namespace VanillaFurnitureExpandedFactory
                     {
                         var sb = new StringBuilder();
                         sb.AppendLine("=== CURRENT CONVEYOR ===");
-                        sb.AppendLine(GetInspectString());
+                        sb.AppendLine(GetDebugString());
                         sb.AppendLine();
                         IntVec3 fwd = ForwardCell;
                         var fwdBuilding = GetCachedForwardBuilding();
@@ -2417,7 +2421,7 @@ namespace VanillaFurnitureExpandedFactory
                         {
                             sb.AppendLine();
                             sb.AppendLine("=== FORWARD CONVEYOR ===");
-                            sb.AppendLine(fwdConv.GetInspectString());
+                            sb.AppendLine(fwdConv.GetDebugString());
                         }
 
                         GUIUtility.systemCopyBuffer = sb.ToString();
@@ -2453,7 +2457,7 @@ namespace VanillaFurnitureExpandedFactory
             }
         }
 
-        public override string GetInspectString()
+        public string GetDebugString()
         {
             var sb = new StringBuilder();
             sb.AppendLine($"State: {state}, Progress: {itemProgress:F2} (last: {lastItemProgress:F2})");
