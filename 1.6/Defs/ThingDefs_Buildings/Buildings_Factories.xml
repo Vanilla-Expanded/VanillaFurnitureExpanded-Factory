@@ -24,7 +24,6 @@
 		<costList>
 			<Steel>200</Steel>
 			<ComponentIndustrial>8</ComponentIndustrial>
-			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
