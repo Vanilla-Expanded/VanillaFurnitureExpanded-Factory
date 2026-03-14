@@ -65,4 +65,5 @@
 	<VFEFactory_FilterBelt>filter belt</VFEFactory_FilterBelt>
 	<VFEFactory_SplitterBelt>splitter belt</VFEFactory_SplitterBelt>
 	<VFEFactory_MergerBelt>merger belt</VFEFactory_MergerBelt>
+	<VFEFactory_RefuelingPort>refueling port</VFEFactory_RefuelingPort>
 </LanguageData>
