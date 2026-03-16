@@ -154,4 +154,43 @@
 		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
 		<maxOutputCount>300</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MinceInsectoidCorpses</defName>
+		<label>Mince insectoid corpses</label>
+		<labelOverride>Mince insectoid corpses</labelOverride>
+		<description>Chop insectoid corpses into raw insect meat.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesInsect</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Animal/Megaspider/Megaspider_east</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Meat_Megaspider</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_ButcheryInsect</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
+	</PipeSystem.ProcessDef>
 </Defs>

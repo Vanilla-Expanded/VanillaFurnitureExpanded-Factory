@@ -270,6 +270,7 @@
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 					<li>VFEFactory_SmeltMetalFromSlag</li>
+					<li>VFEFactory_SmeltMetalFromMechSlag</li>
 					<li>VFEFactory_SmeltWeapon</li>
 					<li>VFEFactory_SmeltApparel</li>
 					<li>VFEFactory_SmeltMetalFromChunk</li>
@@ -585,6 +586,7 @@
 					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_MinceHybridCorpses</li>
 					<li>VFEFactory_MinceHumanCorpses</li>
 					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_MinceHumanoidHybridCorpses</li>
+					<li>VFEFactory_MinceInsectoidCorpses</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -690,6 +692,8 @@
 					<li>VFEFactory_MakeSurvivalMeal</li>
 					<li>VFEFactory_MakeMassProducedMeal</li>
 					<li MayRequire="Ludeon.RimWorld.Biotech">VFEFactory_MakeBabyFood</li>
+					<li MayRequire="VanillaExpanded.VBrewECandT">VFEFactory_MakePumpkinCoffee</li>
+					<li MayRequire="VanillaExpanded.VCookE">VFEFactory_MakeSimpleSoup</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>

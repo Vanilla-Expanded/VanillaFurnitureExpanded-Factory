@@ -12,11 +12,11 @@ namespace VanillaFurnitureExpandedFactory
         {
             foreach (IntVec3 c in GenAdj.CellsOccupiedBy(loc, rot, checkingDef.Size))
             {
-                if (!map.terrainGrid.TerrainAt(c).IsWater)
+                if (!map.terrainGrid.TerrainAt(c).IsWater || map.terrainGrid.TerrainAt(c).temporary)
                 {
                     return new AcceptanceReport("VFEFactory_NeedsWater".Translate());
                 }
-                if (map.terrainGrid.TerrainAt(c).waterBodyType != WaterBodyType.Saltwater && map.terrainGrid.TerrainAt(c).waterBodyType != WaterBodyType.Freshwater)
+                if ((map.terrainGrid.TerrainAt(c).waterBodyType != WaterBodyType.Saltwater && map.terrainGrid.TerrainAt(c).waterBodyType != WaterBodyType.Freshwater) || !map.waterBodyTracker.AnyFishPopulationAt(c))
                 {
                     return new AcceptanceReport("VFEFactory_NeedsFish".Translate());
                 }

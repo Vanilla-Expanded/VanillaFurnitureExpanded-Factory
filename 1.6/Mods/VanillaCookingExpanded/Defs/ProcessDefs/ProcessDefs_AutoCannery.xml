@@ -196,6 +196,9 @@
 				
 			</li>
 		</results>
+		<researchPrerequisites>
+			<li>VCE_SoupCooking</li>
+			</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
@@ -246,4 +249,7 @@
 		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
+	
+	
+
 </Defs>

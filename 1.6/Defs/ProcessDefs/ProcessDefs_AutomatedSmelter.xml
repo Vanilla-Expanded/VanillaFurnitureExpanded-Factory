@@ -35,6 +35,41 @@
 		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<maxOutputCount>75</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_SmeltMetalFromMechSlag</defName>
+		<labelOverride>Smelt metal from mechanoid slag</labelOverride>
+		<label>Smelt metal from mechanoid slag</label>
+		<description>Use heat and strong electromagnets to extract useful metal from mechanoid slag chunks.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1600</ticks>
+		<ingredients>
+			<li>
+				<thing>ChunkMechanoidSlag</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>15</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedSmeltingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
 	
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_SmeltWeapon</defName>

@@ -259,4 +259,49 @@
 		<effecterDef>VFEFactory_Cook</effecterDef>
 		<maxOutputCount>20</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VCookE">
+		<defName>VFEFactory_MakeSimpleSoup</defName>
+		<label>Prepare simple soup</label>
+		<labelOverride>Prepare simple soup</labelOverride>
+		<description>Prepare a simple uncooked soup quickly made from a few ingredients.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>4800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>40</countNeeded>			
+			</li>
+			<li>
+				<thingCategory>PlantFoodRaw</thingCategory>
+				<countNeeded>40</countNeeded>			
+			</li>
+		</ingredients>
+		<researchPrerequisites>
+			<li>VCE_SoupCooking</li>
+			</researchPrerequisites>
+		<results>
+			<li>
+				<thing>VCE_UncookedSoupSimple</thing>
+				<count>4</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_MassProducedMeal</workerClass>
+				<outputStringOverride>VFEFactory_MassProducedMealOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>20</maxOutputCount>
+	</PipeSystem.ProcessDef>
 </Defs>

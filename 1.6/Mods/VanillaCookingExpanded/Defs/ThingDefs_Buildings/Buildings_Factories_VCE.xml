@@ -95,6 +95,7 @@
 					<li>VFEFactory_MakeCannedEggs</li>
 					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_MakeCannedFish</li>
 					<li>VFEFactory_MakeCannedSoup</li>
+				
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
