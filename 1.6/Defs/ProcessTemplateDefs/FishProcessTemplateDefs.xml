@@ -4,6 +4,7 @@
 		<ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
 		<defName>VFEFactory_FishingProcess_</defName>
 		<label>Breed {0}</label>
+		<labelOverride>Breed {0}</labelOverride>
 		<description>Breed {0} in the fishfarm.</description>
 		<!--<priorityInBillList>+</priorityInBillList>-->
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>

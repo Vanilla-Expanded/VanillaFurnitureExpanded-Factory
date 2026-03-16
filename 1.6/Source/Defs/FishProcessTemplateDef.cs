@@ -9,6 +9,7 @@ namespace VanillaFurnitureExpandedFactory
 {
     public class FishProcessTemplateDef : Def
     {
+        public string labelOverride;
         public bool spawnOnInteractionCell;
         public bool isFactoryProcess;
         public bool autoExtract;

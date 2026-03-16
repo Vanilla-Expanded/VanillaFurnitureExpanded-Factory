@@ -270,6 +270,7 @@ namespace VanillaFurnitureExpandedFactory
             ProcessDef processDef = (hotReload ? (DefDatabase<ProcessDef>.GetNamed(defName, errorOnFail: false) ?? new ProcessDef()) : new ProcessDef());
             processDef.defName = defName;
             processDef.label = tp.label.Formatted(def.label);
+            processDef.labelOverride = tp.labelOverride.Formatted(def.label);
             processDef.description = tp.description.Formatted(def.label);
             processDef.priorityInBillList = index;
             processDef.spawnOnInteractionCell = tp.spawnOnInteractionCell;
