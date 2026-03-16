@@ -1,6 +1,6 @@
 <ModMetaData>
 	<name>Vanilla Furniture Expanded - Factory</name>
-	<author>Oskar Potocki, Sarg Bjornson</author>
+	<author>Oskar Potocki, Sarg Bjornson, Taranchuk</author>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
@@ -24,5 +24,12 @@
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 	</loadAfter>
 	<packageId>VanillaExpanded.VFEFactory</packageId>
-	<description></description>
+	<description>Vanilla Furniture Expanded - Factories brings a full industrial revolution to the rim, replacing slow and expensive legacy systems with some tech-level appropriate automation! These new factories utilize a familiar bill-based UI, allowing you to set production targets like “Do until you have X” or “Do forever” while managing a new overclocking system that can boost speeds up to 500%.
+
+To maintain balance, players must manage significant trade-offs, including large machine footprints, high power consumption, and exponential heat generation that requires proper ventilation or specialized heatsinks.
+
+A new high-performance conveyor belt system eliminates the need for manual hauling, featuring automated mergers, splitters, and configurable filters for advanced routing. These belts can deposit items directly into hoppers, shelves, or even travel short distances underground to maintain a clean base layout. While highly optimized through "code magic" to ensure minimal impact on TPS, items on the belts still respect natural laws like deterioration and spoilage, ensuring the logistics remain important.
+
+From mass-producing ammunition and medicine to synthesizing neutroamine and alloying plasteel, this module provides the tools necessary to automate your colony's most menial tasks, and really lets your industrial colony feel like you’re in industrial era.
+</description>
 </ModMetaData>
