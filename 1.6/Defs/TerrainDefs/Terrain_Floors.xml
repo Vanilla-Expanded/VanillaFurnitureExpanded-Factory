@@ -5,7 +5,7 @@
     <defName>VFEF_FactoryFloor</defName>
     <label>factory floor</label>
     <renderPrecedence>240</renderPrecedence>
-    <description>Steel tiles, for that spaceship look. They are quick to clean and get a bonus to cleanliness for use in medical settings.</description>
+    <description>Reinforced steel flooring capable of supporting factory buildings. Slow to traverse and ugly to look at.</description>
     <texturePath>Terrain/Surfaces/FactoryFloor</texturePath>
     <color>(0.573, 0.537, 0.271)</color>
     <statBases>
