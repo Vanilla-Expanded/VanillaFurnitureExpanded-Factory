@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_Booster</defName>
 		<label>factory booster</label>
-		<description>todo.</description>
+		<description>A sensitive micro-processor array designed to enhance the speed and efficiency of industrial factory buildings. It links with nearby factory machines to extend their maximum overclocking limit by an additional 100 percent, allowing for drastically increased production speeds. One factory can use up to three factory boosters.</description>
 		<graphicData>
 			<texPath>Things/Building/Linkables/FactoryBooster/FactoryBooster</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -67,7 +67,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFEFactory_Heatsink</defName>
 		<label>factory heatsink</label>
-		<description>todo.</description>
+		<description>A cooling system designed to draw excess heat away from industrial factory buildings. It links with nearby factory machines to reduce their total heat output by 25%, mitigating the risk of overheating and fire. One factory can use up to four factory heatsinks.</description>
 		<graphicData>
 			<texPath>Things/Building/Linkables/FactoryHeatsink/FactoryHeatsink</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
