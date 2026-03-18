@@ -23,14 +23,14 @@ namespace VanillaFurnitureExpandedFactory
                 }
             }
            
-            return 27f * (float)num;
+            return 100f * (float)num;
         }
 
         public override float GetScoreDeltaIfBuildingPlaced(Room room, ThingDef buildingDef)
         {
             if (buildingDef.building?.workTableRoomRole == InternalDefOf.VFEFactory_FactoryRoom)
             {
-                return 27f;
+                return 100f;
             }
             return 0f;
         }
