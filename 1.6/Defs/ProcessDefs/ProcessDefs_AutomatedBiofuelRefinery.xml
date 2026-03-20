@@ -120,7 +120,7 @@
 		<effecterDef>VFEFactory_Cook</effecterDef>
 		<maxOutputCount>150</maxOutputCount>
 	</PipeSystem.ProcessDef>
-	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
 		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
 		<label>Make 25 chemfuel from 50 mushroom stalks</label>
 		<labelOverride>Make chemfuel from mushroom stalks</labelOverride>
