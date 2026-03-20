@@ -36,7 +36,7 @@
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
-		<maxOutputCount>3</maxOutputCount>
+		<maxOutputCount>1</maxOutputCount>
 	</VanillaFurnitureExpandedFactory.MachiningProcessTemplateDef>
 	
 	
