@@ -172,7 +172,7 @@ namespace VanillaFurnitureExpandedFactory
             processDef.ticks = (int)(calculatedTicks * 4);
 
 
-            if (def.stuffCategories?.Contains(StuffCategoryDefOf.Metallic) == true)
+            if (def.stuffCategories?.Contains(StuffCategoryDefOf.Metallic) == true || def.stuffCategories?.Contains(InternalDefOf.Steeled) == true)
             {
                 processDef.ingredients.Add(new ProcessDef.Ingredient
                 {

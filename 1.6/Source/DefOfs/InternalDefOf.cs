@@ -28,5 +28,8 @@ namespace VanillaFurnitureExpandedFactory
         public static SoundDef VFEFactory_DefaultFactorySustainer;
 
 		public static JobDef VFEFactory_HaulFromConveyor;
+
+		[MayRequire("CETeam.CombatExtended")]
+		public static StuffCategoryDef Steeled;
 	}
 }
