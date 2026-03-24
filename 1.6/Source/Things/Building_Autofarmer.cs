@@ -443,7 +443,7 @@ namespace VanillaFurnitureExpandedFactory
 				}
 			}
 
-			return backCells.Select(c => c.InBounds(Map) ? c.GetFirstBuilding(Map) as Building_FactoryHopper : null).ToList();
+			return backCells.Select(c => c.InBounds(Map) ? c.GetFirstThing<Building_FactoryHopper>(Map) : null).ToList();
 		}
 
 		private void TryOffloadToHoppers()

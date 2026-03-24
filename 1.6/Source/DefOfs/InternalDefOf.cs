@@ -18,18 +18,23 @@ namespace VanillaFurnitureExpandedFactory
 		public static RoomRoleDef VFEFactory_FactoryRoom;
 
 		public static ThingDef HandTailoringBench;
-        public static ThingDef TableMachining;
-        public static ThingDef VFEFactory_Autoloom;
-        public static ThingDef VFEFactory_FactoryHopper;
-        public static ThingDef VFEFactory_AutomatedMachiningBay;
+		public static ThingDef TableMachining;
+		public static ThingDef VFEFactory_Autoloom;
+		public static ThingDef VFEFactory_FactoryHopper;
+		public static ThingDef VFEFactory_AutomatedMachiningBay;
 		[MayRequireOdyssey]
 		public static ThingDef VFEFactory_AutomatedFishfarm;
 
-        public static SoundDef VFEFactory_DefaultFactorySustainer;
+		public static SoundDef VFEFactory_DefaultFactorySustainer;
 
 		public static JobDef VFEFactory_HaulFromConveyor;
 
+		public static TerrainAffordanceDef FactoryFloor;
+
 		[MayRequire("CETeam.CombatExtended")]
 		public static StuffCategoryDef Steeled;
+
+		[MayRequireOdyssey]
+		public static TerrainDef HeavyBridge;
 	}
 }

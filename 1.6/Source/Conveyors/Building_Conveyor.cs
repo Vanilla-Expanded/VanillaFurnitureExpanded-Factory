@@ -478,8 +478,8 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 adj = cachedPos + GenAdj.CardinalDirections[i];
                 if (adj.InBounds(cachedMap))
                 {
-                    Building adjacentBuilding = adj.GetFirstBuilding(cachedMap);
-                    if (adjacentBuilding is Building_Conveyor neighbor)
+                    Building_Conveyor neighbor = adj.GetFirstThing<Building_Conveyor>(cachedMap);
+                    if (neighbor != null)
                     {
                         neighbor.InvalidateCache();
                         cachedMap.mapDrawer.MapMeshDirty(neighbor.Position, MapMeshFlagDefOf.Things);
@@ -636,22 +636,25 @@ namespace VanillaFurnitureExpandedFactory
                     Rot4[] ghostInputs = [ghostRot.Opposite, ghostRot.Rotated(RotationDirection.Clockwise), ghostRot.Rotated(RotationDirection.Counterclockwise)];
                     if (ghostInputs.Contains(d.Opposite)) count++;
                 }
-                else if (target.GetFirstThing<Building_Conveyor>(map) is Building_Conveyor n)
+                foreach (var building in target.GetThingList(map).OfType<Building>())
                 {
-                    if (!n.CanAcceptFrom(pos)) continue;
-                    if (n.ForwardCell == pos) continue;
-                    if (n.Rotation == rot || n.Rotation == rot.Opposite)
+                    if (building is Building_Conveyor n)
+                    {
+                        if (!n.CanAcceptFrom(pos)) continue;
+                        if (n.ForwardCell == pos) continue;
+                        if (n.Rotation == rot || n.Rotation == rot.Opposite)
+                        {
+                            if (d == rot) count++;
+                        }
+                        else
+                        {
+                            count++;
+                        }
+                    }
+                    else if (building is Building_Storage || building.TryGetComp<CompRefuelable>() != null)
                     {
                         if (d == rot) count++;
                     }
-                    else
-                    {
-                        count++;
-                    }
-                }
-                else if (target.GetFirstBuilding(map) is Building b && (b is Building_Storage || b.GetComp<CompRefuelable>() != null))
-                {
-                    if (d == rot) count++;
                 }
             }
             return count;
@@ -714,8 +717,8 @@ namespace VanillaFurnitureExpandedFactory
             {
                 IntVec3 adj = cachedPos + GenAdj.CardinalDirections[i];
                 if (!adj.InBounds(cachedMap)) continue;
-                Building b = adj.GetFirstBuilding(cachedMap);
-                if (b is Building_Conveyor neighbor)
+                Building_Conveyor neighbor = adj.GetFirstThing<Building_Conveyor>(cachedMap);
+                if (neighbor != null)
                 {
                     neighbor.TryAutoRotate();
                 }

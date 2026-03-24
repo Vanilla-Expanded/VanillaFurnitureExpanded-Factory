@@ -238,7 +238,7 @@ namespace VanillaFurnitureExpandedFactory
                 IntVec3 c = position + dir * i;
                 if (!c.InBounds(map)) break;
 
-                var building = c.GetFirstBuilding(map) as Building_UndergroundConveyorBase;
+                var building = c.GetFirstThing<Building_UndergroundConveyorBase>(map);
                 if (building == null) continue;
                 if (building.Rotation != targetRotation) continue;
                 if (building.IsLinked) continue;

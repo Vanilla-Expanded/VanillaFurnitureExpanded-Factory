@@ -13,8 +13,8 @@ namespace VanillaFurnitureExpandedFactory
                 return;
             }
 
-            Building building = loc.GetFirstBuilding(map);
-            if (building is Building_Conveyor conveyor && !conveyor.ejecting)
+            Building_Conveyor conveyor = loc.GetFirstThing<Building_Conveyor>(map);
+            if (conveyor != null && !conveyor.ejecting)
             {
                 conveyor.TryAdd(__result);
             }
