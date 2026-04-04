@@ -95,6 +95,7 @@ namespace VanillaFurnitureExpandedFactory
         private Rot4 cachedSingleOutput = Rot4.Invalid;
         private int splitterOutputIndex;
         private StorageSettings storageSettings;
+        private bool allowedEverything;
         private Graphic cachedGraphic;
         private bool cachedIsSingleDirectional;
         private ConveyorExtension cachedProps;
@@ -1734,6 +1735,14 @@ namespace VanillaFurnitureExpandedFactory
             Scribe_Values.Look(ref lastItemProgress, "lastItemProgress", 0f);
             Scribe_Values.Look(ref state, "state", ConveyorState.Empty);
             Scribe_Values.Look(ref splitterOutputIndex, "splitterOutputIndex", 0);
+
+            if (Scribe.mode == LoadSaveMode.Saving && IsSplitter)
+            {
+                int baselineCount = StorageSettings.EverStorableFixedSettings().filter.AllowedDefCount;
+                allowedEverything = storageSettings.filter.AllowedDefCount >= baselineCount;
+            }
+
+            Scribe_Values.Look(ref allowedEverything, "allowedEverything", false);
             Scribe_Deep.Look(ref storageSettings, "storageSettings", this);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
@@ -1746,6 +1755,11 @@ namespace VanillaFurnitureExpandedFactory
                 {
                     storageSettings = new StorageSettings(this);
                     storageSettings.CopyFrom(StorageSettings.EverStorableFixedSettings());
+                }
+                if (allowedEverything)
+                {
+                    storageSettings.filter.SetAllowAll(StorageSettings.EverStorableFixedSettings().filter);
+                    allowedEverything = false;
                 }
             }
         }
