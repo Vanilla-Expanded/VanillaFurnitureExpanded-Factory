@@ -36,5 +36,8 @@ namespace VanillaFurnitureExpandedFactory
 
 		[MayRequireOdyssey]
 		public static TerrainDef HeavyBridge;
-	}
+
+		public static ResearchProjectDef VFE_BasicFactories;
+
+    }
 }

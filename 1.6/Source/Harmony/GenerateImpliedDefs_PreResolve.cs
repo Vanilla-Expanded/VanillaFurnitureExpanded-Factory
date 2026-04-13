@@ -297,6 +297,7 @@ namespace VanillaFurnitureExpandedFactory
 
             processDef.researchPrerequisites = new List<ResearchProjectDef>();
             processDef.researchPrerequisites.Add(ResearchProjectDefOf.Fishing);
+            processDef.researchPrerequisites.Add(InternalDefOf.VFE_BasicFactories);
 
             InternalDefOf.VFEFactory_AutomatedFishfarm.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
             return processDef;

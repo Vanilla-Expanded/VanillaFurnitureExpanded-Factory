@@ -32,6 +32,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Fabrication</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
@@ -83,6 +84,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>AdvancedFabrication</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>

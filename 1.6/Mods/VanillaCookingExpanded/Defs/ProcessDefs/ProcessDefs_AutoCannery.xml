@@ -21,7 +21,7 @@
 			</li>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>20</countNeeded>			
+				<countNeeded>20</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -32,6 +32,10 @@
 				<outputStringOverride>VFEFactory_Cans</outputStringOverride>
 			</li>
 		</results>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_Canning</li>
+		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
@@ -62,9 +66,13 @@
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>20</countNeeded>			
+				<countNeeded>20</countNeeded>
 			</li>
 		</ingredients>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_Canning</li>
+		</researchPrerequisites>
 		<results>
 			<li>
 				<thing>VCE_CannedProduce</thing>
@@ -96,6 +104,10 @@
 			<li>(2,0,2)</li>
 		</autoInputSlots>
 		<ticks>3600</ticks>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_Canning</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<thing>Steel</thing>
@@ -103,7 +115,7 @@
 			</li>
 			<li>
 				<thingCategory>VCE_Fruit</thingCategory>
-				<countNeeded>20</countNeeded>			
+				<countNeeded>20</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -137,6 +149,10 @@
 			<li>(2,0,2)</li>
 		</autoInputSlots>
 		<ticks>3600</ticks>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_Canning</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<thing>Steel</thing>
@@ -144,7 +160,7 @@
 			</li>
 			<li>
 				<thingCategory>EggsUnfertilized</thingCategory>
-				<countNeeded>4</countNeeded>			
+				<countNeeded>4</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -186,19 +202,20 @@
 			</li>
 			<li>
 				<thingCategory>VCE_UncookedSoups</thingCategory>
-				<countNeeded>1</countNeeded>			
+				<countNeeded>1</countNeeded>
 			</li>
 		</ingredients>
 		<results>
 			<li>
 				<thing>VCE_CannedSoup</thing>
 				<count>10</count>
-				
 			</li>
 		</results>
 		<researchPrerequisites>
 			<li>VCE_SoupCooking</li>
-			</researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+			<li>VCE_Canning</li>
+		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
@@ -229,7 +246,7 @@
 			</li>
 			<li>
 				<thingCategory>Fish</thingCategory>
-				<countNeeded>4</countNeeded>			
+				<countNeeded>4</countNeeded>
 			</li>
 		</ingredients>
 		<results>
@@ -249,7 +266,4 @@
 		<maxOutputCount>75</maxOutputCount>
 		<sustainerDef>VFEFactory_AutomatedMachiningSustainer</sustainerDef>
 	</PipeSystem.ProcessDef>
-	
-	
-
 </Defs>

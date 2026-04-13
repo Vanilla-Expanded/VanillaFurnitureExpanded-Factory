@@ -193,4 +193,42 @@
 		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
 		<maxOutputCount>300</maxOutputCount>
 	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VFEFactory_MinceEntityCorpses</defName>
+		<label>Mince entity corpses</label>
+		<labelOverride>Mince entity corpses</labelOverride>
+		<description>Chop entity corpses into twisted meat.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>1800</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>CorpsesEntity</thingCategory>
+				<countNeeded>1</countNeeded>
+				<onlyFreshCorpses>true</onlyFreshCorpses>
+				<ingredientIconOverride>Things/Pawn/Revenant/Revenant_MenuIcon</ingredientIconOverride>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Meat_Twisted</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Butchery</workerClass>
+				<outputStringOverride>VFEFactory_ButcheryEntity</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedButcheringSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_ButcherFlesh</effecterDef>
+		<maxOutputCount>300</maxOutputCount>
+	</PipeSystem.ProcessDef>
 </Defs>

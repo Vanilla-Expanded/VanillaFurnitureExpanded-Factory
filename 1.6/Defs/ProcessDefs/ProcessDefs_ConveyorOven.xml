@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-	
 	<PipeSystem.ProcessDef>
 		<defName>VFEFactory_MakeKibble</defName>
 		<label>Make kibble</label>
@@ -20,14 +18,55 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>15</countNeeded>			
+				<countNeeded>15</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>15</countNeeded>			
+				<countNeeded>15</countNeeded>
 			</li>
 		</ingredients>
-		
+		<results>
+			<li>
+				<thing>Kibble</thing>
+				<count>36</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_TotalNutrition_Kibble</workerClass>
+				<outputStringOverride>VFEFactory_KibbleOutput</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeKibbleFromHay</defName>
+		<label>Make kibble from hay</label>
+		<labelOverride>Make kibble from hay</labelOverride>
+		<description>Make animal kibble by combining raw meat and hay. Will always output 36 kibble.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<useIngredients>true</useIngredients>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>1350</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>15</countNeeded>
+			</li>
+			<li>
+				<thing>Hay</thing>
+				<countNeeded>15</countNeeded>
+			</li>
+		</ingredients>
 		<results>
 			<li>
 				<thing>Kibble</thing>
@@ -63,14 +102,13 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>5</countNeeded>			
+				<countNeeded>5</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>5</countNeeded>			
+				<countNeeded>5</countNeeded>
 			</li>
 		</ingredients>
-		
 		<results>
 			<li>
 				<thing>Pemmican</thing>
@@ -84,6 +122,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Pemmican</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
@@ -109,14 +148,13 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>24</countNeeded>			
+				<countNeeded>24</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>24</countNeeded>			
+				<countNeeded>24</countNeeded>
 			</li>
 		</ingredients>
-		
 		<results>
 			<li>
 				<thing>MealSurvivalPack</thing>
@@ -130,6 +168,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>PackagedSurvivalMeal</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedCookingSustainer</sustainerDef>
@@ -155,14 +194,13 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>20</countNeeded>			
+				<countNeeded>20</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>20</countNeeded>			
+				<countNeeded>20</countNeeded>
 			</li>
 		</ingredients>
-		
 		<results>
 			<li>
 				<thing>VFEFactory_MassProducedMeal</thing>
@@ -196,13 +234,11 @@
 		</autoInputSlots>
 		<ticks>1800</ticks>
 		<ingredients>
-			
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>5</countNeeded>			
+				<countNeeded>5</countNeeded>
 			</li>
 		</ingredients>
-		
 		<results>
 			<li>
 				<thing>BabyFood</thing>
@@ -228,7 +264,6 @@
 		<priorityInBillList>100</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<autoGrabFromHoppers>true</autoGrabFromHoppers>
-		
 		<autoInputSlots>
 			<li>(0,0,3)</li>
 			<li>(1,0,3)</li>
@@ -236,18 +271,15 @@
 		</autoInputSlots>
 		<ticks>4000</ticks>
 		<ingredients>
-			
 			<li>
 				<thing>VBE_RawCoffee</thing>
-				<countNeeded>25</countNeeded>			
+				<countNeeded>25</countNeeded>
 			</li>
 		</ingredients>
-		
 		<results>
 			<li>
 				<thing>VBE_PumpkinCoffee</thing>
 				<count>5</count>
-				
 			</li>
 		</results>
 		<isFactoryProcess>true</isFactoryProcess>
@@ -277,16 +309,17 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>40</countNeeded>			
+				<countNeeded>40</countNeeded>
 			</li>
 			<li>
 				<thingCategory>PlantFoodRaw</thingCategory>
-				<countNeeded>40</countNeeded>			
+				<countNeeded>40</countNeeded>
 			</li>
 		</ingredients>
 		<researchPrerequisites>
 			<li>VCE_SoupCooking</li>
-			</researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
 		<results>
 			<li>
 				<thing>VCE_UncookedSoupSimple</thing>

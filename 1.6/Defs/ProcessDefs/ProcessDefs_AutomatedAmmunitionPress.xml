@@ -33,6 +33,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Mortars</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -73,6 +74,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Mortars</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -113,6 +115,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>MicroelectronicsBasics</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -149,6 +152,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Firefoam</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -185,6 +189,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Mortars</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -225,6 +230,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>ToxGas</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -265,6 +271,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Mortars</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -301,6 +308,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>VFED_ImperialWarSolutions</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -341,6 +349,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>VFED_ImperialWarSolutions</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -381,6 +390,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>VFED_ImperialWarSolutions</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>
@@ -417,6 +427,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>DeadlifeDust</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Default</effecterDef>

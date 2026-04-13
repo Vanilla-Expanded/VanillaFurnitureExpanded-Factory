@@ -32,6 +32,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>Stonecutting</li>
+			<li>VFE_BasicFactories</li>
 		</researchPrerequisites>
 		<sustainerWhenWorking>true</sustainerWhenWorking>
 		<sustainerDef>VFEFactory_AutomatedStoneCuttingSustainer</sustainerDef>

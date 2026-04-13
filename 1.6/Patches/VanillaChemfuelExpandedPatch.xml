@@ -30,6 +30,12 @@
 						<considerBuildingCompResource>true</considerBuildingCompResource>
 					</value>
 				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_MakeSynthread"]</xpath>
+					<value>
+						<considerBuildingCompResource>true</considerBuildingCompResource>
+					</value>
+				</li>
 				<li Class="PatchOperationFindMod">
 					<mods>
 						<li>Biotech</li>
@@ -58,6 +64,17 @@
 					</mods>
 					<match Class="PatchOperationAdd">
 						<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_MakeClusterShells"]</xpath>
+						<value>
+							<considerBuildingCompResource>true</considerBuildingCompResource>
+						</value>
+					</match>
+				</li>
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Gravship Expanded - Chapter 1</li>
+					</mods>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/PipeSystem.ProcessDef[defName="VFEFactory_AstrofuelFromChemfuel"]</xpath>
 						<value>
 							<considerBuildingCompResource>true</considerBuildingCompResource>
 						</value>

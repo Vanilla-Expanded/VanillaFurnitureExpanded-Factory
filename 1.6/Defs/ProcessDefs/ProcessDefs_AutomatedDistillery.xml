@@ -31,6 +31,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>Brewing</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -67,6 +68,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -103,6 +105,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -139,6 +142,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -175,6 +179,48 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeSoda</defName>
+		<label>Make batch of soda from juice and corn</label>
+		<labelOverride>Make batch of soda from juice and corn</labelOverride>
+		<description>Make soda syrup by mixing natural fruit juice with high fructose corn syrup and turn it into soda.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>120000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>VBE_Juice</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+			<li>
+				<thing>RawCorn</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Soda</thing>
+				<count>20</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_MixologyResearch</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -211,6 +257,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -247,6 +294,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>
@@ -283,6 +331,7 @@
 		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
 		<researchPrerequisites>
 			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Cook</effecterDef>

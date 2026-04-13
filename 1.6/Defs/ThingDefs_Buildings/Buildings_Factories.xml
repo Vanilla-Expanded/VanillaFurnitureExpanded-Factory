@@ -380,6 +380,8 @@
 					<li>VFEFactory_MakeChemfuelFromOrganics</li>
 					<li MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">VFEFactory_MakeChemfuelFromRedWood</li>
 					<li MayRequire="sarg.alphabiomes">VFEFactory_MakeChemfuelFromMushroomWood</li>
+					<li MayRequire="VanillaExpanded.VPlantsEMore">VFEFactory_MakeChemfuelFromCanola</li>
+					<li MayRequire="vanillaexpanded.gravship">VFEFactory_AstrofuelFromChemfuel</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -388,6 +390,9 @@
 					<li>VFEFactory_Booster</li>
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
 			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
@@ -587,6 +592,7 @@
 					<li>VFEFactory_MinceHumanCorpses</li>
 					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_MinceHumanoidHybridCorpses</li>
 					<li>VFEFactory_MinceInsectoidCorpses</li>
+					<li MayRequire="Ludeon.RimWorld.Anomaly">VFEFactory_MinceEntityCorpses</li>
 				</processes>
 				<hideSettings>true</hideSettings>
 			</li>
@@ -688,6 +694,7 @@
 				<alwaysShowProgressBar>true</alwaysShowProgressBar>
 				<processes>
 					<li>VFEFactory_MakeKibble</li>
+					<li>VFEFactory_MakeKibbleFromHay</li>
 					<li>VFEFactory_MakePemmican</li>
 					<li>VFEFactory_MakeSurvivalMeal</li>
 					<li>VFEFactory_MakeMassProducedMeal</li>
@@ -1127,6 +1134,9 @@
 					<li>VFEFactory_Heatsink</li>
 				</linkableFacilities>
 			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
 		</comps>
 		<minifiedDef>MinifiedThing</minifiedDef>
 	</ThingDef>
@@ -1323,6 +1333,7 @@
 					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeTequilaFromAgave</li>
 					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeVodkaFromPotatoes</li>
 					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeGinFromBerries</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeSoda</li>
 					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeSakeFromRice</li>
 					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeChocoLiquor</li>
 					<li MayRequire="sarg.alphacrafts,VanillaExpanded.VBrewE">VFEFactory_MakeCoffeeLiquor</li>
@@ -1427,6 +1438,8 @@
 				<processes>
 					<li>VFEFactory_MakeMedicine</li>
 					<li>VFEFactory_RollJoint</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_RollCigarettes</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_RollCigar</li>
 					<li>VFEFactory_SynthesizeFlake</li>
 					<li>VFEFactory_SynthesizeYayo</li>
 					<li>VFEFactory_BrewPsychiteTea</li>

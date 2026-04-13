@@ -37,6 +37,7 @@
 		
 		<researchPrerequisites>
 			<li>MedicineProduction</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -113,6 +114,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>PsychiteRefining</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -152,6 +154,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>PsychiteRefining</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -191,6 +194,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>PsychoidBrewing</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -233,6 +237,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>GoJuiceProduction</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -272,6 +277,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>PenoxycylineProduction</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -311,6 +317,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>WakeUpProduction</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -354,6 +361,7 @@
 		</results>		
 		<researchPrerequisites>
 			<li>DrugProduction</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
@@ -397,7 +405,87 @@
 		</results>		
 		<researchPrerequisites>
 			<li>GR_GeneticEngineering</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_RollCigarettes</defName>
+		<label>Roll cigarettes</label>
+		<labelOverride>Roll cigarettes</labelOverride>
+		<description>Roll tobacco into cigarettes.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>2000</ticks>
+		<ingredients>
+			<li>
+				<thing>VBE_RawTobacco</thing>
+				<countNeeded>10</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Cigarettes</thing>
+				<count>2</count>
+			</li>
+		</results>		
+		
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrugsSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_RollCigar</defName>
+		<label>Roll cigar</label>
+		<labelOverride>Roll cigar</labelOverride>
+		<description>Roll tobacco and gold into a cigar.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>			
+			<li>(-1,0,2)</li>
+			<li>(0,0,2)</li>
+			<li>(1,0,2)</li>
+		</autoInputSlots>
+		<ticks>2400</ticks>
+		<ingredients>
+			<li>
+				<thing>VBE_RawTobacco</thing>
+				<countNeeded>5</countNeeded>
+			</li>
+			<li>
+				<thing>Gold</thing>
+				<countNeeded>1</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Cigars</thing>
+				<count>1</count>
+			</li>
+		</results>		
+		
 		<isFactoryProcess>true</isFactoryProcess>
 		<autoExtract>true</autoExtract>
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>

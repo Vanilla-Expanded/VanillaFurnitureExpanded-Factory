@@ -81,6 +81,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>AdvancedGravtech</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
@@ -163,6 +164,7 @@
 		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
 		<researchPrerequisites>
 			<li>VFEC_BronzeWorking</li>
+			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
