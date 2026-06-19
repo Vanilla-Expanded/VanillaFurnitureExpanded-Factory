@@ -83,6 +83,7 @@
 			<li>AdvancedGravtech</li>
 			<li>VFE_ComplexFactories</li>
 		</researchPrerequisites>
+		
 		<effecterWhenWorking>true</effecterWhenWorking>
 		<effecterDef>VFEFactory_Smelt</effecterDef>
 		<sustainerWhenWorking>true</sustainerWhenWorking>

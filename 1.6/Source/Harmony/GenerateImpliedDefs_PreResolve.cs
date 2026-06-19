@@ -118,15 +118,15 @@ namespace VanillaFurnitureExpandedFactory
             processDef.effecterWhenWorking = tp.effecterWhenWorking;
             processDef.effecterDef = tp.effecterDef;
             processDef.maxOutputCount = tp.maxOutputCount;
+            processDef.researchPrerequisites = new List<ResearchProjectDef>();
+            processDef.researchPrerequisites.Add(InternalDefOf.VFE_BasicFactories);
             if (def.recipeMaker?.researchPrerequisites != null)
-            {
-                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+            {             
                 processDef.researchPrerequisites.AddRange(def.recipeMaker.researchPrerequisites);
             }
             else
             if (def.recipeMaker?.researchPrerequisite != null)
-            {
-                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+            {               
                 processDef.researchPrerequisites.Add(def.recipeMaker.researchPrerequisite);
             }
             InternalDefOf.VFEFactory_Autoloom.GetCompProperties<CompProperties_AdvancedResourceProcessor>().processes.Add(processDef);
@@ -232,13 +232,16 @@ namespace VanillaFurnitureExpandedFactory
                 processDef.considerBuildingCompResource = true;
 
             }
+            processDef.researchPrerequisites = new List<ResearchProjectDef>();
+            processDef.researchPrerequisites.Add(InternalDefOf.VFE_ComplexFactories);
+
             if (def.recipeMaker?.researchPrerequisites!=null)
             {
-                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+               
                 processDef.researchPrerequisites.AddRange(def.recipeMaker.researchPrerequisites);
             }else
             if (def.recipeMaker?.researchPrerequisite !=null) {
-                processDef.researchPrerequisites = new List<ResearchProjectDef>();
+              
                 processDef.researchPrerequisites.Add(def.recipeMaker.researchPrerequisite);
             }
 

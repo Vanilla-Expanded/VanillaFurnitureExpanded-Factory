@@ -187,9 +187,9 @@
 	</PipeSystem.ProcessDef>
 	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
 		<defName>VFEFactory_MakeSoda</defName>
-		<label>Make batch of soda from juice and corn</label>
-		<labelOverride>Make batch of soda from juice and corn</labelOverride>
-		<description>Make soda syrup by mixing natural fruit juice with high fructose corn syrup and turn it into soda.</description>
+		<label>Make batch of soda from juice</label>
+		<labelOverride>Make batch of soda from juice</labelOverride>
+		<description>Make soda syrup by diluting concentrated fruit juice and infusing it with carbonation.</description>
 		<priorityInBillList>4</priorityInBillList>
 		<spawnOnInteractionCell>true</spawnOnInteractionCell>
 		<ticks>120000</ticks>
@@ -200,12 +200,9 @@
 		<ingredients>
 			<li>
 				<thing>VBE_Juice</thing>
-				<countNeeded>20</countNeeded>
+				<countNeeded>35</countNeeded>
 			</li>
-			<li>
-				<thing>RawCorn</thing>
-				<countNeeded>20</countNeeded>
-			</li>
+			
 		</ingredients>
 		<results>
 			<li>

@@ -38,6 +38,7 @@ namespace VanillaFurnitureExpandedFactory
 		public static TerrainDef HeavyBridge;
 
 		public static ResearchProjectDef VFE_BasicFactories;
+        public static ResearchProjectDef VFE_ComplexFactories;
 
     }
 }
