@@ -27,6 +27,7 @@
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>true</rotatable>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
 		<neverMultiSelect>true</neverMultiSelect>
 		<uiIconScale>0.8</uiIconScale>
 		<fillPercent>0.5</fillPercent>
