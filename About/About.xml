@@ -2,7 +2,7 @@
 	<name>Vanilla Furniture Expanded - Factory</name>
 	<author>Oskar Potocki, Sarg Bjornson, Taranchuk</author>
 	<supportedVersions>
-		<li>1.6</li>
+		<li>1.6</li><li>1.7</li>
 	</supportedVersions>
 	<modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
 	<modDependencies>
