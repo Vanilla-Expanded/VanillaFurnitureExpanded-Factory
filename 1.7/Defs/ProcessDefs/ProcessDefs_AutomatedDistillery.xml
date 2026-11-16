@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeBeerFromHops</defName>
+		<label>Make batch of beer from hops</label>
+		<labelOverride>Make batch of beer from hops</labelOverride>
+		<description>Rapidly mash hops into wort, and then ferment into beer using automated processes.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ticks>57600</ticks>
+		<ingredients>
+			<li>
+				<thing>RawHops</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Beer</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>Brewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeWhiskeyFromCorn</defName>
+		<label>Make batch of whisky from corn</label>
+		<labelOverride>Make batch of whisky from corn</labelOverride>
+		<description>Rapidly ferment corn into whisky mash, and then ferment into whisky using automated processes.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>115200</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>RawCorn</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Whiskey</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeTequilaFromAgave</defName>
+		<label>Make batch of tequila from agave</label>
+		<labelOverride>Make batch of tequila from agave</labelOverride>
+		<description>Rapidly mash agave into tequila must, and then ferment into tequila using automated processes.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>96000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>RawAgave</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Tequila</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeVodkaFromPotatoes</defName>
+		<label>Make batch of vodka from potatoes</label>
+		<labelOverride>Make batch of vodka from potatoes</labelOverride>
+		<description>Rapidly mash potatoes into vodka mash, and then ferment into vodka using automated processes.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>48000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>RawPotatoes</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Vodka</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeGinFromBerries</defName>
+		<label>Make batch of gin from raw berries</label>
+		<labelOverride>Make batch of gin from raw berries</labelOverride>
+		<description>Rapidly mash raw berries into gin mush, and then ferment into gin using automated processes.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>144000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>RawBerries</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Gin</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_LiquorBrewing</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeSoda</defName>
+		<label>Make batch of soda from juice</label>
+		<labelOverride>Make batch of soda from juice</labelOverride>
+		<description>Make soda syrup by diluting concentrated fruit juice and infusing it with carbonation.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>120000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>VBE_Juice</thing>
+				<countNeeded>35</countNeeded>
+			</li>
+			
+		</ingredients>
+		<results>
+			<li>
+				<thing>VBE_Soda</thing>
+				<count>20</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>VBE_MixologyResearch</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts">
+		<defName>VFEFactory_MakeSakeFromRice</defName>
+		<label>Make batch of sake from raw rice</label>
+		<labelOverride>Make batch of sake from raw rice</labelOverride>
+		<description>Rapidly mash raw rice and then ferment into sake using automated processes.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>440000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>RawRice</thing>
+				<countNeeded>48</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AC_Sake</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts">
+		<defName>VFEFactory_MakeChocoLiquor</defName>
+		<label>Make batch of chocolate liquor</label>
+		<labelOverride>Make batch of chocolate liquor</labelOverride>
+		<description>Ferment chocolate into chocolate liquor using automated processes.</description>
+		<priorityInBillList>6</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>168000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>Chocolate</thing>
+				<countNeeded>20</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AC_ChocolateLiquor</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphacrafts,VanillaExpanded.VBrewE">
+		<defName>VFEFactory_MakeCoffeeLiquor</defName>
+		<label>Make batch of coffee liquor</label>
+		<labelOverride>Make batch of coffee liquor</labelOverride>
+		<description>Ferment coffee into coffee liquor using automated processes.</description>
+		<priorityInBillList>7</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>80000</ticks>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(-1,0,2)</li>
+		</autoInputSlots>
+		<ingredients>
+			<li>
+				<thing>VBE_RawCoffee</thing>
+				<countNeeded>16</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>AC_CoffeeLiquor</thing>
+				<count>4</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<researchPrerequisites>
+			<li>AC_ArtisanalFermentation</li>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>25</maxOutputCount>
+	</PipeSystem.ProcessDef>
+</Defs>

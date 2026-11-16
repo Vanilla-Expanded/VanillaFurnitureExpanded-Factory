@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeStoneBlocks</defName>
+		<label>Cut 20 blocks from a stone chunk</label>
+		<labelOverride>Make any stone blocks</labelOverride>
+		<description>Cut rock chunks into usable stone blocks.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,2)</li>
+			
+		</autoInputSlots>
+		<ticks>6400</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>BlocksSandstone</thing>
+				<count>20</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_MasonryBlocks</workerClass>
+				<outputStringOverride>VFEFactory_MasonryBlocks</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>Stonecutting</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedStoneCuttingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Smelt</effecterDef>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	
+</Defs>

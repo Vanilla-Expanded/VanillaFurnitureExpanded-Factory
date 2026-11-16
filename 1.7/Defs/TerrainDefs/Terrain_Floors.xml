@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef ParentName="FloorBase">
+    <defName>VFEF_FactoryFloor</defName>
+    <label>factory floor</label>
+    <renderPrecedence>240</renderPrecedence>
+    <description>Reinforced steel flooring capable of supporting factory buildings. Slow to traverse and ugly to look at.</description>
+    <texturePath>Terrain/Surfaces/FactoryFloor</texturePath>
+    <color>(0.573, 0.537, 0.271)</color>
+    <statBases>
+      <WorkToBuild>500</WorkToBuild>
+      <Beauty>-2</Beauty>
+      <Cleanliness>-0.2</Cleanliness>
+      <CleaningTimeFactor>0.6</CleaningTimeFactor>
+    </statBases>
+    <affordances>
+      <li>FactoryFloor</li>
+    </affordances>
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+    <uiOrder>2045</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <isPaintable>true</isPaintable>
+    <researchPrerequisites>
+      <li>VFE_BasicFactories</li>
+    </researchPrerequisites>
+		<designationCategory Inherit='False'>VFEFactory_Factories</designationCategory>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <pathCost>3</pathCost>
+  </TerrainDef>
+
+</Defs>

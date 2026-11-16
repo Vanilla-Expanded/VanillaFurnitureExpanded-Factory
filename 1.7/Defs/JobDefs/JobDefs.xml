@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>VFEFactory_HaulFromConveyor</defName>
+    <driverClass>VanillaFurnitureExpandedFactory.JobDriver_HaulFromConveyor</driverClass>
+    <reportString>hauling.</reportString>
+  </JobDef>
+</Defs>

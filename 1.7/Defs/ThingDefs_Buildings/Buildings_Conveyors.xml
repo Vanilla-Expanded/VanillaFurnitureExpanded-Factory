@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef Name="VFEFactory_ConveyorBase" Abstract="True" ParentName="BuildingBase">
+		<tickerType>Normal</tickerType>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<size>(1,1)</size>
+		<drawStyleCategory>Walls</drawStyleCategory>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<containedItemsSelectable>true</containedItemsSelectable>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<modExtensions>
+			<li Class="PipeSystem.FactoryHopperExtension">
+				<isfactoryHopper>true</isfactoryHopper>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="VFEFactory_ConveyorBase">
+		<defName>VFEFactory_Conveyor</defName>
+		<label>conveyor</label>
+		<description>A simple conveyor belt capable of moving an item from one place to the other. Due to safety reasons, items on the conveyor belt cannot be interacted with.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Conveyor</thingClass>
+		<inspectorTabs>
+			<li>VanillaFurnitureExpandedFactory.ITab_SplitterFilter</li>
+		</inspectorTabs>
+		<graphicData>
+			<texPath>Things/Building/ConveyorBelts/Conveyor</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>650</WorkToBuild>
+		</statBases>
+		<costList>
+			<Steel>10</Steel>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<baseTexPath>Things/Building/ConveyorBelts</baseTexPath>
+				<ticksPerCell>40</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Conveyor</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_UndergroundConveyorEntrance</li>
+				<li>VFEFactory_UndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="VFEFactory_ConveyorBase">
+		<defName>VFEFactory_UndergroundConveyorEntrance</defName>
+		<label>underground conveyor entrance</label>
+		<description>A simple entrance tunnel for the conveyor belt, allowing it to travel a short distance underground. Needs to be linked to a nearby underground conveyor exit to work.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_UndergroundConveyorEntrance</thingClass>
+		<graphicData>
+			<texPath>Things/Building/UndergroundConveyorEntrance/ConveyorUndergroundEntrance</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>800</WorkToBuild>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<ticksPerCell>40</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+				<maxDistance>8</maxDistance>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_Conveyor</li>
+				<li>VFEFactory_UndergroundConveyorExit</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="VFEFactory_ConveyorBase">
+		<defName>VFEFactory_UndergroundConveyorExit</defName>
+		<label>underground conveyor exit</label>
+		<description>A simple exit tunnel for the conveyor belt, allowing it to travel a short distance underground. Needs to be linked to a nearby underground conveyor entrance to work.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_UndergroundConveyorExit</thingClass>
+		<graphicData>
+			<texPath>Things/Building/UndergroundConveyorExit/ConveyorUndergroundExit</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>800</WorkToBuild>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<modExtensions>
+			<li Class="VanillaFurnitureExpandedFactory.ConveyorExtension">
+				<ticksPerCell>40</ticksPerCell>
+				<itemsPerCell>1</itemsPerCell>
+				<maxDistance>8</maxDistance>
+			</li>
+		</modExtensions>
+		<placeWorkers>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_UndergroundConveyorLink</li>
+		</placeWorkers>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_Conveyor</li>
+				<li>VFEFactory_UndergroundConveyorEntrance</li>
+			</relatedBuildCommands>
+		</building>
+	</ThingDef>
+</Defs>

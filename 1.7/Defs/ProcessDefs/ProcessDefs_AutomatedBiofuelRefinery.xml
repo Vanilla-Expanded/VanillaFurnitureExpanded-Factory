@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeChemfuelFromWood</defName>
+		<label>Make chemfuel from wood</label>
+		<labelOverride>Make chemfuel from wood</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing wood gas from logs.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>5000</ticks>
+		<ingredients>
+			<li>
+				<thing>WoodLog</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_MakeChemfuelFromOrganics</defName>
+		<label>Make chemfuel from organics</label>
+		<labelOverride>Make chemfuel from organics</labelOverride>
+		<description>Make a batch of chemfuel by extracting biofuel from organic feedstocks. Process will consume 30 food items and output 1 chemfuel per each 0.1 nutrition consumed. For example, 30 potatoes will produce 15 chemfuel, while 30 simple meals (0.9 nutrition) will produce 270 chemfuel.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>4200</ticks>
+		<ingredients>
+			<li>
+				<thingCategory>Foods</thingCategory>
+				<countNeeded>30</countNeeded>
+				
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>15</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_ScaleOutputByNutrition</workerClass>
+				<outputStringOverride>VFEFactory_ChemfuelPerNutrition</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">
+		<defName>VFEFactory_MakeChemfuelFromRedWood</defName>
+		<label>Make 25 chemfuel from 50 red wood logs</label>
+		<labelOverride>Make chemfuel from red wood logs</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing wood gas from red wood logs.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>5000</ticks>
+		<ingredients>
+			<li>
+				<thing>GU_RedWood</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_MakeChemfuelFromMushroomWood</defName>
+		<label>Make 25 chemfuel from 50 mushroom stalks</label>
+		<labelOverride>Make chemfuel from mushroom stalks</labelOverride>
+		<description>Make a batch of chemfuel by extracting and condensing gas from mushroom stalks.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>5000</ticks>
+		<ingredients>
+			<li>
+				<thing>AB_MushroomWoodLog</thing>
+				<countNeeded>50</countNeeded>
+			</li>
+		</ingredients>
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>25</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef MayRequire="VanillaExpanded.VPlantsEMore">
+		<defName>VFEFactory_MakeChemfuelFromCanola</defName>
+		<label>Make chemfuel from canola</label>
+		<labelOverride>Make chemfuel from canola</labelOverride>
+		<description>Make a batch of chemfuel by extracting biofuel from canola flowers.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>8000</ticks>
+		<ingredients>
+			<li>
+				<thing>VCE_RawCanola</thing>
+				<countNeeded>35</countNeeded>
+				
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>Chemfuel</thing>
+				<count>35</count>
+				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	<PipeSystem.ProcessDef MayRequire="vanillaexpanded.gravship">
+		<defName>VFEFactory_AstrofuelFromChemfuel</defName>
+		<label>Make astrofuel from chemfuel</label>
+		<labelOverride>Make astrofuel from chemfuel</labelOverride>
+		<description>Make a batch of high-grade astrofuel by refining chemfuel.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<autoGrabFromHoppers>true</autoGrabFromHoppers>
+		<autoInputSlots>
+			<li>(0,0,3)</li>
+			<li>(1,0,3)</li>
+			<li>(-1,0,3)</li>
+		</autoInputSlots>
+		<ticks>20000</ticks>
+		<ingredients>
+			<li>
+				<thing>Chemfuel</thing>
+				<countNeeded>70</countNeeded>
+				
+			</li>
+		</ingredients>
+		
+		<results>
+			<li>
+				<thing>VGE_Astrofuel</thing>
+				<count>35</count>
+				
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<researchPrerequisites>
+			<li>BasicGravtech</li>
+			<li>BiofuelRefining</li>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedBrewingSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>VFEFactory_Cook</effecterDef>
+		<maxOutputCount>150</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+	
+</Defs>

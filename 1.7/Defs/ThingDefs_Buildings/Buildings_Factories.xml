@@ -1,0 +1,1679 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_Autofarmer</defName>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_Autofarmer</thingClass>
+		<label>autofarmer</label>
+		<description>A large, automated machine that combines the functions of a sower and harvester, moving back and forth across a designated outdoor zone to harvest mature plants and sow new crops. It deposits harvested goods into attached factory hoppers or drops them on the ground if hoppers are not present, and its operation can be set to automatically cycle once the majority of plants in the zone are fully grown.</description>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<texPath>Things/Building/Factories/Autofarmer/Autofarmer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(7, 3)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(7, 3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>Impassable</passability>
+		<pathCost>50</pathCost>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+			<li>VanillaFurnitureExpandedFactory.PlaceWorker_Autofarmer</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<sowTag>Ground</sowTag>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="VanillaFurnitureExpandedFactory.CompProperties_ShowAutofarmerSpots" />
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedDrillPlatform</defName>
+		<label>automated drill platform</label>
+		<description>An automated deep-crust drilling rig for extracting minerals from deep under the surface. Capable of extracting stone chunks, but also any metal it finds.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedDrillPlatform/AutomatedDrillPlatform</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>220</Steel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>35</Mass>
+			<Beauty>-6</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>false</shortCircuitInRain>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_DigForSandstoneChunk</li>
+					<li>VFEFactory_DigForGraniteChunk</li>
+					<li>VFEFactory_DigForLimestoneChunk</li>
+					<li>VFEFactory_DigForSlateChunk</li>
+					<li>VFEFactory_DigForMarbleChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForRoseQuartzChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForCragstoneChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForOnyxglassChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForMudstoneChunk</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_DigForSlimeStoneChunk</li>
+					<li>VFEFactory_DigForMetals</li>
+
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedSmelter</defName>
+		<label>automated smelter</label>
+		<description>Extracts usable metal from slag chunks, broken-down weapons, apparel, stone chunks, and mechanoid corpses using strong electromagnets and heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedSmelter/AutomatedSmelter</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>260</Steel>
+			<ComponentIndustrial>7</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,4)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>300</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>14</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_SmeltMetalFromSlag</li>
+					<li>VFEFactory_SmeltMetalFromMechSlag</li>
+					<li>VFEFactory_SmeltWeapon</li>
+					<li>VFEFactory_SmeltApparel</li>
+					<li>VFEFactory_SmeltMetalFromChunk</li>
+					<li>VFEFactory_SmeltMechanoid</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedBiofuelRefinery</defName>
+		<label>automated biofuel refinery</label>
+		<description>Automatically refines biological matter like wood or plant matter into chemfuel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedBiofuelRefinery/AutomatedBiofuelRefinery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,4)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+			<li>BiofuelRefining</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>220</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeChemfuelFromWood</li>
+					<li>VFEFactory_MakeChemfuelFromOrganics</li>
+					<li MayRequireAnyOf="sarg.alphaanimals,sarg.alphabiomes">VFEFactory_MakeChemfuelFromRedWood</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_MakeChemfuelFromMushroomWood</li>
+					<li MayRequire="VanillaExpanded.VPlantsEMore">VFEFactory_MakeChemfuelFromCanola</li>
+					<li MayRequire="vanillaexpanded.gravship">VFEFactory_AstrofuelFromChemfuel</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedMasonrySaw</defName>
+		<label>automated masonry saw</label>
+		<description>An industrial machine capable of cutting stone chunks into usable blocks.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedMasonrySaw/AutomatedMasonrySaw</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>180</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>40</Mass>
+			<Beauty>-8</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+			<li>Stonecutting</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeStoneBlocks</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedMincer</defName>
+		<label>automated mincer</label>
+		<description>A series of automated saws and mincers capable of processing corpses into processed mince.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedMincer/AutomatedMincer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>40</Mass>
+			<Beauty>-14</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>3</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MinceCorpses</li>
+					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_MinceHybridCorpses</li>
+					<li>VFEFactory_MinceHumanCorpses</li>
+					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_MinceHumanoidHybridCorpses</li>
+					<li>VFEFactory_MinceInsectoidCorpses</li>
+					<li MayRequire="Ludeon.RimWorld.Anomaly">VFEFactory_MinceEntityCorpses</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_ConveyorOven</defName>
+		<label>conveyor oven</label>
+		<description>An industrial oven for the automated mass-production of simple, shelf-stable, and packaged meals.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/ConveyorOven/ConveyorOven</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>240</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>65</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>550</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingBreakdownFactor>2</VEF_BuildingBreakdownFactor>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>460</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeKibble</li>
+					<li>VFEFactory_MakeKibbleFromHay</li>
+					<li>VFEFactory_MakePemmican</li>
+					<li>VFEFactory_MakeSurvivalMeal</li>
+					<li>VFEFactory_MakeMassProducedMeal</li>
+					<li MayRequire="Ludeon.RimWorld.Biotech">VFEFactory_MakeBabyFood</li>
+					<li MayRequire="VanillaExpanded.VBrewECandT">VFEFactory_MakePumpkinCoffee</li>
+					<li MayRequire="VanillaExpanded.VCookE">VFEFactory_MakeSimpleSoup</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedAssembler</defName>
+		<label>automated assembler</label>
+		<description>An automated industrial machine for assembling complex items like components and advanced components.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedAssembler/AutomatedAssembler</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>400</Steel>
+			<ComponentIndustrial>20</ComponentIndustrial>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>100</Mass>
+			<Beauty>-16</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>800</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>450</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>10</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_AssembleComponent</li>
+					<li>VFEFactory_AssembleAdvancedComponent</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_RefineUraniumCrystals</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_BlueGel_To_Hexagel</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_Make_HexagelCore</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_NeutroamineSynthesizer</defName>
+		<label>neutroamine synthesizer</label>
+		<description>An advanced chemical facility designed for the automated synthesis of neutroamine from organic feedstocks. It operates by converting rendered animal fat and chemfuel into neutroamine.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/NeutroamineSynthesizer/NeutroamineSynthesizer</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>260</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+			<Silver>30</Silver>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>65</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>550</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>600</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_SynthesizeNeutroamine</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedAmmunitionPress</defName>
+		<label>automated ammunition press</label>
+		<description>An industrial-grade press capable of automatically manufacturing various artillery shells from raw materials.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedAmmunitionPress/AutomatedAmmunitionPress</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>220</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>60</Mass>
+			<Beauty>-14</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,4)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>400</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>6</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeHighExplosiveShells</li>
+					<li>VFEFactory_MakeIncendiaryShells</li>
+					<li>VFEFactory_MakeEMPShells</li>
+					<li>VFEFactory_MakeFirefoamShells</li>
+					<li>VFEFactory_MakeSmokeShells</li>
+					<li MayRequire="Ludeon.RimWorld.Biotech">VFEFactory_MakeToxShells</li>
+					<li MayRequire="sarg.alphabiomes">VFEFactory_MakeTarShells</li>
+					<li MayRequire="OskarPotocki.VFE.Deserters">VFEFactory_MakeShrapnelShells</li>
+					<li MayRequire="OskarPotocki.VFE.Deserters">VFEFactory_MakeArmorPiercingShells</li>
+					<li MayRequire="OskarPotocki.VFE.Deserters">VFEFactory_MakeClusterShells</li>
+					<li MayRequire="Ludeon.RimWorld.Anomaly">VFEFactory_MakeDeadlifeShells</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_Autoloom</defName>
+		<label>autoloom</label>
+		<description>An industrial-grade loom designed for the automatic production of textiles and apparel, it efficiently weaves materials like cloth and leather into various finished goods. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/Autoloom/Autoloom</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>65</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>6</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakePatchleather</li>
+					<li>VFEFactory_MakeSynthread</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedAlloyForge</defName>
+		<label>automated alloy forge</label>
+		<description>A colossal industrial furnace built to contain the immense heat and pressure needed to bond base materials into exotic alloys like plasteel.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedAlloyForge/AutomatedAlloyForge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>460</Steel>
+			<ComponentIndustrial>14</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>100</Mass>
+			<Beauty>-16</Beauty>
+			<WorkToBuild>8000</WorkToBuild>
+			<MaxHitPoints>900</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>21</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_AlloyPlasteel</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_AlloyGravlite</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_CreateObsidian</li>
+					<li MayRequire="OskarPotocki.VFE.Classical">VFEFactory_AlloyBronze</li>
+					<li MayRequire="sarg.alphaanimals">VFEFactory_AlloySkySteel</li>
+					<li MayRequire="sarg.alphabooks">VFEFactory_AlloyStainlessSteel</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedDistillery</defName>
+		<label>automated distillery</label>
+		<description>An automated industrial distilling system for the mass production of beer and spirits from raw crops, requiring no manual labor.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedDistillery/AutomatedDistillery</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>160</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>45</Mass>
+			<Beauty>-14</Beauty>
+			<WorkToBuild>6500</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(1,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>150</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>7</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeBeerFromHops</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeWhiskeyFromCorn</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeTequilaFromAgave</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeVodkaFromPotatoes</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeGinFromBerries</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_MakeSoda</li>
+					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeSakeFromRice</li>
+					<li MayRequire="sarg.alphacrafts">VFEFactory_MakeChocoLiquor</li>
+					<li MayRequire="sarg.alphacrafts,VanillaExpanded.VBrewE">VFEFactory_MakeCoffeeLiquor</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_MedicineGranulator</defName>
+		<label>medicine granulator</label>
+		<description>An advanced pharmaceutical processor for the mass-production of basic medical supplies and drug batches from raw materials. It efficiently grinds, synthesizes, and packages items like medicine, psychite drugs, and smokeleaf joints.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/MedicineGranulator/MedicineGranulator</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>200</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>65</Mass>
+			<Beauty>-10</Beauty>
+			<WorkToBuild>6500</WorkToBuild>
+			<MaxHitPoints>550</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>800</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>9</heatPerSecond>
+				<heatPushMaxTemperature>66</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_MakeMedicine</li>
+					<li>VFEFactory_RollJoint</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_RollCigarettes</li>
+					<li MayRequire="VanillaExpanded.VBrewE">VFEFactory_RollCigar</li>
+					<li>VFEFactory_SynthesizeFlake</li>
+					<li>VFEFactory_SynthesizeYayo</li>
+					<li>VFEFactory_BrewPsychiteTea</li>
+					<li>VFEFactory_SynthesizeGoJuice</li>
+					<li>VFEFactory_SynthesizePenoxycyline</li>
+					<li>VFEFactory_SynthesizeWakeUp</li>
+					<li MayRequire="vanillaracesexpanded.genie">VFEFactory_SynthesizeAntibiotics</li>
+					<li MayRequire="VanillaExpanded.VGeneticsEMoreLabStuff">VFEFactory_SynthesizeAgePills</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="vanillaracesexpanded.android" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VREA_NeutroamineNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedMachiningBay</defName>
+		<label>automated machining bay</label>
+		<description>An automated industrial facility designed for the precision manufacturing of various weapons, armor, and complex equipment. It can only output goods of normal quality.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/AutomatedMachiningBay/AutomatedMachiningBay</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>440</Steel>
+			<ComponentIndustrial>18</ComponentIndustrial>
+			<ComponentSpacer>5</ComponentSpacer>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>115</Mass>
+			<Beauty>-18</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>800</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(5,5)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_ComplexFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>500</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>10</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_ShredMechanoid</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VFEFactory_ShredDrone</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+			<li MayRequire="VanillaExpanded.VChemfuelE" Class="PipeSystem.CompProperties_Resource">
+				<pipeNet>VCHE_ChemfuelNet</pipeNet>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_AutomatedCrematorium</defName>
+		<label>conveyor crematorium</label>
+		<description>An industrial-grade furnace designed for the automated destruction of unwanted items, especially corpses and tainted apparel, using extreme heat.\n\nFactory buildings need factory hoppers for input and output. They produce significant heat and consume much power, but can be overclocked for higher efficiency, increasing both heat generation and power consumption. Needs to be constructed on factory floor.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Factories/ConveyorCrematorium/ConveyorCrematorium</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>VFEFactory_FactoryCategory</li>
+		</thingCategories>
+		<costList>
+			<Steel>260</Steel>
+			<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<altitudeLayer>Building</altitudeLayer>
+		<terrainAffordanceNeeded>FactoryFloor</terrainAffordanceNeeded>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Mass>115</Mass>
+			<Beauty>-18</Beauty>
+			<WorkToBuild>5000</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>1</Flammability>
+			<VEF_BuildingMaxOverclockFactor>1</VEF_BuildingMaxOverclockFactor>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<size>(3,3)</size>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>false</hasInteractionCell>
+
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<building>
+			<relatedBuildCommands>
+				<li>VFEFactory_FactoryHopper</li>
+			</relatedBuildCommands>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<workTableRoomRole>VFEFactory_FactoryRoom</workTableRoomRole>
+			<workTableNotInRoomRoleFactor>0.5</workTableNotInRoomRoleFactor>
+		</building>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>250</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>PipeSystem.CompPowerTrader_Overclocked</compClass>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>PipeSystem.CompHeatPusherPowered_Overclocked</compClass>
+				<heatPerSecond>12</heatPerSecond>
+				<heatPushMaxTemperature>120</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<notWorkingKey>VFEFactory_FactoryNotWorking</notWorkingKey>
+				<canOverclock>true</canOverclock>
+				<overclockGizmo>UI/Gizmo/Factory_Overclock</overclockGizmo>
+				<overclockLabel>VFEFactory_Overclock</overclockLabel>
+				<overclockWindowLabel>VFEFactory_OverclockWindowLabel</overclockWindowLabel>
+				<overclockDesc>VFEFactory_OverclockDesc</overclockDesc>
+				<alwaysShowProgressBar>true</alwaysShowProgressBar>
+				<processes>
+					<li>VFEFactory_CremateAnimal</li>
+					<li>VFEFactory_CremateHumanlike</li>
+					<li MayRequire="Ludeon.RimWorld.Anomaly">VFEFactory_CremateEntities</li>
+					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_CremateHybrids</li>
+					<li MayRequire="VanillaExpanded.VGeneticsE">VFEFactory_CremateHumanoidHybrids</li>
+					<li>VFEFactory_BurnApparel</li>
+					<li>VFEFactory_BurnWeapon</li>
+					<li>VFEFactory_BurnDrug</li>
+				</processes>
+				<hideSettings>true</hideSettings>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VFEFactory_Booster</li>
+					<li>VFEFactory_Heatsink</li>
+				</linkableFacilities>
+			</li>
+
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ResearchProjectDef>
+		<defName>VFE_BasicFactories</defName>
+		<label>basic factories</label>
+		<description>Construct basic factories, conveyor belts with splitters, mergers, filters and underground conveyors, as well as factory hoppers to automate certain tasks around the colony.</description>
+		<baseCost>5000</baseCost>
+		<tab>VanillaExpanded</tab>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>Machining</li>
+		</prerequisites>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>4.25</researchViewY>
+		<generalRules>
+			<rulesStrings>
+				<li>subject->industrial efficiency</li>
+				<li>subject_story->pioneered the first integrated production lines</li>
+				<li>subject_story->transformed a small workshop into a cornerstone of the industrial revolution</li>
+				<li>subject_story->saw beyond the chaos of factory floors to the beauty of synchronized machinery</li>
+				<li>subject_gerund->laying the groundwork for modern manufacturing</li>
+			</rulesStrings>
+		</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFE_ComplexFactories</defName>
+		<label>complex factories</label>
+		<description>Construct complex, specific factories capable of manufacturing components, creating plasteel alloy and much more.</description>
+		<baseCost>6000</baseCost>
+		<tab>VanillaExpanded</tab>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>VFE_BasicFactories</li>
+			<li>Fabrication</li>
+		</prerequisites>
+		<researchViewX>6.00</researchViewX>
+		<researchViewY>4.25</researchViewY>
+		<generalRules>
+			<rulesStrings>
+				<li>subject->automated fabrication</li>
+				<li>subject_story->unveiled the potential of autonomous machines in electronics production</li>
+				<li>subject_story->bridged the gap between raw materials and advanced technology</li>
+				<li>subject_story->revolutionized the production of high-tech components and alloys, making them accessible to all</li>
+				<li>subject_gerund->streamlining the creation of electronics and alloys</li>
+			</rulesStrings>
+		</generalRules>
+	</ResearchProjectDef>
+</Defs>

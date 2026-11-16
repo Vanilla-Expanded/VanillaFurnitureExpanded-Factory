@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputPath>obj\deploy\</OutputPath>
+    <TargetFramework>net10.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <DebugType>None</DebugType>
+    <LangVersion>latest</LangVersion>
+    <Nullable>warnings</Nullable>
+	  <GenerateDependencyFile>false</GenerateDependencyFile>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>AlphaMonsters</RootNamespace>
+    <AssemblyName>AlphaMonsters</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony">
+      <Version>*</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\Assembly-CSharp.dll</HintPath>
+      <CopyLocal>false</CopyLocal>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PipeSystem">
+      <HintPath>..\..\..\VanillaExpandedFramework\1.7\Assemblies\PipeSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RimWorld">
+      <HintPath>..\..\..\..\RimWorld.dll</HintPath>
+	   <CopyLocal>false</CopyLocal>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityStubs">
+      <HintPath>..\..\..\..\UnityStubs.dll</HintPath>
+	   <CopyLocal>false</CopyLocal>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Waylith">
+      <HintPath>..\..\..\..\Waylith.dll</HintPath>
+	   <CopyLocal>false</CopyLocal>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="DeployToAssemblies" AfterTargets="Build">
+    <Exec Command="if not exist &quot;$(MSBuildThisFileDirectory)obj\trash&quot; mkdir &quot;$(MSBuildThisFileDirectory)obj\trash&quot;" IgnoreExitCode="true" />
+    <Exec Command="del /f /q &quot;$(MSBuildThisFileDirectory)obj\trash\$(AssemblyName).dll*&quot; &gt;nul 2&gt;nul" IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(MSBuildThisFileDirectory)..\Assemblies\$(AssemblyName).dll*&quot; move /y &quot;$(MSBuildThisFileDirectory)..\Assemblies\$(AssemblyName).dll*&quot; &quot;$(MSBuildThisFileDirectory)obj\trash\&quot;" IgnoreExitCode="true" />
+    <Copy SourceFiles="$(OutDir)$(AssemblyName).dll" DestinationFiles="$(MSBuildThisFileDirectory)..\Assemblies\$(AssemblyName).dll" />
+  </Target>
+</Project>

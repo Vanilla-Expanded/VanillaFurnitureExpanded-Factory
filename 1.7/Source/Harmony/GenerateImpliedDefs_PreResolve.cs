@@ -135,7 +135,8 @@ namespace VanillaFurnitureExpandedFactory
 
         public static IEnumerable<PipeSystem.ProcessDef> ImpliedMachiningProcesses(bool hotReload = false)
         {
-            List<ThingDef> machiningBenchRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => (x.costStuffCount != 0 || x.costList!=null)
+            List<ThingDef> machiningBenchRecipes = DefDatabase<ThingDef>.AllDefsListForReading.Where(x => ((x.costStuffCount != 0 && (x.stuffCategories?.Contains(StuffCategoryDefOf.Metallic) == true
+            || x.stuffCategories?.Contains(StuffCategoryDefOf.Fabric) == true || x.stuffCategories?.Contains(InternalDefOf.Steeled) == true)) || x.costList!=null)         
             && x.recipeMaker?.recipeUsers?.Contains(InternalDefOf.TableMachining) == true && !x.defName.Contains("Shell")).ToList();
 
             foreach (ThingDef def in machiningBenchRecipes)

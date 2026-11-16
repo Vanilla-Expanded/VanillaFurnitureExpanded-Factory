@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>VFEFactory_FactoryHopper</defName>
+		<label>Factory hopper</label>
+		<description>Holds resources for use by factory machines.</description>
+		<thingClass>VanillaFurnitureExpandedFactory.Building_FactoryHopper</thingClass>
+		<graphicData>
+			<texPath>Things/Building/FactoryHopper/FactoryHopper_Unset</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.05,1.05)</drawSize>
+			<damageData>
+				<rect>(0.05,0.1,0.9,0.9)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Standable</passability>
+		<fillPercent>0.5</fillPercent>
+		<pathCost>42</pathCost>
+		<canOverlapZones>false</canOverlapZones>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<building>
+			<isHopper>true</isHopper>
+			<blueprintClass>Blueprint_Storage</blueprintClass>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<maxItemsInCell>1</maxItemsInCell>
+			<storageGroupTag>VFEFactory_FactoryHopper</storageGroupTag>
+			<defaultStorageSettings>
+				<priority>Low</priority>
+				<filter>
+
+				</filter>
+			</defaultStorageSettings>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<castEdgeShadows>true</castEdgeShadows>
+		<statBases>
+			<WorkToBuild>400</WorkToBuild>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+		</costList>
+		<tickerType>Long</tickerType>
+		<rotatable>true</rotatable>
+		<designationCategory>VFEFactory_Factories</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>VFE_BasicFactories</li>
+		</researchPrerequisites>
+		<uiIconScale>0.85</uiIconScale>
+		<modExtensions>
+			<li Class="PipeSystem.FactoryHopperExtension">
+				<isfactoryHopper>true</isfactoryHopper>
+			</li>
+		</modExtensions>
+		<comps>
+		
+		 </comps>
+	</ThingDef>
+</Defs>

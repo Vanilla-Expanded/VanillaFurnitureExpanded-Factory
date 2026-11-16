@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--  Bases  -->
+	<ThingDef Name="VFEFactory_RawMeatBase" Abstract="True" ParentName="OrganicProductBase">
+		<label>Base meat properties</label>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>2</daysToRotStart>
+				<rotDestroys>True</rotDestroys>
+			</li>
+		</comps>
+		<statBases>
+			<Nutrition>0.05</Nutrition>
+			<Flammability>0.5</Flammability>
+			<FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+
+		</statBases>
+		<ingestible>
+			<foodType>Meat</foodType>
+			<preferability>DesperateOnly</preferability>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>		
+		</ingestible>
+		<thingCategories>
+			<li>MeatRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	
+
+	<!--  Processed meat  -->
+
+	<ThingDef ParentName="VFEFactory_RawMeatBase">
+		<defName>VFEFactory_ProcessedMince</defName>
+		<label>processed mince</label>
+		<description>A block of heavily processed minced meat, safe to eat but with an unappetizing taste.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Food/ProcessedMince</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.03</Mass>
+			<MarketValue>2</MarketValue>
+		</statBases>
+		<ingestible>
+			<specialThoughtDirect>VFEFactory_AteProcessedMince</specialThoughtDirect>
+			<specialThoughtAsIngredient>VFEFactory_AteProcessedMinceIngredient</specialThoughtAsIngredient>
+		</ingestible>
+	</ThingDef>
+	
+	
+
+
+
+</Defs>

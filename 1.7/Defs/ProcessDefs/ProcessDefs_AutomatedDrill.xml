@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForSandstoneChunk</defName>
+		<label>Dig to harvest a sandstone chunk</label>
+		<description>Dig to harvest a sandstone chunk.</description>
+		<priorityInBillList>0</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>Sandstone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>ChunkSandstone</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForGraniteChunk</defName>
+		<label>Dig to harvest a granite chunk</label>
+		<description>Dig to harvest a granite chunk.</description>
+		<priorityInBillList>1</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>Granite</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>ChunkGranite</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForLimestoneChunk</defName>
+		<label>Dig to harvest a limestone chunk</label>
+		<description>Dig to harvest a limestone chunk.</description>
+		<priorityInBillList>2</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>Limestone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>ChunkLimestone</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForSlateChunk</defName>
+		<label>Dig to harvest a slate chunk</label>
+		<description>Dig to harvest a slate chunk.</description>
+		<priorityInBillList>3</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>Slate</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>ChunkSlate</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForMarbleChunk</defName>
+		<label>Dig to harvest a marble chunk</label>
+		<description>Dig to harvest a marble chunk.</description>
+		<priorityInBillList>4</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>Marble</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>ChunkMarble</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_DigForRoseQuartzChunk</defName>
+		<label>Dig to harvest a rose quartz chunk</label>
+		<description>Dig to harvest a rose quartz chunk.</description>
+		<priorityInBillList>5</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>GU_RoseQuartz</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>GU_ChunkRoseQuartz</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_DigForCragstoneChunk</defName>
+		<label>Dig to harvest a cragstone chunk</label>
+		<description>Dig to harvest a cragstone chunk.</description>
+		<priorityInBillList>6</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>AB_Cragstone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>AB_ChunkCragstone</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_DigForOnyxglassChunk</defName>
+		<label>Dig to harvest an onyxglass chunk</label>
+		<description>Dig to harvest an onyxglass chunk.</description>
+		<priorityInBillList>7</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>AB_Obsidianstone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>AB_ChunkObsidian</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_DigForMudstoneChunk</defName>
+		<label>Dig to harvest a mudstone chunk</label>
+		<description>Dig to harvest a mudstone chunk.</description>
+		<priorityInBillList>8</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>AB_Mudstone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>AB_ChunkMudstone</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef MayRequire="sarg.alphabiomes">
+		<defName>VFEFactory_DigForSlimeStoneChunk</defName>
+		<label>Dig to harvest a hardened slime chunk</label>
+		<description>Dig to harvest a hardened slime chunk.</description>
+		<priorityInBillList>9</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<hideProcessIfNotNaturalRock>true</hideProcessIfNotNaturalRock>
+		<rockToDetect>AB_SlimeStone</rockToDetect>
+		<ticks>14000</ticks>
+		<results>
+			<li>
+				<thing>AB_ChunkSlimeStone</thing>
+				<count>1</count>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>3</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEFactory_DigForMetals</defName>
+		<label>Dig for metals</label>
+		<labelOverride>Dig for metals</labelOverride>
+		<description>Dig for random metals. Type of metal extracted depends on the deep commonality of the resource. The amount depends on the usual yield of such a deposit.</description>
+		<priorityInBillList>10</priorityInBillList>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<ticks>31700</ticks>
+		<results>
+			<li>
+				<thing>Steel</thing>
+				<count>1</count>
+				<workerClass>VanillaFurnitureExpandedFactory.ResultWorker_Metals</workerClass>
+				<outputStringOverride>VFEFactory_Metals</outputStringOverride>
+			</li>
+		</results>
+		<isFactoryProcess>true</isFactoryProcess>
+		<autoExtract>true</autoExtract>
+		<onlyGrabAndOutputToFactoryHoppers>true</onlyGrabAndOutputToFactoryHoppers>
+		<sustainerWhenWorking>true</sustainerWhenWorking>
+		<sustainerDef>VFEFactory_AutomatedDrillSustainer</sustainerDef>
+		<effecterWhenWorking>true</effecterWhenWorking>
+		<effecterDef>Drill</effecterDef>
+		<worksInSpace>false</worksInSpace>
+		<maxOutputCount>75</maxOutputCount>
+	</PipeSystem.ProcessDef>
+	
+</Defs>
