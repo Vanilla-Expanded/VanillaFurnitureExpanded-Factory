@@ -9,8 +9,7 @@
     <Nullable>warnings</Nullable>
 	  <GenerateDependencyFile>false</GenerateDependencyFile>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RootNamespace>AlphaMonsters</RootNamespace>
-    <AssemblyName>AlphaMonsters</AssemblyName>
+   
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Lib.Harmony">
